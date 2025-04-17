@@ -1,0 +1,20 @@
+
+# Node modules and dependencies
+node_modules/
+npm-debug.log*
+
+# Mac system files
+.DS_Store
+
+# Theme files that may be store-specific
+config/settings_data.json
+
+# VSCode settings
+.vscode/
+
+# Environment files
+.env
+
+# OS generated files
+Thumbs.db
+Desktop.ini
