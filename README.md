@@ -1,13 +1,13 @@
 # PakFactory Shopify Theme
 
-This repository contains the custom Shopify theme for **PakFactory**. It’s built for maintainability, performance, and ongoing development with Git and the Shopify CLI.
+This repository contains the custom Shopify theme for **PakFactory**, now with all theme files located at the root level of the repository for Shopify GitHub integration compatibility.
 
 ---
 
 ## 📁 Folder Structure
 
 ```
-theme/
+/           # Root-level theme files
 ├── assets/        # Static assets: CSS, JavaScript, images, fonts
 ├── config/        # Theme configuration and settings
 ├── layout/        # Theme layout files (e.g., theme.liquid)
@@ -37,7 +37,7 @@ Make sure you have the following tools installed:
 
 ```bash
 git clone https://github.com/your-username/pakfactory-shopify.git
-cd pakfactory-shopify/theme
+cd pakfactory-shopify
 ```
 
 ### 2. Log in to Shopify
@@ -58,12 +58,12 @@ This will start a local development server with live reload.
 
 ## 🔁 Common Commands
 
-| Command                    | Description                          |
-|---------------------------|--------------------------------------|
-| `shopify theme pull`      | Pull latest theme from store         |
-| `shopify theme push`      | Push theme to development theme      |
-| `shopify theme push --live` | Deploy to live store (⚠️ caution) |
-| `shopify theme serve`     | (Legacy) Serve theme locally         |
+| Command                      | Description                          |
+|-----------------------------|--------------------------------------|
+| `shopify theme pull`        | Pull latest theme from store         |
+| `shopify theme push`        | Push theme to development theme      |
+| `shopify theme push --live` | Deploy to live store (⚠️ caution)   |
+| `shopify theme serve`       | (Legacy) Serve theme locally         |
 
 ---
 
