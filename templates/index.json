@@ -125,7 +125,7 @@
         "enable_autoplay": true,
         "enable_parallax": true,
         "enable_pagination": true,
-        "pagination_type": "tabs",
+        "pagination_type": "tabs_full",
         "pagination_color_scheme": "",
         "pagination_width": "full",
         "enable_navigation": false,
