@@ -1,0 +1,87 @@
+{% if template == 'product' %}
+  {% assign breadcrumbs = product.metafields.custom.breadcrumbs.value %}
+  {% assign current_page = product.title %}
+{% else %}
+  {% assign breadcrumbs = collection.metafields.custom.breadcrumbs.value %}
+  {% assign current_page = collection.metafields.custom.display_name | default: collection.title %}
+{% endif %}
+
+<div class="container">
+  <nav id="breadcrumbs" class="breadcrumb body-small" role="navigation" aria-label="breadcrumbs">
+    <a href="{{ routes.root_url }}" title="{{ 'general.breadcrumbs.home' | t }}" class="focus-inset">
+      {{- 'general.breadcrumbs.home' | t -}}
+    </a>
+    {% if breadcrumbs %}
+      {% for breadcrumb in breadcrumbs %}
+        <div class="breadcrumb__delimiter"></div>
+        <a href="{{ breadcrumb.url }}">
+          {% if breadcrumb.metafields.custom.display_name != blank %}
+            {{ breadcrumb.metafields.custom.display_name }}
+          {% else %}
+            {{ breadcrumb.title }}
+          {% endif %}
+        </a>
+      {% endfor %}
+      <div class="breadcrumb__delimiter"></div>
+      <span> {{ current_page }} </span>
+    {% else %}
+      <div class="breadcrumb__delimiter"></div>
+      <span>{{ current_page }} </span>
+    {% endif %}
+  </nav>
+</div>
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "{{ shop.url }}"
+      }
+      {% if breadcrumbs %}
+        {% for breadcrumb in breadcrumbs %}
+          ,{
+            "@type": "ListItem",
+            "position": {{ forloop.index | plus: 1 }},
+            "name": "{{ breadcrumb.title }}",
+            "item": "{{ breadcrumb.url }}"
+          }
+        {% endfor %}
+        ,{
+          "@type": "ListItem",
+          "position": {{ breadcrumbs.size | plus: 1 }},
+          "name": "{{ current_page }}",
+          "item": "{{ shop.url }}{{ request.path }}"
+        }
+      {% else %}
+        ,{
+          "@type": "ListItem",
+          "position": 2,
+          "name": "{{ current_page }}",
+          "item": "{{ shop.url }}{{ request.path }}"
+        }
+      {% endif %}
+    ]
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Breadcrumb Navigation",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Pak - Breadcrumbs"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Pak - Breadcrumbs "
+    }
+  ]
+}
+{% endschema %}
