@@ -1,0 +1,11 @@
+.slideshow__slide--overlay .slideshow__content-wrapper {
+  max-width: 80vw;
+}
+
+@media screen and (min-width: 1200px) {
+  .slideshow__swiper[data-pagination-type="tabs_full"]
+    .slideshow__slide--overlay
+    .slideshow__content-wrapper {
+    padding-bottom: 30.2rem;
+  }
+}
