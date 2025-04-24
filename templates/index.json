@@ -31,31 +31,10 @@
             "button_label": "Choose packaging style",
             "button_link": ""
           }
-        },
-        "slide_qWUqqC": {
-          "type": "slide",
-          "disabled": true,
-          "settings": {
-            "color_scheme": "",
-            "icon": "none",
-            "overlay_opacity": 0.5,
-            "show_video": false,
-            "loop_video": true,
-            "heading": "Some heading",
-            "heading_size": "recommended",
-            "heading_level": "h2",
-            "description": "Some description",
-            "tab_heading": "Heading",
-            "show_button": true,
-            "button_style": "simple_link",
-            "button_label": "Shop Now",
-            "button_link": ""
-          }
         }
       },
       "block_order": [
-        "slide_7aD6mx",
-        "slide_qWUqqC"
+        "slide_7aD6mx"
       ],
       "name": "pak - Slideshow",
       "settings": {
@@ -81,9 +60,9 @@
         "height": "4/3",
         "text_align_content": "bottom-left",
         "enable_autoplay": true,
-        "enable_parallax": false,
+        "enable_parallax": true,
         "enable_pagination": true,
-        "pagination_type": "bullets",
+        "pagination_type": "tabs",
         "pagination_color_scheme": "",
         "pagination_width": "medium",
         "enable_navigation": false,
