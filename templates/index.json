@@ -122,7 +122,7 @@
         "text_align": "left",
         "height": "16/9",
         "text_align_content": "bottom-left",
-        "enable_autoplay": true,
+        "enable_autoplay": false,
         "enable_parallax": true,
         "enable_pagination": true,
         "pagination_type": "tabs_full",
