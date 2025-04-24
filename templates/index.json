@@ -32,7 +32,27 @@
             "button_link": ""
           }
         },
-        "slide_nTT6iT": {
+        "slide_HBxpeL": {
+          "type": "slide",
+          "settings": {
+            "color_scheme": "",
+            "icon": "none",
+            "image": "shopify://shop_images/test-hero.jpg",
+            "overlay_opacity": 0,
+            "show_video": false,
+            "loop_video": true,
+            "heading": "Tailor-made Custom Packaging for Every Need",
+            "heading_size": "h1",
+            "heading_level": "h2",
+            "description": "Order personalized custom printed packaging and branded boxes your customers will love, all-in-one place.",
+            "tab_heading": "Materials & Finishes",
+            "show_button": true,
+            "button_style": "simple_link",
+            "button_label": "Choose packaging style",
+            "button_link": ""
+          }
+        },
+        "slide_RWcJYb": {
           "type": "slide",
           "settings": {
             "color_scheme": "",
@@ -51,11 +71,33 @@
             "button_label": "Choose packaging style",
             "button_link": ""
           }
+        },
+        "slide_VCG3hf": {
+          "type": "slide",
+          "settings": {
+            "color_scheme": "",
+            "icon": "none",
+            "image": "shopify://shop_images/test-hero.jpg",
+            "overlay_opacity": 0,
+            "show_video": false,
+            "loop_video": true,
+            "heading": "Tailor-made Custom Packaging for Every Need",
+            "heading_size": "h1",
+            "heading_level": "h2",
+            "description": "Order personalized custom printed packaging and branded boxes your customers will love, all-in-one place.",
+            "tab_heading": "Logistics & Fulfillment",
+            "show_button": true,
+            "button_style": "simple_link",
+            "button_label": "Choose packaging style",
+            "button_link": ""
+          }
         }
       },
       "block_order": [
         "slide_7aD6mx",
-        "slide_nTT6iT"
+        "slide_HBxpeL",
+        "slide_RWcJYb",
+        "slide_VCG3hf"
       ],
       "name": "pak - Slideshow",
       "settings": {
@@ -66,9 +108,9 @@
         "enable_border": false,
         "border_full": false,
         "subheading": "",
-        "subheading_style": "subtitle",
+        "subheading_style": "subtitle subtitle--secondary",
         "subheading_icon": "none",
-        "heading": "",
+        "heading": "Sustainability",
         "heading_size": "h2",
         "heading_level": "h2",
         "heading_line": "simple",
@@ -78,18 +120,18 @@
         "heading_animation": "none",
         "word_break_an": true,
         "text_align": "left",
-        "height": "4/3",
+        "height": "16/9",
         "text_align_content": "bottom-left",
         "enable_autoplay": true,
         "enable_parallax": true,
         "enable_pagination": true,
         "pagination_type": "tabs",
         "pagination_color_scheme": "",
-        "pagination_width": "medium",
+        "pagination_width": "full",
         "enable_navigation": false,
-        "navigation_color_scheme": "",
+        "navigation_color_scheme": "background-1",
         "slide_duration": 5,
-        "icon_size": "extra-large",
+        "icon_size": "recommended",
         "icon_style": "contrast",
         "icon_fill_type": "solid",
         "show_tab_icon": true,
