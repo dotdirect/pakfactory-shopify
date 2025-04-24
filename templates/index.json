@@ -31,10 +31,31 @@
             "button_label": "Choose packaging style",
             "button_link": ""
           }
+        },
+        "slide_nTT6iT": {
+          "type": "slide",
+          "settings": {
+            "color_scheme": "",
+            "icon": "none",
+            "image": "shopify://shop_images/test-hero.jpg",
+            "overlay_opacity": 0,
+            "show_video": false,
+            "loop_video": true,
+            "heading": "Tailor-made Custom Packaging for Every Need",
+            "heading_size": "h1",
+            "heading_level": "h2",
+            "description": "Order personalized custom printed packaging and branded boxes your customers will love, all-in-one place.",
+            "tab_heading": "Choose packaging style",
+            "show_button": true,
+            "button_style": "simple_link",
+            "button_label": "Choose packaging style",
+            "button_link": ""
+          }
         }
       },
       "block_order": [
-        "slide_7aD6mx"
+        "slide_7aD6mx",
+        "slide_nTT6iT"
       ],
       "name": "pak - Slideshow",
       "settings": {
