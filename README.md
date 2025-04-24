@@ -58,13 +58,11 @@ This will start a local development server with live reload.
 
 ## 🔁 Common Commands
 
-| Command                     | Description                       |
-| --------------------------- | --------------------------------- |
-| `shopify theme pull`        | Pull latest theme from store      |
-| `shopify theme push`        | Push theme to development theme   |
-| `shopify theme push --live` | Deploy to live store (⚠️ caution) |
-| `shopify theme serve`       | (Legacy) Serve theme locally      |
-| `shopify theme dev`         | Run theme locally                 |
+| Command              | Description                     |
+| -------------------- | ------------------------------- |
+| `shopify theme pull` | Pull latest theme from store    |
+| `shopify theme push` | Push theme to development theme |
+| `shopify theme dev`  | Run theme locally               |
 
 ---
 

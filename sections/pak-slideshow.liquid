@@ -1,10 +1,12 @@
 {{ 'section-slideshow.css' | asset_url | stylesheet_tag }}
+{{ 'section-pak-slideshow.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'slideshow.js' | asset_url }}" defer="defer"></script>
 
 {% style %}
   {% render 'section-padding' %}
   {% render 'section-margin' %}
 {% endstyle %}
+
 
 {% if section.settings.heading_line == 'rounded' %}
   {% assign color = section.settings.line_color | remove: '#' %}
@@ -414,7 +416,7 @@ richard-test
                           </div>
                         {% endif %}
                         {% if block.settings.tab_heading != blank %}
-                          <div class="slideshow__tab-title {% if  section.settings.pagination_type == 'tabs' %} h6 {% elsif  section.settings.pagination_type == 'tabs_full' %} h5 {% else %} h4 {% endif %}">
+                          <div class="slideshow__tab-title {% if  section.settings.pagination_type == 'tabs' %} h6 {% elsif  section.settings.pagination_type == 'tabs_full' %} h6 {% else %} h4 {% endif %}">
                             {{ block.settings.tab_heading }}
                           </div>
                         {% endif %}
@@ -1867,7 +1869,7 @@ richard-test
       ],
       "presets": [
         {
-          "name": "pak - Slideshow",
+          "name": "Pak - Slideshow",
           "blocks": [
             {
               "type": "slide"
