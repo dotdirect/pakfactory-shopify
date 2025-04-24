@@ -20,19 +20,20 @@
             "overlay_opacity": 0.5,
             "show_video": false,
             "loop_video": true,
-            "heading": "Some heading",
+            "heading": "Tailor-made Custom Packaging for Every Need",
             "heading_size": "recommended",
             "heading_level": "h2",
-            "description": "Some description",
+            "description": "Order personalized custom printed packaging and branded boxes your customers will love, all-in-one place.",
             "tab_heading": "Heading",
             "show_button": true,
             "button_style": "simple_link",
-            "button_label": "Shop Now",
+            "button_label": "Choose packaging style",
             "button_link": ""
           }
         },
         "slide_qWUqqC": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "color_scheme": "",
             "icon": "none",
@@ -58,8 +59,8 @@
       "name": "pak - Slideshow",
       "settings": {
         "layout": "overlay",
-        "header_overlay": false,
-        "full_width": false,
+        "header_overlay": true,
+        "full_width": true,
         "color_scheme": "",
         "enable_border": false,
         "border_full": false,
