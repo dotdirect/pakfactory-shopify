@@ -130,7 +130,7 @@
         "pagination_width": "full",
         "enable_navigation": false,
         "navigation_color_scheme": "background-1",
-        "slide_duration": 5,
+        "slide_duration": 1,
         "icon_size": "recommended",
         "icon_style": "contrast",
         "icon_fill_type": "solid",
