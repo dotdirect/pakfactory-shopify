@@ -17,7 +17,8 @@
           "settings": {
             "color_scheme": "",
             "icon": "none",
-            "overlay_opacity": 0.5,
+            "image": "shopify://shop_images/test-hero.jpg",
+            "overlay_opacity": 0,
             "show_video": false,
             "loop_video": true,
             "heading": "Tailor-made Custom Packaging for Every Need",
@@ -77,7 +78,7 @@
         "heading_animation": "none",
         "word_break_an": false,
         "text_align": "left",
-        "height": "16/9",
+        "height": "4/3",
         "text_align_content": "bottom-left",
         "enable_autoplay": true,
         "enable_parallax": false,
