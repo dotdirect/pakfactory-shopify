@@ -90,6 +90,9 @@
 				"header__5": {
 					"content": "Others"
 				},
+				"header__price": {
+					"content": "Price"
+				},
 				"colors_text": {
 					"label": "Text",
 					"info": "Used as foreground color on background colors."
@@ -469,8 +472,18 @@
 						"label": "Link with icon"
 					}
 				},
+				"quickview_button_mobile_size": {
+					"label": "Button size on mobile",
+					"options__1": {
+						"label": "Standard"
+					},
+					"options__2": {
+						"label": "Small"
+					}
+				},
 				"quickview_button_layout": {
 					"label": "Button layout",
+					"info": "Always Static on mobile devices",
 					"options__1": {
 						"label": "On hover"
 					},
@@ -789,6 +802,9 @@
 				},
 				"show_secondary_image": {
 					"label": "Show second image on hover"
+				},
+				"add_border_radius_when_contain": {
+					"label": "Rounded corners for contained images"
 				},
 				"show_vendor": {
 					"label": "Show vendor"
@@ -1668,6 +1684,23 @@
 				}
 			}
 		},
+		"logo-bar": {
+			"name": "Logo bar",
+			"settings": {
+				"alignment": {
+					"label": "Alignment"
+				},
+				"padding_block": {
+					"label": "Padding"
+				},
+				"enable_logo_mobile": {
+					"label": "Enable on mobile devices"
+				},
+				"enable_logo_desktop": {
+					"label": "Enable on desktop devices"
+				}
+			}
+		},
 		"apps": {
 			"name": "Apps",
 			"settings": {
@@ -2260,6 +2293,15 @@
 				"color_scheme_text": {
 					"label": "Subheadings color scheme"
 				},
+				"layout_type": {
+					"label": "Layout type",
+					"options__1": {
+						"label": "Inside container"
+					},
+					"options__2": {
+						"label": "Full width"
+					}
+				},
 				"text_left": {
 					"label": "Subheading left"
 				},
@@ -2629,32 +2671,8 @@
 				"footer-group": {
 					"label": "Footer Group"
 				},
-				"color_scheme": {
-					"options__1": {
-						"label": "Light 1"
-					},
-					"options__2": {
-						"label": "Light 2"
-					},
-					"options__3": {
-						"label": "Light 3"
-					},
-					"options__4": {
-						"label": "Dark 1"
-					},
-					"options__5": {
-						"label": "Dark 2"
-					},
-					"options__6": {
-						"label": "Dark 3"
-					},
-					"label": "Color scheme"
-				},
-				"show_border": {
-					"label": "Enable border top"
-				},
-				"newsletter_heading": {
-					"label": "Heading"
+				"content_alignment": {
+					"label": "Content alignment"
 				},
 				"header__2": {
 					"content": "Social media icons",
@@ -2760,6 +2778,12 @@
 				},
 				"full_width": {
 					"label": "Full width"
+				},
+				"enable_logo_mobile": {
+					"label": "Enable on mobile devices"
+				},
+				"enable_logo_desktop": {
+					"label": "Enable on desktop devices"
 				},
 				"enable_border": {
 					"label": "Enable bottom border"
@@ -4155,7 +4179,7 @@
 						"label": "Stacked gallery"
 					},
 					"options__4": {
-						"label": "Grid Gallery"
+						"label": "Grid gallery"
 					}
 				},
 				"image_fit": {
@@ -4805,7 +4829,8 @@
 					}
 				},
 				"image_ratio": {
-					"label": "Media ratio",
+					"label": "Aspect ratio",
+					"label_mobile": "Mobile aspect ratio",
 					"options__1": {
 						"label": "1/1"
 					},
@@ -5015,6 +5040,24 @@
 				},
 				"multicolumn_to_show": {
 					"label": "Columns per row"
+				},
+				"content_horizontal_alignment": {
+					"label": "Content horizontal alignment"
+				},
+				"content_vertical_alignment": {
+					"label": "Content vertical alignment",
+					"options__1": {
+						"label": "Top"
+					},
+					"options__2": {
+						"label": "Center"
+					},
+					"options__3": {
+						"label": "Bottom"
+					},
+					"options__4": {
+						"label": "Space between"
+					}
 				},
 				"box_shadow": {
 					"label": "Enable box shadow"

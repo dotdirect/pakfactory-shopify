@@ -3,6 +3,9 @@
   overflow: hidden;
   --gap: 2.4rem;
 }
+.banner-grid__description {
+  white-space: pre-wrap;
+}
 .banner-grid__grid {
   display: grid;
   gap: var(--gap-mobile);
@@ -1049,6 +1052,7 @@
 .banner-grid__title-content {
   margin-top: 0;
   margin-bottom: 0;
+  white-space: pre-wrap;
 }
 @media screen and (max-width: 1199px) {
   .banner-grid__title-content.recommended {

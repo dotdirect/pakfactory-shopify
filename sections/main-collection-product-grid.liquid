@@ -171,6 +171,7 @@
                     product_card_product: product,
                     media_ratio: section.settings.image_ratio,
                     media_fit: section.settings.image_fit,
+                    add_border_radius_when_contain: section.settings.add_border_radius_when_contain,
                     show_secondary_image: section.settings.show_secondary_image,
                     show_vendor: section.settings.show_vendor,
                     show_desc: section.settings.show_desc,
@@ -231,7 +232,7 @@
       "type": "range",
       "id": "columns",
       "min": 2,
-      "max": 5,
+      "max": 6,
       "step": 1,
       "default": 3,
       "label": "t:sections.main-collection-product-grid.settings.columns.label"
@@ -280,6 +281,12 @@
       ],
       "default": "cover"
     },
+    {
+			"type": "checkbox",
+			"id": "add_border_radius_when_contain",
+			"default": false,
+			"label": "t:sections.all.card.add_border_radius_when_contain.label"
+		},
     {
       "type": "checkbox",
       "id": "show_secondary_image",

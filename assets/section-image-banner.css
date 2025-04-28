@@ -15,14 +15,6 @@
     padding: 6.4rem;
   }
 }
-.image-banner .banner > .banner__media {
-  height: 25rem;
-}
-@media screen and (min-width: 750px) {
-  .image-banner .banner > .banner__media {
-    height: 100%;
-  }
-}
 .image-banner__heading {
   position: relative;
   z-index: 3;
@@ -360,6 +352,7 @@
   top: 0;
   width: 100%;
   position: relative;
+  display: flex;
 }
 @media screen and (min-width: 750px) {
   .image-banner .banner__media {
@@ -380,7 +373,4 @@
   .image-banner .banner__media--with-mobile-img .banner__media-img.banner__media-img--mobile {
     display: none;
   }
-}
-.image-banner .banner--adapt {
-  height: auto;
 }

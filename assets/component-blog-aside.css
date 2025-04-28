@@ -107,6 +107,7 @@
 .blog-aside__newsletter-desc {
   margin-bottom: 1.6rem;
   color: rgb(var(--color-foreground-secondary));
+  white-space: pre-wrap;
 }
 @media screen and (min-width: 576px) {
   .blog-aside__newsletter-desc {

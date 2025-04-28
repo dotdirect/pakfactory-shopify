@@ -104,6 +104,16 @@
 					{% capture style %}
 						{%- if media_fit == 'contain' -%}
 							object-fit: contain;
+							{%- if add_border_radius_when_contain == true -%}
+								border-radius: 1.2rem;
+								width: auto;
+								max-width: 100%;
+								height: auto;
+								max-height: 100%;
+								top: 50%;
+								left: 50%;
+								transform: translate(-50%, -50%);
+							{%- endif -%}
 						{%- endif -%}
 						{%- if media_fit == 'cover' -%}
 							object-fit: cover;
@@ -118,9 +128,7 @@
 							style: style
           }}
 
-					{%- if product_card_product.media[1] != null
-						and show_secondary_image
-					-%}
+					{%- if product_card_product.media[1] != null and show_secondary_image -%}
 						{{ product_card_product.media[1] | image_url: width: product_card_product.media[1].width | image_tag:
 							loading: 'lazy',
 							class: "motion-reduce media--second",
@@ -225,7 +233,7 @@
 							button--{{ settings.quickview_button_style }} 
 							card__link--{{ settings.quickview_button_layout }}
 							{% if settings.show_on_mobile -%}card__link--show{%- endif %}
-							card-focused"
+							card-focused card__link--mobile-size-{{ settings.quickview_button_mobile_size }}"
 						name="add"
 						aria-haspopup="dialog"
 						aria-labelledby="{{ product_form_id }}-submit title-{{ section_id }}-{{ product_card_product.id }}"
@@ -275,7 +283,7 @@
 						class="card__link button 
 							button--{{ settings.quickview_button_style }} card__link--{{ settings.quickview_button_layout }}
 							{%- if settings.show_on_mobile -%}card__link--show{%- endif %}
-							card-focused"
+							card-focused card__link--mobile-size-{{ settings.quickview_button_mobile_size }}"
 						aria-haspopup="dialog"
 						aria-labelledby="{{ product_form_id }}-submit title-{{ section_id }}-{{ product_card_product.id }}"
 						data-product-url="{{ product_card_product.url }}"

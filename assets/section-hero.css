@@ -43,11 +43,11 @@
   }
 }
 .hero > .container .hero__outer--overlay .hero__content > *:not(.hero__subscription) {
-  max-width: 60rem;
+  max-width: 58rem;
 }
 @media screen and (min-width: 1360px) {
   .hero > .container .hero__outer--overlay .hero__content > *:not(.hero__subscription) {
-    max-width: 70rem;
+    max-width: 63rem;
   }
 }
 @media screen and (min-width: 1536px) {
@@ -56,11 +56,11 @@
   }
 }
 .hero > .container .hero__outer--overlay .hero__content > .hero__description {
-  max-width: 47rem;
+  max-width: 45rem;
 }
 @media screen and (min-width: 1360px) {
   .hero > .container .hero__outer--overlay .hero__content > .hero__description {
-    max-width: 61rem;
+    max-width: 50rem;
   }
 }
 @media screen and (min-width: 1536px) {
@@ -255,6 +255,7 @@
 }
 .hero__outer--overlay .hero__users > span {
   color: rgba(var(--color-foreground), 0.6);
+  white-space: pre-wrap;
 }
 .hero__outer--overlay.color-background-1 .hero__users-image, .hero__outer--overlay.color-background-2 .hero__users-image {
   border-color: rgba(var(--color-background), 0.2);

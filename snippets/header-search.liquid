@@ -40,6 +40,7 @@
         <form action="{{ routes.search_url }}" method="get" role="search" class="search search__form">
           <div class="field color-{{ section.settings.search_color_scheme }} {% if section.settings.enable_box_shadow %}form--shadow{% endif %}">
             <input
+              dir="ltr"
               class="search__input field__input"
               id="Search-In-Modal-1"
               type="search"

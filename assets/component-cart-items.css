@@ -73,6 +73,25 @@ cart-items {
   height: 100%;
   object-fit: cover;
 }
+.cart-item .product-option__group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.8rem;
+  margin-bottom: 0;
+}
+.cart-item .product-option {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem;
+  opacity: 0.5;
+}
+.cart-item .product-option dd {
+  margin: 0;
+}
+.cart-item .product-option:not(:last-child) dd::after {
+  content: ",";
+}
 
 @media screen and (min-width: 990px) {
   .cart-item {

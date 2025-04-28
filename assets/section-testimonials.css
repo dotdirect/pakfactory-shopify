@@ -75,6 +75,8 @@
   letter-spacing: calc(var(--font-heading-letter-spacing) * 0.1);
   color: rgb(var(--color-foreground-title));
   line-height: var(--font-heading-line-height);
+  white-space: pre-wrap;
+  word-break: break-word;
 }
 .testimonials__text.h6 {
   line-height: var(--font-body-line-height);

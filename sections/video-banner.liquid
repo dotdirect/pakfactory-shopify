@@ -88,7 +88,12 @@
         <div class="container">
       {% endif %}
       <div class="video-banner__column">
-        {% render 'section-text', section: section, class: 'video-banner', text_align: section.settings.text_align, heading_level: section.settings.heading_level %}
+        {% render 'section-text',
+          section: section,
+          class: 'video-banner',
+          text_align: section.settings.text_align,
+          heading_level: section.settings.heading_level
+        %}
         {%- if section.settings.show_button -%}
           {% render 'button',
             link: section.settings.button_link,
@@ -104,6 +109,37 @@
     </div>
   </div>
 </div>
+
+<script>
+  (function () {
+    const playVideo = (section) => {
+      if (!section || !section.classList.contains('video-banner-section')) return;
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          const video = entry.target.querySelector('video');
+          if (!video) return;
+
+          if (entry.isIntersecting) {
+            video.play().catch((err) => console.warn('Autoplay is blocked: ', err));
+          } else {
+            video.pause();
+          }
+        });
+      });
+
+      observer.observe(section);
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      playVideo(document.getElementById('shopify-section-{{ section.id }}'));
+    });
+
+    document.addEventListener('shopify:section:load', function (event) {
+      playVideo(event.target);
+    });
+  })();
+</script>
 
 {% schema %}
 {

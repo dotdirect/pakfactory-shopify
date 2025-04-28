@@ -64,6 +64,7 @@
 .pricing-table__item-description {
   margin: 0;
   color: rgba(var(--color-foreground-secondary));
+  white-space: pre-wrap;
 }
 .pricing-table__item-list {
   padding-top: 2.4rem;

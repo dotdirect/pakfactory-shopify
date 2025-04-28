@@ -168,7 +168,7 @@
                         <h3 class="blog-aside__newsletter-header h5">{{ block.settings.newsletter_heading }}</h3>
                       {% endif %}
                       {% if block.settings.newsletter_description != blank %}
-                        <div class="blog-aside__newsletter-desc">{{ block.settings.newsletter_description }}</div>
+                        <div class="blog-aside__newsletter-desc">{{- block.settings.newsletter_description -}}</div>
                       {% endif %}
                     </div>
                     <div class="newsletter__form">
@@ -182,6 +182,7 @@
                           <div class="newsletter-form__field-wrapper">
                             <div class="field">
                               <input
+                                dir="ltr"
                                 id="NewsletterForm--{{ section.id }}"
                                 type="email"
                                 name="contact[email]"

@@ -618,12 +618,12 @@ class MenuDrawer extends HTMLElement {
 			summary.addEventListener('click', this.onSummaryClick.bind(this))
 		)
 		this.querySelectorAll('button').forEach((button) => {
-			if (this.querySelector('.toggle-scheme-button') === button) return
-			if (this.querySelector('.header__localization-button') === button) return
-			if (this.querySelector('.header__localization-lang-button') === button)
-				return
-			if (!button.classList.contains('mobile-facets__footer__button'))
-				button.addEventListener('click', this.onCloseButtonClick.bind(this))
+			if (this.querySelector('.toggle-scheme-button') === button) return;
+			if (this.querySelector('.header__localization-button') === button) return;
+			if (this.querySelector('.header__localization-lang-button') === button) return;
+			if (button.classList.contains('mobile-facets__footer__button')) return;
+
+			button.addEventListener('click', this.onCloseButtonClick.bind(this))
 		})
 	}
 
@@ -692,16 +692,7 @@ class MenuDrawer extends HTMLElement {
 			)
 			removeTrapFocus(elementToFocus)
 			this.closeAnimation(this.mainDetailsToggle)
-			this.header =
-				this.header || document.querySelector('.shopify-section-header')
-			const main = document.querySelector('main')
-			if (
-				main
-					.querySelectorAll('.shopify-section')[0]
-					?.classList.contains('section--has-overlay') &&
-				!this.header.classList.contains('animate')
-			) {
-			}
+			this.header = this.header || document.querySelector('.shopify-section-header')
 		}
 	}
 
@@ -711,9 +702,7 @@ class MenuDrawer extends HTMLElement {
 				this.mainDetailsToggle.hasAttribute('open') &&
 				!this.mainDetailsToggle.contains(document.activeElement)
 			)
-				if (this.classList.contains('mobile-facets__wrapper'))
-					this.closeMenuDrawer()
-				else this.closeMenuDrawer(event)
+				this.closeMenuDrawer()
 		})
 	}
 
@@ -1721,7 +1710,9 @@ function formatMoney(cents, format = '') {
 	if (typeof cents === 'string') {
 		cents = cents.replace('.', '')
 	}
+	cents = parseInt(cents, 10)
 	let value = ''
+
 	const placeholderRegex = /\{\{\s*(\w+)\s*\}\}/
 	const formatString = format || theme.moneyFormat
 
@@ -1732,27 +1723,30 @@ function formatMoney(cents, format = '') {
 		decimal = '.'
 	) {
 		if (isNaN(number) || number == null) {
-			return 0
+			return '0'
 		}
 
 		number = (number / 100.0).toFixed(precision)
 
 		const parts = number.split('.')
 		const dollarsAmount = parts[0].replace(
-			/(\d)(?=(\d\d\d)+(?!\d))/g,
+			/(\d)(?=(\d{3})+(?!\d))/g,
 			`$1${thousands}`
 		)
-		const centsAmount = parts[1] ? decimal + parts[1] : ''
+		const centsAmount = precision > 0 ? decimal + parts[1] : ''
 
 		return dollarsAmount + centsAmount
 	}
 
-	switch (formatString.match(placeholderRegex)[1]) {
+	const match = formatString.match(placeholderRegex)
+	const formatType = match ? match[1] : 'amount'
+
+	switch (formatType) {
 		case 'amount':
-			value = formatWithDelimiters(cents, 2)
+			value = formatWithDelimiters(cents, 2, ',', '.')
 			break
 		case 'amount_no_decimals':
-			value = formatWithDelimiters(cents, 0)
+			value = formatWithDelimiters(cents, 0, ',', '.')
 			break
 		case 'amount_with_comma_separator':
 			value = formatWithDelimiters(cents, 2, '.', ',')
@@ -1760,9 +1754,23 @@ function formatMoney(cents, format = '') {
 		case 'amount_no_decimals_with_comma_separator':
 			value = formatWithDelimiters(cents, 0, '.', ',')
 			break
-	}
+		case 'amount_with_apostrophe_separator':
+			value = formatWithDelimiters(cents, 2, "'", '.')
+			break
+		case 'amount_no_decimals_with_space_separator':
+			value = formatWithDelimiters(cents, 0, ' ', '.')
+			break
+		case 'amount_with_space_separator':
+			value = formatWithDelimiters(cents, 2, ' ', ',')
+			break
+		case 'amount_with_period_and_space_separator':
+			value = formatWithDelimiters(cents, 2, ' ', '.')
+			break
+		default:
+			value = formatWithDelimiters(cents, 2, ',', '.')
 
-	return formatString.replace(placeholderRegex, value)
+			return formatString.replace(placeholderRegex, value)
+	}
 }
 
 const initUnderlinedTitles = () => {
