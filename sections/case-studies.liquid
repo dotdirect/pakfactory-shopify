@@ -76,7 +76,7 @@
 									{% endif %}
 									{% if block.settings.quote != blank %}
 										<p class='case-studies__quote {{ block.settings.quote_size }} {% if block.settings.quote_size == 'recommended' %} {{ quote_size }} {% endif %}'>
-											{{ block.settings.quote }}
+											{{- block.settings.quote -}}
 										</p>
 									{% endif %}
 

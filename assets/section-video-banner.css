@@ -53,6 +53,7 @@
 }
 .video-banner__title {
   margin: 0;
+  white-space: pre-wrap;
 }
 .video-banner__titles + .video-banner__description {
   margin: 0;

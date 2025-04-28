@@ -47,9 +47,152 @@
 				<div class='multicolumn-list__wrapper multicolumn-list__wrapper--{{ section.settings.multicolumn_to_show }} multicolumn-list__wrapper--static'>
 					{% for block in section.blocks %}
 						<div
-							class='multicolumn-card'
-							{{ block.shopify_attributes }}
+							class='multicolumn-card multicolumn-card--hor-align-{{ section.settings.content_horizontal_alignment }} multicolumn-card--ver-align-{{ section.settings.content_vertical_alignment }}'
 						>
+							<div class='multicolumn-card__info'>
+								{%- if block.settings.icon != 'none' -%}
+									<div
+										class='
+											multicolumn-card__image-wrapper multicolumn-card__image-wrapper--icon multicolumn-card__image-wrapper--{{- section.settings.icon_size }} {% if section.settings.box_shadow %}multicolumn-card__image-wrapper--shadow
+											{% endif %} multicolumn-card__image-wrapper--{{- section.settings.icon_style }} multicolumn-card__image-wrapper--{{- block.settings.icon_fill_type }} color-{{ block.settings.icon_color_scheme }}
+										'
+									>
+										<i
+											class='icon icon-pack icon-{{ block.settings.icon }} {% if section.settings.icon_style == 'colored' and block.settings.icon_fill_type == 'gradient' %} text-gradient {% endif %}'
+										></i>
+									</div>
+								{%- endif -%}
+								{%- if block.settings.image != blank -%}
+									<div class='multicolumn-card__image-wrapper multicolumn-card__image-wrapper--image multicolumn-card__image-wrapper--{{ section.settings.image_width }} multicolumn-card__image-wrapper--{{ section.settings.image_ratio }}'>
+										{% liquid
+											assign aspect_ratio = block.settings.image.aspect_ratio
+
+											case section.settings.image_ratio
+												when 'portrait'
+													assign image_ratio = 1.4
+												when 'square'
+													assign image_ratio = 1
+												else
+													assign image_ratio = 0.5
+											endcase
+										%}
+
+										{% if aspect_ratio > image_ratio
+											and block.settings.image.width
+												> block.settings.image.height
+										%}
+											{% case section.settings.multicolumn_to_show %}
+												{% when 4 %}
+													{% capture sizes %}
+											(min-width: 1360px) calc((100vw - 128px) / 4 * {{ aspect_ratio }} * {{ image_ratio }}), (min-width: 990px) calc((100vw - 40px) / 3 * {{ aspect_ratio }} * {{ image_ratio }}), (min-width: 576px) calc((100vw - 40px) / 2 * {{ aspect_ratio }} * {{ image_ratio }}), calc((100vw - 40px) * {{ aspect_ratio }} * {{ image_ratio }})
+										{% endcapture %}
+												{% when 3 %}
+													{% capture sizes %}
+											(min-width: 990px) calc((100vw - 40px) / 3 * {{ aspect_ratio }} * {{ image_ratio }}), (min-width: 576px) calc((100vw - 40px) / 2 * {{ aspect_ratio }} * {{ image_ratio }}), calc((100vw - 40px) * {{ aspect_ratio }} * {{ image_ratio }})
+										{% endcapture %}
+												{% when 2 %}
+													{% capture sizes %}
+											(min-width: 576px) calc((100vw - 40px) / 2 * {{ aspect_ratio }} * {{ image_ratio }}), calc((100vw - 40px) * {{ aspect_ratio }} * {{ image_ratio }})
+										{% endcapture %}
+												{% else %}
+													{% capture sizes %}
+											calc((100vw - 40px) * {{ aspect_ratio }} * {{ image_ratio }})
+										{% endcapture %}
+											{% endcase %}
+										{% elsif aspect_ratio > image_ratio
+											and block.settings.image.width
+												< block.settings.image.height
+										%}
+											{% case section.settings.multicolumn_to_show %}
+												{% when 4 %}
+													{% capture sizes %}
+											(min-width: 1360px) calc((100vw - 128px) / 4 / {{ aspect_ratio }}) * {{ image_ratio }}, (min-width: 990px) calc((100vw - 40px) / 3 / {{ aspect_ratio }} * {{ image_ratio }}), (min-width: 576px) calc((100vw - 40px) / 2 / {{ aspect_ratio }} * {{ image_ratio }}), calc((100vw - 40px) / {{ aspect_ratio }} * {{ image_ratio }})
+										{% endcapture %}
+												{% when 3 %}
+													{% capture sizes %}
+											(min-width: 990px) calc((100vw - 40px) / 3 / {{ aspect_ratio }} * {{ image_ratio }}), (min-width: 576px) calc((100vw - 40px) / 2 / {{ aspect_ratio }} * {{ image_ratio }}), calc((100vw - 40px) / {{ aspect_ratio }} * {{ image_ratio }})
+										{% endcapture %}
+												{% when 2 %}
+													{% capture sizes %}
+											(min-width: 576px) calc((100vw - 40px) / 2 / {{ aspect_ratio }} * {{ image_ratio }}), calc((100vw - 40px) / {{ aspect_ratio }} * {{ image_ratio }})
+										{% endcapture %}
+												{% else %}
+													{% capture sizes %}
+											calc((100vw - 40px) / {{ aspect_ratio }} * {{ image_ratio }})
+										{% endcapture %}
+											{% endcase %}
+										{% else %}
+											{% case section.settings.multicolumn_to_show %}
+												{% when 4 %}
+													{% capture sizes %} 
+											(min-width: 1360px) calc((100vw - 128px) / 4), (min-width: 990px) calc((100vw - 40px) / 3), (min-width: 576px) calc((100vw - 40px) / 2), calc((100vw - 40px))
+										{% endcapture %}
+												{% when 3 %}
+													{% capture sizes %} 
+											(min-width: 990px) calc((100vw - 40px) / 3), (min-width: 576px) calc((100vw - 40px) / 2), calc((100vw - 40px))
+										{% endcapture %}
+												{% when 2 %}
+													{% capture sizes %} 
+											(min-width: 576px) calc((100vw - 40px) / 2), calc((100vw - 40px))
+										{% endcapture %}
+												{% else %}
+													{% capture sizes %} 
+											calc((100vw - 40px))
+										{% endcapture %}
+											{% endcase %}
+										{% endif %}
+										{% liquid
+											assign height = block.settings.image.height
+											assign width = block.settings.image.width
+										%}
+										{%- capture style -%}object-fit: {{ section.settings.object_fit }};{%- endcapture -%}
+										{{
+											block.settings.image
+											| image_url: width: block.settings.image.width
+											| image_tag:
+												loading: 'lazy',
+												sizes: sizes,
+												widths: '360, 535, 600, 720, 940, 1066, 1200, 1400, 1600, 1800, 2000, 2200, 2400, 2600, 2800, 3000, 3200, 3400, 3600, 3800',
+												height: height,
+												width: width,
+												style: style
+										}}
+									</div>
+								{%- endif -%}
+
+								{%- if block.settings.heading != blank -%}
+									<h3 class='multicolumn-card__heading {{ section.settings.card_heading_size }}'>
+										{{ block.settings.heading | escape }}
+									</h3>
+								{%- endif -%}
+								{%- if block.settings.text != blank -%}
+									<div class='multicolumn-card__text section-rte'>
+										{{ block.settings.text }}
+									</div>
+								{%- endif -%}
+								{%- if block.settings.show_button != blank -%}
+									{% render 'button',
+										link: block.settings.button_link,
+										label: block.settings.button_label,
+										style: block.settings.button_style,
+										class: 'multicolumn-card'
+									%}
+								{% endif %}
+							</div>
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+		{%- else -%}
+			{% comment %} ----- DEFAULT LAYOUT ----- {% endcomment %}
+
+			<div class='multicolumn-list__wrapper multicolumn-list__wrapper--{{ section.settings.multicolumn_to_show }} multicolumn-list__wrapper--static content'>
+				{% for block in section.blocks %}
+					<div
+						class='multicolumn-card multicolumn-card--hor-align-{{ section.settings.content_horizontal_alignment }} multicolumn-card--ver-align-{{ section.settings.content_vertical_alignment }}'
+						{{ block.shopify_attributes }}
+					>
+						<div class='multicolumn-card__info'>
 							{%- if block.settings.icon != 'none' -%}
 								<div
 									class='
@@ -158,155 +301,13 @@
 								</div>
 							{%- endif -%}
 
-							<div class='multicolumn-card__info'>
-								{%- if block.settings.heading != blank -%}
-									<h3 class='multicolumn-card__heading {{ section.settings.card_heading_size }}'>
-										{{ block.settings.heading | escape }}
-									</h3>
-								{%- endif -%}
-								{%- if block.settings.text != blank -%}
-									<div class='multicolumn-card__text'>
-										{{ block.settings.text }}
-									</div>
-								{%- endif -%}
-								{%- if block.settings.show_button != blank -%}
-									{% render 'button',
-										link: block.settings.button_link,
-										label: block.settings.button_label,
-										style: block.settings.button_style,
-										class: 'multicolumn-card'
-									%}
-								{% endif %}
-							</div>
-						</div>
-					{% endfor %}
-				</div>
-			</div>
-		{%- else -%}
-			{% comment %} ----- DEFAULT LAYOUT ----- {% endcomment %}
-
-			<div class='multicolumn-list__wrapper multicolumn-list__wrapper--{{ section.settings.multicolumn_to_show }} multicolumn-list__wrapper--static content'>
-				{% for block in section.blocks %}
-					<div
-						class='multicolumn-card'
-						{{ block.shopify_attributes }}
-					>
-						{%- if block.settings.icon != 'none' -%}
-							<div
-								class='
-									multicolumn-card__image-wrapper multicolumn-card__image-wrapper--icon multicolumn-card__image-wrapper--{{- section.settings.icon_size }} {% if section.settings.box_shadow %}multicolumn-card__image-wrapper--shadow
-									{% endif %} multicolumn-card__image-wrapper--{{- section.settings.icon_style }} multicolumn-card__image-wrapper--{{- block.settings.icon_fill_type }} color-{{ block.settings.icon_color_scheme }}
-								'
-							>
-								<i
-									class='icon icon-pack icon-{{ block.settings.icon }} {% if section.settings.icon_style == 'colored' and block.settings.icon_fill_type == 'gradient' %} text-gradient {% endif %}'
-								></i>
-							</div>
-						{%- endif -%}
-						{%- if block.settings.image != blank -%}
-							<div class='multicolumn-card__image-wrapper multicolumn-card__image-wrapper--image multicolumn-card__image-wrapper--{{ section.settings.image_width }} multicolumn-card__image-wrapper--{{ section.settings.image_ratio }}'>
-								{% liquid
-									assign aspect_ratio = block.settings.image.aspect_ratio
-
-									case section.settings.image_ratio
-										when 'portrait'
-											assign image_ratio = 1.4
-										when 'square'
-											assign image_ratio = 1
-										else
-											assign image_ratio = 0.5
-									endcase
-								%}
-
-								{% if aspect_ratio > image_ratio
-									and block.settings.image.width > block.settings.image.height
-								%}
-									{% case section.settings.multicolumn_to_show %}
-										{% when 4 %}
-											{% capture sizes %}
-											(min-width: 1360px) calc((100vw - 128px) / 4 * {{ aspect_ratio }} * {{ image_ratio }}), (min-width: 990px) calc((100vw - 40px) / 3 * {{ aspect_ratio }} * {{ image_ratio }}), (min-width: 576px) calc((100vw - 40px) / 2 * {{ aspect_ratio }} * {{ image_ratio }}), calc((100vw - 40px) * {{ aspect_ratio }} * {{ image_ratio }})
-										{% endcapture %}
-										{% when 3 %}
-											{% capture sizes %}
-											(min-width: 990px) calc((100vw - 40px) / 3 * {{ aspect_ratio }} * {{ image_ratio }}), (min-width: 576px) calc((100vw - 40px) / 2 * {{ aspect_ratio }} * {{ image_ratio }}), calc((100vw - 40px) * {{ aspect_ratio }} * {{ image_ratio }})
-										{% endcapture %}
-										{% when 2 %}
-											{% capture sizes %}
-											(min-width: 576px) calc((100vw - 40px) / 2 * {{ aspect_ratio }} * {{ image_ratio }}), calc((100vw - 40px) * {{ aspect_ratio }} * {{ image_ratio }})
-										{% endcapture %}
-										{% else %}
-											{% capture sizes %}
-											calc((100vw - 40px) * {{ aspect_ratio }} * {{ image_ratio }})
-										{% endcapture %}
-									{% endcase %}
-								{% elsif aspect_ratio > image_ratio
-									and block.settings.image.width < block.settings.image.height
-								%}
-									{% case section.settings.multicolumn_to_show %}
-										{% when 4 %}
-											{% capture sizes %}
-											(min-width: 1360px) calc((100vw - 128px) / 4 / {{ aspect_ratio }}) * {{ image_ratio }}, (min-width: 990px) calc((100vw - 40px) / 3 / {{ aspect_ratio }} * {{ image_ratio }}), (min-width: 576px) calc((100vw - 40px) / 2 / {{ aspect_ratio }} * {{ image_ratio }}), calc((100vw - 40px) / {{ aspect_ratio }} * {{ image_ratio }})
-										{% endcapture %}
-										{% when 3 %}
-											{% capture sizes %}
-											(min-width: 990px) calc((100vw - 40px) / 3 / {{ aspect_ratio }} * {{ image_ratio }}), (min-width: 576px) calc((100vw - 40px) / 2 / {{ aspect_ratio }} * {{ image_ratio }}), calc((100vw - 40px) / {{ aspect_ratio }} * {{ image_ratio }})
-										{% endcapture %}
-										{% when 2 %}
-											{% capture sizes %}
-											(min-width: 576px) calc((100vw - 40px) / 2 / {{ aspect_ratio }} * {{ image_ratio }}), calc((100vw - 40px) / {{ aspect_ratio }} * {{ image_ratio }})
-										{% endcapture %}
-										{% else %}
-											{% capture sizes %}
-											calc((100vw - 40px) / {{ aspect_ratio }} * {{ image_ratio }})
-										{% endcapture %}
-									{% endcase %}
-								{% else %}
-									{% case section.settings.multicolumn_to_show %}
-										{% when 4 %}
-											{% capture sizes %} 
-											(min-width: 1360px) calc((100vw - 128px) / 4), (min-width: 990px) calc((100vw - 40px) / 3), (min-width: 576px) calc((100vw - 40px) / 2), calc((100vw - 40px))
-										{% endcapture %}
-										{% when 3 %}
-											{% capture sizes %} 
-											(min-width: 990px) calc((100vw - 40px) / 3), (min-width: 576px) calc((100vw - 40px) / 2), calc((100vw - 40px))
-										{% endcapture %}
-										{% when 2 %}
-											{% capture sizes %} 
-											(min-width: 576px) calc((100vw - 40px) / 2), calc((100vw - 40px))
-										{% endcapture %}
-										{% else %}
-											{% capture sizes %} 
-											calc((100vw - 40px))
-										{% endcapture %}
-									{% endcase %}
-								{% endif %}
-								{% liquid
-									assign height = block.settings.image.height
-									assign width = block.settings.image.width
-								%}
-								{%- capture style -%}object-fit: {{ section.settings.object_fit }};{%- endcapture -%}
-								{{
-									block.settings.image
-									| image_url: width: block.settings.image.width
-									| image_tag:
-										loading: 'lazy',
-										sizes: sizes,
-										widths: '360, 535, 600, 720, 940, 1066, 1200, 1400, 1600, 1800, 2000, 2200, 2400, 2600, 2800, 3000, 3200, 3400, 3600, 3800',
-										height: height,
-										width: width,
-										style: style
-								}}
-							</div>
-						{%- endif -%}
-
-						<div class='multicolumn-card__info'>
 							{%- if block.settings.heading != blank -%}
 								<h3 class='multicolumn-card__heading {{ section.settings.card_heading_size }}'>
 									{{ block.settings.heading | escape }}
 								</h3>
 							{%- endif -%}
 							{%- if block.settings.text != blank -%}
-								<div class='multicolumn-card__text'>
+								<div class='multicolumn-card__text section-rte'>
 									{{ block.settings.text }}
 								</div>
 							{%- endif -%}
@@ -381,6 +382,36 @@
 			"step": 1,
 			"default": 4,
 			"label": "t:sections.multicolumn.settings.multicolumn_to_show.label"
+		},
+		{
+			"type": "text_alignment",
+			"id": "content_horizontal_alignment",
+			"default": "left",
+			"label": "t:sections.multicolumn.settings.content_horizontal_alignment.label"
+		},
+		{
+			"type": "select",
+			"id": "content_vertical_alignment",
+			"label": "t:sections.multicolumn.settings.content_vertical_alignment.label",
+			"options": [
+				{
+					"value": "top",
+					"label": "t:sections.multicolumn.settings.content_vertical_alignment.options__1.label"
+				},
+				{
+					"value": "center",
+					"label": "t:sections.multicolumn.settings.content_vertical_alignment.options__2.label"
+				},
+				{
+					"value": "bottom",
+					"label": "t:sections.multicolumn.settings.content_vertical_alignment.options__3.label"
+				},
+				{
+					"value": "justify",
+					"label": "t:sections.multicolumn.settings.content_vertical_alignment.options__4.label"
+				}
+			],
+			"default": "top"
 		},
 		{
 			"type": "select",
@@ -1034,9 +1065,9 @@
 			"default": false
 		},
 		{
-			"type": "textarea",
+			"type": "richtext",
 			"id": "text",
-			"default": "Some description",
+			"default": "<p>Some description</p>",
 			"label": "t:sections.all.text.label"
 		},
 		{
@@ -1862,9 +1893,9 @@
 					"label": "t:sections.all.heading.label"
 				},
 				{
-					"type": "textarea",
+					"type": "richtext",
 					"id": "text",
-					"default": "Description",
+					"default": "<p>Description</p>",
 					"label": "t:sections.all.text.label"
 				},
 				{

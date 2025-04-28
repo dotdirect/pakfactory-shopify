@@ -33,6 +33,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  min-height: 28rem;
 }
 .compare__default ~ .compare__text {
   z-index: 2;
@@ -99,6 +100,30 @@
 .compare img-comparison-slider.rendered {
   outline: none;
   width: 100%;
+}
+.compare-wrapper--full-width img-comparison-slider,
+.compare-wrapper--full-width .compare__container,
+.compare-wrapper--full-width .compare__default {
+  border-radius: unset;
+}
+@media screen and (min-width: 750px) {
+  .compare-wrapper--full-width img-comparison-slider,
+  .compare-wrapper--full-width .compare__container,
+  .compare-wrapper--full-width .compare__default {
+    aspect-ratio: 1632/720;
+    min-height: unset;
+  }
+}
+.compare-wrapper--full-width > .container {
+  max-width: 1760px;
+}
+.compare-wrapper--full-width > .container.description {
+  white-space: unset;
+}
+.compare-wrapper--full-width .container > .compare__bottom {
+  padding-left: 0;
+  padding-right: 0;
+  max-width: none;
 }
 .compare__figure {
   display: block;

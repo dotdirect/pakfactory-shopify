@@ -62,7 +62,7 @@
                 {{ forloop.index }}
               </span>
             </div>
-            <div class="product-markers__item-title color-{{ block.settings.color_scheme_text }}">
+            <div dir="ltr" class="product-markers__item-title color-{{ block.settings.color_scheme_text }}">
               <span>
                 {% if block.settings.product_id.title != blank %}
                   {{ block.settings.product_id.title | truncate: 55, '...' }}

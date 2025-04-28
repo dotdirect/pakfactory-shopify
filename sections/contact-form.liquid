@@ -125,7 +125,14 @@
           style="--opacity-slide: {{ section.settings.overlay_opacity }};"
         ></span>
         {% capture sizes %}
-					(min-width: 1100px) 1920px, calc((100vw - 20px))
+          (min-width: 3000px) 3000px,
+          (min-width: 2600px) 2800px,
+          (min-width: 2200px) 2600px,
+          (min-width: 1920px) 2400px,
+          (min-width: 1600px) 2200px,
+          (min-width: 1400px) 2000px,
+          (min-width: 1100px) 1920px,
+          calc(100vw - 20px)
 				{% endcapture %}
         {{
           section.settings.image
@@ -133,7 +140,7 @@
           | image_tag:
             loading: 'lazy',
             sizes: sizes,
-            widths: '360, 533, 720, 940, 1066, 1200, 1400, 1600, 1800, 1920, 2000, 2200, 2400, 2600',
+            widths: '360, 533, 720, 940, 1066, 1200, 1400, 1600, 1800, 1920, 2000, 2200, 2400, 2600, 2800, 3000',
             class: 'contact-form__image'
         }}
       {% endif %}
@@ -158,6 +165,7 @@
           {%- endif -%}
           <div class="field field__name">
             <input
+              dir="ltr"
               class="field__input focus-inset"
               autocomplete="name"
               type="text"
@@ -172,6 +180,7 @@
           </div>
           <div class="field field--with-error">
             <input
+              dir="ltr"
               autocomplete="email"
               type="email"
               id="ContactForm-email"
@@ -203,6 +212,7 @@
           </div>
           <div class="field">
             <input
+              dir="ltr"
               type="tel"
               id="ContactForm-phone"
               class="field__input"
@@ -218,6 +228,7 @@
           </div>
           <div class="field">
             <textarea
+              dir="ltr"
               id="ContactForm-body"
               class="text-area field__input"
               name="contact[{{ 'templates.contact.form.comment' | t }}]"

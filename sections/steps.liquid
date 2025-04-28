@@ -6,7 +6,7 @@
   {% render 'section-margin' %}
 {%- endstyle -%}
 
-{% assign scheme1 = settings.color_schemes | first %}
+{% assign scheme_1 = settings.color_schemes | first %}
 
 {% liquid
   assign number_size = section.settings.number_size
@@ -161,7 +161,7 @@
 
                 <div class="step__info">
                   <div class="step__number {{ number_size }}">
-                    <span class="{% if scheme1.settings.color_accent_gradient != empty %} text-gradient {% endif %}">
+                    <span class="{% if scheme_1.settings.color_accent_gradient != empty %} text-gradient {% endif %}">
                       {% if block.settings.number != blank %}
                         {{ block.settings.number }}
                       {% else %}
@@ -172,12 +172,12 @@
 
                   {% if block.settings.heading != blank %}
                     <h3 class="step__heading {{ heading_size }}">
-                      {{ block.settings.heading }}
+                      {{- block.settings.heading -}}
                     </h3>
                   {% endif %}
                   {% if block.settings.text != blank %}
                     <p class="step__text {{ text_size }}">
-                      {{ block.settings.text }}
+                      {{- block.settings.text -}}
                     </p>
                   {% endif %}
                   {% if block.settings.button_label != blank and block.settings.show_button %}
@@ -204,12 +204,12 @@
 
                   {% if block.settings.heading != blank %}
                     <h3 class="step__heading {{ heading_size }}">
-                      {{ block.settings.heading }}
+                      {{- block.settings.heading -}}
                     </h3>
                   {% endif %}
                   {% if block.settings.text != blank %}
                     <p class="step__text {{ text_size }}">
-                      {{ block.settings.text }}
+                      {{- block.settings.text -}}
                     </p>
                   {% endif %}
                   {% if block.settings.button_label != blank and block.settings.show_button %}
@@ -268,7 +268,7 @@
                     </div>
                     {% if block.settings.heading != blank %}
                       <h3 class="step__heading {{ heading_size }}">
-                        {{ block.settings.heading }}
+                        {{- block.settings.heading -}}
                       </h3>
                     {% endif %}
                   </div>
@@ -280,7 +280,7 @@
                   {% endif %} >
                   {% if block.settings.text != blank %}
                     <p class="step__text {{ text_size }}">
-                      {{ block.settings.text }}
+                      {{- block.settings.text -}}
                     </p>
                   {% endif %}
                   {% if block.settings.button_label != blank and block.settings.show_button %}
@@ -338,12 +338,12 @@
 
                   {% if block.settings.heading != blank %}
                     <h3 class="step__heading {{ heading_size }}">
-                      {{ block.settings.heading }}
+                      {{- block.settings.heading -}}
                     </h3>
                   {% endif %}
                   {% if block.settings.text != blank %}
                     <p class="step__text {{ text_size }}">
-                      {{ block.settings.text }}
+                      {{- block.settings.text -}}
                     </p>
                   {% endif %}
                   {% if block.settings.button_label != blank and block.settings.show_button %}

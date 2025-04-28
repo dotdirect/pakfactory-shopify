@@ -19,6 +19,8 @@
 .steps__content .step__text {
   margin-bottom: 0;
   color: rgb(var(--color-foreground-secondary));
+  white-space: pre-wrap;
+  word-break: break-word;
 }
 .steps__content .step__button {
   display: inline-flex;

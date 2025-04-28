@@ -1,0 +1,159 @@
+<script>
+  (function () {
+    const initLogoBar = () => {
+      const logoBar = document.querySelector('.section-logo-bar');
+
+      let observer;
+      const createObserver = () => {
+        if (observer) observer.disconnect();
+        observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                const logoBarHeight = logoBar?.getBoundingClientRect().height || 0;
+                document.documentElement.style.setProperty(
+                  '--logo-bar-height',
+                  `${(logoBarHeight * entry.intersectionRatio).toFixed(2)}px`
+                );
+              } else {
+                document.documentElement.style.setProperty('--logo-bar-height', '0px');
+              }
+            });
+          },
+          {
+            threshold: Array.from({ length: 1000 }, (_, i) => i / 1000),
+          }
+        );
+
+        if (logoBar) observer.observe(logoBar);
+      };
+      createObserver();
+    };
+
+    document.addEventListener('shopify:section:load', initLogoBar);
+    document.addEventListener('shopify:section:unload', initLogoBar);
+    document.addEventListener('shopify:section:reorder', initLogoBar);
+
+    initLogoBar();
+  })();
+</script>
+
+{% style %}
+  .logo-bar {
+    width: 100%;
+    padding-block: {{section.settings.padding_block}}px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .logo-bar--left {
+    justify-content: flex-start;
+  }
+  .logo-bar--right {
+    justify-content: flex-end;
+  }
+  .section-logo-bar {
+    z-index: 12;
+  }
+  .section-logo-bar:has(.logo-bar:not(.logo-disable-on-mobile)) ~ .shopify-section-header > .header-wrapper.container .header {
+    margin-top: 0;
+  }
+  .section-logo-bar:has(.logo-bar:not(.logo-disable-on-mobile)) ~ .shopify-section-header.shopify-section-header-sticky {
+    top: 0;
+  }
+  @media screen and (min-width: 1200px) {
+    .section-logo-bar:has(.logo-bar:not(.logo-disable-on-desktop)) ~ .shopify-section-header > .header-wrapper.container .header {
+      margin-top: 0;
+    }
+    .section-logo-bar:has(.logo-bar:not(.logo-disable-on-desktop)) ~ .shopify-section-header.shopify-section-header-sticky {
+      top: 0;
+    }
+  }
+  @media screen and (max-width: 576px) {
+    .section-logo-bar .header__heading-logo {
+      max-width: 100%;
+    }
+  }
+{% endstyle %}
+
+<div class="logo-bar logo-bar--{{ section.settings.alignment }} color-{{ section.settings.color_scheme }} background{% if section.settings.enable_logo_mobile != true %} logo-disable-on-mobile{% endif %}{% if section.settings.enable_logo_desktop != true %} logo-disable-on-desktop{% endif %} container">
+  {% render 'header-logo', tag: 'h1' %}
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.logo-bar.name",
+  "class": "section-logo-bar",
+  "enabled_on": {
+    "groups": ["header"]
+  },
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "default": "background-1",
+      "label": "t:sections.all.color_scheme.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "h1_logo",
+      "label": "t:sections.header.settings.h1_logo.label",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "t:sections.header.settings.logo.label"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_2",
+      "label": "t:sections.header.settings.logo_2.label",
+      "info": "t:sections.header.settings.logo_2.info"
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "min": 50,
+      "max": 500,
+      "step": 5,
+      "default": 90,
+      "unit": "t:sections.header.settings.logo_width.unit",
+      "label": "t:sections.header.settings.logo_width.label"
+    },
+    {
+      "type": "text_alignment",
+      "id": "alignment",
+      "default": "center",
+      "label": "t:sections.logo-bar.settings.alignment.label"
+    },
+    {
+      "type": "range",
+      "id": "padding_block",
+      "min": 0,
+      "max": 24,
+      "step": 1,
+      "default": 8,
+      "unit": "px",
+      "label": "t:sections.logo-bar.settings.padding_block.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_logo_mobile",
+      "label": "t:sections.logo-bar.settings.enable_logo_mobile.label",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_logo_desktop",
+      "label": "t:sections.logo-bar.settings.enable_logo_desktop.label",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.logo-bar.name"
+    }
+  ]
+}
+{% endschema %}

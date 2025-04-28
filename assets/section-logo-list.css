@@ -233,6 +233,8 @@
 }
 .logo-list__content .swiper-wrapper {
   transition-timing-function: linear;
+  will-change: transform;
+  transform: translateZ(0);
 }
 .logo-list__content--vertical-carousel .logo-list__image, .logo-list__content--horizontal-carousel .logo-list__image {
   max-width: 70%;

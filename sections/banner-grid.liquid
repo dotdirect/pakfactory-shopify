@@ -207,7 +207,7 @@
 									endif
 								%}
 								<{{ block.settings.heading_level }} class='banner-grid__title-content {{ card_heading_size }}'>
-									{{ block.settings.heading }}
+									{{- block.settings.heading -}}
 								</{{ block.settings.heading_level }}>
 							{% endif %}
 							{%- if block.settings.show_button -%}
