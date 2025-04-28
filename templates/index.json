@@ -236,7 +236,8 @@
         "template--15231063785533__42cdc506-03cc-4d93-b523-ad8cabbb1aec-collection-2": {
           "type": "collection",
           "settings": {
-            "collection": ""
+            "collection": "folding-carton",
+            "image": "shopify://shop_images/tuck-box.jpg"
           }
         },
         "template--15231063785533__42cdc506-03cc-4d93-b523-ad8cabbb1aec-collection-3": {
