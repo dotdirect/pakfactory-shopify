@@ -2,7 +2,7 @@
   {
     "name": "theme_info",
     "theme_name": "Digital",
-    "theme_version": "1.2.0",
+    "theme_version": "1.3.0",
     "theme_author": "Segment",
     "theme_documentation_url": "https://madebysegment.com/help-center/documentation/digital/",
     "theme_support_url": "https://madebysegment.com/help-center/"
@@ -192,6 +192,22 @@
             "id": "colors_input_border",
             "default": "#E6E8E9",
             "label": "t:settings_schema.colors.settings.colors_input_border.label"
+          },
+          {
+            "type": "header",
+            "content": "t:settings_schema.colors.settings.header__price.content"
+          },
+          {
+            "type": "color",
+            "id": "card_new_price_color",
+            "default": "#011624",
+            "label": "t:settings_schema.product_card.settings.card_new_price_color.label"
+          },
+          {
+            "type": "color",
+            "id": "card_old_price_color",
+            "default": "#67737c",
+            "label": "t:settings_schema.product_card.settings.card_old_price_color.label"
           },
           {
             "type": "header",
@@ -692,18 +708,6 @@
         "id": "card_color_scheme",
         "default": "background-1",
         "label": "t:settings_schema.product_card.settings.card_color_scheme.label"
-      },
-      {
-        "type": "color",
-        "id": "card_new_price_color",
-        "default": "#282828",
-        "label": "t:settings_schema.product_card.settings.card_new_price_color.label"
-      },
-      {
-        "type": "color",
-        "id": "card_old_price_color",
-        "default": "#6C7880",
-        "label": "t:settings_schema.product_card.settings.card_old_price_color.label"
       },
       {
         "type": "checkbox",
@@ -2416,8 +2420,25 @@
       },
       {
         "type": "select",
+        "id": "quickview_button_mobile_size",
+        "label": "t:settings_schema.quickview.settings.quickview_button_mobile_size.label",
+        "options": [
+          {
+            "value": "standard",
+            "label": "t:settings_schema.quickview.settings.quickview_button_mobile_size.options__1.label"
+          },
+          {
+            "value": "small",
+            "label": "t:settings_schema.quickview.settings.quickview_button_mobile_size.options__2.label"
+          }
+        ],
+        "default": "standard"
+      },
+      {
+        "type": "select",
         "id": "quickview_button_layout",
         "label": "t:settings_schema.quickview.settings.quickview_button_layout.label",
+        "info": "t:settings_schema.quickview.settings.quickview_button_layout.info",
         "options": [
           {
             "value": "hover",
