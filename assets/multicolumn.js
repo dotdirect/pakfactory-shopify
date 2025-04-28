@@ -21,7 +21,7 @@
 		multicolumnSlider = new Swiper(slider, {
 			loop: false,
 			slidesPerView: 1.1,
-			spaceBetween: 16,
+			spaceBetween: 20,
 			speed: 1000,
 			mousewheel: {
 				forceToAxis: true,

@@ -583,6 +583,7 @@
 .numbers-card__description {
   color: rgba(var(--color-foreground-title), 0.5);
   margin-bottom: 2rem;
+  white-space: pre-wrap;
 }
 .numbers-card__button {
   display: inline-flex;

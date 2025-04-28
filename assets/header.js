@@ -5,6 +5,8 @@
 		const menuLinks = document.querySelectorAll(".list-menu-item");
 		const search = document.querySelector(".header__search");
 
+		let hideMenuTimeout;
+
 		header.addEventListener("keydown", (e) => {
 			if (e.code === "Escape" && search.isOpen) {
 				search.close();
@@ -30,6 +32,8 @@
 
 		menuLinks.forEach((link) => {
 			link.addEventListener("mouseenter", (e) => {
+				clearTimeout(hideMenuTimeout);
+				
 				if (link.classList.contains("list-menu--megamenu")) {
 					link.classList.add("list-menu--megamenu-visible");
 
@@ -67,9 +71,9 @@
 					megaMenus.forEach((megaMenu) => {
 						if (megaMenu == link.querySelector('.mega-menu')) {
 							megaMenu.style.opacity = 0;
-							setTimeout(() => {
+							hideMenuTimeout = setTimeout(() => {
 								megaMenu.style.display = "none";
-							}, 300);
+							}, 100);
 						}
 					});
 				}

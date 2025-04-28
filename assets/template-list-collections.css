@@ -19,6 +19,8 @@
 .collections-list__description {
   color: rgba(var(--color-foreground), 0.6);
   max-width: 74rem;
+  white-space: pre-wrap;
+  word-break: break-word;
 }
 
 .collections-grid {
@@ -32,6 +34,9 @@
   gap: 3.2rem 2.4rem;
 }
 @media screen and (min-width: 576px) {
+  .collections-grid--2, .collections-grid--3, .collections-grid--4, .collections-grid--5, .collections-grid--6 {
+    grid-template-columns: repeat(2, 1fr);
+  }
   .collections-grid--2.collections-grid--simple, .collections-grid--3.collections-grid--simple, .collections-grid--4.collections-grid--simple, .collections-grid--5.collections-grid--simple, .collections-grid--6.collections-grid--simple {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -43,30 +48,36 @@
   .collections-grid.collections-grid--simple {
     gap: 4.8rem 2.4rem;
   }
-  .collections-grid--2, .collections-grid--3, .collections-grid--4, .collections-grid--5, .collections-grid--6 {
-    grid-template-columns: repeat(2, 1fr);
+  .collections-grid--4, .collections-grid--5, .collections-grid--6 {
+    grid-template-columns: repeat(3, 1fr);
   }
-  .collections-grid--2.collections-grid--simple, .collections-grid--3.collections-grid--simple, .collections-grid--4.collections-grid--simple, .collections-grid--5.collections-grid--simple, .collections-grid--6.collections-grid--simple {
-    grid-template-columns: repeat(2, 1fr);
+  .collections-grid--4.collections-grid--simple, .collections-grid--5.collections-grid--simple, .collections-grid--6.collections-grid--simple {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 @media screen and (min-width: 990px) {
   .collections-grid.collections-grid--simple {
     gap: 5.6rem 2.4rem;
   }
-  .collections-grid--3, .collections-grid--4, .collections-grid--5, .collections-grid--6 {
+  .collections-grid--3 {
     grid-template-columns: repeat(3, 1fr);
   }
-  .collections-grid--3.collections-grid--simple, .collections-grid--4.collections-grid--simple, .collections-grid--5.collections-grid--simple, .collections-grid--6.collections-grid--simple {
+  .collections-grid--3.collections-grid--simple {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 @media screen and (min-width: 1200px) {
-  .collections-grid--4, .collections-grid--5, .collections-grid--6 {
+  .collections-grid--4, .collections-grid--5 {
     grid-template-columns: repeat(4, 1fr);
   }
-  .collections-grid--4.collections-grid--simple, .collections-grid--5.collections-grid--simple, .collections-grid--6.collections-grid--simple {
+  .collections-grid--4.collections-grid--simple, .collections-grid--5.collections-grid--simple {
     grid-template-columns: repeat(4, 1fr);
+  }
+  .collections-grid--6 {
+    grid-template-columns: repeat(5, 1fr);
+  }
+  .collections-grid--6.collections-grid--simple {
+    grid-template-columns: repeat(5, 1fr);
   }
 }
 @media screen and (min-width: 1360px) {

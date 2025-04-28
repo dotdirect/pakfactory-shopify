@@ -101,7 +101,7 @@
 
                       {% if block.settings.slide_text != blank %}
                         <p class="testimonials__text {{ section.settings.slide_text_size }} {% if section.settings.slide_text_size == 'recommended' %} {{ text_size }} {% endif %}">
-                          {{ block.settings.slide_text | escape }}
+                          {{- block.settings.slide_text -}}
                         </p>
                       {% endif %}
 
@@ -132,12 +132,12 @@
                                     {% if section.settings.layout == 'full_slider' or section.settings.layout == 'image_left_slider' %} body-large {% endif %}
                                   "
                                 >
-                                  {{ block.settings.slide_name }}
+                                  {{- block.settings.slide_name -}}
                                 </div>
                               {% endif %}
                               {% if block.settings.slide_position != blank %}
                                 <div class="testimonials__author-position {% if section.settings.layout == 'simple_slider' or section.settings.layout == 'image_top_slider' %} body-small {% endif %}">
-                                  {{ block.settings.slide_position }}
+                                  {{- block.settings.slide_position -}}
                                 </div>
                               {% endif %}
                             </div>

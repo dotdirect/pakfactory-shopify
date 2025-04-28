@@ -71,6 +71,7 @@
 					<div class="search__form-inner">
 						<div class="field color-{{ section.settings.search_color_scheme }} {% if section.settings.enable_box_shadow %}form--shadow{% endif %}">
 							<input
+                  dir="ltr"
 									class="search__input field__input" 
 									id="Search-In-Template" 
 									type="search" 
@@ -207,12 +208,11 @@
 											{% if section.settings.enable_filtering %} collection-results_filters {% endif %}" role="list">
 											{%- for item in search_products -%}
 												<li class="collection-product-card collection-product-card--small template-search__item {% if settings.quickview_hover %}quickview--hover{% endif %}">
-													{%- capture product_settings -%}
-														{%- if section.settings.show_vendor -%}vendor,{%- endif -%}title,price{%- endcapture -%}
 													{% render 'product-card',
 														product_card_product: item,
 														media_ratio: section.settings.image_ratio,
 														media_fit: section.settings.image_fit,
+                            add_border_radius_when_contain: section.settings.add_border_radius_when_contain,
 														show_secondary_image: section.settings.show_secondary_image,
 														show_vendor: section.settings.show_vendor,
 														show_desc: section.settings.show_desc, 
@@ -366,6 +366,12 @@
         }
       ],
       "default": "cover"
+    },
+    {
+      "type": "checkbox",
+      "id": "add_border_radius_when_contain",
+      "default": false,
+      "label": "t:sections.all.card.add_border_radius_when_contain.label"
     },
     {
       "type": "checkbox",

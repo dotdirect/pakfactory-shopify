@@ -88,7 +88,7 @@
 
             {% if block.settings.description != blank %}
               <div class="numbers-card__description {% if section.settings.layout == 'slider' or section.settings.layout == 'grid' and forloop.index == 1 %}body-large{% endif %}">
-                {{ block.settings.description }}
+                {{- block.settings.description -}}
               </div>
             {% endif %}
 

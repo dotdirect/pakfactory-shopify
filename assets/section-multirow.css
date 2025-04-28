@@ -184,6 +184,9 @@
   max-width: 54.8rem;
   color: rgba(var(--color-foreground-secondary));
 }
+.multirow-card__text *:not(a) {
+  color: rgba(var(--color-foreground-secondary));
+}
 @media (min-width: 1200px) {
   .multirow-card__button {
     margin-top: 0.8rem;

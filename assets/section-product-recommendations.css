@@ -16,8 +16,23 @@
     margin-top: 5.6rem;
   }
 }
-.product-recommendations__list:not(.swiper-initialized) .swiper-wrapper {
-  opacity: 0;
+.product-recommendations__list .swiper-wrapper {
+  box-sizing: border-box;
+}
+.product-recommendations__list:not(.swiper-initialized) .product-recommendations__product.swiper-slide {
+  margin-right: 8px;
+  width: 100%;
+}
+@media (min-width: 576px) {
+  .product-recommendations__list:not(.swiper-initialized) .product-recommendations__product.swiper-slide {
+    width: calc((100% - 8px) / 2);
+  }
+}
+@media (min-width: 750px) {
+  .product-recommendations__list:not(.swiper-initialized) .product-recommendations__product.swiper-slide {
+    margin-right: 24px;
+    width: calc((100% - 48px) / 3);
+  }
 }
 .product-recommendations__slider-nav {
   position: absolute;
@@ -74,60 +89,4 @@
 }
 .product-recommendations .card-wrapper {
   background-color: transparent !important;
-}
-
-[data-scheme=light] .product-recommendations.color-background-3 .card-wrapper {
-  --color-background: 40, 40, 40;
-  --color-background-secondary: 31, 31, 31;
-  --gradient-background: #282828;
-  --color-foreground: 249, 249, 249;
-  --color-foreground-secondary: 169, 169, 169;
-  --color-foreground-title: 249, 249, 249;
-  --color-button-text: 249, 249, 249;
-  --color-button-text-hover: 249, 249, 249;
-  --color-button: 40, 40, 40;
-  --color-button-hover: 53, 53, 53;
-  --color-button-secondary: 249, 249, 249;
-  --color-button-secondary-hover: 238, 238, 238;
-  --color-button-secondary-text: 40, 40, 40;
-  --color-button-secondary-text-hover: 40, 40, 40;
-  --color-button-tertiary-text: 40, 40, 40;
-  --color-button-tertiary-text-hover: 249, 249, 249;
-  --color-button-tertiary: 40, 40, 40;
-  --color-button-tertiary-hover: 40, 40, 40;
-  --color-overlay: 105, 105, 105;
-  --color-border-input: 62, 62, 62;
-  --color-background-input: 53, 53, 53;
-  --color-background-input-hover: 62, 62, 62;
-  --color-border: 62, 62, 62;
-  --color-card-price-new: 249, 249, 249;
-}
-
-@media (prefers-color-scheme: light) {
-  [data-scheme=auto] .product-recommendations.color-background-3 .card-wrapper {
-    --color-background: 40, 40, 40;
-    --color-background-secondary: 31, 31, 31;
-    --gradient-background: #282828;
-    --color-foreground: 249, 249, 249;
-    --color-foreground-secondary: 169, 169, 169;
-    --color-foreground-title: 249, 249, 249;
-    --color-button-text: 249, 249, 249;
-    --color-button-text-hover: 249, 249, 249;
-    --color-button: 40, 40, 40;
-    --color-button-hover: 53, 53, 53;
-    --color-button-secondary: 249, 249, 249;
-    --color-button-secondary-hover: 238, 238, 238;
-    --color-button-secondary-text: 40, 40, 40;
-    --color-button-secondary-text-hover: 40, 40, 40;
-    --color-button-tertiary-text: 40, 40, 40;
-    --color-button-tertiary-text-hover: 249, 249, 249;
-    --color-button-tertiary: 40, 40, 40;
-    --color-button-tertiary-hover: 40, 40, 40;
-    --color-overlay: 105, 105, 105;
-    --color-border-input: 62, 62, 62;
-    --color-background-input: 53, 53, 53;
-    --color-background-input-hover: 62, 62, 62;
-    --color-border: 62, 62, 62;
-    --color-card-price-new: 249, 249, 249;
-  }
 }

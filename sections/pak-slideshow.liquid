@@ -1,5 +1,6 @@
 {{ 'section-slideshow.css' | asset_url | stylesheet_tag }}
-{{ 'section-pak-slideshow.css' | asset_url | stylesheet_tag }}
+{{ 'section-pak-slideshow.css' | asset_url | append: '?v=2' | stylesheet_tag }}
+
 <script src="{{ 'slideshow.js' | asset_url }}" defer="defer"></script>
 
 {% style %}
@@ -106,9 +107,9 @@
   {% endstyle %}
 {% endif %}
 <div class="
-richard-test
+
  {% if section.settings.header_overlay %} section--has-overlay {% endif %}
-    slideshow slideshow--{{ section.settings.layout }} section-{{ section.id }}-padding
+    slideshow pak-slideshow slideshow--{{ section.settings.layout }} section-{{ section.id }}-padding
     {% if section.settings.enable_border %} section-border {% if section.settings.border_full %} section-border-full {% endif %} {% endif %}
     color-{{ section.settings.color_scheme }} background
     {% if section.settings.enable_navigation  %} slideshow--with-nav {% endif %}

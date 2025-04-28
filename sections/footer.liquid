@@ -7,7 +7,7 @@
 {{ 'component-rte.css' | asset_url | stylesheet_tag -}}
 {{- 'disclosure.css' | asset_url | stylesheet_tag }}
 
-<footer class='footer color-{{ section.settings.color_scheme }} background'>
+<footer class='footer color-{{ section.settings.color_scheme }} background footer--align-{{ section.settings.content_alignment }}'>
 	<div class='footer__content-top container'>
 		{%- if section.blocks.size > 0 -%}
 			<div class='footer__blocks-container'>
@@ -198,6 +198,7 @@
 											<div class='newsletter-form__field-wrapper'>
 												<div class='field'>
 													<input
+													  dir="ltr"
 														id='NewsletterForm--{{ section.id }}'
 														type='email'
 														name='contact[email]'
@@ -890,7 +891,13 @@
 			"type": "color_scheme",
 			"id": "color_scheme",
 			"default": "background-2",
-			"label": "t:sections.footer.settings.color_scheme.label"
+			"label": "t:sections.all.color_scheme.label"
+		},
+		{
+			"type": "text_alignment",
+			"id": "content_alignment",
+			"default": "left",
+			"label": "t:sections.footer.settings.content_alignment.label"
 		},
 		{
 			"type": "header",
