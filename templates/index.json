@@ -208,7 +208,7 @@
         "heading_size": "h3",
         "heading_level": "h3",
         "heading_line": "simple",
-        "line_color": "#1566E0",
+        "line_color": "#1566e0",
         "word_break": false,
         "heading_animation": "none",
         "word_break_an": false,
@@ -229,7 +229,8 @@
         "template--15231063785533__42cdc506-03cc-4d93-b523-ad8cabbb1aec-collection-1": {
           "type": "collection",
           "settings": {
-            "collection": ""
+            "collection": "corrugated",
+            "image": "shopify://shop_images/tuck-box.jpg"
           }
         },
         "template--15231063785533__42cdc506-03cc-4d93-b523-ad8cabbb1aec-collection-2": {
