@@ -120,7 +120,7 @@
         "heading_animation": "none",
         "word_break_an": true,
         "text_align": "left",
-        "height": "21/9",
+        "height": "16/9",
         "text_align_content": "bottom-left",
         "enable_autoplay": false,
         "enable_parallax": true,
@@ -141,74 +141,86 @@
         "margin_bottom": "no-indent"
       }
     },
-    "hero": {
-      "type": "hero",
+    "logo_list_enPmwg": {
+      "type": "logo-list",
       "blocks": {
-        "block_1": {
-          "type": "subtitle",
+        "logo_xEpyRh": {
+          "type": "logo",
           "settings": {
-            "subheading": "Subheading",
-            "subheading_style": "subtitle subtitle--secondary",
-            "subheading_icon": "star"
+            "image_width": 140,
+            "logo_link": ""
           }
         },
-        "block_2": {
-          "type": "title",
+        "logo_ec8wGq": {
+          "type": "logo",
           "settings": {
-            "heading": "Heading",
-            "heading_size": "h1",
-            "heading_level": "h2",
-            "heading_line": "simple",
-            "line_color": "#1566e0",
-            "word_break": false,
-            "heading_animation": "none",
-            "word_break_an": false
+            "image_width": 140,
+            "logo_link": ""
           }
         },
-        "block_3": {
-          "type": "description",
+        "logo_qNaxHB": {
+          "type": "logo",
           "settings": {
-            "description": "Some description"
+            "image_width": 140,
+            "logo_link": ""
           }
         },
-        "block_4": {
-          "type": "buttons",
+        "logo_Yzmfaf": {
+          "type": "logo",
           "settings": {
-            "show_button_1": true,
-            "button_label_1": "Label",
-            "button_link_1": "",
-            "button_style_1": "primary",
-            "show_button_2": true,
-            "button_label_2": "Label",
-            "button_link_2": "",
-            "button_style_2": "simple"
+            "image_width": 140,
+            "logo_link": ""
+          }
+        },
+        "logo_dFaHrG": {
+          "type": "logo",
+          "settings": {
+            "image_width": 140,
+            "logo_link": ""
+          }
+        },
+        "logo_jqYiqf": {
+          "type": "logo",
+          "settings": {
+            "image_width": 140,
+            "logo_link": ""
           }
         }
       },
       "block_order": [
-        "block_1",
-        "block_2",
-        "block_3",
-        "block_4"
+        "logo_xEpyRh",
+        "logo_ec8wGq",
+        "logo_qNaxHB",
+        "logo_Yzmfaf",
+        "logo_dFaHrG",
+        "logo_jqYiqf"
       ],
+      "name": "t:sections.logo-list.name",
       "settings": {
-        "layout": "overlay",
-        "header_overlay": false,
-        "header_transparent": false,
-        "block_type": "subtle",
-        "color_scheme": "",
-        "full_screen": false,
-        "show_video": false,
-        "overlay_opacity": 0.2,
-        "image_ratio": "16/9",
-        "object_fit": "cover",
-        "desktop_image_position": "after",
-        "mobile_image_position": "after",
-        "mobile_image_overlay": "overlay",
-        "horizontal_alignment": "center",
-        "vertical_alignment": "bottom",
-        "padding_top": "s",
-        "padding_bottom": "xs"
+        "layout": "horizontal-carousel",
+        "color_scheme": "background-1",
+        "enable_border": false,
+        "border_full": false,
+        "subheading": "3,000+ brands,  big and small, love us!",
+        "subheading_style": "subtitle",
+        "subheading_icon": "none",
+        "heading": "",
+        "heading_size": "h3",
+        "heading_level": "h3",
+        "heading_line": "simple",
+        "line_color": "#1566e0",
+        "word_break": false,
+        "heading_animation": "none",
+        "word_break_an": false,
+        "text": "",
+        "horizontal_alignment": "left",
+        "vertical_alignment": "top",
+        "speed_slider_1": 4000,
+        "speed_slider_2": 6000,
+        "padding_top": "m",
+        "padding_bottom": "m",
+        "margin_top": "no-indent",
+        "margin_bottom": "no-indent"
       }
     },
     "42cdc506-03cc-4d93-b523-ad8cabbb1aec": {
@@ -217,71 +229,53 @@
         "template--15231063785533__42cdc506-03cc-4d93-b523-ad8cabbb1aec-collection-1": {
           "type": "collection",
           "settings": {
-            "collection": ""
+            "collection": "corrugated",
+            "image": "shopify://shop_images/tuck-box.jpg"
           }
         },
         "template--15231063785533__42cdc506-03cc-4d93-b523-ad8cabbb1aec-collection-2": {
           "type": "collection",
           "settings": {
-            "collection": ""
+            "collection": "folding-carton",
+            "image": "shopify://shop_images/tuck-box.jpg"
           }
         },
-        "template--15231063785533__42cdc506-03cc-4d93-b523-ad8cabbb1aec-collection-3": {
+        "collection_hVpdPP": {
           "type": "collection",
           "settings": {
-            "collection": ""
-          }
-        },
-        "template--15231063785533__42cdc506-03cc-4d93-b523-ad8cabbb1aec-collection-4": {
-          "type": "collection",
-          "settings": {
-            "collection": ""
-          }
-        },
-        "4b4dd3b3-d97e-4d8a-a317-5bb48e790ff2": {
-          "type": "collection",
-          "settings": {
-            "collection": ""
-          }
-        },
-        "cb5dd003-15ac-4878-ae1a-bb58fdf24b8e": {
-          "type": "collection",
-          "settings": {
-            "collection": ""
+            "collection": "folding-carton",
+            "image": "shopify://shop_images/tuck-box.jpg"
           }
         }
       },
       "block_order": [
         "template--15231063785533__42cdc506-03cc-4d93-b523-ad8cabbb1aec-collection-1",
         "template--15231063785533__42cdc506-03cc-4d93-b523-ad8cabbb1aec-collection-2",
-        "template--15231063785533__42cdc506-03cc-4d93-b523-ad8cabbb1aec-collection-3",
-        "template--15231063785533__42cdc506-03cc-4d93-b523-ad8cabbb1aec-collection-4",
-        "4b4dd3b3-d97e-4d8a-a317-5bb48e790ff2",
-        "cb5dd003-15ac-4878-ae1a-bb58fdf24b8e"
+        "collection_hVpdPP"
       ],
       "settings": {
         "layout": "simple",
-        "subheading": "",
+        "subheading": "Products",
         "subheading_style": "subtitle",
         "subheading_icon": "none",
-        "heading": "",
-        "heading_size": "h2",
+        "heading": "Start up or enterprise, custom printed packaging for all occasions",
+        "heading_size": "h3",
         "heading_level": "h2",
-        "heading_line": "simple",
+        "heading_line": "none",
         "line_color": "#1566e0",
         "word_break": false,
         "heading_animation": "none",
         "word_break_an": false,
-        "text": "",
+        "text": "Package your entire product line with our selection of printed boxes and packaging.",
         "text_align": "left",
         "color_scheme": "",
         "image_ratio": "square",
         "image_fit": "cover",
         "show_desc": true,
-        "alt_desc": false,
+        "alt_desc": true,
         "overlay_opacity": 0.3,
         "collections_to_show": 6,
-        "columns_mobile": "1",
+        "columns_mobile": "2",
         "padding_top": "no-indent",
         "padding_bottom": "l"
       }
@@ -1626,7 +1620,7 @@
   },
   "order": [
     "pak_slideshow_GXNXUK",
-    "hero",
+    "logo_list_enPmwg",
     "42cdc506-03cc-4d93-b523-ad8cabbb1aec",
     "c3d593f8-3b6a-4e76-bfd1-0394a9f39c3e",
     "1f309bc4-1a66-455b-90cb-63c739d1df21",
