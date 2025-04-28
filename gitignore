@@ -5,6 +5,7 @@ npm-debug.log*
 
 # Mac system files
 .DS_Store
+sections/.DS_Store
 
 # Theme files that may be store-specific
 config/settings_data.json
