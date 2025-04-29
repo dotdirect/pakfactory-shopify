@@ -181,6 +181,13 @@
         "margin_bottom": "no-indent"
       }
     },
+    "pak_divider_tnAn6V": {
+      "type": "pak-divider",
+      "name": "Pak - Divider ",
+      "settings": {
+        "color_scheme": "background-1"
+      }
+    },
     "42cdc506-03cc-4d93-b523-ad8cabbb1aec": {
       "type": "collections-grid",
       "blocks": {
@@ -621,6 +628,7 @@
   "order": [
     "pak_slideshow_VEEWCj",
     "logo_list_RwEara",
+    "pak_divider_tnAn6V",
     "42cdc506-03cc-4d93-b523-ad8cabbb1aec",
     "pak_steps_XGGiER",
     "aa66337f-82f0-4c84-aea6-b5ef91ad5d40",
