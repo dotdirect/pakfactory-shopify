@@ -42,8 +42,8 @@
           "settings": {
             "color_scheme_subscribe": "",
             "enable_box_shadow": true,
-            "heading": "Heading for subscribe form",
-            "text": "Description",
+            "heading": "Stay Up to Date with New Releases",
+            "text": "Get notified about new updates, products, tips and tutorials. No spam. You can always unsubscribe.",
             "additional_text": "",
             "button_style": "primary"
           }
