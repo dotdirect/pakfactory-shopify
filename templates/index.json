@@ -305,7 +305,7 @@
       "name": "t:sections.steps.name",
       "settings": {
         "layout": "slider",
-        "color_scheme": "",
+        "color_scheme": "background-1",
         "subheading": "Capabilities",
         "subheading_style": "subtitle",
         "subheading_icon": "none",
