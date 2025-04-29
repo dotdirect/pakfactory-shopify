@@ -41,7 +41,7 @@
             "enable_tab_1": true,
             "icon_1": "none",
             "heading_1": "By Product Line",
-            "description_1": "",
+            "description_1": "Packaging by material type",
             "menu_1": "main-menu-product-line",
             "enable_tab_2": false,
             "icon_2": "none",
