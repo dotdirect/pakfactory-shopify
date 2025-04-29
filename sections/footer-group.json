@@ -17,8 +17,9 @@
         "footer-0": {
           "type": "logo_info",
           "settings": {
-            "logo_width": 90,
-            "description": "Description"
+            "logo": "shopify://shop_images/logo-outline.png",
+            "logo_width": 180,
+            "description": "We collaborate with people and brands; let’s build something great together."
           }
         },
         "footer-1": {
@@ -40,7 +41,7 @@
         "footer-3": {
           "type": "subscribe",
           "settings": {
-            "color_scheme_subscribe": "",
+            "color_scheme_subscribe": "background-3",
             "enable_box_shadow": true,
             "heading": "Stay Up to Date with New Releases",
             "text": "Get notified about new updates, products, tips and tutorials. No spam. You can always unsubscribe.",
