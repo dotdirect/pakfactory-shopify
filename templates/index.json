@@ -99,6 +99,88 @@
         "margin_bottom": "no-indent"
       }
     },
+    "logo_list_RwEara": {
+      "type": "logo-list",
+      "blocks": {
+        "logo_jBfqtA": {
+          "type": "logo",
+          "settings": {
+            "image_width": 140,
+            "logo_link": ""
+          }
+        },
+        "logo_JHGWbH": {
+          "type": "logo",
+          "settings": {
+            "image_width": 140,
+            "logo_link": ""
+          }
+        },
+        "logo_XcnhD6": {
+          "type": "logo",
+          "settings": {
+            "image_width": 140,
+            "logo_link": ""
+          }
+        },
+        "logo_jdWiwc": {
+          "type": "logo",
+          "settings": {
+            "image_width": 140,
+            "logo_link": ""
+          }
+        },
+        "logo_pjrBdR": {
+          "type": "logo",
+          "settings": {
+            "image_width": 140,
+            "logo_link": ""
+          }
+        },
+        "logo_tnBcFa": {
+          "type": "logo",
+          "settings": {
+            "image_width": 140,
+            "logo_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "logo_jBfqtA",
+        "logo_JHGWbH",
+        "logo_XcnhD6",
+        "logo_jdWiwc",
+        "logo_pjrBdR",
+        "logo_tnBcFa"
+      ],
+      "name": "t:sections.logo-list.name",
+      "settings": {
+        "layout": "static",
+        "color_scheme": "",
+        "enable_border": false,
+        "border_full": false,
+        "subheading": "",
+        "subheading_style": "subtitle",
+        "subheading_icon": "none",
+        "heading": "3,000+ brands,  big and small, love us!",
+        "heading_size": "h3",
+        "heading_level": "h2",
+        "heading_line": "simple",
+        "line_color": "#1566E0",
+        "word_break": false,
+        "heading_animation": "none",
+        "word_break_an": false,
+        "text": "",
+        "horizontal_alignment": "left",
+        "vertical_alignment": "middle",
+        "speed_slider_1": 4000,
+        "speed_slider_2": 6000,
+        "padding_top": "m",
+        "padding_bottom": "m",
+        "margin_top": "no-indent",
+        "margin_bottom": "no-indent"
+      }
+    },
     "42cdc506-03cc-4d93-b523-ad8cabbb1aec": {
       "type": "collections-grid",
       "blocks": {
@@ -312,6 +394,7 @@
   },
   "order": [
     "pak_slideshow_VEEWCj",
+    "logo_list_RwEara",
     "42cdc506-03cc-4d93-b523-ad8cabbb1aec",
     "aa66337f-82f0-4c84-aea6-b5ef91ad5d40"
   ]
