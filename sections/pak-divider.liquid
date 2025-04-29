@@ -1,0 +1,26 @@
+{{ 'pak-section-divider.css' | asset_url | stylesheet_tag }}
+
+
+<div class=" pak-divider color-{{ section.settings.color_scheme }}">
+    <div class="container pak-divider">
+  <hr/> 
+</div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "Divider",
+    "settings": [   {
+              "type": "color_scheme",
+              "id": "color_scheme",
+              "default": "background-3",
+              "label": "t:sections.all.color_scheme.label"
+            }, ],
+    "presets": [
+      {
+        "name": "Pak - Divider "
+      }
+    ]
+  }
+{% endschema %}

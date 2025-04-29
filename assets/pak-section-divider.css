@@ -1,0 +1,24 @@
+.pak-divider {
+  padding-block: 20px;
+}
+.pak-divider hr {
+  background-color: transparent;
+  height: 3px;
+  background-image: repeating-linear-gradient(
+    to right,
+    rgba(var(--color-foreground), 0.2) 0,
+    rgba(var(--color-foreground), 0.2) 10px,
+    transparent 10px,
+    transparent 20px
+  );
+}
+
+.color-background-3 hr {
+  background-image: repeating-linear-gradient(
+    to right,
+    rgba(var(--color-foreground), 0.2) 0,
+    rgba(var(--color-foreground), 0.2) 10px,
+    transparent 10px,
+    transparent 20px
+  );
+}
