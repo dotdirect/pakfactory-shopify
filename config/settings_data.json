@@ -101,7 +101,7 @@
           "colors_secondary_text": "{{ shop.brand.colors.secondary[0].foreground }}",
           "colors_text_title": "{{ shop.brand.colors.secondary[0].foreground }}",
           "colors_background_1": "#13260d",
-          "colors_background_2": "#1f1f1f",
+          "colors_background_2": "#13260d",
           "background_gradient": "",
           "colors_solid_button_labels": "#ffffff",
           "colors_solid_button_labels_hover": "#011624",
@@ -121,7 +121,7 @@
           "card_old_price_color": "#67737c",
           "color_accent": "#ffffff",
           "color_accent_gradient": "linear-gradient(135deg, rgba(80, 234, 255, 1), rgba(21, 102, 224, 1) 100%)",
-          "colors_background_overlay": "#000000",
+          "colors_background_overlay": "#13260d",
           "color_border": "#1f323e"
         }
       },
