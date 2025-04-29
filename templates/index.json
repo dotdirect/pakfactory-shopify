@@ -15,19 +15,20 @@
         "slide_HyKBfh": {
           "type": "slide",
           "settings": {
-            "color_scheme": "",
+            "color_scheme": "background-3",
             "icon": "none",
-            "overlay_opacity": 0.5,
+            "image": "shopify://shop_images/test-hero.jpg",
+            "overlay_opacity": 0.1,
             "show_video": false,
             "loop_video": true,
-            "heading": "Some heading",
+            "heading": "Tailor-made Custom Packaging for Every Need",
             "heading_size": "recommended",
             "heading_level": "h2",
-            "description": "Some description",
+            "description": "Order personalized custom printed packaging and branded boxes your customers will love, all-in-one place.",
             "tab_heading": "Heading",
             "show_button": true,
             "button_style": "simple_link",
-            "button_label": "Shop Now",
+            "button_label": "Choose packaging style",
             "button_link": ""
           }
         },
