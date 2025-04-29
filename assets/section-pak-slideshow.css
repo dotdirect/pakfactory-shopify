@@ -2,6 +2,11 @@
   max-width: 80vw;
 }
 
+.slideshow__title-content,
+.slideshow__description-content {
+  white-space: initial;
+}
+
 @media screen and (min-width: 1200px) {
   .pak-slideshow
     .slideshow__swiper[data-pagination-type="tabs_full"]
