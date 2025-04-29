@@ -100,7 +100,7 @@
           "colors_text": "{{ shop.brand.colors.secondary[0].foreground }}",
           "colors_secondary_text": "{{ shop.brand.colors.secondary[0].foreground }}",
           "colors_text_title": "{{ shop.brand.colors.secondary[0].foreground }}",
-          "colors_background_1": "#011624",
+          "colors_background_1": "#13260d",
           "colors_background_2": "#1f1f1f",
           "background_gradient": "",
           "colors_solid_button_labels": "#ffffff",

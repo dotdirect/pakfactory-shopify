@@ -40,7 +40,7 @@
         "footer-3": {
           "type": "subscribe",
           "settings": {
-            "color_scheme_subscribe": "",
+            "color_scheme_subscribe": "background-3",
             "enable_box_shadow": true,
             "heading": "Stay Up to Date with New Releases",
             "text": "Get notified about new updates, products, tips and tutorials. No spam. You can always unsubscribe.",
