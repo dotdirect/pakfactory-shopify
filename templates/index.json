@@ -175,7 +175,7 @@
         "vertical_alignment": "middle",
         "speed_slider_1": 4000,
         "speed_slider_2": 6000,
-        "padding_top": "xs",
+        "padding_top": "m",
         "padding_bottom": "xs",
         "margin_top": "no-indent",
         "margin_bottom": "no-indent"
