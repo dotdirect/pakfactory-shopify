@@ -27,7 +27,7 @@
             "description": "Order personalized custom printed packaging and branded boxes your customers will love, all-in-one place.",
             "tab_heading": "Heading",
             "show_button": true,
-            "button_style": "simple_link",
+            "button_style": "simple",
             "button_label": "Choose packaging style",
             "button_link": ""
           }
