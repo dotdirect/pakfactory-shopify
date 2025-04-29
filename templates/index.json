@@ -258,6 +258,19 @@
             "button_link": ""
           }
         },
+        "step_9A36xB": {
+          "type": "step",
+          "settings": {
+            "image": "shopify://shop_images/test-hero.jpg",
+            "number": "",
+            "heading": "Materials",
+            "text": "Choose from a wide range of high-quality materials designed for durability, aesthetics, and sustainability—crafted to suit your brand’s unique needs.",
+            "show_button": true,
+            "button_style": "simple",
+            "button_label": "Learn More",
+            "button_link": ""
+          }
+        },
         "step_3tiUkE": {
           "type": "step",
           "settings": {
@@ -285,6 +298,7 @@
       },
       "block_order": [
         "step_hepCqi",
+        "step_9A36xB",
         "step_3tiUkE",
         "step_iYzWjr"
       ],
@@ -305,7 +319,7 @@
         "word_break_an": false,
         "text": "Your Packaging, Your Way – No Limits, Just Possibilities",
         "text_align": "left",
-        "columns_to_show": 3,
+        "columns_to_show": 6,
         "image_ratio": "landscape",
         "number_size": "h4",
         "step_heading_size": "recommended",
