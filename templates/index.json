@@ -248,12 +248,26 @@
         "step_XyBVbR": {
           "type": "step",
           "settings": {
+            "image": "shopify://shop_images/test-step-box.png",
             "number": "",
-            "heading": "Some heading",
-            "text": "Some description",
+            "heading": "Materials",
+            "text": "Choose from a wide range of high-quality materials designed for durability, aesthetics, and sustainability—crafted to suit your brand’s unique needs.",
             "show_button": true,
             "button_style": "simple",
-            "button_label": "Know More",
+            "button_label": "See more Materials",
+            "button_link": ""
+          }
+        },
+        "step_dkr4kT": {
+          "type": "step",
+          "settings": {
+            "image": "shopify://shop_images/test-step-box-blue.png",
+            "number": "",
+            "heading": "Prints",
+            "text": "Choose from a wide range of high-quality materials designed for durability, aesthetics, and sustainability—crafted to suit your brand’s unique needs.",
+            "show_button": true,
+            "button_style": "simple",
+            "button_label": "See more Prints",
             "button_link": ""
           }
         },
@@ -284,6 +298,7 @@
       },
       "block_order": [
         "step_XyBVbR",
+        "step_dkr4kT",
         "step_C4ebbc",
         "step_BiHtyT"
       ],
@@ -309,94 +324,6 @@
         "columns_to_show": 3,
         "image_ratio": "landscape",
         "number_size": "recommended",
-        "step_heading_size": "recommended",
-        "text_size": "recommended",
-        "padding_top": "l",
-        "padding_bottom": "l",
-        "margin_top": "no-indent",
-        "margin_bottom": "no-indent"
-      }
-    },
-    "steps_T4q66m": {
-      "type": "steps",
-      "blocks": {
-        "step_hepCqi": {
-          "type": "step",
-          "settings": {
-            "image": "shopify://shop_images/test-hero.jpg",
-            "number": "",
-            "heading": "Materials",
-            "text": "Choose from a wide range of high-quality materials designed for durability, aesthetics, and sustainability—crafted to suit your brand’s unique needs.",
-            "show_button": true,
-            "button_style": "simple",
-            "button_label": "Learn More",
-            "button_link": ""
-          }
-        },
-        "step_9A36xB": {
-          "type": "step",
-          "settings": {
-            "image": "shopify://shop_images/test-hero.jpg",
-            "number": "",
-            "heading": "Materials",
-            "text": "Choose from a wide range of high-quality materials designed for durability, aesthetics, and sustainability—crafted to suit your brand’s unique needs.",
-            "show_button": true,
-            "button_style": "simple",
-            "button_label": "Learn More",
-            "button_link": ""
-          }
-        },
-        "step_3tiUkE": {
-          "type": "step",
-          "settings": {
-            "number": "",
-            "heading": "Some heading",
-            "text": "Some description",
-            "show_button": true,
-            "button_style": "simple",
-            "button_label": "Know More",
-            "button_link": ""
-          }
-        },
-        "step_iYzWjr": {
-          "type": "step",
-          "settings": {
-            "number": "",
-            "heading": "Some heading",
-            "text": "Some description",
-            "show_button": true,
-            "button_style": "simple",
-            "button_label": "Know More",
-            "button_link": ""
-          }
-        }
-      },
-      "block_order": [
-        "step_hepCqi",
-        "step_9A36xB",
-        "step_3tiUkE",
-        "step_iYzWjr"
-      ],
-      "name": "t:sections.steps.name",
-      "settings": {
-        "layout": "slider",
-        "color_scheme": "background-1",
-        "subheading": "Capabilities",
-        "subheading_style": "subtitle",
-        "subheading_icon": "none",
-        "heading": "Your Packaging, Your Way – No Limits, Just Possibilities",
-        "heading_size": "h2",
-        "heading_level": "h2",
-        "heading_line": "simple",
-        "line_color": "#1566e0",
-        "word_break": false,
-        "heading_animation": "none",
-        "word_break_an": false,
-        "text": "Your Packaging, Your Way – No Limits, Just Possibilities",
-        "text_align": "left",
-        "columns_to_show": 6,
-        "image_ratio": "landscape",
-        "number_size": "h4",
         "step_heading_size": "recommended",
         "text_size": "recommended",
         "padding_top": "l",
@@ -722,7 +649,6 @@
     "logo_list_RwEara",
     "42cdc506-03cc-4d93-b523-ad8cabbb1aec",
     "pak_steps_XGGiER",
-    "steps_T4q66m",
     "aa66337f-82f0-4c84-aea6-b5ef91ad5d40",
     "banner_grid_rHagph",
     "collections_grid_wkqaPN"
