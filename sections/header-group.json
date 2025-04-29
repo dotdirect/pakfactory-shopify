@@ -135,9 +135,10 @@
       ],
       "settings": {
         "h1_logo": true,
-        "header_type": "left-logo",
+        "header_type": "center-logo",
         "full_width": false,
-        "logo_width": 90,
+        "logo": "{{ shop.brand.logo }}",
+        "logo_width": 170,
         "enable_logo_mobile": true,
         "enable_logo_desktop": true,
         "menu": "main-menu",
