@@ -12,6 +12,26 @@
     "pak_slideshow_VEEWCj": {
       "type": "pak-slideshow",
       "blocks": {
+        "slide_QfWqhk": {
+          "type": "slide",
+          "settings": {
+            "color_scheme": "background-3",
+            "icon": "none",
+            "image": "shopify://shop_images/tuck-box.jpg",
+            "overlay_opacity": 0.3,
+            "show_video": false,
+            "loop_video": true,
+            "heading": "Tailor-made Custom Packaging for Every Need",
+            "heading_size": "h1",
+            "heading_level": "h2",
+            "description": "Order personalized custom printed packaging and branded boxes your customers will love, all-in-one place.",
+            "tab_heading": "Materials and Finishes",
+            "show_button": true,
+            "button_style": "simple",
+            "button_label": "Choose packaging style",
+            "button_link": ""
+          }
+        },
         "slide_HyKBfh": {
           "type": "slide",
           "settings": {
@@ -22,7 +42,7 @@
             "show_video": false,
             "loop_video": true,
             "heading": "Tailor-made Custom Packaging for Every Need",
-            "heading_size": "recommended",
+            "heading_size": "h1",
             "heading_level": "h2",
             "description": "Order personalized custom printed packaging and branded boxes your customers will love, all-in-one place.",
             "tab_heading": "Custom Packaging",
@@ -31,30 +51,11 @@
             "button_label": "Choose packaging style",
             "button_link": ""
           }
-        },
-        "slide_6hUnVg": {
-          "type": "slide",
-          "settings": {
-            "color_scheme": "",
-            "icon": "none",
-            "overlay_opacity": 0.5,
-            "show_video": false,
-            "loop_video": true,
-            "heading": "Some heading",
-            "heading_size": "recommended",
-            "heading_level": "h2",
-            "description": "Some description",
-            "tab_heading": "Heading",
-            "show_button": true,
-            "button_style": "simple_link",
-            "button_label": "Shop Now",
-            "button_link": ""
-          }
         }
       },
       "block_order": [
-        "slide_HyKBfh",
-        "slide_6hUnVg"
+        "slide_QfWqhk",
+        "slide_HyKBfh"
       ],
       "name": "Pak - Slideshow",
       "settings": {
