@@ -245,8 +245,15 @@
         "overlay_opacity": 0.3,
         "collections_to_show": 4,
         "columns_mobile": "1",
-        "padding_top": "no-indent",
-        "padding_bottom": "l"
+        "padding_top": "s",
+        "padding_bottom": "s"
+      }
+    },
+    "pak_divider_Mbj3Qx": {
+      "type": "pak-divider",
+      "name": "Pak - Divider ",
+      "settings": {
+        "color_scheme": "background-1"
       }
     },
     "pak_steps_XGGiER": {
@@ -307,8 +314,8 @@
         "number_size": "recommended",
         "step_heading_size": "recommended",
         "text_size": "recommended",
-        "padding_top": "l",
-        "padding_bottom": "l",
+        "padding_top": "s",
+        "padding_bottom": "s",
         "margin_top": "no-indent",
         "margin_bottom": "no-indent"
       }
@@ -630,9 +637,10 @@
     "logo_list_RwEara",
     "pak_divider_tnAn6V",
     "42cdc506-03cc-4d93-b523-ad8cabbb1aec",
+    "pak_divider_Mbj3Qx",
     "pak_steps_XGGiER",
-    "aa66337f-82f0-4c84-aea6-b5ef91ad5d40",
     "banner_grid_rHagph",
-    "collections_grid_wkqaPN"
+    "collections_grid_wkqaPN",
+    "aa66337f-82f0-4c84-aea6-b5ef91ad5d40"
   ]
 }
