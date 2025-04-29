@@ -9,6 +9,7 @@ sections/.DS_Store
 
 # Theme files that may be store-specific
 config/settings_data.json
+templates/index.json
 
 # VSCode settings
 .vscode/

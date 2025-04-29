@@ -53,10 +53,7 @@
           }
         }
       },
-      "block_order": [
-        "slide_QfWqhk",
-        "slide_HyKBfh"
-      ],
+      "block_order": ["slide_QfWqhk", "slide_HyKBfh"],
       "name": "Pak - Slideshow",
       "settings": {
         "layout": "overlay",
