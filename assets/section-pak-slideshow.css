@@ -2,8 +2,15 @@
   max-width: 80vw;
 }
 
-.slideshow__title-content,
-.slideshow__description-content {
+.pak-slideshow .slideshow__thumbs-wrapper--3-items .slideshow__thumbs {
+  max-width: 52.9rem;
+}
+.pak-slideshow .slideshow__thumbs-wrapper--2-items .slideshow__thumbs {
+  max-width: 100%;
+}
+
+.pak-slideshow .slideshow__title-content,
+.pak-slideshow .slideshow__description-content {
   white-space: initial;
 }
 
@@ -17,6 +24,12 @@
 }
 
 @media screen and (min-width: 1200px) {
+  .pak-slideshow
+    .slideshow__swiper[data-pagination-type="tabs"]
+    .slideshow__slide--overlay
+    .slideshow__content-wrapper {
+    padding-bottom: 20.6rem;
+  }
   .pak-slideshow
     .slideshow__swiper[data-pagination-type="tabs_full"]
     .slideshow__slide--overlay
