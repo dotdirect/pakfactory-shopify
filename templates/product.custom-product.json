@@ -38,13 +38,22 @@
         "tags": {
           "type": "tags",
           "settings": {}
+        },
+        "quote_request_MJEUCP": {
+          "type": "quote_request",
+          "settings": {
+            "show_dynamic_checkout": false,
+            "show_quantity": true,
+            "show_gift_card_recipient": true
+          }
         }
       },
       "block_order": [
         "vendor",
         "title",
         "description",
-        "tags"
+        "tags",
+        "quote_request_MJEUCP"
       ],
       "settings": {
         "desktop_alignment": "right",
