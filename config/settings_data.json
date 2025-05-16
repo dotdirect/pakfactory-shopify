@@ -30,6 +30,7 @@
     "quickview_show": true,
     "cart_color_scheme": "background-1",
     "show_shipping": true,
+    "show_breadcrumbs": false,
     "show_color_swatch": true,
     "type_subtitle_secondary_font": "inter_n7",
     "sale_badge_color_scheme": "background-1",
