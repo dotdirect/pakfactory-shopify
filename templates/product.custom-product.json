@@ -173,8 +173,8 @@
       ],
       "name": "t:sections.collapsible-content.name",
       "settings": {
-        "layout": "border",
-        "color_scheme": "",
+        "layout": "background",
+        "color_scheme": "background-1",
         "enable_border": false,
         "border_full": false,
         "subheading": "Frequently Asked Questions",
@@ -191,8 +191,8 @@
         "text": "From basic inquiries to intricate details about, we've collated the most common queries from our user base.",
         "text_align": "center",
         "row_color_scheme": "",
-        "padding_top": "l",
-        "padding_bottom": "l",
+        "padding_top": "m",
+        "padding_bottom": "m",
         "margin_top": "no-indent",
         "margin_bottom": "no-indent"
       }
