@@ -59,9 +59,9 @@
         "desktop_alignment": "right",
         "mobile_alignment": "after",
         "gallery_type": "slider_previews",
-        "aspect_ratio": "adapt",
-        "image_fit": "cover",
-        "image_fit_modal": "cover",
+        "aspect_ratio": "3/2",
+        "image_fit": "contain",
+        "image_fit_modal": "contain",
         "padding_bottom": "l"
       }
     },
@@ -198,7 +198,7 @@
         "heading_size": "h2",
         "heading_level": "h2",
         "heading_line": "simple",
-        "line_color": "#1566E0",
+        "line_color": "#1566e0",
         "word_break": false,
         "heading_animation": "none",
         "word_break_an": false,
