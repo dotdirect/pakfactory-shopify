@@ -94,11 +94,11 @@
       ],
       "settings": {
         "desktop_alignment": "right",
-        "mobile_alignment": "before",
+        "mobile_alignment": "after",
         "gallery_type": "slider_previews",
-        "aspect_ratio": "5/4",
+        "aspect_ratio": "adapt",
         "image_fit": "cover",
-        "image_fit_modal": "contain",
+        "image_fit_modal": "cover",
         "padding_bottom": "l"
       }
     },
