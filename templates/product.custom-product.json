@@ -92,7 +92,7 @@
             "icon_fill_type": "gradient",
             "heading": "Heading",
             "text": "<p>Description</p>",
-            "show_button": true,
+            "show_button": false,
             "button_label": "Label",
             "button_link": "",
             "button_style": "simple"
