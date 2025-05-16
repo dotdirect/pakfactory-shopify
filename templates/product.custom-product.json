@@ -39,12 +39,12 @@
           "type": "tags",
           "settings": {}
         },
-        "quote_request_MJEUCP": {
+        "quote_request_BXQern": {
           "type": "quote_request",
           "settings": {
             "show_dynamic_checkout": false,
             "show_quantity": true,
-            "show_gift_card_recipient": false
+            "show_gift_card_recipient": true
           }
         }
       },
@@ -53,7 +53,7 @@
         "title",
         "description",
         "tags",
-        "quote_request_MJEUCP"
+        "quote_request_BXQern"
       ],
       "settings": {
         "desktop_alignment": "right",
