@@ -83,7 +83,7 @@
             "icon_color_scheme": "",
             "icon_fill_type": "gradient",
             "image": "{{ block.repeater.image.value }}",
-            "heading": "{{ block.repeater.button_label.value }}",
+            "heading": "{{ block.repeater.title_.value }}",
             "text": "{{ block.repeater.description | metafield_tag }}",
             "show_button": false,
             "button_label": "{{ block.repeater.button_label.value }}",
