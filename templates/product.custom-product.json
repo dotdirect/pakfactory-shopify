@@ -79,11 +79,16 @@
           "type": "column",
           "repeater": "{{ product.metafields.custom.feature_blocks.value }}",
           "settings": {
+            "icon": "none",
+            "icon_color_scheme": "",
+            "icon_fill_type": "gradient",
             "image": "{{ block.repeater.image.value }}",
             "heading": "{{ block.repeater.button_label.value }}",
             "text": "{{ block.repeater.description | metafield_tag }}",
+            "show_button": false,
             "button_label": "{{ block.repeater.button_label.value }}",
-            "button_link": "{{ block.repeater.button_link.value }}"
+            "button_link": "{{ block.repeater.button_link.value }}",
+            "button_style": "simple"
           }
         }
       },
