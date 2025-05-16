@@ -29,10 +29,6 @@
             "heading_size": "h3"
           }
         },
-        "price": {
-          "type": "price",
-          "settings": {}
-        },
         "description": {
           "type": "description",
           "settings": {
@@ -42,55 +38,13 @@
         "tags": {
           "type": "tags",
           "settings": {}
-        },
-        "variant_picker": {
-          "type": "variant_picker",
-          "settings": {
-            "picker_type": "button"
-          }
-        },
-        "inventory": {
-          "type": "inventory",
-          "settings": {}
-        },
-        "buy_buttons": {
-          "type": "buy_buttons",
-          "settings": {
-            "show_dynamic_checkout": true,
-            "show_quantity": true,
-            "show_gift_card_recipient": false
-          }
-        },
-        "pickup_availability": {
-          "type": "pickup_availability",
-          "settings": {}
-        },
-        "text_with_icon": {
-          "type": "text_with_icon",
-          "settings": {
-            "show_text_with_icon_1": true,
-            "icon_1": "delivery",
-            "text_1": "Some text",
-            "show_text_with_icon_2": true,
-            "icon_2": "delivery",
-            "text_2": "Some text",
-            "box_shadow": true,
-            "icon_style": "colored",
-            "icon_fill_type": "gradient"
-          }
         }
       },
       "block_order": [
         "vendor",
         "title",
-        "price",
         "description",
-        "tags",
-        "variant_picker",
-        "inventory",
-        "buy_buttons",
-        "pickup_availability",
-        "text_with_icon"
+        "tags"
       ],
       "settings": {
         "desktop_alignment": "right",
