@@ -172,12 +172,72 @@
         "padding_top": "l",
         "padding_bottom": "l"
       }
+    },
+    "collapsible_content_k63CqE": {
+      "type": "collapsible-content",
+      "blocks": {
+        "accordion_dALxCq": {
+          "type": "accordion",
+          "settings": {
+            "question": "Some title",
+            "answer": "<p>Some description</p>",
+            "opened": true
+          }
+        },
+        "accordion_wL9PEU": {
+          "type": "accordion",
+          "settings": {
+            "question": "Some title",
+            "answer": "<p>Some description</p>",
+            "opened": false
+          }
+        },
+        "accordion_gR9k66": {
+          "type": "accordion",
+          "settings": {
+            "question": "Some title",
+            "answer": "<p>Some description</p>",
+            "opened": false
+          }
+        }
+      },
+      "block_order": [
+        "accordion_dALxCq",
+        "accordion_wL9PEU",
+        "accordion_gR9k66"
+      ],
+      "name": "t:sections.collapsible-content.name",
+      "settings": {
+        "layout": "border",
+        "color_scheme": "",
+        "enable_border": false,
+        "border_full": false,
+        "subheading": "Frequently Asked Questions",
+        "subheading_style": "subtitle",
+        "subheading_icon": "none",
+        "heading": "Answers & Questions",
+        "heading_size": "h2",
+        "heading_level": "h2",
+        "heading_line": "simple",
+        "line_color": "#1566E0",
+        "word_break": false,
+        "heading_animation": "none",
+        "word_break_an": false,
+        "text": "From basic inquiries to intricate details about, we've collated the most common queries from our user base.",
+        "text_align": "center",
+        "row_color_scheme": "",
+        "padding_top": "l",
+        "padding_bottom": "l",
+        "margin_top": "no-indent",
+        "margin_bottom": "no-indent"
+      }
     }
   },
   "order": [
     "pak_breadcrumbs_ynbNdG",
     "main",
     "576dad4a-7ffe-4bdd-9a60-a4572834977d",
-    "product-recommendations"
+    "product-recommendations",
+    "collapsible_content_k63CqE"
   ]
 }
