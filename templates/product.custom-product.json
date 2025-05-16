@@ -57,9 +57,9 @@
       ],
       "settings": {
         "desktop_alignment": "right",
-        "mobile_alignment": "after",
+        "mobile_alignment": "before",
         "gallery_type": "slider_previews",
-        "aspect_ratio": "3/2",
+        "aspect_ratio": "1/1",
         "image_fit": "contain",
         "image_fit_modal": "contain",
         "padding_bottom": "l"
