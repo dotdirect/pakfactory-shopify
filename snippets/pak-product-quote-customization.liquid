@@ -1,0 +1,84 @@
+{% comment %}
+  Renders the Preferred Material dropdown for quoting.
+  Accepts:
+  - product: {Object} The product object
+  - section: {Object} The section object
+
+  Usage:
+  {% render 'pak-product-quote-customization', product: product, section: section %}
+{% endcomment %}
+
+
+<link
+  rel="stylesheet"
+  href="{{ 'pak-product-quote-customization.css' | asset_url }}"
+  media="print"
+  onload="this.media='all'">
+
+
+<script src="{{ 'pak-product-quote-customization.js' | asset_url }}" defer></script>
+
+
+<div class="product-quote-customization" data-section-id="{{ section.id }}">
+  <p>
+    Fill out as much information as you can below — this helps our experts prepare your quote faster and reduces the need for follow-ups.
+  </p>
+
+  <!-- SECTION A: Capabilities -->
+  <div class="quote-toggle-group">
+    <div class="quote-toggle-header">
+      <div class="quote-toggle-header__title">Capabilities Options</div>
+      <label class="toggle-switch">
+        <input
+          type="checkbox"
+          class="toggle-input"
+          data-toggle-target="capabilities-section"
+          checked>
+        <span class="toggle-slider"></span>
+      </label>
+    </div>
+
+    <div class="quote-toggle-content" id="capabilities-section">
+      {% render 'pak-custom-dropdown'
+        , product: product
+        , section: section
+        , metafield_key: 'custom.product_option_materials'
+        , label_text: 'Material Type'
+        , property_name: 'Material'
+        , default_option: "Let's discuss" %}
+
+      {% render 'pak-custom-dropdown'
+        , product: product
+        , section: section
+        , metafield_key: 'custom.product_option_finishes'
+        , label_text: 'Finish Type'
+        , property_name: 'Finish'
+        , default_option: "Let's discuss" %}
+    </div>
+  </div>
+
+  <!-- SECTION B: Add-Ons -->
+  <div class="quote-toggle-group">
+    <div class="quote-toggle-header">
+      <div class="field__label">Add Ons</div>
+      <label class="toggle-switch">
+        <input
+          type="checkbox"
+          class="toggle-input"
+          data-toggle-target="addons-section"
+          checked>
+        <span class="toggle-slider"></span>
+      </label>
+    </div>
+
+    <div class="quote-toggle-content" id="addons-section">
+      {% render 'pak-custom-dropdown'
+        , product: product
+        , section: section
+        , metafield_key: 'custom.product_option_addons'
+        , label_text: 'Add Ons'
+        , property_name: 'Add On'
+        , default_option: "Let's discuss" %}
+    </div>
+  </div>
+</div>

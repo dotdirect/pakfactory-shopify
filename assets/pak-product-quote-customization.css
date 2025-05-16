@@ -1,0 +1,94 @@
+.product-quote-customization {
+  margin-top: 2rem;
+  padding: 2rem;
+  display: flex;
+  gap: 1rem;
+  background-color: #efefef;
+  flex-direction: column;
+  border-radius: var(--border-radius-button);
+}
+
+.product-quote-customization .product-form__controls {
+  margin-bottom: 1.5rem;
+}
+
+.product-quote-customization input,
+.product-quote-customization textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.product-quote-customization .custom__field {
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+}
+
+/* Toggle Sections */
+.quote-toggle-group {
+  border-top: 1px solid #ddd;
+  padding-top: 1rem;
+}
+.quote-toggle-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+}
+
+.quote-toggle-header__title {
+  font-weight: 500;
+}
+
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 42px;
+  height: 24px;
+}
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  border-radius: 24px;
+  transition: 0.3s;
+}
+.toggle-slider::before {
+  position: absolute;
+  content: '';
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.3s;
+  border-radius: 50%;
+}
+.toggle-switch input:checked + .toggle-slider {
+  background-color: rgba(var(--color-button));
+}
+.toggle-switch input:checked + .toggle-slider::before {
+  transform: translateX(18px);
+}
+
+.quote-toggle-content {
+  padding-block: 16px;
+  display: flex;
+  gap: 16px;
+  flex-direction: column;
+}
+.quote-toggle-content[hidden] {
+  display: none;
+}

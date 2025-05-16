@@ -21,6 +21,26 @@
         "name": "single_line_text_field",
         "category": "TEXT"
       }
+    },
+    {
+      "key": "want_to_enable_request_a_quote_",
+      "namespace": "custom",
+      "name": "Want to enable Request a Quote ?",
+      "description": "Select True to enable add to quote for all products in this collection.",
+      "type": {
+        "name": "boolean",
+        "category": "TRUE_FALSE"
+      }
+    },
+    {
+      "key": "display_name",
+      "namespace": "custom",
+      "name": "Display Name",
+      "description": "This is use for the display on the UI and SEO",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
     }
   ],
   "company": [],
@@ -67,6 +87,116 @@
       "description": "List of complementary products",
       "type": {
         "name": "list.product_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "breadcrumbs",
+      "namespace": "custom",
+      "name": "Breadcrumbs",
+      "description": "The collection label to appear in breadcrumbs (e.g., \"Rigid\", \"Magnetic Tab\").",
+      "type": {
+        "name": "list.collection_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "feature_section_title",
+      "namespace": "custom",
+      "name": "Feature Section Title",
+      "description": "Heading shown above the product’s feature blocks.",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "feature_blocks",
+      "namespace": "custom",
+      "name": "Feature Blocks",
+      "description": "List of feature blocks with image, title and description for product pages.",
+      "type": {
+        "name": "list.metaobject_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "overview_section_title",
+      "namespace": "custom",
+      "name": "Overview Section Title",
+      "description": "Section heading above highlights",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "overview_media",
+      "namespace": "custom",
+      "name": "Overview Media",
+      "description": "",
+      "type": {
+        "name": "file_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "overview_blocks",
+      "namespace": "custom",
+      "name": "Overview Blocks",
+      "description": "A modular content block in the overview section, used to highlight product benefits with an icon, ti",
+      "type": {
+        "name": "list.metaobject_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "related_products",
+      "namespace": "custom",
+      "name": "Related Products",
+      "description": "Products shown in the “You may also like these styles” section.",
+      "type": {
+        "name": "list.product_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "related_products_see_more_url_",
+      "namespace": "custom",
+      "name": "Related Products: See More URL\t",
+      "description": "Link for the “See more styles” button in the related products section.",
+      "type": {
+        "name": "url",
+        "category": "URL"
+      }
+    },
+    {
+      "key": "test_option_materials",
+      "namespace": "custom",
+      "name": "Test - Option Materials",
+      "description": "",
+      "type": {
+        "name": "list.metaobject_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "want_to_enable_request_a_quote_",
+      "namespace": "custom",
+      "name": "Want to enable Request a Quote ?",
+      "description": "Select True to enable add to quote in this product",
+      "type": {
+        "name": "boolean",
+        "category": "TRUE_FALSE"
+      }
+    },
+    {
+      "key": "product_option_materials",
+      "namespace": "custom",
+      "name": "Product Option - Materials",
+      "description": "",
+      "type": {
+        "name": "list.metaobject_reference",
         "category": "REFERENCE"
       }
     }
