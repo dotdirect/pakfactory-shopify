@@ -131,6 +131,13 @@
         "margin_bottom": "no-indent"
       }
     },
+    "pak_divider_ixVMQG": {
+      "type": "pak-divider",
+      "name": "Pak - Divider ",
+      "settings": {
+        "color_scheme": "background-1"
+      }
+    },
     "collapsible_content_k63CqE": {
       "type": "collapsible-content",
       "blocks": {
@@ -224,6 +231,7 @@
     "main",
     "pak_divider_pkdy4J",
     "576dad4a-7ffe-4bdd-9a60-a4572834977d",
+    "pak_divider_ixVMQG",
     "collapsible_content_k63CqE",
     "pak_divider_GxrxTN",
     "product-recommendations"
