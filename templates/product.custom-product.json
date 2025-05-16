@@ -75,25 +75,20 @@
     "576dad4a-7ffe-4bdd-9a60-a4572834977d": {
       "type": "multicolumn",
       "blocks": {
-        "column_LW4imz": {
+        "column_H66Fq7": {
           "type": "column",
           "repeater": "{{ product.metafields.custom.feature_blocks.value }}",
           "settings": {
-            "icon": "none",
-            "icon_color_scheme": "",
-            "icon_fill_type": "gradient",
             "image": "{{ block.repeater.image.value }}",
-            "heading": "{{ block.repeater.title_.value }}",
+            "heading": "{{ block.repeater.button_label.value }}",
             "text": "{{ block.repeater.description | metafield_tag }}",
-            "show_button": false,
-            "button_label": "Label{{ block.repeater.title_.value }}",
-            "button_link": "{{ block.repeater.button_link.value }}",
-            "button_style": "simple"
+            "button_label": "{{ block.repeater.button_label.value }}",
+            "button_link": "{{ block.repeater.button_link.value }}"
           }
         }
       },
       "block_order": [
-        "column_LW4imz"
+        "column_H66Fq7"
       ],
       "settings": {
         "section_type": "transparent",
