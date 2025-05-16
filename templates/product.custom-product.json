@@ -152,27 +152,6 @@
         "margin_bottom": "no-indent"
       }
     },
-    "product-recommendations": {
-      "type": "product-recommendations",
-      "settings": {
-        "color_scheme": "background-1",
-        "subheading": "Other {{ product.title }} Styles",
-        "subheading_style": "subtitle",
-        "subheading_icon": "none",
-        "heading": "You may also like these styles",
-        "heading_size": "h2",
-        "text": "",
-        "products_limit": 6,
-        "image_ratio": "5/4",
-        "image_fit": "cover",
-        "add_border_radius_when_contain": false,
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_desc": true,
-        "padding_top": "l",
-        "padding_bottom": "l"
-      }
-    },
     "collapsible_content_k63CqE": {
       "type": "collapsible-content",
       "blocks": {
@@ -231,13 +210,42 @@
         "margin_top": "no-indent",
         "margin_bottom": "no-indent"
       }
+    },
+    "pak_divider_GxrxTN": {
+      "type": "pak-divider",
+      "name": "Pak - Divider ",
+      "settings": {
+        "color_scheme": "background-1"
+      }
+    },
+    "product-recommendations": {
+      "type": "product-recommendations",
+      "settings": {
+        "color_scheme": "background-1",
+        "subheading": "Other {{ product.title }} Styles",
+        "subheading_style": "subtitle",
+        "subheading_icon": "none",
+        "heading": "You may also like these styles",
+        "heading_size": "h2",
+        "text": "",
+        "products_limit": 6,
+        "image_ratio": "5/4",
+        "image_fit": "cover",
+        "add_border_radius_when_contain": false,
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_desc": true,
+        "padding_top": "l",
+        "padding_bottom": "l"
+      }
     }
   },
   "order": [
     "pak_breadcrumbs_ynbNdG",
     "main",
     "576dad4a-7ffe-4bdd-9a60-a4572834977d",
-    "product-recommendations",
-    "collapsible_content_k63CqE"
+    "collapsible_content_k63CqE",
+    "pak_divider_GxrxTN",
+    "product-recommendations"
   ]
 }
