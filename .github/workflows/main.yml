@@ -1,0 +1,27 @@
+name: Triple Daily Master Branch Backup
+
+on:
+  schedule:
+    - cron: '0 8 * * *'   # 8:00 AM UTC (e.g., morning)
+    - cron: '0 12 * * *'  # 12:00 PM UTC (e.g., lunch)
+    - cron: '0 20 * * *'  # 8:00 PM UTC (e.g., night)
+  workflow_dispatch:
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Create backup branch
+        run: |
+          DATE=$(date +'%Y-%m-%d-%H%M')
+          BRANCH_NAME="backup-master-$DATE"
+          git config --global user.name "github-actions"
+          git config --global user.email "actions@github.com"
+          git checkout -b $BRANCH_NAME origin/master
+          git push origin $BRANCH_NAME
