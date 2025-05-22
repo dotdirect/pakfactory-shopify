@@ -1403,8 +1403,8 @@
     max-width: 36rem;
   }
 
-  .product-form.pak-product_form {
-    max-width: 0;
+  .product-form.pak-product-form {
+    max-width: 100%;
   }
 }
 .product-form__error-message-wrapper {

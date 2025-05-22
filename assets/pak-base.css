@@ -100,6 +100,28 @@ h3,
   letter-spacing: normal;
 }
 
+/* Breadcrumb */
+.breadcrumb__delimiter {
+  /* Remove dot style */
+  width: auto;
+  height: auto;
+  background-color: transparent;
+  border-radius: 0;
+  margin-inline: 0.4rem; /* Adjust spacing as needed */
+  display: inline-block;
+  position: relative;
+}
+
+.breadcrumb__delimiter::before {
+  content: '/';
+  color: rgba(
+    var(--color-foreground),
+    0.3
+  ); /* Adjust opacity/color if needed */
+  font-size: 1.4rem; /* Adjust to match design */
+  line-height: 1;
+}
+
 /* Form */
 .field__label {
   font-size: 14px;

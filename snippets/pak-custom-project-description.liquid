@@ -1,0 +1,70 @@
+{% comment %}
+  Project description form section for quote customization.
+  Includes:
+  - Short description input (required)
+  - Long description textarea (optional)
+
+  Usage:
+  {% render 'pak-custom-project-description',
+  product: product,
+  section: section %}
+{% endcomment %}
+
+<link
+  rel="stylesheet"
+  href="{{ 'pak-custom-project-description.css' | asset_url }}"
+  media="print"
+  onload="this.media='all'">
+
+<div class="quote-customization__project-detail" id="{{ id | default: 'project-description-section' }}">
+  <div class="field custom__field">
+    <label class="field__label" for="PackagingSubject-{{ section.id }}">
+      What are you packaging?<sup>*</sup>
+    </label>
+    <input
+      class="field__input"
+      type="text"
+      name="properties[What are you packaging?]"
+      id="PackagingSubject-{{ section.id }}"
+      placeholder="e.g. We are looking for packaging options for Wine Bottles"
+      required>
+  </div>
+
+  <div class="field custom__field">
+    <label class="field__label" for="ProjectDescription-{{ section.id }}">
+      Tell us more about your project
+    </label>
+    <textarea
+      class="field__input"
+      name="properties[Project Description]"
+      id="ProjectDescription-{{ section.id }}"
+      placeholder="Include any additional context, timelines, specs, or needs you’d like us to know about."
+      rows="4"
+      required></textarea>
+  </div>
+
+  <div class="field custom__field quote-file-upload">
+    <label class="field__label" for="ReferenceFile-{{ section.id }}">
+      Do you have a reference image or photo of your product?
+      <span class="optional">(Optional)</span>
+    </label>
+
+    <div class="upload-wrapper">
+      <input
+        class="field__input file-input"
+        type="file"
+        id="ReferenceFile-{{ section.id }}"
+        name="properties[Reference Image]"
+        accept=".jpg,.jpeg,.png,.pdf" />
+
+      <label class="upload-button" for="ReferenceFile-{{ section.id }}">
+        Upload File
+      </label>
+    </div>
+
+    <p class="field__note">
+      Accepted formats: JPG, PNG, PDF — Max 10MB.
+    </p>
+  </div>
+
+</div>

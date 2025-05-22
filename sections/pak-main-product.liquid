@@ -63,7 +63,7 @@
         {% if section.settings.mobile_alignment == 'after' %}product__outer--mobile-order{% endif %}
       "
     >
-      <div class="product__main pak-product__main" data-section="main-{{ section.id }}">
+      <div class="product__main" data-section="main-{{ section.id }}">
         {% if product.media.size > 0 %}
           <div class="product__media-wrapper">
             <div class="product__media-list-wrapper">
@@ -750,7 +750,7 @@
                   endif
                 -%}
 
-                <product-form class="product-form pak-product_form" data-hide-errors="{{ gift_card_recipient_feature_active }}">
+                <product-form class="product-form" data-hide-errors="{{ gift_card_recipient_feature_active }}">
                   <div class="product-form__error-message-wrapper" role="alert" hidden>
                     <svg
                       aria-hidden="true"
@@ -894,7 +894,7 @@
             
               {%- when 'quote_request' -%}
                 <div class="product__buy-buttons" {{ block.shopify_attributes }}>
-                  <product-form class="product-form" data-hide-errors="false">
+                  <product-form class="product-form pak-product-form" data-hide-errors="false">
                     <div class="product-form__error-message-wrapper" role="alert" hidden>
                       <svg class="icon icon-error" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <circle cx="6.5" cy="6.5" r="5.5" stroke="white" stroke-width="2" />

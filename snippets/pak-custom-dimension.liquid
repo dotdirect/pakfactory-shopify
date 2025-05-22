@@ -1,0 +1,69 @@
+{% comment %}
+  Reusable custom dropdown for product metaobjects.
+  Accepts:
+  - product: {Object}
+  - section: {Object}
+  - metafield_key: {String} e.g. "custom.product_option_materials"
+  - label_text: {String} Optional – label above the dropdown
+  - property_name: {String} Optional – line item property key (default: label_text or 'Custom Option')
+
+  Usage:
+  {% render 'pak-custom-meta-dropdown',
+  product: product,
+  section: section,
+  metafield_key: 'custom.product_option_materials',
+  label_text: 'Preferred Material',
+  property_name: 'Material' %}
+{% endcomment %}
+
+<link
+  rel="stylesheet"
+  href="{{ 'pak-custom-dimension.css' | asset_url }}"
+  media="print"
+  onload="this.media='all'">
+<script src="{{ 'pak-custom-dimenion.js' | asset_url }}" defer></script>
+
+
+<div class="quote-customization__dimension" id="{{ id | default: 'dimensions-section' }}">
+  <div class="field custom__field">
+    <label class="field__label" for="Length-{{ section.id }}">Length (in)<sup>*</sup>
+    </label>
+    <input
+      class="field__input"
+      type="number"
+      name="properties[Length (in)]"
+      id="Length-{{ section.id }}"
+      placeholder="Length"
+      min="0"
+      step="0.01"
+      required>
+  </div>
+
+  <div class="field custom__field">
+    <label class="field__label" for="Width-{{ section.id }}">Width (in)<sup>*</sup>
+    </label>
+    <input
+      class="field__input"
+      type="number"
+      name="properties[Width (in)]"
+      id="Width-{{ section.id }}"
+      placeholder="Width"
+      min="0"
+      step="0.01"
+      required>
+  </div>
+
+  <div class="field custom__field">
+    <label class="field__label" for="Depth-{{ section.id }}">Depth (in)<sup>*</sup>
+    </label>
+    <input
+      class="field__input"
+      type="number"
+      name="properties[Depth (in)]"
+      id="Depth-{{ section.id }}"
+      placeholder="Depth"
+      min="0"
+      step="0.01"
+      required>
+  </div>
+</div>
