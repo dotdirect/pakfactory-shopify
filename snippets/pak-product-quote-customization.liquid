@@ -14,10 +14,20 @@
   href="{{ 'pak-product-quote-customization.css' | asset_url }}"
   media="print"
   onload="this.media='all'">
-
+<link
+  rel="stylesheet"
+  href="{{ 'pak-custom-dropdown.css' | asset_url }}"
+  media="print"
+  onload="this.media='all'">
+<link
+  rel="stylesheet"
+  href="{{ 'pak-custom-dimension.css' | asset_url }}"
+  media="print"
+  onload="this.media='all'">
 
 <script src="{{ 'pak-product-quote-customization.js' | asset_url }}" defer></script>
-
+<script src="{{ 'pak-custom-dowpdown.js' | asset_url }}" defer></script>
+<script src="{{ 'pak-custom-dimenion.js' | asset_url }}" defer></script>
 
 <div class="product-quote-customization" data-section-id="{{ section.id }}">
   <p>
@@ -32,18 +42,16 @@
         <input
           type="checkbox"
           class="toggle-input"
-          data-toggle-target="Dimensions-section"
+          data-toggle-target="dimensions-section"
           checked>
         <span class="toggle-slider"></span>
       </label>
     </div>
 
-    <div class="quote-toggle-content" id="Dimensions-section">
+    <div class="quote-toggle-content" id="dimensions-section">
       {% render 'pak-custom-dimension'
         , product: product
         , section: section %}
-
-
     </div>
   </div>
 
@@ -65,29 +73,39 @@
       {% render 'pak-custom-dropdown'
         , product: product
         , section: section
-        , metafield_key: 'custom.product_option_materials'
-        , label_text: 'Material Type'
-        , property_name: 'Material'
-        , default_option: "Let's discuss" %}
+        , metafield_key: 'product_grouping'
+        , metaobject_field: 'material_option'
+        , label_text: 'Material'
+        , property_name: 'Materials'
+        , default_option: "Need Consultation" %}
 
       {% render 'pak-custom-dropdown'
         , product: product
-        , section: section %}
+        , section: section
+        , metafield_key: 'product_grouping'
+        , metaobject_field: 'special_finishes_option'
+        , label_text: 'Special Finishes'
+        , property_name: 'Special Features'
+        , default_option: "Need Consultation" %}
+
     </div>
+
+
   </div>
+
 
   <!-- Project Detail -->
   <div class="quote-toggle-group">
     <div class="quote-toggle-header">
       <div class="quote-toggle-header__title">Project Description</div>
     {% comment %} <label class="toggle-switch">
-                                      <input
-                                        type="checkbox"
-                                        class="toggle-input"
-                                        data-toggle-target="addons-section"
-                                        checked>
-                                      <span class="toggle-slider"></span>
-                          </label> {% endcomment %}
+                                                                                                                                                                                                                                          <input
+                                                                                                                                                                                                                                            type="checkbox"
+                                                                                                                                                                                                                                            class="toggle-input"
+                                                                                                                                                                                                                                            data-toggle-target="addons-section"
+                                                                                                                                                                                                                                            checked>
+                                                                                                                                                                                                                                          <span class="toggle-slider"></span>
+                                                                                                                                                          </label> {% endcomment %}
     </div>
 
     <div class="quote-toggle-content" id="addons-section">

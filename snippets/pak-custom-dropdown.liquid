@@ -3,7 +3,8 @@
   Accepts:
   - product: {Object}
   - section: {Object}
-  - metafield_key: {String} e.g. "custom.product_option_materials"
+  - metafield_key: {String} e.g. "custom.product_grouping"
+  - metaobject_key: {String} Optional – key within the metaobject that contains entries, e.g. "material_option"
   - label_text: {String} Optional – label above the dropdown
   - property_name: {String} Optional – line item property key (default: label_text or 'Custom Option')
 
@@ -11,36 +12,36 @@
   {% render 'pak-custom-meta-dropdown',
   product: product,
   section: section,
-  metafield_key: 'custom.product_option_materials',
+  metafield_key: 'product_grouping',
+  metaobject_key: 'material_option',
   label_text: 'Preferred Material',
   property_name: 'Material' %}
 {% endcomment %}
 
-<link
-  rel="stylesheet"
-  href="{{ 'pak-custom-dropdown.css' | asset_url }}"
-  media="print"
-  onload="this.media='all'">
-<script src="{{ 'pak-custom-dowpdown.js' | asset_url }}" defer></script>
 
 {% assign label = label_text | default: 'Custom Option' %}
 {% assign prop_name = property_name | default: label %}
 
-<div class="field custom__field" data-section-id="{{ section.id }}">
+  <div class="field custom__field" data-section-id="{{ property_name  }}">
   <label class="field__label">{{ label }}</label>
 
-  {% assign key_parts = metafield_key | split: '.' %}
-  {% assign namespace = key_parts[0] %}
-  {% assign key = key_parts[1] %}
-  {% assign items = product.metafields[namespace][key].value %}
+  {% assign metafield_object = product.metafields.custom[metafield_key].value %}
 
-    <div class="pak-custom-dropdown" data-dropdown>
+  {% comment %} This is to iterate metaobject within a nother set of metaobject {% endcomment %}
+  {% if metafield_object %}
+    {% assign items = metafield_object[metaobject_field].value %}
+  {% else %}
+    {% assign items = metafield_object %}
+  {% endif %}
+
+
+  <div class="pak-custom-dropdown" data-dropdown>
     <button
       type="button"
       class="field__input dropdown-toggle"
       aria-haspopup="listbox"
       aria-expanded="false">
-      <span class="dropdown-label">Need Consultation</span>
+      <span class="dropdown-label">{{ default_option }}</span>
       {% render 'icon-caret' %}
     </button>
 
@@ -53,15 +54,15 @@
         class="dropdown-option"
         role="option"
         tabindex="0"
-        data-value="Need Consultation">
+        data-value={{default_option}}>
         <span class="thumb">
           <span class="placeholder"></span>
         </span>
-        <span class="label">Need Consultation</span>
+        <span class="label">{{ default_option }}</span>
       </li>
 
-      <!-- Dynamic options from metafield -->
       {% for item in items %}
+
         {% assign option_label = item.display_name | default: item.name %}
         <li
           class="dropdown-option"
@@ -84,10 +85,9 @@
       {% endfor %}
     </ul>
 
-    <!-- Line item property for submission -->
     <input
       type="hidden"
       name="properties[{{ prop_name }}]"
-      value="Need Consultation" />
+      value={{default_option}} />
   </div>
 </div>

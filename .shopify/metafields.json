@@ -131,16 +131,6 @@
       }
     },
     {
-      "key": "test_option_materials",
-      "namespace": "custom",
-      "name": "Test - Option Materials",
-      "description": "",
-      "type": {
-        "name": "list.metaobject_reference",
-        "category": "REFERENCE"
-      }
-    },
-    {
       "key": "want_to_enable_request_a_quote_",
       "namespace": "custom",
       "name": "Want to enable Request a Quote ?",
@@ -157,6 +147,26 @@
       "description": "",
       "type": {
         "name": "list.metaobject_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "product_format_type",
+      "namespace": "custom",
+      "name": "Product Format Type",
+      "description": "",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "product_grouping",
+      "namespace": "custom",
+      "name": "Product Grouping",
+      "description": "",
+      "type": {
+        "name": "metaobject_reference",
         "category": "REFERENCE"
       }
     }
