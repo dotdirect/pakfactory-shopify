@@ -44,27 +44,24 @@
   </div>
 
   <div class="field custom__field quote-file-upload">
-    <label class="field__label" for="ReferenceFile-{{ section.id }}">
-      Do you have a reference image or photo of your product?
-      <span class="optional">(Optional)</span>
-    </label>
-
     <div class="upload-wrapper">
       <input
-        class="field__input file-input"
+        class="field__input"
         type="file"
         id="ReferenceFile-{{ section.id }}"
         name="properties[Reference Image]"
         accept=".jpg,.jpeg,.png,.pdf" />
 
-      <label class="upload-button" for="ReferenceFile-{{ section.id }}">
-        Upload File
-      </label>
-    </div>
+      <span class="file-placeholder">Accepted formats: JPG, PNG, PDF — Max 10MB</span>
 
-    <p class="field__note">
-      Accepted formats: JPG, PNG, PDF — Max 10MB.
-    </p>
+      <button
+        type="button"
+        class="upload-button"
+        onclick="document.getElementById('ReferenceFile-{{ section.id }}').click()">
+        Upload File
+      </button>
+    </div>
   </div>
+
 
 </div>
