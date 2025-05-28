@@ -51,10 +51,29 @@
             "promo_link": "",
             "promo_button_style": "simple"
           }
+        },
+        "pak_mega_menu_pcgmdW": {
+          "type": "pak_mega_menu",
+          "settings": {
+            "pak_mega_menu_trigger": "Products",
+            "column_to_show": 3,
+            "enable_column_1": true,
+            "heading_1": "",
+            "description_1": "",
+            "link_1": "",
+            "menu_1": "main-menu-product-line",
+            "enable_promo": false,
+            "promo_heading": "",
+            "promo_description": "",
+            "promo_link_label": "",
+            "promo_link": "",
+            "promo_button_style": "simple"
+          }
         }
       },
       "block_order": [
-        "pak_mega_menu_pC3VMj"
+        "pak_mega_menu_pC3VMj",
+        "pak_mega_menu_pcgmdW"
       ],
       "settings": {
         "h1_logo": true,
