@@ -126,3 +126,36 @@ h3,
 .field__label {
   font-size: 14px;
 }
+
+/* Header Mega Menu */
+
+.pak-mega-menu__column-list {
+  /* display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.2rem;
+  margin-top: 0.8rem; */
+  background-color: rgb(var(--color-background));
+  display: block;
+  gap: 1.2rem;
+  column-count: 1;
+  /* column-rule: dotted 1px #333; */
+  list-style-type: none;
+}
+
+.pak-mega-menu__column-list.mega-menu__columns--2 {
+  column-count: 2;
+}
+
+.pak-mega-menu__column-list.mega-menu__columns--3 {
+  column-count: 3;
+}
+
+.pak-mega-menu__column-list.mega-menu__columns--4 {
+  column-count: 4;
+}
+
+.pak-mega-menu__column-list li {
+  break-inside: avoid;
+  margin-bottom: 1.2rem;
+}

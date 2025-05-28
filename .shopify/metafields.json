@@ -41,6 +41,16 @@
         "name": "single_line_text_field",
         "category": "TEXT"
       }
+    },
+    {
+      "key": "menu_thumbnail",
+      "namespace": "custom",
+      "name": "Menu Thumbnail",
+      "description": "",
+      "type": {
+        "name": "file_reference",
+        "category": "REFERENCE"
+      }
     }
   ],
   "company": [],
@@ -215,6 +225,16 @@
       "namespace": "shopify",
       "name": "Color",
       "description": "Defines the primary color or pattern, such as blue or striped",
+      "type": {
+        "name": "list.metaobject_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "product_structure",
+      "namespace": "custom",
+      "name": "Product Structure",
+      "description": "",
       "type": {
         "name": "list.metaobject_reference",
         "category": "REFERENCE"
