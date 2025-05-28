@@ -158,4 +158,19 @@ h3,
 .pak-mega-menu__column-list li {
   break-inside: avoid;
   margin-bottom: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.pak-mega-menu__column-list li .mega-menu__image-thumb {
+  width: 55px;
+  height: 55px;
+  background-color: beige;
+}
+
+.pak-mega-menu__column-list li .mega-menu__image-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
