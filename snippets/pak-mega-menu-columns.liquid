@@ -1,7 +1,7 @@
 {% for block in blocks %}
   {% assign pak_mega_menu_trigger = block.settings.pak_mega_menu_trigger | handle | strip %}
   {% if link.handle == pak_mega_menu_trigger and block.type == 'pak_mega_menu' %}
-    <div class="header__mega-menu mega-menu mega-menu--columns mega-menu--columns-{{ block.settings.column_to_show }} color-background-1">
+    <div class="header__mega-menu mega-menu mega-menu--columns color-background-1">
       <div class="mega-menu__columns ">
         {% for i in (1..8) %}
           {%- assign enable_column_setting = 'enable_column_' | append: i -%}
@@ -17,7 +17,7 @@
                   <i class="icon icon-pack icon-{{ block.settings[icon_setting] }} {% if block.settings.icon_style == 'colored' and block.settings.icon_fill_type == 'gradient' %} text-gradient {% endif %}"></i>
                 </div>
               {%- endif -%}
-              <div class="mega-menu__column-info {% if block.settings[description_setting] == blank %}mega-menu__column-info--only-heading{% endif %}">
+              <div class="mega-menu__column-info pak-mega-menu__column-info {% if block.settings[description_setting] == blank %}mega-menu__column-info--only-heading{% endif %}">
                 {%- if block.settings[link_setting].url != blank -%}
                   <a
                     {% if block.settings[link_setting].url != blank %}
@@ -74,17 +74,17 @@
                   {%- endfor -%}
 
                 {% comment %} {%- for link in block.settings[menu_setting].links -%}
-      
-      
-                                                                          <li class="mega-menu__column-list-item body-small">
-                                                                            <a
-                                                                              href="{{ link.url }}"
-                                                                              class="mega-menu__column-list-link focus-inset"
-                                                                              aria-label="{{ link.title | escape }}">
-                                                                              {{- link.title | escape -}}
-                                                                            </a>
-                                                                          </li>
-                                                                  {% endfor %} {% endcomment %}
+            
+            
+                                                                                                                                <li class="mega-menu__column-list-item body-small">
+                                                                                                                                  <a
+                                                                                                                                    href="{{ link.url }}"
+                                                                                                                                    class="mega-menu__column-list-link focus-inset"
+                                                                                                                                    aria-label="{{ link.title | escape }}">
+                                                                                                                                    {{- link.title | escape -}}
+                                                                                                                                  </a>
+                                                                                                                                </li>
+                                                                                                                  {% endfor %} {% endcomment %}
                 </ul>
               {%- endif -%}
 

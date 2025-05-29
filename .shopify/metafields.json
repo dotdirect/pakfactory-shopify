@@ -43,9 +43,9 @@
       }
     },
     {
-      "key": "menu_thumbnail",
+      "key": "feature_image_thumbnail",
       "namespace": "custom",
-      "name": "Menu Thumbnail",
+      "name": "Feature Image - Thumbnail",
       "description": "",
       "type": {
         "name": "file_reference",
@@ -235,6 +235,16 @@
       "namespace": "custom",
       "name": "Product Structure",
       "description": "",
+      "type": {
+        "name": "list.metaobject_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "software-features",
+      "namespace": "shopify",
+      "name": "Software features",
+      "description": "Identifies the key functionalities of a software product, such as privacy protection or auto backup",
       "type": {
         "name": "list.metaobject_reference",
         "category": "REFERENCE"
