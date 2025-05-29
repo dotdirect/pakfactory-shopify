@@ -57,7 +57,6 @@
         "slide_QfWqhk",
         "slide_HyKBfh"
       ],
-      "name": "Pak - Slideshow",
       "settings": {
         "layout": "overlay",
         "header_overlay": true,
@@ -78,7 +77,7 @@
         "heading_animation": "none",
         "word_break_an": false,
         "text_align": "left",
-        "height": "21/9",
+        "height": "3/2",
         "text_align_content": "bottom-left",
         "enable_autoplay": false,
         "enable_parallax": true,
@@ -153,7 +152,6 @@
         "logo_pjrBdR",
         "logo_tnBcFa"
       ],
-      "name": "t:sections.logo-list.name",
       "settings": {
         "layout": "horizontal-carousel",
         "color_scheme": "",
@@ -183,7 +181,6 @@
     },
     "pak_divider_tnAn6V": {
       "type": "pak-divider",
-      "name": "Pak - Divider ",
       "settings": {
         "color_scheme": "background-1"
       }
@@ -251,7 +248,6 @@
     },
     "pak_divider_Mbj3Qx": {
       "type": "pak-divider",
-      "name": "Pak - Divider ",
       "settings": {
         "color_scheme": "background-1"
       }
@@ -290,7 +286,6 @@
         "step_XyBVbR",
         "step_dkr4kT"
       ],
-      "name": "Pak - Steps",
       "settings": {
         "layout": "slider",
         "show_step_number": false,
@@ -402,7 +397,6 @@
         "card_MdAGBn",
         "card_4ewciA"
       ],
-      "name": "t:sections.banner-grid.name",
       "settings": {
         "layout": "type_4",
         "columns": 3,
@@ -468,7 +462,6 @@
         "collection_wh46At",
         "collection_3mC6rU"
       ],
-      "name": "t:sections.collections-grid.name",
       "settings": {
         "layout": "overlay",
         "subheading": "",
