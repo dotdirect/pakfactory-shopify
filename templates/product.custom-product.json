@@ -337,7 +337,7 @@
         "icon_color_scheme": "",
         "icon_style": "contrast",
         "icon_fill_type": "gradient",
-        "icon_size": "recommended",
+        "icon_size": "normal",
         "box_shadow": true,
         "subheading": "",
         "subheading_style": "subtitle subtitle--secondary",
