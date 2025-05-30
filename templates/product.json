@@ -97,27 +97,6 @@
         "padding_bottom": "l"
       }
     },
-    "product-recommendations": {
-      "type": "product-recommendations",
-      "settings": {
-        "color_scheme": "background-1",
-        "subheading": "Subheading",
-        "subheading_style": "subtitle",
-        "subheading_icon": "none",
-        "heading": "You May Also Like",
-        "heading_size": "h2",
-        "text": "Some description",
-        "products_limit": 6,
-        "image_ratio": "5/4",
-        "image_fit": "cover",
-        "add_border_radius_when_contain": false,
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_desc": true,
-        "padding_top": "l",
-        "padding_bottom": "l"
-      }
-    },
     "collapsible_content_y3LCXU": {
       "type": "collapsible-content",
       "blocks": {
@@ -153,10 +132,10 @@
       ],
       "name": "t:sections.collapsible-content.name",
       "settings": {
-        "layout": "border",
+        "layout": "background",
         "color_scheme": "",
         "enable_border": false,
-        "border_full": false,
+        "border_full": true,
         "subheading": "Frequently Asked Questions",
         "subheading_style": "subtitle",
         "subheading_icon": "none",
@@ -176,11 +155,32 @@
         "margin_top": "no-indent",
         "margin_bottom": "no-indent"
       }
+    },
+    "product-recommendations": {
+      "type": "product-recommendations",
+      "settings": {
+        "color_scheme": "background-1",
+        "subheading": "Subheading",
+        "subheading_style": "subtitle",
+        "subheading_icon": "none",
+        "heading": "You May Also Like",
+        "heading_size": "h2",
+        "text": "Some description",
+        "products_limit": 6,
+        "image_ratio": "5/4",
+        "image_fit": "cover",
+        "add_border_radius_when_contain": false,
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_desc": true,
+        "padding_top": "l",
+        "padding_bottom": "l"
+      }
     }
   },
   "order": [
     "main",
-    "product-recommendations",
-    "collapsible_content_y3LCXU"
+    "collapsible_content_y3LCXU",
+    "product-recommendations"
   ]
 }
