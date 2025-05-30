@@ -143,33 +143,15 @@
       "blocks": {
         "accordion_dALxCq": {
           "type": "accordion",
+          "repeater": "{{ product.metafields.custom.faq.value }}",
           "settings": {
-            "question": "Some title",
-            "answer": "<p>Some description</p>",
-            "opened": true
-          }
-        },
-        "accordion_wL9PEU": {
-          "type": "accordion",
-          "settings": {
-            "question": "Some title",
-            "answer": "<p>Some description</p>",
-            "opened": false
-          }
-        },
-        "accordion_gR9k66": {
-          "type": "accordion",
-          "settings": {
-            "question": "Some title",
-            "answer": "<p>Some description</p>",
-            "opened": false
+            "question": "{{ block.repeater.question.value }}",
+            "answer": "{{ block.repeater.answer | metafield_tag }}"
           }
         }
       },
       "block_order": [
-        "accordion_dALxCq",
-        "accordion_wL9PEU",
-        "accordion_gR9k66"
+        "accordion_dALxCq"
       ],
       "name": "t:sections.collapsible-content.name",
       "settings": {
@@ -190,7 +172,7 @@
         "word_break_an": false,
         "text": "From basic inquiries to intricate details about, we've collated the most common queries from our user base.",
         "text_align": "center",
-        "row_color_scheme": "",
+        "row_color_scheme": "scheme-62e6675b-c556-4fd0-8c9e-6abdbe5fcd71",
         "padding_top": "m",
         "padding_bottom": "m",
         "margin_top": "no-indent",
