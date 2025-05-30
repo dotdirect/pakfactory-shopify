@@ -44,6 +44,11 @@
             "description_1": "",
             "link_1": "shopify://collections",
             "menu_1": "main-menu-industries-solutions",
+            "enable_row_2": true,
+            "heading_2": "",
+            "description_2": "",
+            "link_2": "",
+            "menu_2": "",
             "enable_promo": false,
             "promo_heading": "",
             "promo_description": "",
@@ -62,6 +67,11 @@
             "description_1": "",
             "link_1": "shopify://collections",
             "menu_1": "main-menu-product-line",
+            "enable_row_2": true,
+            "heading_2": "Shop By",
+            "description_2": "",
+            "link_2": "",
+            "menu_2": "",
             "enable_promo": false,
             "promo_heading": "",
             "promo_description": "",
@@ -71,7 +81,10 @@
           }
         }
       },
-      "block_order": ["pak_mega_menu_pC3VMj", "pak_mega_menu_pcgmdW"],
+      "block_order": [
+        "pak_mega_menu_pC3VMj",
+        "pak_mega_menu_pcgmdW"
+      ],
       "settings": {
         "h1_logo": true,
         "header_type": "center-logo",
@@ -97,5 +110,8 @@
       }
     }
   },
-  "order": ["announcement-bar", "header"]
+  "order": [
+    "announcement-bar",
+    "header"
+  ]
 }
