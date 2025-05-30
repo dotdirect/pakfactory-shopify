@@ -105,10 +105,10 @@
           "repeater": "{{ product.metafields.custom.feature_blocks.value }}",
           "settings": {
             "image": "{{ block.repeater.image.value }}",
-            "heading": "{{ block.repeater.button_label.value }}",
+            "heading": "{{ block.repeater.title_.value }}",
             "text": "{{ block.repeater.description | metafield_tag }}",
-            "button_label": "{{ block.repeater.title_.value }}",
-            "button_link": "{{ block.repeater.button_link.value }}"
+            "button_label": "",
+            "button_link": ""
           }
         }
       },
