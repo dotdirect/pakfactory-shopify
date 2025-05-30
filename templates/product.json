@@ -118,7 +118,7 @@
       "name": "t:sections.multicolumn.name",
       "settings": {
         "section_type": "transparent",
-        "color_scheme": "",
+        "color_scheme": "background-1",
         "enable_border": false,
         "border_full": false,
         "multicolumn_to_show": 3,
@@ -146,8 +146,8 @@
         "image_ratio": "square",
         "object_fit": "cover",
         "card_heading_size": "h4",
-        "padding_top": "m",
-        "padding_bottom": "m",
+        "padding_top": "l",
+        "padding_bottom": "l",
         "margin_top": "no-indent",
         "margin_bottom": "no-indent"
       }
