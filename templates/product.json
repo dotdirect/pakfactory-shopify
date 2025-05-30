@@ -126,7 +126,7 @@
         "content_vertical_alignment": "top",
         "gap": "large",
         "enable_mobile_overflow_slider": false,
-        "subheading": "Subheading",
+        "subheading": "Subheading{{ product.metafields.custom.feature_section_title.value }}",
         "subheading_style": "subtitle",
         "subheading_icon": "none",
         "heading": "Heading",
