@@ -140,7 +140,7 @@
         "text": "",
         "text_align": "left",
         "icon_size": "recommended",
-        "box_shadow": true,
+        "box_shadow": false,
         "icon_style": "colored",
         "image_width": "full-width",
         "image_ratio": "square",
