@@ -73,7 +73,7 @@
           "colors_text": "{{ shop.brand.colors.secondary[0].foreground }}",
           "colors_secondary_text": "{{ shop.brand.colors.secondary[0].foreground }}",
           "colors_text_title": "{{ shop.brand.colors.secondary[0].foreground }}",
-          "colors_background_1": "{{ shop.brand.colors.primary[1].background }}",
+          "colors_background_1": "#011624",
           "colors_background_2": "#000000",
           "background_gradient": "",
           "colors_solid_button_labels": "#ffffff",
