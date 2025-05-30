@@ -94,7 +94,7 @@
           "card_old_price_color": "#67737c",
           "color_accent": "#ffffff",
           "color_accent_gradient": "linear-gradient(135deg, rgba(80, 234, 255, 1), rgba(21, 102, 224, 1) 100%)",
-          "colors_background_overlay": "#000000",
+          "colors_background_overlay": "#13260d",
           "color_border": "#1f323e"
         }
       },
