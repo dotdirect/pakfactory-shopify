@@ -45,11 +45,21 @@
     {
       "key": "feature_image_thumbnail",
       "namespace": "custom",
-      "name": "Feature Image - Thumbnail",
+      "name": "Display Image",
       "description": "",
       "type": {
         "name": "file_reference",
         "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "display_description",
+      "namespace": "custom",
+      "name": "Display Description",
+      "description": "",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
       }
     }
   ],

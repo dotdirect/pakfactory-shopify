@@ -3,20 +3,20 @@
   {% if link.handle == pak_mega_menu_trigger and block.type == 'pak_mega_menu' %}
     <div class="mega-menu__columns mega-menu__columns--{{ block.settings.column_to_show }}">
       {% for i in (1..8) %}
-        {%- assign enable_column_setting = 'enable_column_' | append: i -%}
+        {%- assign enable_row_setting = 'enable_row_' | append: i -%}
         {%- assign link_setting = 'link_' | append: i -%}
         {%- assign icon_setting = 'icon_' | append: i -%}
         {%- assign heading_setting = 'heading_' | append: i -%}
         {%- assign description_setting = 'description_' | append: i -%}
         {%- assign menu_setting = 'menu_' | append: i -%}
-        {% if block.settings[enable_column_setting] %}
+        {% if block.settings[enable_row_setting] %}
           <div class="mega-menu__column {% if block.settings[link_setting].url != blank and block.settings.menu_1 == blank %}mega-menu__column--overlay{%- endif -%}">
             {%- if block.settings[icon_setting] != 'none' -%}
               <div class="mega-menu__icon mega-menu__icon--{{- block.settings.icon_size }} {% if block.settings.box_shadow %}mega-menu__icon--shadow {% endif %} mega-menu__icon--{{- block.settings.icon_style }} mega-menu__icon--{{- block.settings.icon_fill_type }} color-{{ block.settings.icon_color_scheme }}">
                 <i class="icon icon-pack icon-{{ block.settings[icon_setting] }} {% if block.settings.icon_style == 'colored' and block.settings.icon_fill_type == 'gradient' %} text-gradient {% endif %}"></i>
               </div>
             {%- endif -%}
-            <div class="mega-menu__column-info {% if block.settings[description_setting] == blank %}mega-menu__column-info--only-heading{% endif %}">
+            <div class="mega-menu__column-info pak-mega-menu__column-info  {% if block.settings[description_setting] == blank %}mega-menu__column-info--only-heading{% endif %}">
               {%- if block.settings[link_setting].url != blank -%}
                 <a
                   {% if block.settings[link_setting].url != blank %}
@@ -43,15 +43,37 @@
             {%- if block.settings[menu_setting] != blank -%}
               <ul class="mega-menu__column-list pak-mega-menu__column-list list-unstyled" role="list">
                 {%- for link in block.settings[menu_setting].links -%}
+
                   <li class="mega-menu__column-list-item body-small">
+                    {%- assign collection_handle = link.url | split: '/' | last -%}
+                    {%- assign linked_collection = collections[collection_handle] -%}
+
+                      {%- if linked_collection != blank -%}
+                      {%- assign display_image = linked_collection.metafields.custom.feature_image_thumbnail -%}
+                      {% comment %} {%- assign display_description = linked_collection.metafields.custom.display_description -%} {% endcomment %}
+
+                      <div class="mega-menu__image-thumb">
+                        {%- if display_image != blank -%}
+                          <img
+                            src="{{ display_image | image_url: width: 100 }}"
+                            alt="{{ linked_collection.title | escape }}"
+                            width="50"
+                            height="50">
+                        {%- endif -%}
+                      </div>
+
+                    {%- endif -%}
+
                     <a
                       href="{{ link.url }}"
                       class="mega-menu__column-list-link focus-inset"
-                      aria-label="{{ link.title | escape }}"
-                      tabindex="0">
-                      {{- link.title | escape -}}
+                      aria-label="{{ link.title | escape }}">
+                      <div class="mega-menu__column-list-title">{{- link.title | escape -}}</div>
+                    {% comment %} <div class="mega-menu__column-list-description">{{ display_description }}</div> {% endcomment %}
                     </a>
                   </li>
+
+
                 {% endfor %}
               </ul>
             {%- endif -%}

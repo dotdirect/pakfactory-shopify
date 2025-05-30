@@ -21,9 +21,6 @@
     .slideshow__content-wrapper {
     padding-bottom: 50.2rem;
   }
-}
-
-@media screen and (min-width: 1200px) {
   .pak-slideshow
     .slideshow__swiper[data-pagination-type='tabs']
     .slideshow__slide--overlay
