@@ -369,6 +369,33 @@
         "margin_top": "no-indent",
         "margin_bottom": "no-indent"
       }
+    },
+    "products_grid_EGeGFN": {
+      "type": "products-grid",
+      "name": "t:sections.products-grid.name",
+      "settings": {
+        "products_per_page": 12,
+        "columns": 4,
+        "sort": "alphabetical",
+        "image_ratio": "5/4",
+        "image_fit": "cover",
+        "add_border_radius_when_contain": false,
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_desc": false,
+        "subheading": "",
+        "heading": "Some heading",
+        "heading_size": "h3",
+        "heading_level": "h2",
+        "text": "",
+        "button_show": true,
+        "button_label": "Button label",
+        "button_style": "primary",
+        "button_link": "",
+        "columns_mobile": "2",
+        "padding_top": "s",
+        "padding_bottom": "l"
+      }
     }
   },
   "order": [
@@ -381,6 +408,7 @@
     "pak_divider_GxrxTN",
     "product-recommendations",
     "products_grid_jB9KEF",
-    "animated_image_collage_T8BeqH"
+    "animated_image_collage_T8BeqH",
+    "products_grid_EGeGFN"
   ]
 }
