@@ -93,9 +93,7 @@
           }
         }
       },
-      "block_order": [
-        "column_H66Fq7"
-      ],
+      "block_order": ["column_H66Fq7"],
       "name": "Features",
       "settings": {
         "section_type": "transparent",
@@ -153,9 +151,7 @@
           }
         }
       },
-      "block_order": [
-        "accordion_dALxCq"
-      ],
+      "block_order": ["accordion_dALxCq"],
       "name": "FAQ",
       "settings": {
         "layout": "background",
