@@ -61,8 +61,8 @@
         "mobile_alignment": "before",
         "gallery_type": "slider_previews",
         "aspect_ratio": "1/1",
-        "image_fit": "contain",
-        "image_fit_modal": "contain",
+        "image_fit": "cover",
+        "image_fit_modal": "cover",
         "padding_bottom": "l"
       }
     },
@@ -93,7 +93,9 @@
           }
         }
       },
-      "block_order": ["column_H66Fq7"],
+      "block_order": [
+        "column_H66Fq7"
+      ],
       "name": "Features",
       "settings": {
         "section_type": "transparent",
@@ -151,7 +153,9 @@
           }
         }
       },
-      "block_order": ["accordion_dALxCq"],
+      "block_order": [
+        "accordion_dALxCq"
+      ],
       "name": "FAQ",
       "settings": {
         "layout": "background",
