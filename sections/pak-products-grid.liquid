@@ -41,7 +41,6 @@
     href="{{ 'quick-add.css' | asset_url }}"
     as="style"
     onload="this.onload=null;this.rel='stylesheet'">
-
   <script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
   <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
 {% elsif settings.add_to_cart_enabled %}
@@ -57,26 +56,37 @@
 {%- endstyle -%}
 
 {% liquid
-  assign grid_products = collections.all.products
-  case section.settings.sort
-    when 'products_high', 'products_low'
-      assign grid_products = grid_products | sort: 'price_min'
-    when 'date', 'date_reversed'
-      assign grid_products = grid_products | sort: 'published_at'
-  endcase
+  assign selected_collection = section.settings.related_collection
 
-  if section.settings.sort == 'products_high' or section.settings.sort == 'date_reversed' or section.settings.sort == 'alphabetical_reversed'
-    assign grid_products = grid_products | reverse
+  if selected_collection != blank and collections[selected_collection] != nil
+    assign grid_products = collections[selected_collection].products
+  elsif product != nil
+    assign current_product_type = product.type
+    assign current_tags = product.tags
+    assign grid_products_raw = collections['all'].products
+    assign grid_handles = ''
+    assign separator = ''
+
+    for p in grid_products_raw
+      if p.type == current_product_type
+        for tag in p.tags
+          if current_tags contains tag
+            assign grid_handles = grid_handles | append: separator | append: p.handle
+            assign separator = ','
+            break
+          endif
+        endfor
+      endif
+    endfor
+
+    assign handles = grid_handles | split: ',' | uniq
   endif
 %}
 
 <div class="products-grid section-{{ section.id }}-padding">
   <div class="container">
     <div class="section-grid">
-      {%- if section.settings.subheading != blank
- or section.settings.heading != blank
- or section.settings.text != blank
-      -%}
+      {% if section.settings.subheading != blank or section.settings.heading != blank or section.settings.text != blank %}
         <div class="section-top">
           {% render 'section-text'
             , section: section
@@ -84,30 +94,26 @@
             , heading_level: section.settings.heading_level %}
         </div>
       {% endif %}
-      {%- if section.settings.button_show -%}
+
+      {% if section.settings.button_show %}
         {% render 'button'
-          ,
- link: section.settings.button_link
-          ,
- label: section.settings.button_label
-          ,
- style: section.settings.button_style
-          ,
- class: 'products-grid'
-        %}
-      {%- endif -%}
+          , link: section.settings.button_link
+          , label: section.settings.button_label
+          , style: section.settings.button_style
+          , class: 'products-grid' %}
+      {% endif %}
+
       <div class="products-grid full-width content">
         <ul
           id="products-grid"
           data-id="{{ section.id }}"
-          class="
-            collection-product-list
-            collection-product-list--{{ section.settings.columns }}-items
-            collection-product-list--{{ section.settings.columns_mobile }}-mobile
-            products--{{ section.settings.columns_mobile }}-mobile
-          ">
-          {% if grid_products.size > 0 %}
-            {%- for product in grid_products limit: section.settings.products_per_page -%}
+          class="collection-product-list collection-product-list--{{ section.settings.columns }}-items collection-product-list--{{ section.settings.columns_mobile }}-mobile products--{{ section.settings.columns_mobile }}-mobile">
+          {% assign count = 0 %}
+          {% for p in collections['all'].products %}
+
+
+            {% if handles contains p.handle and count < section.settings.products_per_page %}
+              {% assign product = p %}
               <li class="collection-product-card {% if settings.quickview_hover %}quickview--hover{% endif %}">
                 {% render 'product-card'
                   ,
@@ -129,21 +135,20 @@
                   ,
  section_id: section.id
                   ,
- add_id: forloop.index
-                %}
+ add_id: forloop.index %}
               </li>
-            {%- endfor -%}
-          {% else %}
-            {%- for i in (1..4) -%}
+              {% assign count = count | plus: 1 %}
+            {% endif %}
+          {% endfor %}
+
+          {% if count == 0 %}
+            {% for i in (1..4) %}
               <div class="popular-products__item_placeholder collection-popular-card collection-popular-card--placeholder">
                 {% render 'product-card-placeholder'
-                  ,
- media_ratio: section.settings.image_ratio
-                  ,
- show_vendor: section.settings.show_vendor
-                %}
+                  , media_ratio: section.settings.image_ratio
+                  , show_vendor: section.settings.show_vendor %}
               </div>
-            {%- endfor -%}
+            {% endfor %}
           {% endif %}
         </ul>
       </div>
@@ -161,6 +166,12 @@
       "groups": ["*"]
     },
     "settings": [
+      {
+        "type": "collection",
+        "id": "related_collection",
+        "label": "Select collection"
+
+      },
       {
         "type": "range",
         "id": "products_per_page",
@@ -208,8 +219,7 @@
         ],
         "default": "alphabetical",
         "label": "t:sections.products-grid.settings.sort.label"
-      },
-      {
+      }, {
         "type": "header",
         "content": "t:sections.products-grid.settings.header__3.content"
       }, {
