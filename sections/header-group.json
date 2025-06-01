@@ -17,7 +17,7 @@
         "height": 45,
         "height_mobile": 40,
         "color_scheme": "",
-        "text": "Speak to our experts in 1 min 9:30am - 6:30pm EST  - Call us toll free at 1-888-622-2819",
+        "text": "Speak to our experts in 1 min 9:30am - 6:30pm EST  - Call us toll free at <a href=\"tel:1-888-622-2819\" title=\"tel:1-888-622-2819\">1-888-622-2819</a>",
         "icon": "none",
         "icon_color_scheme": "",
         "icon_style": "colored",
