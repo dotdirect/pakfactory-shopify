@@ -94,10 +94,14 @@
         }
       },
 <<<<<<< HEAD
+<<<<<<< HEAD
       "block_order": [
         "column_H66Fq7"
       ],
       "name": "Features",
+=======
+      "block_order": ["column_H66Fq7"],
+>>>>>>> 4824f8f (craeted custom product-recommendations)
 =======
       "block_order": ["column_H66Fq7"],
 >>>>>>> 4824f8f (craeted custom product-recommendations)
@@ -158,11 +162,14 @@
         }
       },
 <<<<<<< HEAD
+<<<<<<< HEAD
       "block_order": [
         "accordion_dALxCq"
       ],
       "name": "FAQ",
 =======
+=======
+>>>>>>> 4824f8f (craeted custom product-recommendations)
       "block_order": ["accordion_dALxCq"],
       "name": "t:sections.collapsible-content.name",
 >>>>>>> 4824f8f (craeted custom product-recommendations)
@@ -399,15 +406,21 @@
     "collapsible_content_k63CqE",
     "pak_divider_GxrxTN",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "product-recommendations",
     "pak_products_grid_ewXwh6",
     "pak_divider_jpUW9G",
     "animated_image_collage_T8BeqH"
 =======
+=======
+>>>>>>> 4824f8f (craeted custom product-recommendations)
     "pak_divider_jpUW9G",
     "products_grid_EGeGFN",
     "animated_image_collage_T8BeqH",
     "pak-product-recommendations"
+<<<<<<< HEAD
+>>>>>>> 4824f8f (craeted custom product-recommendations)
+=======
 >>>>>>> 4824f8f (craeted custom product-recommendations)
   ]
 }
