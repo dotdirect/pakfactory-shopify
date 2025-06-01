@@ -93,18 +93,10 @@
           }
         }
       },
-<<<<<<< HEAD
-<<<<<<< HEAD
       "block_order": [
         "column_H66Fq7"
       ],
       "name": "Features",
-=======
-      "block_order": ["column_H66Fq7"],
->>>>>>> 4824f8f (craeted custom product-recommendations)
-=======
-      "block_order": ["column_H66Fq7"],
->>>>>>> 4824f8f (craeted custom product-recommendations)
       "settings": {
         "section_type": "transparent",
         "color_scheme": "background-1",
@@ -161,18 +153,10 @@
           }
         }
       },
-<<<<<<< HEAD
-<<<<<<< HEAD
       "block_order": [
         "accordion_dALxCq"
       ],
       "name": "FAQ",
-=======
-=======
->>>>>>> 4824f8f (craeted custom product-recommendations)
-      "block_order": ["accordion_dALxCq"],
-      "name": "t:sections.collapsible-content.name",
->>>>>>> 4824f8f (craeted custom product-recommendations)
       "settings": {
         "layout": "background",
         "color_scheme": "background-1",
@@ -205,8 +189,8 @@
         "color_scheme": "background-1"
       }
     },
-    "pak-product-recommendations": {
-      "type": "pak-product-recommendations",
+    "product-recommendations": {
+      "type": "product-recommendations",
       "settings": {
         "color_scheme": "background-1",
         "subheading": "Other {{ product.title }} Styles",
@@ -368,33 +352,6 @@
         "margin_top": "no-indent",
         "margin_bottom": "no-indent"
       }
-    },
-    "pak_products_grid_ewXwh6": {
-      "type": "pak-products-grid",
-      "name": "Pak Product Grid",
-      "settings": {
-        "products_per_page": 12,
-        "columns": 4,
-        "sort": "alphabetical",
-        "image_ratio": "5/4",
-        "image_fit": "cover",
-        "add_border_radius_when_contain": false,
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_desc": false,
-        "subheading": "",
-        "heading": "Some heading",
-        "heading_size": "h3",
-        "heading_level": "h2",
-        "text": "",
-        "button_show": true,
-        "button_label": "Button label",
-        "button_style": "primary",
-        "button_link": "",
-        "columns_mobile": "2",
-        "padding_top": "s",
-        "padding_bottom": "l"
-      }
     }
   },
   "order": [
@@ -405,22 +362,8 @@
     "pak_divider_ixVMQG",
     "collapsible_content_k63CqE",
     "pak_divider_GxrxTN",
-<<<<<<< HEAD
-<<<<<<< HEAD
     "product-recommendations",
-    "pak_products_grid_ewXwh6",
     "pak_divider_jpUW9G",
     "animated_image_collage_T8BeqH"
-=======
-=======
->>>>>>> 4824f8f (craeted custom product-recommendations)
-    "pak_divider_jpUW9G",
-    "products_grid_EGeGFN",
-    "animated_image_collage_T8BeqH",
-    "pak-product-recommendations"
-<<<<<<< HEAD
->>>>>>> 4824f8f (craeted custom product-recommendations)
-=======
->>>>>>> 4824f8f (craeted custom product-recommendations)
   ]
 }
