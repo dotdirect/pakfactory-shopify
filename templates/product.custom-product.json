@@ -55,6 +55,7 @@
         "tags",
         "quote_request_BXQern"
       ],
+      "name": "Product Detail",
       "settings": {
         "desktop_alignment": "right",
         "mobile_alignment": "before",
@@ -67,7 +68,7 @@
     },
     "pak_divider_pkdy4J": {
       "type": "pak-divider",
-      "name": "Pak - Divider ",
+      "name": "Divider",
       "settings": {
         "color_scheme": "background-1"
       }
@@ -93,6 +94,7 @@
         }
       },
       "block_order": ["column_H66Fq7"],
+      "name": "Features",
       "settings": {
         "section_type": "transparent",
         "color_scheme": "background-1",
@@ -131,7 +133,7 @@
     },
     "pak_divider_ixVMQG": {
       "type": "pak-divider",
-      "name": "Pak - Divider ",
+      "name": "Divider",
       "settings": {
         "color_scheme": "background-1"
       }
@@ -144,12 +146,13 @@
           "repeater": "{{ product.metafields.custom.faq.value }}",
           "settings": {
             "question": "{{ block.repeater.question.value }}",
-            "answer": "{{ block.repeater.answer | metafield_tag }}"
+            "answer": "{{ block.repeater.answer | metafield_tag }}",
+            "opened": false
           }
         }
       },
       "block_order": ["accordion_dALxCq"],
-      "name": "t:sections.collapsible-content.name",
+      "name": "FAQ",
       "settings": {
         "layout": "background",
         "color_scheme": "background-1",
@@ -177,13 +180,13 @@
     },
     "pak_divider_GxrxTN": {
       "type": "pak-divider",
-      "name": "Pak - Divider ",
+      "name": "Divider",
       "settings": {
         "color_scheme": "background-1"
       }
     },
-    "pak-product-recommendations": {
-      "type": "pak-product-recommendations",
+    "product-recommendations": {
+      "type": "product-recommendations",
       "settings": {
         "color_scheme": "background-1",
         "subheading": "Other {{ product.title }} Styles",
@@ -203,38 +206,35 @@
         "padding_bottom": "l"
       }
     },
-    "pak_divider_jpUW9G": {
-      "type": "pak-divider",
-      "name": "Pak - Divider ",
+    "pak_product_recommendations_GAynaa": {
+      "type": "pak-product-recommendations",
+      "name": "Pak Product Recommendations",
       "settings": {
-        "color_scheme": "background-1"
-      }
-    },
-    "products_grid_EGeGFN": {
-      "type": "products-grid",
-      "name": "t:sections.products-grid.name",
-      "settings": {
-        "products_per_page": 4,
-        "columns": 4,
-        "sort": "alphabetical",
+        "color_scheme": "",
+        "subheading": "Other {{ product.title }} Styles",
+        "subheading_style": "subtitle",
+        "subheading_icon": "none",
+        "heading": "You may also like these styles",
+        "heading_size": "h2",
+        "text": "",
+        "products_limit": 6,
+        "enable_custom_settings": true,
+        "related_collection": "",
         "image_ratio": "5/4",
         "image_fit": "cover",
         "add_border_radius_when_contain": false,
-        "show_secondary_image": true,
-        "show_vendor": false,
+        "show_secondary_image": false,
+        "show_vendor": true,
         "show_desc": false,
-        "subheading": "",
-        "heading": "Some heading",
-        "heading_size": "h3",
-        "heading_level": "h2",
-        "text": "",
-        "button_show": true,
-        "button_label": "Button label",
-        "button_style": "primary",
-        "button_link": "",
-        "columns_mobile": "2",
-        "padding_top": "s",
-        "padding_bottom": "l"
+        "padding_top": "m",
+        "padding_bottom": "m"
+      }
+    },
+    "pak_divider_jpUW9G": {
+      "type": "pak-divider",
+      "name": "Divider",
+      "settings": {
+        "color_scheme": "background-1"
       }
     },
     "animated_image_collage_T8BeqH": {
@@ -349,7 +349,7 @@
         "heading_size": "h1",
         "heading_level": "h2",
         "heading_line": "simple",
-        "line_color": "#1566E0",
+        "line_color": "#1566e0",
         "word_break": false,
         "heading_animation": "none",
         "word_break_an": false,
@@ -382,9 +382,9 @@
     "pak_divider_ixVMQG",
     "collapsible_content_k63CqE",
     "pak_divider_GxrxTN",
+    "product-recommendations",
+    "pak_product_recommendations_GAynaa",
     "pak_divider_jpUW9G",
-    "products_grid_EGeGFN",
-    "animated_image_collage_T8BeqH",
-    "pak-product-recommendations"
+    "animated_image_collage_T8BeqH"
   ]
 }
