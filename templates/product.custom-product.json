@@ -234,13 +234,6 @@
         "padding_bottom": "m"
       }
     },
-    "pak_divider_jpUW9G": {
-      "type": "pak-divider",
-      "name": "Divider",
-      "settings": {
-        "color_scheme": "background-1"
-      }
-    },
     "animated_image_collage_T8BeqH": {
       "type": "animated-image-collage",
       "blocks": {
@@ -388,7 +381,6 @@
     "pak_divider_GxrxTN",
     "product-recommendations",
     "pak_product_recommendations_GAynaa",
-    "pak_divider_jpUW9G",
     "animated_image_collage_T8BeqH"
   ]
 }
