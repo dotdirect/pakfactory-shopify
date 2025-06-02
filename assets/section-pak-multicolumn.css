@@ -1,0 +1,8 @@
+.pak-multicolumn .pak-multicolumn__background {
+  padding: 4rem;
+  border-radius: 1.2rem;
+}
+
+.pak-multicolumn .pak-multicolumn__background .feature-media {
+  margin-top: 10rem;
+}
