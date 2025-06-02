@@ -189,7 +189,6 @@
         "color_scheme": "background-1"
       }
     },
-
     "pak_product_recommendations_GAynaa": {
       "type": "pak-product-recommendations",
       "name": "Pak Product Recommendations",
@@ -198,7 +197,7 @@
         "subheading": "Other {{ product.title }} Styles",
         "subheading_style": "subtitle",
         "subheading_icon": "none",
-        "heading": "You may also like these styles",
+        "heading": "You may also like",
         "heading_size": "h2",
         "text": "",
         "products_limit": 6,
