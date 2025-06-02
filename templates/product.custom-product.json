@@ -348,6 +348,14 @@
         "margin_top": "no-indent",
         "margin_bottom": "no-indent"
       }
+    },
+    "pak_product_capability_libary_8Jt8bM": {
+      "type": "pak-product-capability-libary",
+      "name": "Pak Product Capability Library",
+      "settings": {
+        "heading": "This is the heading",
+        "subheading": "This is the subheading"
+      }
     }
   },
   "order": [
@@ -358,6 +366,7 @@
     "pak_divider_ixVMQG",
     "collapsible_content_k63CqE",
     "pak_divider_GxrxTN",
+    "pak_product_capability_libary_8Jt8bM",
     "pak_product_recommendations_GAynaa",
     "animated_image_collage_T8BeqH"
   ]
