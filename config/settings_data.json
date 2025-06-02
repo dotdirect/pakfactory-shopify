@@ -16,10 +16,13 @@
     "type_header_font_card": "inter_n6",
     "type_text_font_card": "inter_n5",
     "type_body_font": "inter_n5",
+    "type_body_line_height": 1.6,
+    "body_scale": 143,
     "type_subtitle_font": "inter_n7",
-    "type_button_font": "inter_n6",
+    "type_button_font": "inter_n4",
     "type_header_menu_font": "inter_n5",
     "type_footer_menu_font": "inter_n6",
+    "type_additional_font": "inter_n5",
     "badge_sale_show": false,
     "badge_sale_type": "percentage",
     "custom_icon": "lightning-bolt-2",
@@ -40,7 +43,7 @@
     "color_schemes": {
       "background-1": {
         "settings": {
-          "colors_text": "#011624",
+          "colors_text": "#4f5e68",
           "colors_secondary_text": "#67737c",
           "colors_text_title": "#011624",
           "colors_background_1": "#f7f7f5",
