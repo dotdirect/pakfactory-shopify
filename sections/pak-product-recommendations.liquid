@@ -84,39 +84,48 @@
 
 <product-recommendations class="product-recommendations section-{{ section.id }}-padding color-{{ section.settings.color_scheme }} background">
   <div class="container">
-    {% render 'section-text', section: section, class: 'product-recommendations' %}
+    {% render 'section-text'
+      , section: section
+      , class: 'product-recommendations' %}
     <div class="product-recommendations__item">
       {% if custom_enabled %}
         <div class="product-recommendations__list js-recommendation-swiper swiper" role="list">
           <div class="swiper-wrapper">
             {% assign count = 0 %}
-            {% assign collection_by_handle = collections['all'].products  %}
-            
+            {% assign collection_by_handle = collections['all'].products %}
+
             {% comment %} If product is a custom packaging type get Product line Collection {% endcomment %}
-            {% if product.type == "Custom Packaging"%} 
+            {% if product.type == "Custom Packaging" %}
               {% assign first_product_line = product.metafields.custom.product_line.value | first %}
               {% assign product_line_name = first_product_line.name %}
               {% assign handle = product_line_name | downcase | replace: ' ', '-' %}
               {% assign collection_by_handle = collections[handle].products %}
             {% endif %}
-  
-            {% for collection_product in collection_by_handle  %}
 
-
-                {% if collection_product.type == product.type %}
-                  <div class="swiper-slide collection-product-card product-recommendations__product quickview{% if settings.quickview_hover %}--hover{% endif %}">
-                    {% render 'product-card',
-                      product_card_product: collection_product,
-                      media_ratio: section.settings.image_ratio,
-                      media_fit: section.settings.image_fit,
-                      add_border_radius_when_contain: section.settings.add_border_radius_when_contain,
-                      show_secondary_image: section.settings.show_secondary_image,
-                      show_vendor: section.settings.show_vendor,
-                      show_desc: section.settings.show_desc,
-                      section_id: section.id,
-                      color_scheme: section.settings.color_scheme
-                    %}
-                  </div>
+            {% for collection_product in collection_by_handle %}
+              {% if collection_product.type == product.type %}
+                <div class="swiper-slide collection-product-card product-recommendations__product quickview{% if settings.quickview_hover %}--hover{% endif %}">
+                  {% render 'product-card'
+                    ,
+ product_card_product: collection_product
+                    ,
+ media_ratio: section.settings.image_ratio
+                    ,
+ media_fit: section.settings.image_fit
+                    ,
+ add_border_radius_when_contain: section.settings.add_border_radius_when_contain
+                    ,
+ show_secondary_image: section.settings.show_secondary_image
+                    ,
+ show_vendor: section.settings.show_vendor
+                    ,
+ show_desc: section.settings.show_desc
+                    ,
+ section_id: section.id
+                    ,
+ color_scheme: section.settings.color_scheme
+                  %}
+                </div>
               {% endif %}
             {% endfor %}
           </div>
@@ -127,16 +136,25 @@
             <div class="swiper-wrapper">
               {% for recommendation in recommendations.products limit: section.settings.products_limit %}
                 <div class="swiper-slide collection-product-card product-recommendations__product quickview{% if settings.quickview_hover %}--hover{% endif %}">
-                  {% render 'product-card',
-                    product_card_product: recommendation,
-                    media_ratio: section.settings.image_ratio,
-                    media_fit: section.settings.image_fit,
-                    add_border_radius_when_contain: section.settings.add_border_radius_when_contain,
-                    show_secondary_image: section.settings.show_secondary_image,
-                    show_vendor: section.settings.show_vendor,
-                    show_desc: section.settings.show_desc,
-                    section_id: section.id,
-                    color_scheme: section.settings.color_scheme
+                  {% render 'product-card'
+                    ,
+ product_card_product: recommendation
+                    ,
+ media_ratio: section.settings.image_ratio
+                    ,
+ media_fit: section.settings.image_fit
+                    ,
+ add_border_radius_when_contain: section.settings.add_border_radius_when_contain
+                    ,
+ show_secondary_image: section.settings.show_secondary_image
+                    ,
+ show_vendor: section.settings.show_vendor
+                    ,
+ show_desc: section.settings.show_desc
+                    ,
+ section_id: section.id
+                    ,
+ color_scheme: section.settings.color_scheme
                   %}
                 </div>
               {% endfor %}
@@ -600,20 +618,18 @@
       }, {
         "type": "header",
         "content": "Product List Settings"
-      },
-      {
+      }, {
         "type": "checkbox",
         "id": "enable_custom_settings",
         "default": false,
         "label": "Custom Settings"
-      },
-      {
+      }, {
         "type": "collection",
         "id": "related_collection",
         "label": "Select collection",
-        "info":"By default it will show all collection by product line if not selected",
+        "info": "By default it will show all collection by product line if not selected"
 
-      },{
+      }, {
         "type": "header",
         "content": "t:sections.product-recommendations.settings.header__2.content"
       }, {
@@ -741,7 +757,7 @@
     ],
     "presets": [
       {
-        "name": "Pak Product Recommendations",
+        "name": "Pak Product Recommendations"
       }
     ]
   }
