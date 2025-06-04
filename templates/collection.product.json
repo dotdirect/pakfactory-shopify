@@ -302,11 +302,17 @@
         "padding_top": "l",
         "padding_bottom": "l"
       }
+    },
+    "pak_breadcrumbs_pgjiim": {
+      "type": "pak-breadcrumbs",
+      "name": "Pak - Breadcrumbs ",
+      "settings": {}
     }
   },
   "order": [
     "banner",
     "product-grid",
+    "pak_breadcrumbs_pgjiim",
     "animated_image_collage_7HURGQ",
     "logo_list_CLBibn",
     "collections_grid_pwPzHH"
