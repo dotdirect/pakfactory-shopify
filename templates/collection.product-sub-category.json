@@ -115,9 +115,15 @@
         "padding_top": "s",
         "padding_bottom": "s"
       }
+    },
+    "pak_breadcrumbs_fmAxin": {
+      "type": "pak-breadcrumbs",
+      "name": "Pak - Breadcrumbs ",
+      "settings": {}
     }
   },
   "order": [
+    "pak_breadcrumbs_fmAxin",
     "image_banner_Pp9RzT",
     "banner",
     "rich_text_FxXnpU",
