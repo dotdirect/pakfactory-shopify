@@ -40,6 +40,7 @@
         },
         "link_list_jFtPiU": {
           "type": "link_list",
+          "disabled": true,
           "settings": {
             "heading": "Case Studies",
             "menu": "footer-case-studies",
