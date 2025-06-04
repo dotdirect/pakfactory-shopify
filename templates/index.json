@@ -86,7 +86,7 @@
         "pagination_color_scheme": "",
         "pagination_width": "medium",
         "enable_navigation": false,
-        "navigation_color_scheme": "",
+        "navigation_color_scheme": "background-1",
         "slide_duration": 5,
         "icon_size": "recommended",
         "icon_style": "contrast",

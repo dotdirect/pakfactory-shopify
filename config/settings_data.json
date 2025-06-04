@@ -85,7 +85,7 @@
           "colors_text_title": "{{ shop.brand.colors.secondary[0].foreground }}",
           "colors_background_1": "#141b12",
           "colors_background_2": "#141b12",
-          "background_gradient": "linear-gradient(127deg, rgba(27, 54, 18, 1) 11%, rgba(19, 38, 13, 1) 81%)",
+          "background_gradient": "",
           "colors_solid_button_labels": "#ffffff",
           "colors_solid_button_labels_hover": "#011624",
           "colors_solid_button_background": "{{ shop.brand.colors.primary[0].background }}",
