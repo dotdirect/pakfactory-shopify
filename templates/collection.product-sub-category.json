@@ -21,10 +21,10 @@
         "image_ratio_mobile": "adapt",
         "opacity_overlay": 0,
         "icon": "none",
-        "icon_color_scheme": "",
+        "icon_color_scheme": "background-1",
         "icon_size": "normal",
-        "icon_style": "colored",
-        "icon_fill_type": "gradient",
+        "icon_style": "subtle",
+        "icon_fill_type": "solid",
         "box_shadow": false,
         "subheading": "",
         "subheading_style": "subtitle",
@@ -38,8 +38,8 @@
         "button_label": "Browse our {{ collection.metafields.custom.display_name.value }}Styles",
         "button_style": "tertiary",
         "button_link": "",
-        "margin_top": "no-indent",
-        "margin_bottom": "no-indent"
+        "margin_top": "s",
+        "margin_bottom": "s"
       }
     },
     "banner": {
