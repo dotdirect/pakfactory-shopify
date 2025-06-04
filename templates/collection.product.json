@@ -49,33 +49,12 @@
         "collection_cLJyxr": {
           "type": "collection",
           "settings": {
-            "collection": ""
-          }
-        },
-        "collection_jdjWhF": {
-          "type": "collection",
-          "settings": {
-            "collection": ""
-          }
-        },
-        "collection_kirhXd": {
-          "type": "collection",
-          "settings": {
-            "collection": ""
-          }
-        },
-        "collection_nPTyTt": {
-          "type": "collection",
-          "settings": {
-            "collection": ""
+            "collection": "rigid-magnetic-closure-boxes"
           }
         }
       },
       "block_order": [
-        "collection_cLJyxr",
-        "collection_jdjWhF",
-        "collection_kirhXd",
-        "collection_nPTyTt"
+        "collection_cLJyxr"
       ],
       "name": "t:sections.collections-grid.name",
       "settings": {
