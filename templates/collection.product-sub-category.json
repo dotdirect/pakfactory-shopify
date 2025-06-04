@@ -9,8 +9,42 @@
  */
 {
   "sections": {
+    "image_banner_Pp9RzT": {
+      "type": "image-banner",
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "full_width": false,
+        "color_scheme": "scheme-62e6675b-c556-4fd0-8c9e-6abdbe5fcd71",
+        "image": "shopify://shop_images/test-banner.png",
+        "image_mobile": "shopify://shop_images/test-banner-mobile.png",
+        "image_ratio": "21/9",
+        "image_ratio_mobile": "adapt",
+        "opacity_overlay": 0,
+        "icon": "none",
+        "icon_color_scheme": "",
+        "icon_size": "normal",
+        "icon_style": "colored",
+        "icon_fill_type": "gradient",
+        "box_shadow": false,
+        "subheading": "",
+        "subheading_style": "subtitle",
+        "heading": "Custom {{ collection.metafields.custom.display_name.value }}",
+        "heading_size": "h2",
+        "heading_level": "h2",
+        "text_information": "{{ collection.description }}",
+        "text_align": "left",
+        "text_width": "small",
+        "show_view_all": true,
+        "button_label": "Browse our {{ collection.metafields.custom.display_name.value }}Styles",
+        "button_style": "tertiary",
+        "button_link": "",
+        "margin_top": "no-indent",
+        "margin_bottom": "no-indent"
+      }
+    },
     "banner": {
       "type": "main-collection-banner",
+      "disabled": true,
       "settings": {
         "color_scheme": "",
         "image_ratio": "16/9",
@@ -44,6 +78,7 @@
     }
   },
   "order": [
+    "image_banner_Pp9RzT",
     "banner",
     "product-grid"
   ]
