@@ -71,7 +71,7 @@
         "content_alignment": "left",
         "enable_country_selector": true,
         "enable_language_selector": true,
-        "payment_enable": true,
+        "payment_enable": false,
         "show_social": true,
         "enable_copyright_date": true,
         "enable_copyright_shopname": true,
