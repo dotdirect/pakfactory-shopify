@@ -27,7 +27,7 @@
 
   {% assign metafield_object = product.metafields.custom[metafield_key].value %}
 
-  {% comment %} This is to iterate metaobject within a nother set of metaobject {% endcomment %}
+  {% comment %} This is to iterate metaobject within another set of metaobject {% endcomment %}
   {% if metafield_object %}
     {% assign items = metafield_object[metaobject_field].value %}
   {% else %}

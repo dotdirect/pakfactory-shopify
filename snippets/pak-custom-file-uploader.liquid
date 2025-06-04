@@ -1,0 +1,42 @@
+{% comment %}
+  Project description form section for quote customization.
+  Includes:
+  - Short description input (required)
+  - Long description textarea (optional)
+
+  Usage:
+  {% render 'pak-custom-file-uploader',
+  product: product,
+  section: section %}
+{% endcomment %}
+
+<link
+  rel="stylesheet"
+  href="{{ 'pak-custom-file-uploader.css' | asset_url }}"
+  media="print"
+  onload="this.media='all'">
+
+<script src="{{ 'pak-product-file-uploader.js' | asset_url }}" defer></script>
+
+<div class="field custom__field quote-file-upload">
+  <div class="upload-wrapper">
+    <input
+      class="field__input"
+      type="file"
+      id={{id}}
+      name="properties[Reference Image]"
+      accept=".jpg,.jpeg,.png,.pdf"
+      onchange="handleFileChange(this)" />
+
+    <span class="file-placeholder" id="FilePlaceholder-{{ section.id }}">
+      Accepted formats: JPG, PNG, PDF — Max 10MB
+    </span>
+
+    <button
+      type="button"
+      class="upload-button"
+      onclick="document.getElementById('ReferenceFile-{{ section.id }}').click()">
+      Upload File
+    </button>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+{% comment %}
+  Renders capability-related product options from product_grouping metaobject.
+  Accepts:
+  - product: {Object} — Shopify product
+  - section: {Object} — Shopify section
+
+  Usage:
+  {% render 'pak-product-options', product: product, section: section %}
+{% endcomment %}
+
+<link
+  rel="stylesheet"
+  href="{{ 'pak-custom-dropdown.css' | asset_url }}"
+  media="print"
+  onload="this.media='all'">{% assign grouping = product.metafields.custom["product_grouping"].value %}
+
+{% comment %} Materials {% endcomment %}
+{%- assign material_options = grouping.material_option.value -%}
+{% if material_options != blank %}
+  {% render 'pak-custom-dropdown'
+    , product: product
+    , section: section
+    , metafield_key: 'product_grouping'
+    , metaobject_field: 'material_option'
+    , label_text: 'Material'
+    , property_name: 'Materials'
+    , default_option: "Need Consultation" %}{% endif %}
+
+
+{% comment %} Special Finishes Option {% endcomment %}
+{%- assign finishes_options = grouping.special_finishes_option.value -%}
+{% if finishes_options != blank %}
+  {% render 'pak-custom-dropdown'
+    , product: product
+    , section: section
+    , metafield_key: 'product_grouping'
+    , metaobject_field: 'special_finishes_option'
+    , label_text: 'Special Finishes'
+    , property_name: 'Special Features'
+    , default_option: "Need Consultation" %}
+{% endif %}

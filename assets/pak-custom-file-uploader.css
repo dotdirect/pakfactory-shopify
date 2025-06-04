@@ -1,0 +1,34 @@
+.quote-file-upload .upload-wrapper {
+  position: relative;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgb(var(--color-background-input));
+  border: 0.1rem solid rgb(var(--color-border-input));
+  width: 100%;
+  border-radius: 4px;
+}
+
+.quote-file-upload .field__input {
+  position: absolute;
+  /* opacity: 0; */
+  padding: 1.2rem 2.4rem;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.quote-file-upload .file-placeholder {
+  color: #afafaf;
+  flex: 1;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.quote-file-upload .upload-button {
+  background-color: #13260d;
+  color: #fff;
+  border-color: transparent;
+  border-radius: 5px;
+  padding: 5px 10px;
+}

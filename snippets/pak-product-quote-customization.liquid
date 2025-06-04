@@ -1,5 +1,5 @@
 {% comment %}
-  Renders the Preferred Material dropdown for quoting.
+
   Accepts:
   - product: {Object} The product object
   - section: {Object} The section object
@@ -14,11 +14,7 @@
   href="{{ 'pak-product-quote-customization.css' | asset_url }}"
   media="print"
   onload="this.media='all'">
-<link
-  rel="stylesheet"
-  href="{{ 'pak-custom-dropdown.css' | asset_url }}"
-  media="print"
-  onload="this.media='all'">
+
 <link
   rel="stylesheet"
   href="{{ 'pak-custom-dimension.css' | asset_url }}"
@@ -27,7 +23,7 @@
 
 <script src="{{ 'pak-product-quote-customization.js' | asset_url }}" defer></script>
 <script src="{{ 'pak-custom-dowpdown.js' | asset_url }}" defer></script>
-<script src="{{ 'pak-custom-dimenion.js' | asset_url }}" defer></script>
+<script src="{{ 'pak-custom-dimension.js' | asset_url }}" defer></script>
 
 <div class="product-quote-customization" data-section-id="{{ section.id }}">
   <p>
@@ -70,26 +66,11 @@
     </div>
 
     <div class="quote-toggle-content" id="capabilities-section">
-      {% render 'pak-custom-dropdown'
+      {% render 'pak-product-options'
         , product: product
-        , section: section
-        , metafield_key: 'product_grouping'
-        , metaobject_field: 'material_option'
-        , label_text: 'Material'
-        , property_name: 'Materials'
-        , default_option: "Need Consultation" %}
-
-      {% render 'pak-custom-dropdown'
-        , product: product
-        , section: section
-        , metafield_key: 'product_grouping'
-        , metaobject_field: 'special_finishes_option'
-        , label_text: 'Special Finishes'
-        , property_name: 'Special Features'
-        , default_option: "Need Consultation" %}
+        , section: section %}
 
     </div>
-
 
   </div>
 
@@ -99,14 +80,14 @@
     <div class="quote-toggle-header">
       <div class="quote-toggle-header__title">Project Description</div>
     {% comment %} <label class="toggle-switch">
-            <input
-              type="checkbox"
-              class="toggle-input"
-              data-toggle-target="addons-section"
-              checked>
-            <span class="toggle-slider"></span>
-            </label> 
-        {% endcomment %}
+                                                                              <input
+                                                                                type="checkbox"
+                                                                                class="toggle-input"
+                                                                                data-toggle-target="addons-section"
+                                                                                checked>
+                                                                              <span class="toggle-slider"></span>
+                                                                              </label> 
+                                                    {% endcomment %}
     </div>
 
     <div class="quote-toggle-content" id="addons-section">

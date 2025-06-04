@@ -43,24 +43,14 @@
       required></textarea>
   </div>
 
-  <div class="field custom__field quote-file-upload">
-    <div class="upload-wrapper">
-      <input
-        class="field__input"
-        type="file"
-        id="ReferenceFile-{{ section.id }}"
-        name="properties[Reference Image]"
-        accept=".jpg,.jpeg,.png,.pdf" />
-
-      <span class="file-placeholder">Accepted formats: JPG, PNG, PDF — Max 10MB</span>
-
-      <button
-        type="button"
-        class="upload-button"
-        onclick="document.getElementById('ReferenceFile-{{ section.id }}').click()">
-        Upload File
-      </button>
-    </div>
+  <div class="field custom__field">
+    <label class="field__label" for="ProjectDescription-{{ section.id }}">
+      Do you have a reference image or photo of your product? ( Optional )
+    </label>
+    {% render 'pak-custom-file-uploader'
+      , product: product
+      , section: section
+      , id: "ProjectDescription-{{ section.id }}" %}
   </div>
 
 
