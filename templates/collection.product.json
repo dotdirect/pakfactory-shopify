@@ -11,6 +11,7 @@
   "sections": {
     "banner": {
       "type": "main-collection-banner",
+      "disabled": true,
       "settings": {
         "color_scheme": "",
         "image_ratio": "16/9",
@@ -41,6 +42,142 @@
         "columns_mobile": "2",
         "padding_top": "no-indent",
         "padding_bottom": "l"
+      }
+    },
+    "animated_image_collage_7HURGQ": {
+      "type": "animated-image-collage",
+      "blocks": {
+        "column_RxbNhw": {
+          "type": "column",
+          "settings": {
+            "image_width": 420
+          }
+        },
+        "column_EEikeQ": {
+          "type": "column",
+          "settings": {
+            "image_width": 420
+          }
+        },
+        "column_Ytmerh": {
+          "type": "column",
+          "settings": {
+            "image_width": 420
+          }
+        },
+        "column_NmHiVm": {
+          "type": "column",
+          "settings": {
+            "image_width": 420
+          }
+        },
+        "column_mgLc7a": {
+          "type": "column",
+          "settings": {
+            "image_width": 420
+          }
+        },
+        "column_ApWkkm": {
+          "type": "column",
+          "settings": {
+            "image_width": 420
+          }
+        },
+        "column_7mc6rk": {
+          "type": "column",
+          "settings": {
+            "image_width": 420
+          }
+        },
+        "column_VWE76F": {
+          "type": "column",
+          "settings": {
+            "image_width": 420
+          }
+        },
+        "column_DWTPgg": {
+          "type": "column",
+          "settings": {
+            "image_width": 420
+          }
+        },
+        "column_U4xJrz": {
+          "type": "column",
+          "settings": {
+            "image_width": 420
+          }
+        },
+        "column_aJE37d": {
+          "type": "column",
+          "settings": {
+            "image_width": 420
+          }
+        },
+        "column_F3HYXd": {
+          "type": "column",
+          "settings": {
+            "image_width": 420
+          }
+        }
+      },
+      "block_order": [
+        "column_RxbNhw",
+        "column_EEikeQ",
+        "column_Ytmerh",
+        "column_NmHiVm",
+        "column_mgLc7a",
+        "column_ApWkkm",
+        "column_7mc6rk",
+        "column_VWE76F",
+        "column_DWTPgg",
+        "column_U4xJrz",
+        "column_aJE37d",
+        "column_F3HYXd"
+      ],
+      "name": "t:sections.animated-image-collage.name",
+      "settings": {
+        "section_type": "bottom",
+        "color_scheme": "background-1",
+        "header_overlay": false,
+        "header_transparent": false,
+        "column_to_show": 3,
+        "opacity_overlay": 0.3,
+        "full_width": true,
+        "icon": "none",
+        "icon_color_scheme": "",
+        "icon_style": "contrast",
+        "icon_fill_type": "gradient",
+        "icon_size": "recommended",
+        "box_shadow": true,
+        "subheading": "",
+        "subheading_style": "subtitle subtitle--secondary",
+        "subheading_icon": "none",
+        "heading": "Stunning {{ collection.metafields.custom.display_name.value }}",
+        "heading_size": "h1",
+        "heading_level": "h2",
+        "heading_line": "simple",
+        "line_color": "#1566E0",
+        "word_break": false,
+        "heading_animation": "none",
+        "word_break_an": false,
+        "text": "Some description",
+        "enable_subscribe": false,
+        "button_label_subscribe": "Label",
+        "color_scheme_subscribe": "",
+        "enable_box_shadow": true,
+        "button_style_subscribe": "primary",
+        "show_button": true,
+        "button_label": "Label",
+        "button_link": "",
+        "button_style": "primary",
+        "show_button_2": true,
+        "button_label_2": "Label",
+        "button_link_2": "",
+        "button_style_2": "simple",
+        "padding_top": "m",
+        "padding_bottom": "m",
+        "margin_top": "no-indent",
+        "margin_bottom": "no-indent"
       }
     },
     "collections_grid_pwPzHH": {
@@ -88,6 +225,7 @@
   "order": [
     "banner",
     "product-grid",
+    "animated_image_collage_7HURGQ",
     "collections_grid_pwPzHH"
   ]
 }
