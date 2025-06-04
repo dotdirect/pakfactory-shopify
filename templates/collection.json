@@ -24,7 +24,7 @@
       "type": "main-collection-product-grid",
       "settings": {
         "products_per_page": 28,
-        "columns": 3,
+        "columns": 6,
         "image_ratio": "1/1",
         "image_fit": "cover",
         "add_border_radius_when_contain": true,
