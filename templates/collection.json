@@ -36,7 +36,7 @@
         "enable_sorting": true,
         "image_filter_ratio": "1/1",
         "image_filter_fit": "contain",
-        "image_filter_columns": 3,
+        "image_filter_columns": 2,
         "columns_mobile": "2",
         "padding_top": "no-indent",
         "padding_bottom": "l"
