@@ -87,7 +87,7 @@
       ],
       "settings": {
         "h1_logo": true,
-        "header_type": "center-logo",
+        "header_type": "left-logo",
         "full_width": false,
         "logo": "{{ shop.brand.logo }}",
         "logo_width": 170,
