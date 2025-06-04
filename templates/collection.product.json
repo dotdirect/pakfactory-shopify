@@ -44,88 +44,6 @@
         "padding_bottom": "l"
       }
     },
-    "logo_list_CLBibn": {
-      "type": "logo-list",
-      "blocks": {
-        "logo_WCC4i9": {
-          "type": "logo",
-          "settings": {
-            "image_width": 140,
-            "logo_link": ""
-          }
-        },
-        "logo_CrfnAJ": {
-          "type": "logo",
-          "settings": {
-            "image_width": 140,
-            "logo_link": ""
-          }
-        },
-        "logo_e4VM3Q": {
-          "type": "logo",
-          "settings": {
-            "image_width": 140,
-            "logo_link": ""
-          }
-        },
-        "logo_nJNM8G": {
-          "type": "logo",
-          "settings": {
-            "image_width": 140,
-            "logo_link": ""
-          }
-        },
-        "logo_qMbbWP": {
-          "type": "logo",
-          "settings": {
-            "image_width": 140,
-            "logo_link": ""
-          }
-        },
-        "logo_UNcUtf": {
-          "type": "logo",
-          "settings": {
-            "image_width": 140,
-            "logo_link": ""
-          }
-        }
-      },
-      "block_order": [
-        "logo_WCC4i9",
-        "logo_CrfnAJ",
-        "logo_e4VM3Q",
-        "logo_nJNM8G",
-        "logo_qMbbWP",
-        "logo_UNcUtf"
-      ],
-      "name": "t:sections.logo-list.name",
-      "settings": {
-        "layout": "horizontal-carousel",
-        "color_scheme": "",
-        "enable_border": false,
-        "border_full": true,
-        "subheading": "Trusted by over 3,000+ brands,  big and small!",
-        "subheading_style": "subtitle",
-        "subheading_icon": "none",
-        "heading": "",
-        "heading_size": "h3",
-        "heading_level": "h2",
-        "heading_line": "simple",
-        "line_color": "#1566E0",
-        "word_break": false,
-        "heading_animation": "none",
-        "word_break_an": false,
-        "text": "",
-        "horizontal_alignment": "left",
-        "vertical_alignment": "top",
-        "speed_slider_1": 4000,
-        "speed_slider_2": 6000,
-        "padding_top": "m",
-        "padding_bottom": "m",
-        "margin_top": "no-indent",
-        "margin_bottom": "no-indent"
-      }
-    },
     "animated_image_collage_7HURGQ": {
       "type": "animated-image-collage",
       "blocks": {
@@ -262,6 +180,88 @@
         "margin_bottom": "no-indent"
       }
     },
+    "logo_list_CLBibn": {
+      "type": "logo-list",
+      "blocks": {
+        "logo_WCC4i9": {
+          "type": "logo",
+          "settings": {
+            "image_width": 140,
+            "logo_link": ""
+          }
+        },
+        "logo_CrfnAJ": {
+          "type": "logo",
+          "settings": {
+            "image_width": 140,
+            "logo_link": ""
+          }
+        },
+        "logo_e4VM3Q": {
+          "type": "logo",
+          "settings": {
+            "image_width": 140,
+            "logo_link": ""
+          }
+        },
+        "logo_nJNM8G": {
+          "type": "logo",
+          "settings": {
+            "image_width": 140,
+            "logo_link": ""
+          }
+        },
+        "logo_qMbbWP": {
+          "type": "logo",
+          "settings": {
+            "image_width": 140,
+            "logo_link": ""
+          }
+        },
+        "logo_UNcUtf": {
+          "type": "logo",
+          "settings": {
+            "image_width": 140,
+            "logo_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "logo_WCC4i9",
+        "logo_CrfnAJ",
+        "logo_e4VM3Q",
+        "logo_nJNM8G",
+        "logo_qMbbWP",
+        "logo_UNcUtf"
+      ],
+      "name": "t:sections.logo-list.name",
+      "settings": {
+        "layout": "static",
+        "color_scheme": "",
+        "enable_border": false,
+        "border_full": true,
+        "subheading": "Trusted by over 3,000+ brands,  big and small!",
+        "subheading_style": "subtitle",
+        "subheading_icon": "none",
+        "heading": "",
+        "heading_size": "h3",
+        "heading_level": "h2",
+        "heading_line": "simple",
+        "line_color": "#1566E0",
+        "word_break": false,
+        "heading_animation": "none",
+        "word_break_an": false,
+        "text": "",
+        "horizontal_alignment": "left",
+        "vertical_alignment": "top",
+        "speed_slider_1": 4000,
+        "speed_slider_2": 6000,
+        "padding_top": "m",
+        "padding_bottom": "m",
+        "margin_top": "no-indent",
+        "margin_bottom": "no-indent"
+      }
+    },
     "collections_grid_pwPzHH": {
       "type": "collections-grid",
       "blocks": {
@@ -307,8 +307,8 @@
   "order": [
     "banner",
     "product-grid",
-    "logo_list_CLBibn",
     "animated_image_collage_7HURGQ",
+    "logo_list_CLBibn",
     "collections_grid_pwPzHH"
   ]
 }
