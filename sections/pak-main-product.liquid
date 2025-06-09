@@ -892,7 +892,7 @@
                 </product-form>
               </div>
             
-              {%- when 'quote_request' -%}
+              {%- when 'pak_product_form' -%}
                 <div class="product__buy-buttons" {{ block.shopify_attributes }}>
                   <product-form class="product-form pak-product-form" data-hide-errors="false">
                     <div class="product-form__error-message-wrapper" role="alert" hidden>
@@ -928,8 +928,17 @@
                         product: product,
                         section: section
                       %}
-              
-                      <div class="product-form__buttons">
+                      
+                      {% comment %} Future : When we introduce Turnkey Solution {% endcomment %}
+
+                      {% comment %} Quote Customization {% endcomment %}
+                      {% comment %} {% render 'pak-product-turnkey-solution',
+                        product: product,
+                        section: section
+                      %} {% endcomment %}
+
+
+                      {% comment %} <div class="product-form__buttons">
                         <div class="product-form__buttons-row">
                           <button
                             type="submit"
@@ -952,7 +961,42 @@
                             {%- endif -%}
                           </button>
                         </div>
-                      </div>
+                      </div> {% endcomment %}
+
+                     <div class="product-form__buttons">
+                        <div class="product-form__buttons-row">
+                          <button
+                            type="submit"
+                            name="add"
+                            class="product-form__submit button button--primary"
+                            {% unless product.selected_or_first_available_variant.available %}
+                              disabled
+                            {% endunless %}
+                          >
+                            {%- if product.selected_or_first_available_variant.available -%}
+                              <span>
+                         
+                                Add to Quote
+                                {% render 'icon-cart' %}
+                              </span>
+                              <div class="loading-overlay__spinner hidden">
+                                {%- render 'icon-loading' -%}
+                              </div>
+                            {%- else -%}
+                              <span>{{ 'products.product.sold_out' | t }}</span>
+                            {%- endif -%}
+                          </button>
+                        </div>
+                      </div> 
+
+                       {% comment %} Quote Customization {% endcomment %}
+                       {% render 'pak-product-intergration-pacdora',
+                       product: product,
+                       section: section
+                     %}
+                          
+
+             
               
                     {%- endform -%}
                   </product-form>
@@ -1871,23 +1915,29 @@
       ]
     },
     {
-      "type": "quote_request",
-      "name": "Quote Request",
+      "type": "pak_product_form",
+      "name": "Pak Product Form",
       "limit": 1,
       "settings": [
-        {
-          "type": "checkbox",
-          "id": "show_dynamic_checkout",
-          "default": false,
-          "label": "t:sections.main-product.blocks.buy_buttons.settings.show_dynamic_checkout.label",
-          "info": "t:sections.main-product.blocks.buy_buttons.settings.show_dynamic_checkout.info"
-        },
-        {
-          "type": "checkbox",
-          "id": "show_quantity",
-          "default": true,
-          "label": "t:sections.main-product.blocks.buy_buttons.settings.show_quantity.label"
-        },
+        // {
+        //   "type": "checkbox",
+        //   "id": "show_dynamic_checkout",
+        //   "default": false,
+        //   "label": "t:sections.main-product.blocks.buy_buttons.settings.show_dynamic_checkout.label",
+        //   "info": "t:sections.main-product.blocks.buy_buttons.settings.show_dynamic_checkout.info"
+        // },
+        // {
+        //   "type": "checkbox",
+        //   "id": "show_add_to_quote",
+        //   "default": false,
+        //   "label": "Show Add To Quote Button"
+        // },
+        // {
+        //   "type": "checkbox",
+        //   "id": "show_quantity",
+        //   "default": true,
+        //   "label": "t:sections.main-product.blocks.buy_buttons.settings.show_quantity.label"
+        // },
         {
           "type": "checkbox",
           "id": "show_gift_card_recipient",
