@@ -21,15 +21,7 @@
   border-radius: 4px;
 }
 
-.product-quote-customization .custom__field,
-/* need to optmized this */
-.product-quote-customization .custom__field .textAreaContainer {
-  width: 100%;
-  display: flex;
-  gap: 1rem;
-  flex-direction: column;
-}
- {
+.product-quote-customization .custom__field {
   width: 100%;
   display: flex;
   gap: 1rem;
@@ -45,7 +37,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 0 20px;
+  padding: 10px 0;
 }
 
 .quote-toggle-header__title {
@@ -94,9 +86,10 @@
 }
 
 .quote-toggle-content {
+  margin-top: 8px;
   padding-block: 16px;
   display: flex;
-  gap: 16px;
+  gap: 24px;
   flex-direction: column;
 }
 .quote-toggle-content[hidden] {
