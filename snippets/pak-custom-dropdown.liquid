@@ -41,7 +41,7 @@
       class="field__input dropdown-toggle"
       aria-haspopup="listbox"
       aria-expanded="false">
-      <span class="dropdown-label">{{ default_option }}</span>
+      <span class="dropdown-label">{{ default_option | escape }}</span>
       {% render 'icon-caret' %}
     </button>
 
@@ -88,6 +88,7 @@
     <input
       type="hidden"
       name="properties[{{ prop_name }}]"
-      value={{default_option}} />
+      data-name="{{ prop_name }}"
+      value={{ default_option | escape }} />
   </div>
 </div>

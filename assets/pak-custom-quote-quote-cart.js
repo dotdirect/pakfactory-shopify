@@ -1,6 +1,30 @@
 document.addEventListener('DOMContentLoaded', function () {
   const quoteButton = document.getElementById('add-to-quote');
 
+  /**
+   * Scan #capabilities-section for all hidden inputs
+   * with a data-name attribute, and return {name,value}.
+   */
+  function getCustomizationOptions() {
+    const container = document.getElementById('capabilities-section');
+    console.log('[getCustomizationOptions] container:', container);
+    if (!container) {
+      console.warn('[getCustomizationOptions] no #capabilities-section found');
+      return [];
+    }
+
+    // Grab all the hidden inputs you rendered in your dropdown snippet
+    const inputs = container.querySelectorAll(
+      'input[type="hidden"][data-name]'
+    );
+    console.log('[getCustomizationOptions] found inputs:', inputs);
+
+    return Array.from(inputs).map((input) => ({
+      name: input.dataset.name,
+      value: input.value,
+    }));
+  }
+
   async function fetchProduct(productHandle) {
     const shopify_domain = 'pakfactory-v-2.myshopify.com';
     const shopify_token = '623c45a87058bc44bfaba2b61f819581';
@@ -11,11 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
         title
         handle
         images(first: 1) {
-          edges {
-            node {
-              url
-            }
-          }
+          edges { node { url } }
         }
         variants(first: 100) {
           edges {
@@ -23,12 +43,8 @@ document.addEventListener('DOMContentLoaded', function () {
               id
               title
               sku
-              price {
-                amount
-              }
-              image {
-                url
-              }
+              price { amount }
+              image { url }
             }
           }
         }
@@ -49,8 +65,6 @@ document.addEventListener('DOMContentLoaded', function () {
     );
 
     const data = await response.json();
-    // console.log(data);
-    // console.log(data.data.product);
     return data.data.product;
   }
 
@@ -66,15 +80,14 @@ document.addEventListener('DOMContentLoaded', function () {
     const rawId = document
       .querySelector('#hidden-variant-id')
       .getAttribute('hidden-product-variant-id');
-    console.log(rawId);
+
     const productHandle = document
       .querySelector('.hidden-product-handle')
       .getAttribute('hidden-product-handle');
-    // console.log(productHandle);
+
     const productProjectInformation = document.querySelector(
       '.project-detail__description textarea'
     ).value;
-    // console.log(productProjectInformation);
 
     const quantityInputOnProductPage = document.querySelector(
       '#product-item-quantity'
@@ -83,75 +96,75 @@ document.addEventListener('DOMContentLoaded', function () {
       min: quantityInputOnProductPage.min,
     };
 
-    const currentPageUrl = new URL(window.location.href);
-    let listOfQuantities = [];
-    const errorDiv = document.querySelector('.quantity-input-error-div');
+    // Build quantities list
     const dropDownsDiv = document.querySelectorAll(
       '.added-quantity-container div'
     );
-    // console.log(dropDownsDiv.length);
-    if (!dropDownsDiv || 0 === dropDownsDiv.length) {
+    const errorDiv = document.querySelector('.quantity-input-error-div');
+    if (!dropDownsDiv || dropDownsDiv.length === 0) {
       errorDiv.innerHTML = `<span>Please add quantity to add product to quote.</span>`;
       errorDiv.style.display = 'block';
       return;
     }
+
+    const listOfQuantities = [];
     dropDownsDiv.forEach((div) => {
       const value = div.querySelector('label').innerText;
-      if (value != '') {
-        listOfQuantities.push(parseInt(value));
+      if (value !== '') {
+        listOfQuantities.push(parseInt(value, 10));
       }
     });
 
+    // Grab customization options
+    const customization = getCustomizationOptions();
+
+    // Fetch product data
     const rawProduct = await fetchProduct(productHandle);
-    if (rawProduct) {
-      // console.log("Raw Product: ",rawProduct);
-      let product = {
-        ...rawProduct,
-        variants: rawProduct.variants.edges.map((edge) => edge.node),
-        images: rawProduct.images.edges.map((edge) => edge.node), // optional, if you want image URLs directly
-      };
-      product.variants.forEach((variant) => {
-        const fullId = variant.id;
-        const idComponents = fullId.split('/');
-        const len = idComponents.length;
-        const variantId = idComponents[len - 1];
-        variant.id = variantId;
+    if (!rawProduct) return;
+
+    // Normalize edges to arrays
+    let product = {
+      ...rawProduct,
+      variants: rawProduct.variants.edges.map((edge) => edge.node),
+      images: rawProduct.images.edges.map((edge) => edge.node),
+    };
+    product.variants.forEach((variant) => {
+      const parts = variant.id.split('/');
+      variant.id = parts[parts.length - 1];
+    });
+
+    // Load or init quoteCart
+    let quoteCart;
+    try {
+      quoteCart = JSON.parse(localStorage.getItem('quoteCart')) || [];
+    } catch {
+      console.warn('Invalid localStorage data for quoteCart. Resetting it.');
+      quoteCart = [];
+    }
+
+    // Only push if everything’s valid
+    if (
+      product &&
+      rawId &&
+      listOfQuantities.length > 0 &&
+      quantityMinMax.min != null
+    ) {
+      quoteCart.push({
+        product,
+        rawId,
+        currentProductUrl,
+        listOfQuantities,
+        quantityMinMax,
+        productProjectInformation,
+        customization, // ← here’s your new field
       });
-      // console.log('product',product);
 
-      let quoteCart;
-      try {
-        quoteCart = JSON.parse(localStorage.getItem('quoteCart')) || [];
-      } catch (e) {
-        console.warn('Invalid localStorage data for quoteCart. Resetting it.');
-        quoteCart = [];
-      }
+      localStorage.setItem('quoteCart', JSON.stringify(quoteCart));
 
-      // Add new product
-      if (
-        product &&
-        rawId &&
-        currentPageUrl &&
-        listOfQuantities.length != 0 &&
-        quantityMinMax.length != 0
-      ) {
-        quoteCart.push({
-          product,
-          rawId,
-          currentPageUrl,
-          listOfQuantities,
-          quantityMinMax,
-          productProjectInformation,
-        });
-
-        localStorage.setItem('quoteCart', JSON.stringify(quoteCart));
-        // Redirect to quote cart page
-        // window.location.href = "https://pakfactory-v-2.myshopify.com/pages/quote-cart";
-        popupIntermediate.style.display = 'flex';
-        continueBrowsingButton.addEventListener('click', () => {
-          window.location.href = currentProductUrl;
-        });
-      }
+      popupIntermediate.style.display = 'flex';
+      continueBrowsingButton.addEventListener('click', () => {
+        window.location.href = currentProductUrl;
+      });
     }
   });
 });
