@@ -12,10 +12,7 @@
   rel="stylesheet"
   href="{{ 'pak-custom-dropdown.css' | asset_url }}"
   media="print"
-  onload="this.media='all'">
-
-{% comment %} Variables {% endcomment %}
-{% assign grouping = product.metafields.custom["product_grouping"].value %}
+  onload="this.media='all'">{% assign grouping = product.metafields.custom["product_grouping"].value %}
 
 {% comment %} Materials {% endcomment %}
 {%- assign material_options = grouping.material_option.value -%}

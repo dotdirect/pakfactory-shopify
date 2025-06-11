@@ -30,18 +30,28 @@
       required>
   </div>
 
-  <div class="field custom__field">
-    <label class="field__label" for="ProjectDescription-{{ section.id }}">
-      Tell us more about your project
-    </label>
-    <textarea
-      class="field__input"
-      name="properties[Project Description]"
-      id="ProjectDescription-{{ section.id }}"
-      placeholder="Include any additional context, timelines, specs, or needs you’d like us to know about."
-      rows="4"
-      required></textarea>
+  <div class="field custom__field " {{ attributes }}>
+    <div class="textAreaContainer">
+      <label class="field__label" for="ProjectDescription-{{ section.id }}">
+        Tell us more about your project
+      </label>
+      <textarea
+        class="field__input"
+        name="properties[Project Description]"
+        id="ProjectDescription-{{ section.id }}"
+        placeholder="Include any additional context, timelines, specs, or needs you’d like us to know about."
+        rows="4"
+        required></textarea>
+    </div>
   </div>
+
+  {% comment %} <div class="quantity-input-text-container" {{ attributes }}>
+                    <div class="textAreaContainer">
+                      <label for="project-info-textarea">{{ text.project-info-heading }}</label>
+                      <textarea name="project-info-textarea" rows="4"></textarea>
+                    </div>
+          </div> {% endcomment %}
+
 
   <div class="field custom__field">
     <label class="field__label" for="ProjectDescription-{{ section.id }}">

@@ -53,7 +53,25 @@
 {%- style -%}
   {% render 'section-padding' %}
 {%- endstyle -%}
-
+<!-- added by mlveda - start -->
+<!-- popup after product add to quote (for product page) -->
+    <div style="display:none; position:fixed;" class="quote-submit-popup-overlay" id="quote-popup-overlay-intermediate">
+      <div class="popup-details-container">
+        <div class="popup-svg-container">
+          <img src="{{ 'popup-quote-icon.png' | asset_url }}" />
+        </div>
+        <div class="popup-text-contaianer">
+          <h3>Item Added to Your Quote Request</h3>
+          <p>Once sugmitted, a packaging specialist will contact you to provide personalized assistance and pricing.</p>
+        </div>
+        <div class="popup-buttons-container">
+          <a href="https://pakfactory-v-2.myshopify.com/pages/quote-cart" class="popup-quote-submit-button">{{ section.settings.quote_button_text }}</a>
+          <button class="popup-quote-continue">{{ section.settings.continue_button_text }}</button>
+        </div>
+      </div>
+    </div>
+<!-- popup after product add to quote (for product page) -->
+<!-- added by mlveda - end -->
 <section id="MainProduct-{{ section.id }}" data-section="{{ section.id }}" class="section-{{ section.id }}-padding">
   <div class="product {% if product.media.size > 0 %}row{% else %}product--no-media{% endif %} product--{% if section.settings.gallery_type == 'slider_previews' %}slider-previews{% elsif section.settings.gallery_type == 'slider_bullets' %}slider-bullets{% elsif section.settings.gallery_type == 'stacked_gallery' %}stacked-gallery{% elsif section.settings.gallery_type == 'grid_gallery' %}grid-gallery{% endif %} container">
     <div
@@ -390,7 +408,10 @@
                   {{ product.title | escape }}
                 </h1>
               </div>
-
+       <!-- added by mlveda ----- div for product variant id and product handle -->
+                    <div hidden-product-variant-id="{{ product.selected_or_first_available_variant.id }}" id="hidden-variant-id" hidden> </div>
+                    <div hidden-product-handle="{{ product.handle }}" class="hidden-product-handle" hidden> </div>
+                        <!-- added by mlveda ----- div for product variant id and product handle -->
             {%- when 'tags' -%}
               {%- if product.tags != blank -%}
                 <ul class="product-tags product__tags list-unstyled">
@@ -400,6 +421,7 @@
                 </ul>
               {%- endif -%}
 
+                
             {%- when 'price' -%}
               <div class="no-js-hidden price-wrapper" id="price-{{ section.id }}" {{ block.shopify_attributes }}>
                 {%- render 'price',
@@ -455,6 +477,23 @@
                   {{ form | payment_terms }}
                 {%- endform -%}
               </div>
+<!-- added by mlveda (block already added in schema)-->
+
+
+              {% when 'quote-quantity' %}
+                {% if product.metafields.custom.want_to_enable_request_a_quote_ %}
+                  {% render 'pak-custom-quote-custom-quantity-input', product: product, button_text:settings, text:block.settings, attributes:block.shopify_attributes %}
+                {% endif %}
+             {% when 'quote-project-info' %}
+                {% if product.metafields.custom.want_to_enable_request_a_quote_ %}
+                  {% render 'pak-custom-quote-custom-quote-project-info', text:block.settings, attributes:block.shopify_attributes %}
+                {% endif %}
+             {% when 'quote-button' %}
+                {% if product.metafields.custom.want_to_enable_request_a_quote_ %}
+                  {% render 'pak-custom-quote-custom-quote-button', text:block.settings, attributes:block.shopify_attributes %}
+                {% endif %}
+<!-- added by mlveda -->
+
 
             {%- when 'custom_badges' -%}
               {% if product.metafields.custom.badges != blank %}
@@ -892,375 +931,356 @@
                 </product-form>
               </div>
             
-              {%- when 'pak_product_form' -%}
-                <div class="product__buy-buttons" {{ block.shopify_attributes }}>
-                  <product-form class="product-form pak-product-form" data-hide-errors="false">
-                    <div class="product-form__error-message-wrapper" role="alert" hidden>
-                      <svg class="icon icon-error" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="6.5" cy="6.5" r="5.5" stroke="white" stroke-width="2" />
-                        <circle cx="6.5" cy="6.5" r="5.5" fill="#EB001B" stroke="#EB001B" stroke-width="0.7" />
-                        <path d="M5.87 3.53L5.97 7.57H7.03L7.13 3.53H5.87ZM6.5 9.66C6.88 9.66 7.18 9.37 7.18 9.01C7.18 8.64 6.88 8.35 6.5 8.35C6.12 8.35 5.82 8.64 5.82 9.01C5.82 9.37 6.12 9.66 6.5 9.66Z" fill="white" />
-                        <path d="M5.87 3.18H5.52L5.62 7.92H7.37L7.48 3.54L7.49 3.18H5.87ZM6.5 10.01C7.06 10.01 7.53 9.58 7.53 9.01C7.53 8.43 7.06 7.999 6.5 7.999C5.94 7.999 5.47 8.43 5.47 9.01C5.47 9.58 5.94 10.01 6.5 10.01Z" fill="white" stroke="#EB001B" stroke-width="0.7" />
-                      </svg>
-                      <span class="product-form__error-message"></span>
-                    </div>
-              
-                    {%- form 'product',
-                      product,
-                      id: product_form_id,
-                      class: 'form',
-                      novalidate: 'novalidate',
-                      data-type: 'add-to-cart-form'
-                    -%}
-              
-                      <input
-                        type="hidden"
-                        name="id"
-                        value="{{ product.selected_or_first_available_variant.id }}"
-                        {% unless product.selected_or_first_available_variant.available %}
-                          disabled
-                        {% endunless %}
-                      >
-                        
-                      
-                      {% comment %} Quote Customization {% endcomment %}
-                      {% render 'pak-product-quote-customization',
-                        product: product,
-                        section: section
-                      %}
-                      
-                      {% comment %} Future : When we introduce Turnkey Solution {% endcomment %}
+            {%- when 'quote_request' -%}
+              {% if product.metafields.custom.want_to_enable_request_a_quote_ %}
+                {% render 'pak-product-quote-customization',
+                  product: product,
+                  section: section,
+                  button_text:settings, 
+                  text:block.settings, 
+                  attributes:block.shopify_attributes 
+                %}
 
-                      {% comment %} Quote Customization {% endcomment %}
-                      {% comment %} {% render 'pak-product-turnkey-solution',
-                        product: product,
-                        section: section
-                      %} {% endcomment %}
-
-
-                      {% comment %} <div class="product-form__buttons">
-                        <div class="product-form__buttons-row">
-                          <button
-                            type="submit"
-                            name="add"
-                            class="product-form__submit button button--primary"
+                {% render 'pak-custom-quote-custom-quote-button'
+                , text: block.settings
+                , attributes: block.shopify_attributes %}
+                  
+              {% else %}
+                  <div class="product__buy-buttons" {{ block.shopify_attributes }}>
+                      <product-form class="product-form pak-product-form" data-hide-errors="false">
+                        <div class="product-form__error-message-wrapper" role="alert" hidden>
+                          <svg class="icon icon-error" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="6.5" cy="6.5" r="5.5" stroke="white" stroke-width="2" />
+                            <circle cx="6.5" cy="6.5" r="5.5" fill="#EB001B" stroke="#EB001B" stroke-width="0.7" />
+                            <path d="M5.87 3.53L5.97 7.57H7.03L7.13 3.53H5.87ZM6.5 9.66C6.88 9.66 7.18 9.37 7.18 9.01C7.18 8.64 6.88 8.35 6.5 8.35C6.12 8.35 5.82 8.64 5.82 9.01C5.82 9.37 6.12 9.66 6.5 9.66Z" fill="white" />
+                            <path d="M5.87 3.18H5.52L5.62 7.92H7.37L7.48 3.54L7.49 3.18H5.87ZM6.5 10.01C7.06 10.01 7.53 9.58 7.53 9.01C7.53 8.43 7.06 7.999 6.5 7.999C5.94 7.999 5.47 8.43 5.47 9.01C5.47 9.58 5.94 10.01 6.5 10.01Z" fill="white" stroke="#EB001B" stroke-width="0.7" />
+                          </svg>
+                          <span class="product-form__error-message"></span>
+                        </div>
+                  
+                        {%- form 'product',
+                          product,
+                          id: product_form_id,
+                          class: 'form',
+                          novalidate: 'novalidate',
+                          data-type: 'add-to-cart-form'
+                        -%}
+                  
+                          <input
+                            type="hidden"
+                            name="id"
+                            value="{{ product.selected_or_first_available_variant.id }}"
                             {% unless product.selected_or_first_available_variant.available %}
                               disabled
                             {% endunless %}
                           >
-                            {%- if product.selected_or_first_available_variant.available -%}
-                              <span>
-                                {{ 'products.product.add_to_cart' | t }}
-                                {% render 'icon-cart' %}
-                              </span>
-                              <div class="loading-overlay__spinner hidden">
-                                {%- render 'icon-loading' -%}
-                              </div>
-                            {%- else -%}
-                              <span>{{ 'products.product.sold_out' | t }}</span>
-                            {%- endif -%}
-                          </button>
-                        </div>
-                      </div> {% endcomment %}
-
-                     <div class="product-form__buttons">
-                        <div class="product-form__buttons-row">
-                          <button
-                            type="submit"
-                            name="add"
-                            class="product-form__submit button button--primary"
-                            {% unless product.selected_or_first_available_variant.available %}
-                              disabled
-                            {% endunless %}
-                          >
-                            {%- if product.selected_or_first_available_variant.available -%}
-                              <span>
-                         
-                                Add to Quote
-                                {% render 'icon-cart' %}
-                              </span>
-                              <div class="loading-overlay__spinner hidden">
-                                {%- render 'icon-loading' -%}
-                              </div>
-                            {%- else -%}
-                              <span>{{ 'products.product.sold_out' | t }}</span>
-                            {%- endif -%}
-                          </button>
-                        </div>
-                      </div> 
-
-                       {% comment %} Quote Customization {% endcomment %}
-                       {% render 'pak-product-intergration-pacdora',
-                       product: product,
-                       section: section
-                     %}
+                            
                           
+                          {% comment %} Quote Customization {% endcomment %}
+                          {% render 'pak-product-quote-customization',
+                            product: product,
+                            section: section,
+                            button_text:settings, 
+                            text:block.settings, 
+                            attributes:block.shopify_attributes 
+                          %} 
 
-             
               
-                    {%- endform -%}
-                  </product-form>
-                </div>
-              
-               
+                  
+                            {% comment %} {% render 'pak-custom-quote-custom-quantity-input', product: product, button_text:settings, text:block.settings, attributes:block.shopify_attributes %} {% endcomment %}
 
-            {% when 'text_with_icon' %}
-              <div class="product__text-icons" {{ block.shopify_attributes }}>
-                <div class="product__text-icons-wrapper">
-                  <div class="product__text-item h6">
-                    {% if block.settings.icon_1 != 'none' %}
-                      <div class="product__text-icon {% if block.settings.box_shadow %}product__text-icon--shadow{% endif %} product__text-icon--{{- block.settings.icon_style }} product__text-icon--{{- block.settings.icon_fill_type }}">
-                        <i
-                          class="icon icon-pack icon-{{ block.settings.icon_1 }} {% if block.settings.icon_style == 'colored' and block.settings.icon_fill_type == 'gradient' %} text-gradient {% endif %}"
-                        ></i>
-                      </div>
-                    {% endif %}
-                    {{ block.settings.text_1 }}
-                  </div>
-                  <div class="product__text-item h6">
-                    {% if block.settings.icon_2 != 'none' %}
-                      <div class="product__text-icon {% if block.settings.box_shadow %}product__text-icon--shadow{% endif %} product__text-icon--{{- block.settings.icon_style }} product__text-icon--{{- block.settings.icon_fill_type }}">
-                        <i
-                          class="icon icon-pack icon-{{ block.settings.icon_2 }} {% if block.settings.icon_style == 'colored' and block.settings.icon_fill_type == 'gradient' %} text-gradient {% endif %}"
-                        ></i>
-                      </div>
-                    {% endif %}
-                    {{ block.settings.text_2 }}
-                  </div>
-                </div>
-              </div>
-            {%- when 'pickup_availability' -%}
-              {%- assign pick_up_availabilities = product.selected_or_first_available_variant.store_availabilities
-                | where: 'pick_up_enabled', true
-              -%}
-              {%- if pick_up_availabilities.size > 0 -%}
-                <div class="pickup-availability" {{ block.shopify_attributes }}>
-                  {{ 'component-pickup-availability.css' | asset_url | stylesheet_tag }}
-
-                  <pickup-availability
-                    class="product__pickup-availabilities no-js-hidden"
-                    {% if product.selected_or_first_available_variant.available and pick_up_availabilities.size > 0 %}
-                      available
-                    {% endif %}
-                    data-base-url="{{ shop.url }}{{ routes.root_url }}"
-                    data-variant-id="{{ product.selected_or_first_available_variant.id }}"
-                    data-has-only-default-variant="{{ product.has_only_default_variant }}"
-                  >
-                    <template>
-                      <pickup-availability-preview class="pickup-availability-preview">
-                        {% render 'icon-unavailable' %}
-                        <div class="pickup-availability-info">
-                          <p class="caption-large">{{ 'products.product.pickup_availability.unavailable' | t }}</p>
-                          <button class="pickup-availability-button button button--simple">
-                            <span>{{ 'products.product.pickup_availability.refresh' | t }}</span>
-                          </button>
-                        </div>
-                      </pickup-availability-preview>
-                    </template>
-                  </pickup-availability>
-                  <script src="{{ 'pickup-availability.js' | asset_url }}" defer="defer"></script>
-                </div>
-              {%- endif -%}
-
-            {%- when 'custom_liquid' -%}
-              <div class="custom-liquid" {{ block.shopify_attributes }}>
-                {{ block.settings.custom_liquid }}
-              </div>
-
-            {%- when 'share' -%}
-              {%- if block.settings.show_share_facebook
-                or block.settings.show_share_twitter
-                or block.settings.show_share_pinterest
-                or block.settings.show_share_copy
-              -%}
-                <div class="share-buttons" aria-label="list" {{ block.shopify_attributes }}>
-                  <ul class="share-buttons__list list-unstyled">
-                    <li class="share-buttons__item">
-                      <span class="share-buttons__label-name">{{ block.settings.share_label }}</span>
-                    </li>
-                    {%- if block.settings.show_share_facebook -%}
-                      <li class="share-buttons__item">
-                        <a
-                          href="https://www.facebook.com/sharer.php?u={{ shop.url | append: product.url }}"
-                          class="share-buttons__button button facebook-btn focus-inset"
-                          target="_blank"
-                        >
-                          {% render 'icon-facebook' %}
-                        </a>
-                      </li>
-                    {%- endif -%}
-
-                    {%- if block.settings.show_share_twitter -%}
-                      <li class="share-buttons__item">
-                        <a
-                          href="https://twitter.com/share?url={{ shop.url | append: product.url }}&text={{ product.title | escape }}"
-                          class="share-buttons__button button twitter-btn focus-inset"
-                          target="_blank"
-                        >
-                          {% render 'icon-twitter' %}
-                        </a>
-                      </li>
-                    {%- endif -%}
-
-                    {%- if block.settings.show_share_pinterest -%}
-                      <li class="share-buttons__item">
-                        <a
-                          href="https://pinterest.com/pin/create/bookmarklet/?media={{ product.featured_media | image_url: width: 1100, height: 1100 }}&url={{ shop.url | append: product.url }}&description={{ product.title | escape }}"
-                          class="share-buttons__button button pinterest-btn"
-                          target="_blank"
-                        >
-                          {% render 'icon-pinterest' %}
-                        </a>
-                      </li>
-                    {%- endif -%}
-
-                    {%- if block.settings.show_share_copy -%}
-                      <li class="share-buttons__item">
-                        <a
-                          href="{{ shop.url | append: product.url }}"
-                          class="share-buttons__button button copy-btn focus-inset"
-                        >
-                          {% render 'icon-share' %}
-                          <span class="copy-success body-xs">
-                            {{ 'general.share.success_message' | t }}
-                          </span>
-                          <span class="copy-error body-xs">
-                            {{ 'accessibility.error' | t }}
-                          </span>
-                        </a>
-                      </li>
-                    {%- endif -%}
-                  </ul>
-                </div>
-              {%- endif -%}
-
-            {%- when 'popup' -%}
-              <div class="product-popup">
-                <modal-opener
-                  class="no-js-hidden"
-                  data-modal="#PopupModal-{{ block.id }}"
-                  {{ block.shopify_attributes }}
-                >
-                  <button
-                    id="ProductPopup-{{ block.id }}"
-                    class="product-popup__button button button--simple button--arrow focus-inset"
-                    type="button"
-                    aria-haspopup="dialog"
-                  >
-                    <span>{{ block.settings.label }}</span>
-                    {% render 'icon-button-arrow' %}
-                  </button>
-                </modal-opener>
-                <div class="product-popup-modal__content-info no-js">
-                  <h3 class="product-popup-modal__title">
-                    {{ block.settings.heading }}
-                  </h3>
-                  <div class="product-popup-modal__text">
-                    {{ block.settings.text }}
-                  </div>
-                </div>
-                <modal-dialog id="PopupModal-{{ block.id }}" class="product-popup-modal" {{ block.shopify_attributes }}>
-                  <div
-                    role="dialog"
-                    aria-label="{{ block.settings.label }}"
-                    aria-modal="true"
-                    class="product-popup-modal__content"
-                    tabindex="-1"
-                  >
-                    <button
-                      id="ModalClose-{{ block.id }}"
-                      type="button"
-                      class="product-popup-modal__close modal-close-button focus-inset"
-                      aria-label="{{ 'accessibility.close' | t }}"
-                    >
-                      {% render 'icon-close' %}
-                    </button>
-                    <div class="product-popup-modal__content-info">
-                      <h3 class="product-popup-modal__title h4">
-                        {{ block.settings.heading }}
-                      </h3>
-                      <div class="product-popup-modal__text">
-                        {{ block.settings.text }}
-                      </div>
-                      {% if block.settings.image != blank %}
-                        <div class="product-popup-modal__image-wrapper">
-                          {%- liquid
-                            assign sizes = '(min-width: 1200px) calc((100vw - 10rem) / 2), (min-width: 750px) calc((100vw - 10rem) / 2), calc(100vw - 4rem)'
-                            assign widths = '246, 493, 600, 713, 800, 900, 1000'
-                          -%}
-                          {{
-                            block.settings.image
-                            | image_url: width: 1000
-                            | image_tag:
-                              loading: 'lazy',
-                              widths: widths,
-                              sizes: sizes,
-                              class: 'product-popup-modal__image'
-                          }}
-                        </div>
-                      {% endif %}
-                      {%- if block.settings.page.content != blank -%}
-                        {{ block.settings.page.content }}
-                      {%- endif -%}
-                    </div>
-                  </div>
-                </modal-dialog>
-              </div>
-
-            {%- when 'dropdown_information' -%}
-              <div class="about">
-                <div class="about__accordion-item" {{ block.shopify_attributes }}>
-                  <button
-                    class="about__accordion-toggle {% if block.settings.default_open %}active{% endif %} button--unstyled"
-                    area-label="toggle"
-                  >
-                    <span class="h6">{{ block.settings.heading | escape }}</span>
-                    <div class="about__accordion-toggle-icon">
-                      {% render 'icon-button-arrow' %}
-                    </div>
-                  </button>
-                  <div
-                    class="about__accordion-description"
-                    {% if block.settings.default_open %}
-                      style="display: block;"
-                    {% endif %}
-                  >
-                    {% if block.settings.characteristics %}
-                      {%- if product.metafields.characteristics.name.value.size > 0 -%}
-                        {%- for item in product.metafields.characteristics.name.value -%}
-                          <div class="about__row">
-                            <span>{{ item }}</span>
-                            <span>{{ product.metafields.characteristics.description.value[forloop.index0] }}</span>
+                          <div class="product-form__buttons">
+                            <div class="product-form__buttons-row">
+                              <button
+                                type="submit"
+                                name="add"
+                                class="product-form__submit button button--primary"
+                                {% unless product.selected_or_first_available_variant.available %}
+                                  disabled
+                                {% endunless %}
+                              >
+                                {%- if product.selected_or_first_available_variant.available -%}
+                                  <span>
+                                    {{ 'products.product.add_to_cart' | t }}
+                                    {% render 'icon-cart' %}
+                                  </span>
+                                  <div class="loading-overlay__spinner hidden">
+                                    {%- render 'icon-loading' -%}
+                                  </div>
+                                {%- else -%}
+                                  <span>{{ 'products.product.sold_out' | t }}</span>
+                                {%- endif -%}
+                              </button>
+                            </div>
                           </div>
-                        {% endfor %}
-                      {% endif %}
-                    {% else %}
-                      {% if block.settings.description != blank %}
-                        {{ block.settings.description }}
-                      {% endif %}
+                  
+                        {%- endform -%}
+                      </product-form>
+                    </div>
+                      
+                        {% endif %}
 
-                      {%- if block.settings.button_show -%}
-                        <a
-                          {% if block.settings.button_link != blank %}
-                            href="{{ block.settings.button_link }}"
-                          {% endif %}
-                          class="about__button button button--simple button--arrow focus-inset"
-                          {% if block.settings.button_link == blank %}
-                            aria-disabled="true"
-                          {% endif %}
-                        >
-                          <span>{{ block.settings.button_label }}</span>
-                          {% render 'icon-button-arrow' %}
-                        </a>
+                  
+          
+                      
+
+                    {% when 'text_with_icon' %}
+                      <div class="product__text-icons" {{ block.shopify_attributes }}>
+                        <div class="product__text-icons-wrapper">
+                          <div class="product__text-item h6">
+                            {% if block.settings.icon_1 != 'none' %}
+                              <div class="product__text-icon {% if block.settings.box_shadow %}product__text-icon--shadow{% endif %} product__text-icon--{{- block.settings.icon_style }} product__text-icon--{{- block.settings.icon_fill_type }}">
+                                <i
+                                  class="icon icon-pack icon-{{ block.settings.icon_1 }} {% if block.settings.icon_style == 'colored' and block.settings.icon_fill_type == 'gradient' %} text-gradient {% endif %}"
+                                ></i>
+                              </div>
+                            {% endif %}
+                            {{ block.settings.text_1 }}
+                          </div>
+                          <div class="product__text-item h6">
+                            {% if block.settings.icon_2 != 'none' %}
+                              <div class="product__text-icon {% if block.settings.box_shadow %}product__text-icon--shadow{% endif %} product__text-icon--{{- block.settings.icon_style }} product__text-icon--{{- block.settings.icon_fill_type }}">
+                                <i
+                                  class="icon icon-pack icon-{{ block.settings.icon_2 }} {% if block.settings.icon_style == 'colored' and block.settings.icon_fill_type == 'gradient' %} text-gradient {% endif %}"
+                                ></i>
+                              </div>
+                            {% endif %}
+                            {{ block.settings.text_2 }}
+                          </div>
+                        </div>
+                      </div>
+                    {%- when 'pickup_availability' -%}
+                      {%- assign pick_up_availabilities = product.selected_or_first_available_variant.store_availabilities
+                        | where: 'pick_up_enabled', true
+                      -%}
+                      {%- if pick_up_availabilities.size > 0 -%}
+                        <div class="pickup-availability" {{ block.shopify_attributes }}>
+                          {{ 'component-pickup-availability.css' | asset_url | stylesheet_tag }}
+
+                          <pickup-availability
+                            class="product__pickup-availabilities no-js-hidden"
+                            {% if product.selected_or_first_available_variant.available and pick_up_availabilities.size > 0 %}
+                              available
+                            {% endif %}
+                            data-base-url="{{ shop.url }}{{ routes.root_url }}"
+                            data-variant-id="{{ product.selected_or_first_available_variant.id }}"
+                            data-has-only-default-variant="{{ product.has_only_default_variant }}"
+                          >
+                            <template>
+                              <pickup-availability-preview class="pickup-availability-preview">
+                                {% render 'icon-unavailable' %}
+                                <div class="pickup-availability-info">
+                                  <p class="caption-large">{{ 'products.product.pickup_availability.unavailable' | t }}</p>
+                                  <button class="pickup-availability-button button button--simple">
+                                    <span>{{ 'products.product.pickup_availability.refresh' | t }}</span>
+                                  </button>
+                                </div>
+                              </pickup-availability-preview>
+                            </template>
+                          </pickup-availability>
+                          <script src="{{ 'pickup-availability.js' | asset_url }}" defer="defer"></script>
+                        </div>
                       {%- endif -%}
-                    {% endif %}
-                  </div>
-                </div>
-              </div>
-            {%- when '@app' -%}
-              {% render block %}
-          {%- endcase -%}
-        {%- endfor -%}
+
+                    {%- when 'custom_liquid' -%}
+                      <div class="custom-liquid" {{ block.shopify_attributes }}>
+                        {{ block.settings.custom_liquid }}
+                      </div>
+
+                    {%- when 'share' -%}
+                      {%- if block.settings.show_share_facebook
+                        or block.settings.show_share_twitter
+                        or block.settings.show_share_pinterest
+                        or block.settings.show_share_copy
+                      -%}
+                        <div class="share-buttons" aria-label="list" {{ block.shopify_attributes }}>
+                          <ul class="share-buttons__list list-unstyled">
+                            <li class="share-buttons__item">
+                              <span class="share-buttons__label-name">{{ block.settings.share_label }}</span>
+                            </li>
+                            {%- if block.settings.show_share_facebook -%}
+                              <li class="share-buttons__item">
+                                <a
+                                  href="https://www.facebook.com/sharer.php?u={{ shop.url | append: product.url }}"
+                                  class="share-buttons__button button facebook-btn focus-inset"
+                                  target="_blank"
+                                >
+                                  {% render 'icon-facebook' %}
+                                </a>
+                              </li>
+                            {%- endif -%}
+
+                            {%- if block.settings.show_share_twitter -%}
+                              <li class="share-buttons__item">
+                                <a
+                                  href="https://twitter.com/share?url={{ shop.url | append: product.url }}&text={{ product.title | escape }}"
+                                  class="share-buttons__button button twitter-btn focus-inset"
+                                  target="_blank"
+                                >
+                                  {% render 'icon-twitter' %}
+                                </a>
+                              </li>
+                            {%- endif -%}
+
+                            {%- if block.settings.show_share_pinterest -%}
+                              <li class="share-buttons__item">
+                                <a
+                                  href="https://pinterest.com/pin/create/bookmarklet/?media={{ product.featured_media | image_url: width: 1100, height: 1100 }}&url={{ shop.url | append: product.url }}&description={{ product.title | escape }}"
+                                  class="share-buttons__button button pinterest-btn"
+                                  target="_blank"
+                                >
+                                  {% render 'icon-pinterest' %}
+                                </a>
+                              </li>
+                            {%- endif -%}
+
+                            {%- if block.settings.show_share_copy -%}
+                              <li class="share-buttons__item">
+                                <a
+                                  href="{{ shop.url | append: product.url }}"
+                                  class="share-buttons__button button copy-btn focus-inset"
+                                >
+                                  {% render 'icon-share' %}
+                                  <span class="copy-success body-xs">
+                                    {{ 'general.share.success_message' | t }}
+                                  </span>
+                                  <span class="copy-error body-xs">
+                                    {{ 'accessibility.error' | t }}
+                                  </span>
+                                </a>
+                              </li>
+                            {%- endif -%}
+                          </ul>
+                        </div>
+                      {%- endif -%}
+
+                    {%- when 'popup' -%}
+                      <div class="product-popup">
+                        <modal-opener
+                          class="no-js-hidden"
+                          data-modal="#PopupModal-{{ block.id }}"
+                          {{ block.shopify_attributes }}
+                        >
+                          <button
+                            id="ProductPopup-{{ block.id }}"
+                            class="product-popup__button button button--simple button--arrow focus-inset"
+                            type="button"
+                            aria-haspopup="dialog"
+                          >
+                            <span>{{ block.settings.label }}</span>
+                            {% render 'icon-button-arrow' %}
+                          </button>
+                        </modal-opener>
+                        <div class="product-popup-modal__content-info no-js">
+                          <h3 class="product-popup-modal__title">
+                            {{ block.settings.heading }}
+                          </h3>
+                          <div class="product-popup-modal__text">
+                            {{ block.settings.text }}
+                          </div>
+                        </div>
+                        <modal-dialog id="PopupModal-{{ block.id }}" class="product-popup-modal" {{ block.shopify_attributes }}>
+                          <div
+                            role="dialog"
+                            aria-label="{{ block.settings.label }}"
+                            aria-modal="true"
+                            class="product-popup-modal__content"
+                            tabindex="-1"
+                          >
+                            <button
+                              id="ModalClose-{{ block.id }}"
+                              type="button"
+                              class="product-popup-modal__close modal-close-button focus-inset"
+                              aria-label="{{ 'accessibility.close' | t }}"
+                            >
+                              {% render 'icon-close' %}
+                            </button>
+                            <div class="product-popup-modal__content-info">
+                              <h3 class="product-popup-modal__title h4">
+                                {{ block.settings.heading }}
+                              </h3>
+                              <div class="product-popup-modal__text">
+                                {{ block.settings.text }}
+                              </div>
+                              {% if block.settings.image != blank %}
+                                <div class="product-popup-modal__image-wrapper">
+                                  {%- liquid
+                                    assign sizes = '(min-width: 1200px) calc((100vw - 10rem) / 2), (min-width: 750px) calc((100vw - 10rem) / 2), calc(100vw - 4rem)'
+                                    assign widths = '246, 493, 600, 713, 800, 900, 1000'
+                                  -%}
+                                  {{
+                                    block.settings.image
+                                    | image_url: width: 1000
+                                    | image_tag:
+                                      loading: 'lazy',
+                                      widths: widths,
+                                      sizes: sizes,
+                                      class: 'product-popup-modal__image'
+                                  }}
+                                </div>
+                              {% endif %}
+                              {%- if block.settings.page.content != blank -%}
+                                {{ block.settings.page.content }}
+                              {%- endif -%}
+                            </div>
+                          </div>
+                        </modal-dialog>
+                      </div>
+
+                    {%- when 'dropdown_information' -%}
+                      <div class="about">
+                        <div class="about__accordion-item" {{ block.shopify_attributes }}>
+                          <button
+                            class="about__accordion-toggle {% if block.settings.default_open %}active{% endif %} button--unstyled"
+                            area-label="toggle"
+                          >
+                            <span class="h6">{{ block.settings.heading | escape }}</span>
+                            <div class="about__accordion-toggle-icon">
+                              {% render 'icon-button-arrow' %}
+                            </div>
+                          </button>
+                          <div
+                            class="about__accordion-description"
+                            {% if block.settings.default_open %}
+                              style="display: block;"
+                            {% endif %}
+                          >
+                            {% if block.settings.characteristics %}
+                              {%- if product.metafields.characteristics.name.value.size > 0 -%}
+                                {%- for item in product.metafields.characteristics.name.value -%}
+                                  <div class="about__row">
+                                    <span>{{ item }}</span>
+                                    <span>{{ product.metafields.characteristics.description.value[forloop.index0] }}</span>
+                                  </div>
+                                {% endfor %}
+                              {% endif %}
+                            {% else %}
+                              {% if block.settings.description != blank %}
+                                {{ block.settings.description }}
+                              {% endif %}
+
+                              {%- if block.settings.button_show -%}
+                                <a
+                                  {% if block.settings.button_link != blank %}
+                                    href="{{ block.settings.button_link }}"
+                                  {% endif %}
+                                  class="about__button button button--simple button--arrow focus-inset"
+                                  {% if block.settings.button_link == blank %}
+                                    aria-disabled="true"
+                                  {% endif %}
+                                >
+                                  <span>{{ block.settings.button_label }}</span>
+                                  {% render 'icon-button-arrow' %}
+                                </a>
+                              {%- endif -%}
+                            {% endif %}
+                          </div>
+                        </div>
+                      </div>
+                    {%- when '@app' -%}
+                      {% render block %}
+              {%- endcase -%}
+            {%- endfor -%}
       </div>
     </div>
 
@@ -1622,6 +1642,7 @@
   "tag": "section",
   "class": "product-section",
   "settings": [
+    
     {
       "type": "header",
       "content": "t:sections.main-product.settings.header.content",
@@ -1747,6 +1768,23 @@
     },
     {
       "type": "header",
+      "content": "Quote Product Added - Popup",
+      "info": "Please enter Button Text and Links to redirect for popup after product is added to quote"
+    },
+    {
+      "type": "text",
+      "id": "quote_button_text",
+      "label": "View & Submit Quote - Button Text",
+      "default": "View & Submit Quote"
+    },
+    {
+      "type": "text",
+      "id": "continue_button_text",
+      "label": "Continue Shopping - Button Text",
+      "default": "Continue Shopping"
+    },
+    {
+      "type": "header",
       "content": "t:sections.all.section-padding.header.content"
     },
     {
@@ -1785,6 +1823,64 @@
   "blocks": [
     {
       "type": "@app"
+    },
+        {
+      "type": "quote-quantity",
+      "name": "Quote Quantity Input",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "quantity-heading",
+          "default": "Quantity",
+          "label": "Quantity Heading"
+        },
+        {
+          "type": "text",
+          "id": "quantity-button-text",
+          "default": "Add Quantity",
+          "label": "Button Text"
+        },
+        {
+          "type": "text",
+          "id": "quantity-placeholder",
+          "default": "Min",
+          "label": "Quantity Input Placeholder"
+        },
+        {
+          "type": "text",
+          "id": "quantity-tooltip",
+          "default": "Specify the quantity needed",
+          "label": "Quantity Tooltip Text"
+        }
+      ]
+    },
+    {
+      "type": "quote-project-info",
+      "name": "Quote Project Information",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "project-info-heading",
+          "default": "Project Information",
+          "label": "Project Information Heading"
+        }
+      ]
+    },
+
+     {
+      "type": "quote-button",
+      "name": "Quote Button",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "button-text",
+          "default": "Add to Quote",
+          "label": "Button Text"
+        }
+      ]
     },
     {
       "type": "text",
@@ -1915,29 +2011,23 @@
       ]
     },
     {
-      "type": "pak_product_form",
-      "name": "Pak Product Form",
+      "type": "quote_request",
+      "name": "Quote Request",
       "limit": 1,
       "settings": [
-        // {
-        //   "type": "checkbox",
-        //   "id": "show_dynamic_checkout",
-        //   "default": false,
-        //   "label": "t:sections.main-product.blocks.buy_buttons.settings.show_dynamic_checkout.label",
-        //   "info": "t:sections.main-product.blocks.buy_buttons.settings.show_dynamic_checkout.info"
-        // },
-        // {
-        //   "type": "checkbox",
-        //   "id": "show_add_to_quote",
-        //   "default": false,
-        //   "label": "Show Add To Quote Button"
-        // },
-        // {
-        //   "type": "checkbox",
-        //   "id": "show_quantity",
-        //   "default": true,
-        //   "label": "t:sections.main-product.blocks.buy_buttons.settings.show_quantity.label"
-        // },
+        {
+          "type": "checkbox",
+          "id": "show_dynamic_checkout",
+          "default": false,
+          "label": "t:sections.main-product.blocks.buy_buttons.settings.show_dynamic_checkout.label",
+          "info": "t:sections.main-product.blocks.buy_buttons.settings.show_dynamic_checkout.info"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_quantity",
+          "default": true,
+          "label": "t:sections.main-product.blocks.buy_buttons.settings.show_quantity.label"
+        },
         {
           "type": "checkbox",
           "id": "show_gift_card_recipient",

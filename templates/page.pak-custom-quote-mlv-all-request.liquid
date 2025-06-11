@@ -1,0 +1,14 @@
+<script>
+  {% if request.design_mode or customer %}
+    console.log('{{customer}}');
+  {% else %}
+    window.location.href = '{{ routes.account_login_url }}';
+  {% endif %}
+
+</script>
+
+    <script src="{{ 'pak-custom-quote-mlv-all-request.js' | asset_url }}"></script>
+
+{{ 'pak-custom-quote-mlv-all-request.css' | asset_url | stylesheet_tag }}
+
+{% section 'pak-custom-quote-mlv-all-request-render' %}

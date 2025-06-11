@@ -448,9 +448,36 @@ dir="{% render 'direction' %}"
         }, 100);
       });
     </script>
+
+
+    <!-- added by mlveda -->
+
+
+    <!--
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@25.3.1/build/css/intlTelInput.css">
+    -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/css/intlTelInput.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/intlTelInput.min.js"></script>
+
+    <!--
+      <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjidof2M209hlq2oMdM_Lz1fpBrAx2534&libraries=places&v=beta&loading=async"></script>
+    -->
+    <script
+      async
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjidof2M209hlq2oMdM_Lz1fpBrAx2534&loading=async&libraries=places"
+    ></script>
+      <script>
+        let customerEmail;
+        {% if customer %}
+            customerEmail = '{{ customer.email }}';
+        {% endif %}
+      </script>
+    <!-- added by mlveda -->
+
+    
   </head>
 
-  <body class="template-{{ template.name }} template-{{ template | replace: '.', '-' }}">
+  <body class="template-{{ template.name }} template-{{ template | replace: '.', '-' }} {% if template == 'page.pak-custom-quote-mlv-all-request' %} all_request {% endif %}">
     <a class="skip-to-content-link button button--primary visually-hidden" href="#MainContent">
       {{ 'accessibility.skip_to_text' | t }}
     </a>

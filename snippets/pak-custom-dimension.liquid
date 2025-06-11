@@ -17,86 +17,46 @@
 {% endcomment %}
 
 
-{% comment %} Variables {% endcomment %}
-{% assign format_type = product.metafields.custom["product_format_type"].value | downcase %}
-
-
 <div class="quote-customization__dimension" id="{{ id | default: 'dimensions-section' }}">
+  <div class="field custom__field">
+    <label class="field__label" for="Length-{{ section.id }}">Length (in)<sup>*</sup>
+    </label>
+    <input
+      class="field__input"
+      type="number"
+      name="properties[Length (in)]"
+      id="Length-{{ section.id }}"
+      placeholder="Length"
+      min="0"
+      step="0.01"
+      required>
+  </div>
 
-  {% if format_type == 'box-style' %}
-    {% comment %} Box Format  {% endcomment %}
-      {% render 'pak-custom-dimension-input'
-        , dimension: 'Length'
-        , metric: 'in',
-        , section_id: section.id 
-      %}
+  <div class="field custom__field">
+    <label class="field__label" for="Width-{{ section.id }}">Width (in)<sup>*</sup>
+    </label>
+    <input
+      class="field__input"
+      type="number"
+      name="properties[Width (in)]"
+      id="Width-{{ section.id }}"
+      placeholder="Width"
+      min="0"
+      step="0.01"
+      required>
+  </div>
 
-      {% render 'pak-custom-dimension-input'
-      , dimension: 'Width',
-      , metric: 'in'
-      , section_id: section.id %}
-
-      {% render 'pak-custom-dimension-input'
-      , dimension: 'Depth',
-      , metric: 'in'
-      , section_id: section.id %}
-  {% comment %} Circle Format  {% endcomment %}
-  {% elsif format_type == 'cylindrical' %}
-        {% render 'pak-custom-dimension-input'
-        , dimension: 'Diameter'
-        , metric: 'in',
-        , section_id: section.id 
-      %}
-
-      {% render 'pak-custom-dimension-input'
-      , dimension: 'Depth',
-      , metric: 'in'
-      , section_id: section.id %}
-  {% comment %} Mailer Format  {% endcomment %}
-  {% elsif format_type == 'flat mailer' %}
-    {% render 'pak-custom-dimension-input'
-      , dimension: 'Length'
-      , metric: 'in',
-      , section_id: section.id 
-    %}
-
-    {% render 'pak-custom-dimension-input'
-    , dimension: 'Width',
-    , metric: 'in'
-    , section_id: section.id %}
-
-  {% comment %} Expandable Format  {% endcomment %}
-  {% elsif format_type == 'expandable' %}
-    {% render 'pak-custom-dimension-input'
-      , dimension: 'Length'
-      , metric: 'in',
-      , section_id: section.id 
-    %}
-    {% render 'pak-custom-dimension-input'
-    , dimension: 'Gusset',
-    , metric: 'in'
-    , section_id: section.id %}
-
-    {% render 'pak-custom-dimension-input'
-    , dimension: 'Depth',
-    , metric: 'in'
-    , section_id: section.id %}
-
-    {% else %}
-      {% render 'pak-custom-dimension-input'
-        , dimension: 'Length'
-        , metric: 'in',
-        , section_id: section.id 
-      %}
-
-      {% render 'pak-custom-dimension-input'
-      , dimension: 'Width',
-      , metric: 'in'
-      , section_id: section.id %}
-
-      {% render 'pak-custom-dimension-input'
-      , dimension: 'Depth',
-      , metric: 'in'
-      , section_id: section.id %}
-      {% endif %}
+  <div class="field custom__field">
+    <label class="field__label" for="Depth-{{ section.id }}">Depth (in)<sup>*</sup>
+    </label>
+    <input
+      class="field__input"
+      type="number"
+      name="properties[Depth (in)]"
+      id="Depth-{{ section.id }}"
+      placeholder="Depth"
+      min="0"
+      step="0.01"
+      required>
+  </div>
 </div>

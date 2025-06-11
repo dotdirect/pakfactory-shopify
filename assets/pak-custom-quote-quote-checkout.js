@@ -1,0 +1,857 @@
+ document.addEventListener("DOMContentLoaded", () => {
+    const container = document.querySelector('.quote-checkout-products-grid');
+    const quoteCart = JSON.parse(localStorage.getItem('quoteCart')) || [];
+
+    quoteCart.forEach(item => {
+      const product = item.product;
+      console.log("Product: ",product);
+      console.log("Raw id: ",item.rawId);
+      
+      const variant = product.variants.find(v => parseInt(v.id) === parseInt(item.rawId));
+      const imageUrl = variant?.image?.url || product.images[0]?.url || '';
+      const title = product.title;
+      const quantities = item.listOfQuantities.join(', ');
+
+      console.log("Variant: ",variant);
+      // Create the product item container
+      const productItem = document.createElement('div');
+      productItem.classList.add('quote-checkout-product-item');
+
+      // Build inner HTML conditionally
+      let detailsHTML = `
+        <h4 class="product-title-h4">${title}</h4>
+      `;
+      if (variant?.sku) {
+        detailsHTML += `<h4 class="product-sku-h4"><strong>SKU:</strong> ${variant.sku}</h4>`;
+      }
+
+      if (variant?.title && variant.title !== "Default Title") {
+        detailsHTML += `<h4 class="product-variant-h4"><strong>Variant:</strong> ${variant.title}</h4>`;
+      }
+
+      detailsHTML += `<h4 class="product-quantity-h4"><strong>Quantities:</strong> ${quantities}</h4>`;
+
+      // Final full HTML
+      productItem.innerHTML = `
+        <div class="quote-checkout-product-image">
+          <img src="${imageUrl}" width="80" height="80"/>
+        </div>
+        <div class="quote-checkout-product-details">
+          ${detailsHTML}
+        </div>
+      `;
+
+      container.appendChild(productItem);
+    });
+
+      let iti;
+      const phoneInput = document.querySelector("#phone");
+      if (phoneInput) {
+              iti = window.intlTelInput(phoneInput, {
+              initialCountry: "us", // Set default country to USA
+              separateDialCode: true, // Show the dial code separately
+              autoHideDialCode: true,
+              dropdownSearch: true, // Enable search input at the top of the country list
+              utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/utils.js", // For formatting/validation
+              autoPlaceholder:"aggressive",
+              showFlags:true,
+              formatOnDisplay: true,
+            
+              useFlagsSprite:true,
+            // onlyCountries: ["us", "ca"],
+          });
+      }
+
+
+  // Replace this with the actual email of the logged-in customer
+                      console.log('Email of custoemr js: ',customerEmail);
+                      const emailInput = document.getElementById('email');
+                    
+                      if (customerEmail && emailInput) {
+                        emailInput.value = customerEmail;
+                        emailInput.disabled = true;
+                        
+                      }
+
+  const usaStates = {
+      AL: "Alabama", AK: "Alaska", AS: "American Samoa", AZ: "Arizona", AR: "Arkansas", CA: "California",
+      CO: "Colorado", CT: "Connecticut", DE: "Delaware", FM: "Micronesia", FL: "Florida", GA: "Georgia",
+      GU: "Guam", HI: "Hawaii", ID: "Idaho", IL: "Illinois", IN: "Indiana", IA: "Iowa", KS: "Kansas",
+      KY: "Kentucky", LA: "Louisiana", ME: "Maine", MH: "Marshall Islands", MD: "Maryland", MA: "Massachusetts",
+      MI: "Michigan", MN: "Minnesota", MS: "Mississippi", MO: "Missouri", MT: "Montana", NE: "Nebraska",
+      NV: "Nevada", NH: "New Hampshire", NJ: "New Jersey", NM: "New Mexico", NY: "New York", NC: "North Carolina",
+      ND: "North Dakota", MP: "Northern Mariana Islands", OH: "Ohio", OK: "Oklahoma", OR: "Oregon", PW: "Palau",
+      PA: "Pennsylvania", PR: "Puerto Rico", RI: "Rhode Island", SC: "South Carolina", SD: "South Dakota",
+      TN: "Tennessee", TX: "Texas", UT: "Utah", VT: "Vermont", VA: "Virginia", WA: "Washington",
+      DC: "Washington DC", WV: "West Virginia", WI: "Wisconsin", WY: "Wyoming", VI: "U.S. Virgin Islands",
+      AA: "Armed Forces Americas", AE: "Armed Forces Europe", AP: "Armed Forces Pacific"
+    };
+
+    const canadaStates = {
+      AB: "Alberta", BC: "British Columbia", MB: "Manitoba", NB: "New Brunswick",
+      NL: "Newfoundland and Labrador", NT: "Northwest Territories", NS: "Nova Scotia",
+      NU: "Nunavut", ON: "Ontario", PE: "Prince Edward Island", QC: "Quebec",
+      SK: "Saskatchewan", YT: "Yukon"
+    };
+
+    document.getElementById("country-name").addEventListener("change", function () {
+      const selectedCountry = this.value;
+      const stateContainer = document.getElementById("state-container");
+    
+      // Clear current content
+      stateContainer.innerHTML = "";
+    
+      let states = {};
+      if (selectedCountry === "US") {
+        states = usaStates;
+      } else if (selectedCountry === "CA") {
+        states = canadaStates;
+      }
+    
+      if (Object.keys(states).length > 0) {
+        // Create and populate a <select>
+        const select = document.createElement("select");
+        select.id = "state-name";
+        select.name = "state";
+        select.innerHTML = '<option value="" disabled selected>Select State</option>';
+        for (const code in states) {
+          const option = document.createElement("option");
+          option.value = code;
+          option.textContent = states[code];
+          select.appendChild(option);
+        }
+        stateContainer.appendChild(select);
+      } else {
+        // Create a <input type="text">
+        const input = document.createElement("input");
+        input.type = "text";
+        input.id = "state-name";
+        input.name = "state";
+        input.required = true;
+        input.placeholder = "Enter State / Province";
+        stateContainer.appendChild(input);
+      }
+    });
+let autocomplete;
+
+const countrySelect = document.getElementById('country-name');
+const input = document.getElementById('street-name');
+
+// Step 1: Check API permission before loading Google Autocomplete
+fetch("https://www.mlveda.com/ShopifyApps/quotifyTest/enable-google-apis")
+  .then((res) => res.json())
+  .then((json) => {
+    // console.log(json);
+    const isEnabled = json?.data?.enable;
+
+    if (isEnabled) {
+      // Wait for Google Maps API to load
+      const interval = setInterval(() => {
+        if (window.google && google.maps && google.maps.importLibrary) {
+          clearInterval(interval);
+          setupAutocompleteListener();
+          initAutocompleteWithCountry(getSelectedCountryCode());
+        }
+      }, 100);
+    } else {
+      // Autocomplete disabled — optionally clear input or disable it
+      if (input) input.removeAttribute("autocomplete"); // prevent browser autocomplete
+    }
+  })
+  .catch((err) => {
+    console.error("Failed to check autocomplete permission:", err);
+  });
+
+// --- Supporting functions below ---
+
+function getSelectedCountryCode() {
+  return countrySelect.value?.toLowerCase() || '';
+}
+
+function setupAutocompleteListener() {
+  countrySelect.addEventListener('change', () => {
+    initAutocompleteWithCountry(getSelectedCountryCode());
+  });
+}
+
+async function initAutocompleteWithCountry(countryCode) {
+  const { Autocomplete } = await google.maps.importLibrary("places");
+
+  if (!input) return;
+
+  if (autocomplete) {
+    google.maps.event.clearInstanceListeners(autocomplete);
+  }
+
+  autocomplete = new Autocomplete(input, {
+    fields: ["address_components", "geometry"],
+    types: ["address"],
+    strictBounds: true,
+    ...(countryCode && { componentRestrictions: { country: countryCode } })
+  });
+  console.log(countryCode);
+  if(countryCode){
+    autocomplete.setComponentRestrictions({
+      country: [countryCode],
+    });
+    autocomplete.setOptions({ strictBounds: true });
+  }
+  autocomplete.addListener("place_changed", fillInAddress);
+}
+
+function fillInAddress() {
+  input.value = "";
+  const place = autocomplete.getPlace();
+  if (!place || !place.address_components) return;
+
+  const componentForm = {
+    street_number: '',
+    route: '',
+    locality: 'city-name',
+    administrative_area_level_1: 'state-name',
+    country: 'country-name',
+    postal_code: 'zipcode',
+  };
+
+  let fullStreet = '';
+  let selectedStateText = '';
+  let selectedCountryText = '';
+
+  // Clear old values
+  for (const key in componentForm) {
+    const id = componentForm[key];
+    if (id) {
+      const el = document.getElementById(id);
+      if (el && el.tagName === 'INPUT') el.value = '';
+      if (el && el.tagName === 'SELECT') el.selectedIndex = 0;
+    }
+  }
+
+  let streetNumber = '';
+  let routeName = '';
+
+  for (const component of place.address_components) {
+    const types = component.types;
+    const value = component.long_name;
+
+    for (const type of types) {
+      if (type === 'street_number') streetNumber = value;
+      if (type === 'route') routeName = value;
+
+      const id = componentForm[type];
+      if (!id) continue;
+
+      const el = document.getElementById(id);
+      if (!el) continue;
+      if (el.tagName === 'INPUT') el.value = value;
+      if (type === 'country') selectedCountryText = value;
+      if (type === 'administrative_area_level_1') selectedStateText = value;
+    }
+  }
+
+  fullStreet = [streetNumber, routeName].filter(Boolean).join(' ');
+
+  if (fullStreet.trim()) {
+    document.getElementById('street-name').value = fullStreet.trim();
+  }
+
+  const countrySelect = document.getElementById('country-name');
+  let matched = false;
+
+  for (let i = 0; i < countrySelect.options.length; i++) {
+    const opt = countrySelect.options[i];
+    if (
+      opt.text.toLowerCase() === selectedCountryText.toLowerCase() ||
+      opt.value.toLowerCase() === selectedCountryText.toLowerCase()
+    ) {
+      countrySelect.selectedIndex = i;
+      matched = true;
+      break;
+    }
+  }
+
+  if (matched) {
+    countrySelect.dispatchEvent(new Event('change'));
+
+    setTimeout(() => {
+      const stateElement = document.getElementById('state-name');
+      if (!stateElement) return;
+
+      if (stateElement.tagName === 'SELECT') {
+        for (let i = 0; i < stateElement.options.length; i++) {
+          if (
+            stateElement.options[i].text.toLowerCase() === selectedStateText.toLowerCase()
+          ) {
+            stateElement.selectedIndex = i;
+            stateElement.disabled = false;
+            break;
+          }
+        }
+      } else if (stateElement.tagName === 'INPUT') {
+        stateElement.value = selectedStateText;
+      }
+    }, 100);
+  }
+
+  // setTimeout(validateShippingFields, 200);
+}
+// const validateShippingFields = () => {
+//   const zip = zipcode.value.trim();
+//   const countryVal = country.options[country.selectedIndex]?.text || '';
+
+//   const stateElement = document.getElementById('state-name');
+//   let stateVal = '';
+
+//   if (stateElement) {
+//     console.log(stateElement,stateElement.value);
+//     if (stateElement.tagName === 'SELECT') {
+//       stateVal = stateElement.options[stateElement.selectedIndex]?.text || '';
+//     } else if (stateElement.tagName === 'INPUT') {
+//       stateVal = stateElement.value.trim();
+//     }
+//   }
+
+// console.log(zip,countryVal,stateVal);
+//   // First check if the required fields are filled
+//   if (!zip || !country.value || !stateVal) {
+//     showZipError('Please enter zip code, country, and state to check shipping availability.');
+//     shippingValid = false;
+//     updateSubmitState();
+//     return false;
+//   }
+//   // Only proceed with API call for US and Canada
+//   if (countryVal !== 'United States' && countryVal !== 'Canada') {
+//     // Skip API call and clear previous errors (if any)
+//     showZipError('');
+//     shippingValid = true; // consider valid for other countries
+//     updateSubmitState();
+//     return true;
+//   }
+
+//   const url = `/cart/shipping_rates.json?shipping_address%5Bcountry%5D=${encodeURIComponent(countryVal)}&shipping_address%5Bprovince%5D=${encodeURIComponent(stateVal)}&shipping_address%5Bzip%5D=${encodeURIComponent(zip)}`;
+
+//   fetch(url, {
+//     method: 'GET',
+//     headers: {
+//       'X-Requested-With': 'XMLHttpRequest'
+//     }
+//   })
+//     .then(response => response.json())
+//     .then(data => {
+//       if (data.shipping_rates && data.shipping_rates.length >= 0) {
+//         showZipError('');
+//         shippingValid = true;
+//       } else {
+//         showZipError(Object.values(data)[0]);
+//         shippingValid = false;
+//       }
+//       updateSubmitState();
+//     })
+//     .catch(err => {
+//       showZipError('Error checking shipping. Please try again.');
+//       shippingValid = false;
+//       updateSubmitState();
+//     });
+
+//   return true;
+// };
+
+const validateShippingFields = async () => {
+  const zip = zipcode.value.trim();
+  const countryVal = country.options[country.selectedIndex]?.text || '';
+
+  const stateElement = document.getElementById('state-name');
+  let stateVal = '';
+
+  if (stateElement) {
+    if (stateElement.tagName === 'SELECT') {
+      stateVal = stateElement.options[stateElement.selectedIndex]?.text || '';
+      console.log('dropdown: ', stateVal);
+    } else if (stateElement.tagName === 'INPUT') {
+      stateVal = stateElement.value.trim();
+      console.log('input: ', stateVal);
+    }
+  }
+
+  console.log(zip, countryVal, stateVal);
+
+  // First check if the required fields are filled
+  if (!zip || !country.value || !stateVal) {
+    showZipError('Please enter zip code, country, and state to check shipping availability.');
+    return false;
+  }
+
+  console.log('after required check:', zip, countryVal, stateVal);
+
+  // Skip API call for other countries
+  if (countryVal !== 'United States' && countryVal !== 'Canada') {
+    console.log('Country is not US or Canada:', countryVal);
+    showZipError('');
+    return true;
+  }
+
+  console.log('calling API for shipping validation');
+
+  const url = `/cart/shipping_rates.json?shipping_address%5Bcountry%5D=${encodeURIComponent(countryVal)}&shipping_address%5Bprovince%5D=${encodeURIComponent(stateVal)}&shipping_address%5Bzip%5D=${encodeURIComponent(zip)}`;
+
+  try {
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'X-Requested-With': 'XMLHttpRequest'
+      }
+    });
+
+    const data = await response.json();
+
+    if (data.shipping_rates && data.shipping_rates.length >= 0) {
+      showZipError('');
+      return true;
+    } else {
+      showZipError(Object.values(data)[0] || 'Shipping not available for this address.');
+      return false;
+    }
+
+  } catch (err) {
+    console.error('API error during shipping validation:', err);
+    showZipError('Error checking shipping. Please try again.');
+    return false;
+  }
+};
+
+
+  const quoteCheckoutCompletedPopup = document.querySelector('#quote-request-completed-popup');
+  // const thankYouCloseBtn = document.querySelector('#thank-you-popup .close-btn');
+  // const thankYouCloseBtnBig = document.querySelector('.thank-you-close-window-button button');
+  
+
+  
+  const form = document.getElementById('quoteCustomerInfoForm');
+  const submitBtn = document.getElementById('quote-submit-button');
+  const firstName = document.getElementById('first-name');
+  const lastName = document.getElementById('last-name');
+  const email = document.getElementById('email');
+  const company = document.getElementById('company');
+  const phone = document.getElementById('phone');
+  phone.addEventListener("countrychange", () => {
+    validatePhone();
+    // updateSubmitState();
+  });
+  const communication = document.getElementById('communication');
+
+  const zipcode = document.getElementById('zipcode');
+  const country = document.getElementById('country-name');
+  const state = document.getElementById('state-name');
+  // console.log(state);
+  const city = document.getElementById('city-name');
+  
+  const street = document.getElementById('street-name');
+  
+  const remarks = localStorage.getItem("additionalRemarks");
+
+
+  let shippingValid = false;
+
+  const nameRegex = /^[A-Za-z\s'-]+$/;
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  const showError = (fieldId, message = '') => {
+  const errorDiv = document.getElementById(`error-${fieldId}`);
+  if (errorDiv) {
+    errorDiv.textContent = message;
+  } else {
+    console.warn(`Missing error div: error-${fieldId}`);
+  }
+};
+
+const validateRequiredField = (input, fieldId) => {
+  const value = input.value.trim();
+  if (!value) {
+    showError(fieldId, 'This field is required.');
+    return false;
+  }
+  showError(fieldId);
+  return true;
+};
+
+  const validateName = (input, fieldId) => {
+    const value = input.value.trim();
+    if (!value) {
+      showError(fieldId, 'This field is required.');
+      return false;
+    } else if (!nameRegex.test(value)) {
+      showError(fieldId, 'Invalid name. Use alphabets only.');
+      return false;
+    }
+    showError(fieldId);
+    return true;
+  };
+
+  const validateEmail = () => {
+    const value = email.value.trim();
+    if (!value) {
+      showError('email', 'Email is required.');
+      return false;
+    } else if (!emailRegex.test(value)) {
+      showError('email', 'Enter a valid email.');
+      return false;
+    }
+    showError('email');
+    return true;
+  };
+
+  // const validatePhone = () => {
+  // const phoneVal = phone.value.trim();
+  //   if (!phoneVal) {
+  //     showError('phone', 'Phone number is required.');
+  //     return false;
+  //   } else if (!iti.isValidNumber()) {
+  //     showError('phone', 'Enter a valid phone number.');
+  //     return false;
+  //   }
+  //   showError('phone');
+  //   return true;
+  // };
+  const validatePhone = () => {
+  const phoneVal = phone.value.trim();
+
+  // Check if empty
+  if (!phoneVal) {
+    showError('phone', 'Phone number is required.');
+    return false;
+  }
+
+  // Check for invalid characters (optional: allow spaces and +)
+  const validCharsOnly = /^[0-9+\s\-()]+$/.test(phoneVal);
+  if (!validCharsOnly) {
+    showError('phone', 'Phone number contains invalid characters.');
+    return false;
+  }
+
+  // Validate using intl-tel-input
+  if (!iti.isValidNumber()) {
+    showError('phone', 'Enter a valid phone number.');
+    return false;
+  }
+
+  // All good
+  showError('phone');
+  return true;
+};
+
+
+  // const showZipError = (message) => {
+  //   let zipError = document.getElementById('error-zipcode');
+  //   if (!zipError) {
+  //     zipError = document.createElement('div');
+  //     zipError.className = 'error form-row';
+  //     zipError.id = 'error-zipcode';
+  //     state.parentNode.parentNode.parentNode.parentNode.appendChild(zipError);
+  //   }
+  //   zipError.textContent = message || '';
+  // };
+const showZipError = (message) => {
+  const zipError = document.getElementById('error-zipcode');
+
+  if (zipError) {
+    zipError.textContent = message || '';
+  } else {
+    // fallback in case it's missing
+    const stateFormGroup = document.getElementById('state-name')?.closest('.form-group');
+    if (stateFormGroup) {
+      const errorDiv = document.createElement('div');
+      errorDiv.className = 'error form-row';
+      errorDiv.id = 'error-zipcode';
+      errorDiv.textContent = message || '';
+      stateFormGroup.appendChild(errorDiv);
+    }
+  }
+};
+
+  
+
+  // const checkFormValidity = () => {
+  //   const allValid =
+  //     validateName(firstName, 'first-name') &&
+  //     validateName(lastName, 'last-name') &&
+  //     validateEmail() &&
+  //     validateRequiredField(company, 'company') &&
+  //     validatePhone() &&
+  //     validateRequiredField(communication, 'communication') &&
+  //     validateRequiredField(street, 'street-name') &&
+  //     validateRequiredField(city, 'city-name');
+
+  //   return allValid && shippingValid;
+  // };
+
+  // const updateSubmitState = () => {
+  // const cartItems = localStorage.getItem("quoteCart");
+  // const isQuoteCartFilled = cartItems && JSON.parse(cartItems).length > 0;
+
+  // const isFirstNameValid = firstName.value.trim() && nameRegex.test(firstName.value.trim());
+  // const isLastNameValid = lastName.value.trim() && nameRegex.test(lastName.value.trim());
+  // const isEmailValid = email.value.trim() && emailRegex.test(email.value.trim());
+  // const isPhoneValid = phone.value.trim() && iti.isValidNumber();
+  // const isCompanyValid = company.value.trim();
+  // const isCommunicationValid = communication.value;
+  // const isStreetValid = street.value.trim();
+  // const isCityValid = city.value.trim();
+
+  //   submitBtn.disabled = !(
+  //     isFirstNameValid &&
+  //     isLastNameValid &&
+  //     isEmailValid &&
+  //     isPhoneValid &&
+  //     isCompanyValid &&
+  //     isCommunicationValid &&
+  //     isStreetValid &&
+  //     isCityValid &&
+  //     shippingValid &&
+  //     isQuoteCartFilled
+  //   );
+  // };
+
+
+
+  // Input & change event listeners
+  // firstName.addEventListener('input', () => { validateName(firstName, 'first-name'); updateSubmitState(); });
+  // lastName.addEventListener('input', () => { validateName(lastName, 'last-name'); updateSubmitState(); });
+  // email.addEventListener('input', () => { validateEmail(); updateSubmitState(); });
+  // company.addEventListener('input', () => { validateRequiredField(company, 'company'); updateSubmitState(); });
+  // phone.addEventListener('input', () => { validatePhone(); updateSubmitState(); });
+  
+  // communication.addEventListener('change', () => { validateRequiredField(communication, 'communication'); updateSubmitState(); });
+
+  // street.addEventListener('input', () => { validateRequiredField(street, 'street-name'); updateSubmitState(); });
+  // city.addEventListener('input', () => { validateRequiredField(city, 'city-name'); updateSubmitState(); });
+  
+  // zipcode.addEventListener('input', validateShippingFields);
+  // country.addEventListener('change', validateShippingFields);
+  // console.log(state);
+
+  // if (state) {
+  //     console.log(state, state.value);
+  //     if (state.tagName === 'SELECT') {
+  //         state.addEventListener('change', validateShippingFields);
+  //     } else if (state.tagName === 'INPUT') {
+  //         state.addEventListener('input', validateShippingFields);
+  //     }
+  //   }
+  // state.addEventListener('change', validateShippingFields);
+
+
+  // Disable button on load
+  // submitBtn.disabled = true;
+
+// const detectAutofill = (fields) => {
+//   const prevValues = new Map();
+
+//   fields.forEach((field) => {
+//     prevValues.set(field, field.value);
+
+//     // On focus, check for autofill after short delay
+//     field.addEventListener('focus', () => {
+//       setTimeout(() => {
+//         let changed = false;
+
+//         fields.forEach((fld) => {
+//           if (fld.value !== prevValues.get(fld)) {
+//             changed = true;
+//             prevValues.set(fld, fld.value);
+//           }
+//         });
+
+//         if (changed) {
+//           // Run all validations
+//           console.log('hello',changed);
+//           validateName(firstName, 'first-name');
+//           validateName(lastName, 'last-name');
+//           validateEmail();
+//           validatePhone();
+//           validateRequiredField(company, 'company');
+//           validateRequiredField(communication, 'communication');
+//           validateRequiredField(street, 'street-name');
+//           validateRequiredField(city, 'city-name');
+//           console.log('hello',changed);
+//           validateShippingFields();
+//           console.log('hello',changed);
+//           updateSubmitState();
+//         }
+//       }, 300); // Wait a bit to allow autofill to complete
+//     });
+//   });
+// };
+
+// detectAutofill([
+//   firstName,
+//   lastName,
+//   email,
+//   phone,
+//   company,
+//   communication,
+//   street,
+//   city,
+//   zipcode,
+//   country,
+//   state
+// ]);
+
+  async function handleSubmit(e) {
+  
+  e.preventDefault(); // Prevent default form submission
+  let isValid = true;
+
+  // Run all validations
+  if (!validateName(firstName, 'first-name')) isValid = false;
+    console.log('outside the !isValid',isValid);
+    
+  if (!validateName(lastName, 'last-name')) isValid = false;
+    console.log('firstname !isValid',isValid);
+  
+    if (!validateEmail()) isValid = false;
+    console.log('lastname !isValid',isValid);
+  
+    if (!validatePhone()) isValid = false;
+    console.log('phone !isValid',isValid);
+  
+    if (!validateRequiredField(company, 'company')) isValid = false;
+    console.log('company !isValid',isValid);
+  
+    if (!validateRequiredField(communication, 'communication')) isValid = false;
+    console.log('communication !isValid',isValid);
+  
+    if (!validateRequiredField(street, 'street-name')) isValid = false;
+    console.log('streetname !isValid',isValid);
+  
+    if (!validateRequiredField(city, 'city-name')) isValid = false;
+    console.log('cityname !isValid',isValid);
+  
+    if (!(await validateShippingFields())) isValid = false;
+    console.log('shipping !isValid',isValid);
+
+
+  if (!isValid) {
+    console.log('inside the !isValid',isValid);
+    return; // Stop if validation fails
+  }
+  const checkoutLoader = document.getElementById('quote-checkout-loader');
+  checkoutLoader.classList.remove("hidden");
+  // const stateName = document.getElementById("state-name");
+  // const selectedStateName = stateName.options[stateName.selectedIndex].text;
+    const stateNameElement = document.getElementById("state-name");
+let selectedStateName = "";
+
+if (stateNameElement.tagName.toLowerCase() === "select") {
+  selectedStateName = stateNameElement.options[stateNameElement.selectedIndex].text;
+} else if (stateNameElement.tagName.toLowerCase() === "input") {
+  selectedStateName = stateNameElement.value.trim();
+}
+
+
+    // console.log(selectedStateName);
+  // Construct formData
+  const formData = {
+    contactInfo: {
+      firstName: firstName.value.trim(),
+      lastName: lastName.value.trim(),
+      email: email.value.trim(),
+      company: company.value.trim(),
+      phone: phone.value.trim(),
+      communication: communication.value,
+      remarks: remarks
+    },
+    shippingInfo: {
+      city: city.value.trim(),
+      street: street.value.trim(),
+      zipcode: zipcode.value.trim(),
+      country: country.value,
+      state: selectedStateName,
+    }
+  };
+  // console.log(formData);
+  const cartData = JSON.parse(localStorage.getItem('quoteCart'));
+  const variants = [];
+  // console.log(formData);
+
+  cartData.forEach(item => {
+    const variantId = item.rawId;
+    const variant = item.product.variants.find(v => v.id === variantId);
+
+    if (variant && Array.isArray(item.listOfQuantities)) {
+      item.listOfQuantities.forEach(qty => {
+        variants.push({
+          id: variant.id,
+          sku: variant.sku,
+          productName: item.product.title,
+          quantity: parseInt(qty),
+          name: variant.title === 'Default Title' ? item.product.title : variant.title,
+          projectInformation: item.productProjectInformation,
+          imageUrl: variant?.image?.url || item.product.images[0]?.url || '',
+        });
+      });
+    }
+  });
+
+  const payload = {
+    variants: variants,
+    customer: {
+      firstName: formData.contactInfo.firstName,
+      lastName: formData.contactInfo.lastName,
+      email: formData.contactInfo.email,
+      company: formData.contactInfo.company,
+      phone: formData.contactInfo.phone,
+      communication: formData.contactInfo.communication,
+      remarks: formData.contactInfo.remarks,
+      shippingAddress: {
+        street: formData.shippingInfo.street,
+        city: formData.shippingInfo.city,
+        zipCode: formData.shippingInfo.zipcode,
+        country: formData.shippingInfo.country,
+        state: formData.shippingInfo.state,
+      }
+    },
+    status: "pending"
+  };
+  console.log(payload);
+  try {
+    const response = await fetch('https://www.mlveda.com/ShopifyApps/quotifyTest/quotes', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    });
+
+    if (!response.ok) throw new Error(`API error: ${response.status}`);
+
+    const result = await response.json();
+    // console.log("Data submitted successfully:", result);
+
+    localStorage.removeItem('quoteCart');
+    localStorage.removeItem('additionalRemarks');
+    checkoutLoader.classList.add("hidden");
+    quoteCheckoutCompletedPopup.style.display = 'flex';
+    // window.location.href = "https://pakfactory-v-2.myshopify.com/pages/quote-cart";
+
+
+  } catch (error) {
+    console.error("Submission failed:", error);
+    alert("An error occurred while submitting. Please try again.");
+  }
+}
+
+
+  // const phoneInput = document.querySelector("#phone");
+  //     const iti = window.intlTelInput(phoneInput, {
+  //           initialCountry: "us",
+  //           separateDialCode: true,
+  //           autoHideDialCode: true,
+  //           formatOnDisplay: true,
+  //           utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/utils.js"
+  //         });
+
+
+    // Final submit validation
+ form.addEventListener('submit', handleSubmit);
+
+  });

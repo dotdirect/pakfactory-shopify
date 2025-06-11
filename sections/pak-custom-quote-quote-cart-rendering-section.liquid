@@ -1,0 +1,173 @@
+
+
+{% comment %} popup for the delete item {% endcomment %}
+    <div style="display:none; position:fixed;" class="quote-item-delete-popup-overlay" id="quote-item-delete-overlay-intermediate">
+      <div class="popup-item-delete-details-container">
+        <div class="popup-item-delete-svg-container">
+          <img src="{{ 'popup-quote-icon.png' | asset_url }}" />
+        </div>
+        <div class="popup-item-delete-text-contaianer">
+          <h3>Are you sure you want to remove this quote request?</h3>
+        </div>
+        <div class="popup-item-delete-buttons-container">
+          <button class="popup-item-delete-quote-cancel">Cancel</button>
+          <button class="popup-item-delete-quote">Delete</button>
+        </div>
+      </div>
+    </div>
+
+{% comment %} popup for the delete item {% endcomment %}
+
+
+<!-- quote cart page -->
+<div class="container" style="position:relative;">
+  <div id="quote-cart-loader" class="loading-overlay__spinner hidden">
+      {%- render 'icon-loading' -%}
+    </div>
+  <div class="quote-headers">
+    <h2>{{ section.settings.quote_cart_heading }}</h2>
+    <!-- <a href="https://pakfactory-v-2.myshopify.com/collections/all">Continue Shopping</a> -->
+  </div>
+  <div class="quote-cart-container">
+    <div class="quote-cart">
+      <!-- <div class="quote-card-heading"><p>Product</p></div> -->
+      <div class="quote-cart-grid">
+          
+        
+        <div class="quote-cart-item" data-product-index="0">
+            <div class="quote-cart-item-product-image-text-buttons">
+              <div class="quote-cart-item-product-image-text">
+                <img
+                  src="https://cdn.shopify.com/s/files/1/0924/3099/1671/files/c001_tab_lock_roll_end_corrugated_box_02.jpg?v=1739644317"
+                  width="70"
+                  height="70"
+                >
+                <div class="quote-cart-item-product-text">
+                  <h3>
+                    <a href="https://pakfactory-v-2.myshopify.com/products/tab-lock-roll-end-corrugated-box"
+                      >Tab Lock Roll End Corrugated Box</a
+                    >
+                  </h3>
+                  <p>SKU: F013</p>
+                </div>
+              </div>
+              <div class="quote-cart-item-product-buttons-group">
+                <button class="delete-btn">Delete</button>
+                <button class="edit-btn">Edit</button>
+                <button class="save-changes-btn" style="display:none;">Save changes</button>
+                <button class="cancel-changes-btn" style="display:none;">Cancel changes</button>
+              </div>
+              <div class="cart-item-error-div" style="display:none;"></div>
+            </div>
+            <div class="quote-cart-item-product-details-static"> 
+              <div>                
+                <div class="product-quantity-variant-details-container">
+                  <div>
+                    <div class="quantity-label">
+                      <label>Quantity</label>
+                    </div>
+                    <div class="each-quantity-labels-container">
+                      <label>100</label>
+                    </div>
+                  </div>
+     
+                  <div>
+                    <div class="variant-label">
+                      <label>Variants</label>
+                    </div>
+                    <div class="each-variant-labels-container">
+                      <label>Gray</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="quote-cart-item-product-project-info">
+                <label class="quote-project-info-label">Project Description</label>
+                  <p> sdff </p>
+              </div>
+            </div>
+
+
+
+          
+          <!-- editing block -->
+          <div class="product-details-edit-container" style="display:none;">
+            <div>
+              <div>
+                <p class="variant-options-label">Variant/Options values:</p>
+                <div class="variant-options-container">
+                  <div data-variant-id="50467933028663" class="active-variant">Gray</div>
+                  <div data-variant-id="50467933061431">Yellow</div>
+                </div>
+              </div>
+                 <div class="cart-quantity-input-text-container">
+                  <div class="cart-quantity-input-heading">
+                    <h5>Quantity</h5>
+                  </div>
+                  <div>
+                    <div class="cart-quantity-input-items-container">
+                      <input type="number" id="cart-product-item-quantity" min-val="15" placeholder="Quantity">
+                      <button id="cart-add-new-quantity">Add Quantity</button>
+                    </div>
+                    <div class="cart-added-quantity-container">
+                      <div><label>200</label><button>x</button></div>
+                      <div><label>4000</label><button>x</button></div>
+                      <div><label>500</label><button>x</button></div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <div>
+              <div class="quote-cart-item-product-project-info">
+                <label class="quote-project-info-label">Project Information</label
+                ><textarea name="project-info-textarea"></textarea>
+              </div>
+            </div>
+          </div>
+<!-- editing block -->
+            
+          </div>
+      </div> 
+
+      
+      <div class="quote-additional-remarks-div">
+        <label>{{ section.settings.additional_remarks }}</label>
+        <textarea class="quote-adddtional-remarks-textarea" id="quote-additional-remarks" onchange="changeAdditionalRemarks()"></textarea>
+        <div class="quote-footer">
+          <a href="https://pakfactory-v-2.myshopify.com/pages/quote-checkout" class="button button--secondary quote-customer-information">{{ section.settings.quote_checkout_button_text }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="quote-footer">
+    <a href="https://pakfactory-v-2.myshopify.com/pages/quote-checkout" class="button button--secondary quote-customer-information">Quote Checkout</a>
+  </div> -->
+</div>
+
+
+
+{% schema %}
+{
+  "name": "Quote Cart Render",
+  "settings": [
+    {
+      "type": "text",
+      "id": "quote_cart_heading",
+      "label": "Quote Cart Heading",
+      "default": "Quote Cart"
+    },
+    {
+      "type": "text",
+      "id": "additional_remarks",
+      "label": "Additional Remarks Text",
+      "default": "Additional Remarks"
+    },
+    {
+      "type": "text",
+      "id": "quote_checkout_button_text",
+      "label": "Quote Checkout Button Text",
+      "default": "Proceed to Quote Checkout"
+    }
+  ]
+}
+{% endschema %}

@@ -30,6 +30,13 @@
     Fill out as much information as you can below — this helps our experts prepare your quote faster and reduces the need for follow-ups.
   </p>
 
+  {% render 'pak-custom-quote-custom-quantity-input'
+    , product: product
+    , button_text: settings
+    , text: block.settings
+    , attributes: block.shopify_attributes %}
+
+
   <!-- Dimensions -->
   <div class="quote-toggle-group">
     <div class="quote-toggle-header">
@@ -80,21 +87,26 @@
     <div class="quote-toggle-header">
       <div class="quote-toggle-header__title">Project Description</div>
     {% comment %} <label class="toggle-switch">
-                                <input
-                                  type="checkbox"
-                                  class="toggle-input"
-                                  data-toggle-target="addons-section"
-                                  checked>
-                                <span class="toggle-slider"></span>
-                                </label> 
-                {% endcomment %}
+                                          <input
+                                            type="checkbox"
+                                            class="toggle-input"
+                                            data-toggle-target="addons-section"
+                                            checked>
+                                          <span class="toggle-slider"></span>
+                                          </label> 
+                              {% endcomment %}
     </div>
 
     <div class="quote-toggle-content" id="addons-section">
       {% render 'pak-custom-project-description'
         , product: product
         , section: section
-      %}
+        , metafield_key: 'custom.product_option_'
+        , label_text: 'Add Ons'
+        , property_name: 'Add On'
+        , default_option: "Let's discuss" %}
     </div>
+
+
   </div>
 </div>
