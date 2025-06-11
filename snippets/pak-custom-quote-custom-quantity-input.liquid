@@ -1,7 +1,10 @@
 <script src="{{ 'pak-custom-quote-quote-cart.js' | asset_url }}" defer></script>
-{{ 'pak-custom-quote-custom-quantity-input-editing.js' | asset_url | script_tag }}
-
-{{ 'pak-custom-quote-custom-inputs.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'pak-custom-quote-custom-quantity-input-editing.js' | asset_url }}" defer></script>
+<link
+  rel="stylesheet"
+  href="{{ 'pak-custom-quote-custom-inputs.css' | asset_url }}"
+  media="print"
+  onload="this.media='all'">
 
 
 <div style="position:relative;" {{ attributes }}>
@@ -9,30 +12,17 @@
     {%- render 'icon-loading' -%}
   </div>
   <div class="quantity-input-text-container">
-    <div class="quantity-input-heading">
-      <h5>{{ text.quantity-heading }}*</h5>
-      <div style="position:relative;">
-        <div class="quantity-input-heading-question-mark">?</div>
-        <div class="custom-quantity-tooltip no-display-tooltip">{{ text.quantity-tooltip }}</div>
-      </div>
-    <!-- <p>Quantity must be rounded to the nearest hundred or thousand.</p> -->
-    </div>
+
     <div>
       <div class="quantity-input-items-container">
         <input
           type="number"
           id="product-item-quantity"
-          placeholder="{{ text.quantity-placeholder }} ">
-        <button id="add-new-quantity">{{ text.quantity-button-text }}</button>
+          placeholder="Min {{ text.quantity-placeholder }} ">
+        <button id="add-new-quantity">Add Quantity</button>
       </div>
       <div class="quantity-input-error-div" style="display:none;"></div>
-      <div class="added-quantity-container">
-      <!-- <div><label>200</label><button>x</button></div> -->
-      <!-- <div><label>4000</label><button>x</button></div> -->
-      <!-- <div><label>500</label><button>x</button></div> -->
-
-      </div>
-
+      <div class="added-quantity-container"></div>
     </div>
   </div>
 </div>

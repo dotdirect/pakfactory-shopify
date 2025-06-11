@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function () {
       .getAttribute('hidden-product-handle');
     // console.log(productHandle);
     const productProjectInformation = document.querySelector(
-      '.textAreaContainer textarea'
+      '.project-detail__description textarea'
     ).value;
     // console.log(productProjectInformation);
 
