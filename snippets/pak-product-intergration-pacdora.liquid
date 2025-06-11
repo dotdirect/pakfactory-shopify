@@ -1,0 +1,31 @@
+{% comment %}
+  Pacdora button intergration for custom design
+  Includes:
+  - Short description input (required)
+  - Long description textarea (optional)
+
+  Usage:
+  {% render 'pak-product-pacdora-buttons',
+  product: product,
+  section: section %}
+{% endcomment %}
+
+<link
+  rel="stylesheet"
+  href="{{ 'pak-product-intergration-pacdora.css' | asset_url }}"
+  media="all">
+
+<div class="intergration__pacdora" data-section-id="{{ section.id }}">
+  <div class="intergration__pacdora-description">
+    <strong>Have a design in mind?</strong>
+    Use our 3D platform to customize packaging or download the template file
+  </div>
+
+  <div class="intergration__pacdora-buttons">
+    <button class="button button--primary intergration__pacdora-buttons-design-button  ">
+      <div>Design Online</div>
+    </button>
+    <button class="button button--primary intergration__pacdora-buttons-download-button">Download Template
+    </button>
+  </div>
+</div>
