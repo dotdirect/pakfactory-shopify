@@ -2,6 +2,7 @@
     const container = document.querySelector('.quote-checkout-products-grid');
     const quoteCart = JSON.parse(localStorage.getItem('quoteCart')) || [];
 
+
     quoteCart.forEach(item => {
       const product = item.product;
       console.log("Product: ",product);
@@ -11,6 +12,7 @@
       const imageUrl = variant?.image?.url || product.images[0]?.url || '';
       const title = product.title;
       const quantities = item.listOfQuantities.join(', ');
+      const customization = item?.customization || [];
 
       console.log("Variant: ",variant);
       // Create the product item container
@@ -30,6 +32,10 @@
       }
 
       detailsHTML += `<h4 class="product-quantity-h4"><strong>Quantities:</strong> ${quantities}</h4>`;
+
+      // if (item?.customization && item.customization.length > 0) {
+      //   detailsHTML += `<h4 class="product-variant-h4"><strong>Product Options:</strong> ${customization[0].name}</h4>`;
+      // }
 
       // Final full HTML
       productItem.innerHTML = `
@@ -772,11 +778,11 @@ if (stateNameElement.tagName.toLowerCase() === "select") {
   const cartData = JSON.parse(localStorage.getItem('quoteCart'));
   const variants = [];
   // console.log(formData);
-
+  console.log("Cart Data: ", cartData);
   cartData.forEach(item => {
     const variantId = item.rawId;
     const variant = item.product.variants.find(v => v.id === variantId);
-
+  
     if (variant && Array.isArray(item.listOfQuantities)) {
       item.listOfQuantities.forEach(qty => {
         variants.push({
@@ -787,10 +793,13 @@ if (stateNameElement.tagName.toLowerCase() === "select") {
           name: variant.title === 'Default Title' ? item.product.title : variant.title,
           projectInformation: item.productProjectInformation,
           imageUrl: variant?.image?.url || item.product.images[0]?.url || '',
+          customization: item.customization || [],
         });
       });
     }
   });
+
+  
 
   const payload = {
     variants: variants,
