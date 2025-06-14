@@ -10,6 +10,7 @@
 {
   "current": {
     "color_scheme": "light",
+    "dark_mode_toggle": false,
     "type_header_font": "inter_n6",
     "type_header_letter_spacing": -0.5,
     "type_header_line_height": 1.2,
@@ -36,7 +37,7 @@
     "social_instagram_link": "https://www.instagram.com/pakfactory/",
     "social_linkedin_link": "https://www.linkedin.com/company/pakfactory/",
     "social_youtube_link": "",
-    "quickview_show": false,
+    "quickview_show": true,
     "cart_color_scheme": "background-1",
     "show_shipping": true,
     "enable_vendor_link": false,
