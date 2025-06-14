@@ -23,6 +23,9 @@
 
 <div class="quote-customization__dimension" id="{{ id | default: 'dimensions-section' }}">
 
+  {% comment %} Set mesusument max to base product line - post launch {% endcomment %}
+  {% comment %} Tin - turnkey solution - post launch  {% endcomment %}
+
   {% if format_type == 'box-style' %}
     {% comment %} Box Format  {% endcomment %}
       {% render 'pak-custom-dimension-input'

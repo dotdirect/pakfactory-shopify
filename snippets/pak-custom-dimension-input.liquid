@@ -15,7 +15,9 @@
   <input
     class="field__input"
     type="number"
-    name="properties[{{ dimension }} (in)]"
+    name="properties[{{ dimension }} ({{ metric }})]"
+    data-dimension="{{ dimension }}"
+    data-metric="{{ metric }}"
     id="{{ dimension }}-{{ id_suffix }}"
     placeholder="{{ dimension }}"
     min="0"

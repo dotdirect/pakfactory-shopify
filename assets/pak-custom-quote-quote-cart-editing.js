@@ -41,6 +41,8 @@ document.addEventListener('DOMContentLoaded', function () {
             quantityMinMax,
             productProjectInformation,
             customization,
+            dimensions,
+            projectProduct,
           },
           productIndex
         ) => {
@@ -185,7 +187,7 @@ document.addEventListener('DOMContentLoaded', function () {
           // ——— Customization Rendering ———
           if (Array.isArray(customization) && customization.length > 0) {
             const customizationContainer = document.createElement('div');
-            customizationContainer.className = 'quote-cart-item-customization';
+            customizationContainer.className = 'quote-cart-item__customization';
             customizationContainer.innerHTML = `
               <label class="quote-customization-label">Your Selections:</label>
               <ul class="quote-customization-list">
@@ -200,7 +202,48 @@ document.addEventListener('DOMContentLoaded', function () {
             quoteCartItemProductDetails.appendChild(customizationContainer);
           }
 
+          // ——— Dimensions Rendering ———
+          if (Array.isArray(dimensions) && dimensions.length > 0) {
+            // Define the display order of your shorthand codes
+            const order = ['L', 'W', 'H', 'Dp', 'Di'];
+
+            // Build an array of formatted values in that order
+            const formatted = order
+              .map((code) => dimensions.find((d) => d.code === code))
+              .filter(Boolean) // drop any missing entries
+              .map((d) => `${d.value}\u201D`); // append the double-quote character
+
+            // Build an array of formatted values in that order
+            const dimension = order
+              .map((code) => dimensions.find((d) => d.code === code))
+              .filter(Boolean) // drop any missing entries
+              .map((d) => `${d.code}`); // append the double-quote character
+
+            const labelText = `Dimensions ( ${dimension.join(' × ')} )`;
+
+            // Create and inject the HTML
+            const dimContainer = document.createElement('div');
+            dimContainer.className = 'quote-cart-item__dimensions';
+            dimContainer.innerHTML = `
+             <label class="quote-project-info-label">${labelText}</label>
+            <p>${formatted.join(' × ')}</p>`;
+
+            quoteCartItemProductDetails.appendChild(dimContainer);
+          }
+
+          // ——— Project Product Rendering ———
+          const projectProductContainer = document.createElement('div');
+          projectProductContainer.className =
+            'quote-cart-item-product-project-info';
+          projectProductContainer.innerHTML = `
+            <label class="quote-project-info-label">Project Product</label>
+            <p>${projectProduct}</p>
+          `;
+
+          quoteCartItemProductDetails.appendChild(projectProductContainer);
+
           quoteCartItem.appendChild(quoteCartItemProductDetails);
+
           // static data rendering - end
 
           // editing block rendering - start

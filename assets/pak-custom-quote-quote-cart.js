@@ -25,6 +25,50 @@ document.addEventListener('DOMContentLoaded', function () {
     }));
   }
 
+  /**
+   * Scan the dimensions section and return an array of
+   * all entered dimensions with their full name, unit, value,
+   * and a shorthand code.
+   *
+   * @returns {Array<{
+   *   dimension: string,
+   *   metric: string,
+   *   value: string,
+   *   code: string
+   * }>}
+   */
+  function getDimensionOptions() {
+    // 1. find the wrapper
+    const container =
+      document.getElementById('dimensions-section') ||
+      document.querySelector('.quote-customization__dimension');
+    if (!container) return [];
+
+    // 2. shorthand lookup
+    const codeMap = {
+      Length: 'L',
+      Width: 'W',
+      Depth: 'D',
+      Diameter: 'Di',
+    };
+
+    // 3. grab only the inputs we care about
+    const inputs = container.querySelectorAll(
+      'input[type="number"][data-dimension][data-metric]'
+    );
+
+    // 4. build the result array
+    return Array.from(inputs).map((input) => {
+      const dim = input.dataset.dimension;
+      return {
+        dimension: dim,
+        metric: input.dataset.metric,
+        value: input.value.trim(),
+        code: codeMap[dim] || dim.charAt(0).toUpperCase(),
+      };
+    });
+  }
+
   async function fetchProduct(productHandle) {
     const shopify_domain = 'pakfactory-v-2.myshopify.com';
     const shopify_token = '623c45a87058bc44bfaba2b61f819581';
@@ -118,9 +162,20 @@ document.addEventListener('DOMContentLoaded', function () {
     // Grab customization options
     const customization = getCustomizationOptions();
 
+    // Grab Project Project
+    const projectProduct = document.querySelector(
+      '.project-detail__packaging-subject input'
+    ).value;
+
+    // Grab Dimensions
+    const dimensions = getDimensionOptions();
+
     // Fetch product data
     const rawProduct = await fetchProduct(productHandle);
     if (!rawProduct) return;
+
+    // Grab Project Project
+    const projectReferenceImageName = `https://pakfactory.com/corrugated-roll-ends-with-lid.html`;
 
     // Normalize edges to arrays
     let product = {
@@ -156,7 +211,10 @@ document.addEventListener('DOMContentLoaded', function () {
         listOfQuantities,
         quantityMinMax,
         productProjectInformation,
-        customization, // ← here’s your new field
+        customization,
+        projectProduct,
+        dimensions,
+        projectReferenceImageName,
       });
 
       localStorage.setItem('quoteCart', JSON.stringify(quoteCart));

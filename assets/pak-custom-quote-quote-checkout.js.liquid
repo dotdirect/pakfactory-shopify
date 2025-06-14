@@ -2,17 +2,69 @@
     const container = document.querySelector('.quote-checkout-products-grid');
     const quoteCart = JSON.parse(localStorage.getItem('quoteCart')) || [];
 
+/**
+ * Convert inches to millimetres.
+ * @param {string|number} inchValue
+ * @param {number} [decimals=0]  How many decimal places to keep in the result.
+ * @returns {number|string}  Rounded integer if decimals=0, otherwise a string with fixed decimals.
+ */
+function inchToMm(inchValue, decimals = 0) {
+  const inches = parseFloat(inchValue);
+  if (isNaN(inches)) return '';
+  const mm = inches * 25.4;
+  return decimals > 0
+    ? mm.toFixed(decimals)
+    : Math.round(mm);
+}
+
+/**
+ * @param {Array<{ dimension: string, metric: string, value: string, code: string }>} dims
+ * @returns {string}
+ */
+function formatDimensionsString(dims) {
+  if (!Array.isArray(dims) || dims.length === 0) return '';
+
+  // inches part: e.g. 467” (W) X 363” (L) X 175” (H)
+  const inchPart = dims
+    .map(({ value, code }) => `${value}” (${code})`)
+    .join(' X ');
+
+  // metric part: convert each to mm then append “MM”
+  const mmPart = dims
+    .map(({ value, code }) => {
+      const mmValue = inchToMm(value);    // you can pass a second arg for decimals if you like
+      return `${mmValue}MM (${code})`;
+    })
+    .join(' X ');
+
+  return `${inchPart} - ${mmPart}`;
+}
+
+// —— Usage example ——
+const item = {
+  dimensions: [
+    { dimension: "Width",  metric: "in", value: "467", code: "W" },
+    { dimension: "Length", metric: "in", value: "363", code: "L" },
+    { dimension: "Height", metric: "in", value: "175", code: "H" },
+  ]
+};
+
+
 
     quoteCart.forEach(item => {
       const product = item.product;
-      console.log("Product: ",product);
-      console.log("Raw id: ",item.rawId);
+      // console.log("Product: ",product);
+      // console.log("Raw id: ",item.rawId);
       
       const variant = product.variants.find(v => parseInt(v.id) === parseInt(item.rawId));
       const imageUrl = variant?.image?.url || product.images[0]?.url || '';
       const title = product.title;
       const quantities = item.listOfQuantities.join(', ');
       const customization = item?.customization || [];
+      const projectProduct = item?.projectProduct || "N/A";
+      const projectReferenceImage = item?.projectReferenceImageName || "N/A";
+      const dimensions = formatDimensionsString(item.dimensions);
+      console.log(dimensions);
 
       console.log("Variant: ",variant);
       // Create the product item container
@@ -794,6 +846,14 @@ if (stateNameElement.tagName.toLowerCase() === "select") {
           projectInformation: item.productProjectInformation,
           imageUrl: variant?.image?.url || item.product.images[0]?.url || '',
           customization: item.customization || [],
+          projectProduct : item?.projectProduct || "N/A",
+          projectReferenceImage : item?.projectReferenceImageName || "N/A",
+          dimensions : formatDimensionsString(item.dimensions)
+          projectDetail: {
+            referenceImage : item?.projectReferenceImageName || "N/A",
+            product : item?.projectProduct || "N/A",
+            description: item.productProjectInformation
+          }
         });
       });
     }

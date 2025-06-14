@@ -17,7 +17,7 @@
   onload="this.media='all'">
 
 <div class="quote-customization__project-detail" id="{{ id | default: 'project-description-section' }}">
-  <div class="field custom__field">
+  <div class="field custom__field project-detail__packaging-subject" {{ attributes }}>
     <label class="field__label" for="PackagingSubject-{{ section.id }}">
       What are you packaging?<sup>*</sup>
     </label>
@@ -44,7 +44,7 @@
   </div>
 
 
-  <div class="field custom__field">
+  <div class="field custom__field project-detail__reference-image" {{ attributes }}>
     <label class="field__label" for="ProjectDescription-{{ section.id }}">
       Do you have a reference image or photo of your product? ( Optional )
     </label>

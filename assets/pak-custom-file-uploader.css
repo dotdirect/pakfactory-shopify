@@ -1,4 +1,4 @@
-.quote-file-upload .upload-wrapper {
+.file-uploader .upload-wrapper {
   position: relative;
   align-items: center;
   justify-content: space-between;
@@ -8,7 +8,7 @@
   border-radius: 4px;
 }
 
-.quote-file-upload .field__input {
+.file-uploader .field__input {
   position: absolute;
   /* opacity: 0; */
   padding: 1.2rem 2.4rem;
@@ -18,14 +18,14 @@
   z-index: 2;
 }
 
-.quote-file-upload .file-placeholder {
+.file-uploader .file-placeholder {
   color: #afafaf;
   flex: 1;
   pointer-events: none;
   white-space: nowrap;
 }
 
-.quote-file-upload .upload-button {
+.file-uploader .upload-button {
   background-color: #13260d;
   color: #fff;
   border-color: transparent;
