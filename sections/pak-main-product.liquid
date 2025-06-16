@@ -414,11 +414,7 @@
                         <!-- added by mlveda ----- div for product variant id and product handle -->
             {%- when 'tags' -%}
               {%- if product.tags != blank -%}
-                <ul class="product-tags product__tags list-unstyled">
-                  {% for tag in product.tags %}
-                    <li class="product-tags__tag">{{ tag }}</li>
-                  {% endfor %}
-                </ul>
+                {% render 'pak-product-tags'   product: product,%}
               {%- endif -%}
 
                 
