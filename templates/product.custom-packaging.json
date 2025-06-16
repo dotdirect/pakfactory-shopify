@@ -79,9 +79,9 @@
       "type": "pak-product-capability-libary",
       "name": "Pak Product Capability Library",
       "settings": {
-        "subheading": "This is the subheading",
+        "subheading": "Capabilities",
         "subheading_style": "subtitle",
-        "heading": "This is the heading",
+        "heading": "Fully Customizable to Match Your Brand Identity",
         "heading_size": "h2",
         "padding_top": "m",
         "padding_bottom": "m",
