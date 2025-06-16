@@ -1,0 +1,13 @@
+{% comment %}
+  Snippet: product-tags
+  Purpose: Display only the value after the colon in product tags.
+  Example: 'style-property:magnetic-closure-boxes' → 'magnetic-closure-boxes'
+{% endcomment %}
+
+
+<ul class="product-tags product__tags list-unstyled">
+  {% for tag in product.tags %}
+    {% assign simplified_tag = tag | split: ':' | last %}
+    <li class="product-tags__tag">{{ simplified_tag }}</li>
+  {% endfor %}
+</ul>

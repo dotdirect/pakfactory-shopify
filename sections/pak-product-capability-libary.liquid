@@ -5,6 +5,8 @@
   Usage: Add this section to your product template and customize the settings in the theme editor.
 {% endcomment %}
 
+{{ 'pak-product-capability-lirbary.css' | asset_url | stylesheet_tag }}
+
 {% style %}
   {% render 'section-padding' %}
   {% render 'section-margin' %}
@@ -25,17 +27,20 @@
   }
 {% endstyle %}
 
-<div class="multicolumn ">
+<div class="product-capability-library">
   <div class="container">
-    {% render 'section-text'
-      ,		section: section
-      , 	class: 'multicolumn'
-      ,		text_align: section.settings.text_align
-      , 	heading_level: section.settings.heading_level
-    %}
+    {%- if section.settings.subheading != blank or section.settings.heading != blank or section.settings.text != blank
+    -%}
+      <div class="section-top">
+        {% render 'section-text'
+          , section: section
+          , class: 'products-grid'
+          , heading_level: section.settings.heading_level %}
+      </div>
+    {% endif %}
     <div class="content">
-      <div style="display: flex; background: rgb(151, 181, 151); height: 300px ; width: 100%">
-        Capability Library
+      <div class="capability-library">
+        In progress
       </div>
     </div>
 
@@ -97,6 +102,10 @@
       }, {
         "type": "header",
         "content": "t:sections.all.section-padding.header.content"
+      }, {
+        "type": "textarea",
+        "id": "text",
+        "label": "t:sections.all.text.label"
       }, {
         "type": "select",
         "id": "padding_top",
