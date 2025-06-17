@@ -1,29 +1,32 @@
 <script src="{{ 'pak-custom-quote-quote-cart.js' | asset_url }}" defer></script>
-<script src="{{ 'pak-custom-quote-custom-quantity-input-editing.js' | asset_url }}" defer></script>
-<link
-  rel="stylesheet"
-  href="{{ 'pak-custom-quote-custom-inputs.css' | asset_url }}"
-  media="print"
-  onload="this.media='all'">
+{{ 'pak-custom-quote-custom-inputs.css' | asset_url | stylesheet_tag }}
 
 
 <div style="position:relative;" {{ attributes }}>
   <div id="loader-for-min-max-quantity" class="loading-overlay__spinner hidden">
-    {%- render 'icon-loading' -%}
-  </div>
+      {%- render 'icon-loading' -%}
+    </div>
   <div class="quantity-input-text-container">
-
+    <div class="quantity-input-heading">
+      <h5>{{ text.quantity-heading }}*</h5>
+      <div style="position:relative;">
+        <div class="quantity-input-heading-question-mark">?</div>
+        <div class="custom-quantity-tooltip no-display-tooltip">{{ text.quantity-tooltip }}</div>
+      </div>
+    </div>
     <div>
       <div class="quantity-input-items-container">
-        <input
-          type="number"
-          id="product-item-quantity"
-          placeholder="Min {{ text.quantity-placeholder }} ">
-        <button id="add-new-quantity">Add Quantity</button>
+        <input type="number" id="product-item-quantity" placeholder="{{ text.quantity-placeholder }} ">
+        <button id="add-new-quantity">{{ text.quantity-button-text }}</button>
       </div>
-      <div class="quantity-input-error-div" style="display:none;"></div>
-      <div class="added-quantity-container"></div>
+      <div class="quantity-input-error-div" style="display:none;">
+      </div>
+      <div class="added-quantity-container">
+
+      </div>
+      
     </div>
   </div>
 </div>
 <div id="div-for-product-type" data-product-type="{{ product.type }}"></div>
+{{ 'pak-custom-quote-custom-quantity-input-editing.js' | asset_url | script_tag }}
