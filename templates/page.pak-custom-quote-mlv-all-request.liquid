@@ -1,6 +1,6 @@
 <script>
   {% if request.design_mode or customer %}
-    console.log('{{customer}}');
+
   {% else %}
     window.location.href = '{{ routes.account_login_url }}';
   {% endif %}
