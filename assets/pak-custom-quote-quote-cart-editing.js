@@ -412,12 +412,6 @@ document.addEventListener('DOMContentLoaded', function () {
     if (cancelBtn) {
       openFlag = false;
       renderQuoteCart();
-      // const cartItem = cancelBtn.closest('.quote-cart-item');
-      // cartItem.querySelector('.product-details-edit-container').style.display = "none";
-      // cartItem.querySelector('.save-changes-btn').style.display = "none";
-      // cartItem.querySelector('.cancel-changes-btn').style.display = "none";
-      // cartItem.querySelector('.quote-cart-item-product-details-static').style.display = "flex";
-      // cartItem.querySelector('.edit-btn').style.display = "block";
     }
 
     // Variant Option Selection
@@ -525,24 +519,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  // quoteCartGrid.addEventListener("change", function (e) {
-  //   if (e.target.name === "project-info-textarea") {
-  //     const cartItem = e.target.closest(".quote-cart-item");
-  //     const productIndex = parseInt(
-  //       cartItem.getAttribute("data-product-index")
-  //     );
 
-  //     let quoteCart = JSON.parse(localStorage.getItem("quoteCart") || "[]");
-
-  //     if (quoteCart[productIndex]) {
-  //       quoteCart[productIndex].productProjectInformation =
-  //         e.target.value.trim();
-  //       localStorage.setItem("quoteCart", JSON.stringify(quoteCart));
-  //       // console.log("Updated quoteCart with project info:", quoteCart);
-  //       renderQuoteCart();
-  //     }
-  //   }
-  // });
 
   document.addEventListener('click', function (e) {
     // Cancel button in popup
