@@ -1,8 +1,7 @@
 <script>
   {% if request.design_mode or customer %}
-
   {% else %}
-    window.location.href = '{{ routes.account_login_url }}';
+    window.location.href = '/customer_authentication/login?return_to={{ "/pages/all-request" | url_encode }}';
   {% endif %}
 
 </script>
