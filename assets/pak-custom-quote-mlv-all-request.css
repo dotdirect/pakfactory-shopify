@@ -1,9 +1,13 @@
-/* added by Dhruv */
+
 .customer-block-heading-font{
   font-size: 20px;
   font-weight: 600;
 }
-/* loader */
+.all_request #info-name,
+.all_request #account-specialist-name{
+  font-weight: 600;
+}
+
 #all-request-loader,
 #all-request-table-loader{
   height: 100%;
@@ -20,7 +24,7 @@
   width: 4rem;
   height: 4rem;
 }
-/* loader */
+
 .all_request .cardd{
   position: relative;
   min-height: 120px;
@@ -50,11 +54,6 @@
   gap: 24px;
 }
 
-/* .quote-products-block,
-.quote-customer-block{
-  border: 0.5px solid rgba(221, 223, 227, 1);
-  border-radius: 10px;
-} */
 .quote-products-block{
   width: 70%;
   display: flex;
@@ -144,11 +143,11 @@
 }
 .all_request .information-block{
   border-radius: 1rem;
-  /* padding:10px; */
+
   display:flex;
   flex-direction: column;
   gap:5px;
-  background: white;
+
 }
 .all_request .custom-information-label{
   color: rgba(1,1,1,0.6);
@@ -186,8 +185,13 @@
   gap: 8px;
   justify-content: center;
   flex: 1;
+  align-items: flex-end;
 }
-
+.all_request .page-numbers .dots{
+  font-size: 16px;
+  font-weight: 600;
+  color: #666777;
+}
 .all_request .page-btn {
   padding: 6px 16px;
   /* margin: 4px; */
@@ -204,13 +208,8 @@
 .all_request .page-btn:hover:not(:disabled) {
   background: rgba(221, 223, 227, 0.5);
 }
-/* 
-.all_request .page-btn:hover:not(:disabled) {
-  background-color: #ccc;
-} */
 
 .all_request .page-btn:disabled {
-  /* background-color: #ddd; */
   opacity: 0.7;
   cursor: not-allowed;
 }
@@ -319,7 +318,16 @@
     justify-self: flex-end;
   }
 }
-@media screen and (max-width: 400px){
+@media screen and (max-width: 500px){
+  .all_request .page-numbers{
+    gap: 5px;
+  }
+  .all_request .page-numbers .page-btn{
+    padding: 6px 10px;
+  }
+  .all_request .page-btn{
+    font-size: 12px;
+  }
   .all_request .pagination-wrapper{
     padding: 15px;
   }
@@ -328,8 +336,22 @@
     width: fit-content;
   }
 }
-
-
+@media screen and (max-width: 400px){
+  .all_request .page-numbers{
+    gap: 3px;
+  }
+  .all_request .page-numbers .page-btn{
+    padding: 4.5px 8px;
+  }
+}
+@media screen and (max-width: 350px){
+  .all_request .page-numbers{
+    gap: 3px;
+  }
+  .all_request .page-numbers .page-btn{
+    padding: 3px 6px;
+  }
+}
 
 
 .dashed-2 {
@@ -405,7 +427,6 @@
 }
 /* media query for the quote request open - end */
 
-/* added by Dhruv */
 
 
 
@@ -425,16 +446,13 @@
   overflow-x: hidden;
 }
 .all_request .dashboard-container {
-  /* display: flex; */
   margin: 20px 0 0 0;
-  /* background-color: #f8f9fc; */
   padding: 0 0 20px 0;
 }
 
 .all_request .first_head {
   display: flex;
   justify-content: space-between;
-  /* padding: 0px 30px; */
 }
 .all_request .first_head span a {
   text-decoration: none;
@@ -447,13 +465,11 @@
   cursor: pointer;
   font-weight: 700;
   position: relative;
-  /* right: 200px; */
 }
 .all_request .first_head p {
   font-size: 38px;
   font-weight: 700;
   position: relative;
-  /* left: 210px; */
 }
 .all_request .right-side-information-box{
   padding: 24px;
@@ -464,15 +480,11 @@
   gap:16px;
 }
 .all_request .info {
-    /* height: 400px; */
     width: 28%;
-
-    /* padding: 30px; */
-
     border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  gap:10px;
+    display: flex;
+    flex-direction: column;
+    gap:10px;
 }
 .all_request .info p {
   margin: 0;
@@ -516,7 +528,6 @@
 .all_request .footer {
   font-size: 14px;
   color: #aaa;
-  /* margin-top: 400px !important; */
 }
 
 .all_request .main-content {
@@ -563,23 +574,18 @@
   padding: 10px;
   border: none;
   border-radius: 10px;
+  background: transparent;
 }
 .all_request .table-scroll {
   overflow-x: auto;
-  /* width: 100%; */
+
   border: 0.5px solid rgba(221, 223, 227, 1);
-  /* border-radius: 10px; */
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   
 }
-/* .all_request .table-and-pagination-elements-container {
-  border: 0.5px solid rgba(221, 223, 227, 1);
-  border-radius: 10px;
-  padding: 16px;
-} */
+
 .all_request .tb {
-  /* width: 100%; */
   border-collapse: collapse;
   border: none;
   width: 100%;
@@ -589,10 +595,7 @@
   font-weight: 400;
 }
 
-.all_request tr {
-  /* display: block; */
-  /* border:1px solid black; */
-}
+
 .all_request .custom-link {
   color: rgba(109, 190, 69, 1);
   text-decoration: none;
@@ -601,7 +604,6 @@
 
 .all_request .tag.sku {
   color: rgba(205, 205, 205, 1);
-  /* display: inline-block; */
 }
 
 .all_request .pill {
@@ -609,7 +611,6 @@
   background-color: #e2e8f0;
   padding: 4px 10px;
   border-radius: 20px;
-  /* font-size: 12px; */
 }
 
 .all_request .status {
@@ -617,12 +618,9 @@
   
   font-weight: normal;
   padding: 5px 10px;
-  /* border: 0.2rem solid; */
   border-radius: 100px;
   font-size: 14px;
-  /* display: block; */
   text-align: center;
-  /* width: 90%; */
   text-wrap: nowrap;
   display: inline-flex;
   gap: 15px;
@@ -631,32 +629,23 @@
 }
 .all_request .status[data-status="Pending"] {
   background-color: rgba(255, 251, 204, 1);
-  /* color: rgba(73, 73, 73, 1); */
-  /* border-color: #ddd6fe; */
 }
 
 .all_request .status[data-status="In Progress"] {
   background-color: rgba(222, 204, 255, 1);
-  /* color: #2563eb; */
-  /* border-color: #bfdbfe; */
 }
 
 .all_request .status[data-status="Converted to Order"] {
   background-color: rgba(207, 252, 129, 1);
-  /* color: #059669; */
-  /* border-color: #bbf7d0; */
 }
 
 .all_request .status[data-status="Closed"] {
   background-color: rgba(194, 194, 194, 1);
-  /* color: #ca8a04; */
-  /* border-color: #fde68a; */
 }
 
 .all_request .top-head {
   color: black;
   font-size: 24px;
-  /* margin-bottom: 50px; */
 }
 
 .all_request .last {
@@ -664,7 +653,6 @@
   flex-direction: column;
   width: 100%;
   overflow-x: auto;
-  /* gap: 20px; */
 }
 
 .all_request .dashboard-header span {
@@ -746,7 +734,6 @@
 }
 
 .all_request table {
-  /* width: 100%; */
   border-collapse: collapse;
   border: none;
 }
@@ -832,10 +819,7 @@
   border-radius: 50%;
   display: inline-block;
   box-sizing: border-box;
-  /* position: absolute; */
   animation: rotation 1s linear infinite;
-  /* top: 400px; */
-  /* left: 00px; */
   margin: auto auto;
 }
 .all_request .card-information-container{

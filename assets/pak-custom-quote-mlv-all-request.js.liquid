@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", (event) => {
   if (customerEmail) {
-    // const allRequestPageLoader = document.getElementById("all-request-loader");
-    // allRequestPageLoader.classList.remove('hidden');
+
     
     const tbody = document.querySelector('#tab1 tbody');
     const paginationDiv = document.getElementById("pagination");
@@ -9,51 +8,44 @@ document.addEventListener("DOMContentLoaded", (event) => {
     const statusPendingText = toolTipInfoDiv.getAttribute('pending-status'); 
     const statusInProgressText = toolTipInfoDiv.getAttribute('inProgress-status'); 
     const statusConvertedText = toolTipInfoDiv.getAttribute('converted-status'); 
-const specialistName = document.getElementById("account-specialist-name");
-const specialistEmail = document.getElementById("account-specialist-email");
-const specialistContact = document.getElementById("account-specialist-contact");
-const assignedSection = document.getElementById("accounts-specialist-assigned");
-const notAssignedSection = document.getElementById("accounts-specialist-not-assigned");
-            const toolTipIcon = `<svg fill="#000000" viewBox="0 0 36 36" version="1.1" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path class="clr-i-solid clr-i-solid-path-1" d="M18,2.1a16,16,0,1,0,16,16A16,16,0,0,0,18,2.1Zm-.1,5.28a2,2,0,1,1-2,2A2,2,0,0,1,17.9,7.38Zm3.6,21.25h-7a1.4,1.4,0,1,1,0-2.8h2.1v-9.2H15a1.4,1.4,0,1,1,0-2.8h4.4v12h2.1a1.4,1.4,0,1,1,0,2.8Z"></path> <rect x="0" y="0" width="36" height="36" fill-opacity="0"></rect> </g></svg>`;
-    
-function renderAccountSpecialist(potentialOwner, email, contact) {
-  if (potentialOwner) {
-    assignedSection.style.display = "flex";
-    notAssignedSection.style.display = "none";
-    specialistName.textContent = potentialOwner || '-';
-    specialistEmail.textContent = email || '';
-    specialistContact.textContent = contact || '';
-  } else {
-    assignedSection.style.display = "none";
-    notAssignedSection.style.display = "flex";
-    specialistName.textContent = '';
-    specialistEmail.textContent = '';
-    specialistContact.textContent = '';
-  }
-}
+    const specialistName = document.getElementById("account-specialist-name");
+    const specialistEmail = document.getElementById("account-specialist-email");
+    const specialistContact = document.getElementById("account-specialist-contact");
+    const assignedSection = document.getElementById("accounts-specialist-assigned");
+    const notAssignedSection = document.getElementById("accounts-specialist-not-assigned");
+    const toolTipIcon = `<svg fill="#000000" viewBox="0 0 36 36" version="1.1" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path class="clr-i-solid clr-i-solid-path-1" d="M18,2.1a16,16,0,1,0,16,16A16,16,0,0,0,18,2.1Zm-.1,5.28a2,2,0,1,1-2,2A2,2,0,0,1,17.9,7.38Zm3.6,21.25h-7a1.4,1.4,0,1,1,0-2.8h2.1v-9.2H15a1.4,1.4,0,1,1,0-2.8h4.4v12h2.1a1.4,1.4,0,1,1,0,2.8Z"></path> <rect x="0" y="0" width="36" height="36" fill-opacity="0"></rect> </g></svg>`;
+    const right_icon = `<svg height="64px" width="64px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 410.258 410.258" xml:space="preserve" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <polygon style="fill:#000000;" points="144.206,0 112.206,24 248.052,205.129 112.206,386.258 144.206,410.258 298.052,205.129 "></polygon> </g></svg>`;
+    const left_icon = `<svg height="64px" width="64px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 410.258 410.258" xml:space="preserve" fill="#000000" transform="matrix(-1, 0, 0, 1, 0, 0)"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <polygon style="fill:#000000;" points="144.206,0 112.206,24 248.052,205.129 112.206,386.258 144.206,410.258 298.052,205.129 "></polygon> </g></svg>`;
+
+
+
+    let accountSpecialistDataAddedFlag = false;
+    function renderAccountSpecialist(potentialOwner, email, contact) {
+      if (potentialOwner) {
+        assignedSection.style.display = "flex";
+        notAssignedSection.style.display = "none";
+        specialistName.textContent = potentialOwner || '-';
+        specialistEmail.textContent = email || '';
+        specialistContact.textContent = contact || '';
+      } else {
+        assignedSection.style.display = "none";
+        notAssignedSection.style.display = "flex";
+        specialistName.textContent = '';
+        specialistEmail.textContent = '';
+        specialistContact.textContent = '';
+      }
+    }
 
 
   const allRequestTableLoader = document.getElementById("all-request-table-loader");
     
+
     const pageSize = 4;
     let currentPage = 1;
     let totalPages = 1;
-
     function fetchQuotes(offset = 0) {
       allRequestTableLoader.classList.remove('hidden');
-      // const apiUrl = `https://www.mlveda.com/ShopifyApps/quotifyTest/quotes?customerEmail=${customerEmail}&offset=${offset}`;
-      const accountSpecialistEmail = document.getElementById("account-specialist-email");
-              const accountSpecialistContact = document.getElementById("account-specialist-contact");
-                  document.getElementById("accounts-specialist-assigned").style.display="none";
-                  document.getElementById("accounts-specialist-not-assigned").style.display="flex";
-                  document.getElementById("account-specialist-name").textContent = '';
-                  accountSpecialistEmail.textContent  = '';
-                  accountSpecialistContact.textContent = '';
 
-      
-      console.log(customerEmail);
-      console.log(offset);
-      console.log(pageSize);
       const apiUrl = `https://www.mlveda.com/ShopifyApps/quotifyTest/quotes?customerEmail=${customerEmail}&offset=${offset}&limit=${pageSize}`;
 
 
@@ -68,7 +60,13 @@ function renderAccountSpecialist(potentialOwner, email, contact) {
           currentPage = pagination.currentPage;
 
           tbody.innerHTML = '';
-
+       if (quotes.length === 0) {
+          tbody.innerHTML = `<tr><td colspan="4" style="text-align:center;">You have not made any quote request yet.</td></tr>`;
+          renderAccountSpecialist(null); // clear specialist
+          allRequestTableLoader.classList.add('hidden');
+          paginationDiv.innerHTML = ''; // Clear pagination
+          return;
+        }
           quotes.forEach((quote,index) => {
             const {
               quoteId,
@@ -76,13 +74,13 @@ function renderAccountSpecialist(potentialOwner, email, contact) {
               potentialOwner,
               potentialOwnerEmail,
               potentialContact,
-              customer: { firstName, lastName, email },
+              customer: { firstName, lastName, email, LeadOwner },
               variants,
               totalAmount,
               status,
               createdAt
             } = quote;
-            // console.log(variants);
+
             const productNames = variants.map(variant =>
               `
                 <span class="tag">${variant.productName}</span><br>
@@ -106,8 +104,16 @@ function renderAccountSpecialist(potentialOwner, email, contact) {
               statusText = statusConvertedText;
             }
               
-           if (index === 0) {
+           if (potentialOwner) {
+             if(!accountSpecialistDataAddedFlag){ 
               renderAccountSpecialist(potentialOwner, potentialOwnerEmail, potentialContact);
+               accountSpecialistDataAddedFlag=true;
+             }
+            } else if(LeadOwner){
+             if(!accountSpecialistDataAddedFlag){ 
+              renderAccountSpecialist(LeadOwner, potentialOwnerEmail, potentialContact);
+               accountSpecialistDataAddedFlag=true;
+             }
             }
 
             const createdAtDate = new Date(createdAt);
@@ -136,7 +142,7 @@ function renderAccountSpecialist(potentialOwner, email, contact) {
 
           renderPagination();
           NextLevelAPI();
-          // allRequestPageLoader.classList.add('hidden');
+
           allRequestTableLoader.classList.add('hidden');
           
          
@@ -146,14 +152,16 @@ function renderAccountSpecialist(potentialOwner, email, contact) {
     }
 
   const searchInput = document.querySelector('#search-quote-request');
-searchInput.addEventListener('keypress', (e) => {
-  if (e.key === 'Enter') {
-    fetchQuotesBySearch(0);
-  }
-});
+  searchInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+      fetchQuotesBySearch(0);
+    }
+  });
 
-    
-function fetchQuotesBySearch(offset = 0) {
+    const pageSizeForSearch = 4;
+    let currentPageForSearch = 1;
+    let totalPagesForSearch = 1;
+  function fetchQuotesBySearch(offset = 0) {
   const searchInput = document.querySelector('#search-quote-request');
   const searchTerm = searchInput.value.trim();
 
@@ -173,8 +181,9 @@ function fetchQuotesBySearch(offset = 0) {
       const quotes = data.quotes;
       const pagination = data.pagination;
 
-      totalPages = pagination.totalPages;
-      currentPage = pagination.currentPage;
+    totalPagesForSearch = pagination.totalPages;
+    currentPageForSearch = pagination.currentPage;
+
 
       if (quotes.length === 0) {
         tbody.innerHTML = `<tr><td colspan="4" style="text-align:center;">No quotes found for "${searchTerm}"</td></tr>`;
@@ -213,10 +222,6 @@ function fetchQuotesBySearch(offset = 0) {
           statusText = statusInProgressText;
         } else if (potentialStatus === 'Converted to Order') {
           statusText = statusConvertedText;
-        }
-
-        if (index === 0) {
-          renderAccountSpecialist(potentialOwner, potentialOwnerEmail, potentialContact);
         }
 
         const createdAtDate = new Date(createdAt);
@@ -265,14 +270,17 @@ function renderPaginationForSearch() {
   const wrapper = document.createElement('div');
   wrapper.className = 'pagination-wrapper';
 
-  const left_icon = `<svg height="64px" width="64px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 410.258 410.258" xml:space="preserve" fill="#000000" transform="matrix(-1, 0, 0, 1, 0, 0)"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <polygon style="fill:#000000;" points="144.206,0 112.206,24 248.052,205.129 112.206,386.258 144.206,410.258 298.052,205.129 "></polygon> </g></svg>`;
+  // Prev Button
   const prevBtn = document.createElement('button');
-  prevBtn.innerHTML = `${left_icon} Previous`;
-  prevBtn.disabled = currentPage === 1;
+  prevBtn.innerHTML = `${left_icon}<span>Previous</span>`;
+  prevBtn.disabled = currentPageForSearch === 1;
   prevBtn.className = 'page-btn prev-btn';
+  prevBtn.style.display = 'flex';
+  prevBtn.style.alignItems = 'center';
+  prevBtn.style.gap = '5px';
   prevBtn.addEventListener('click', () => {
-    if (currentPage > 1) {
-      const offset = (currentPage - 2) * pageSize;
+    if (currentPageForSearch > 1) {
+      const offset = (currentPageForSearch - 2) * pageSizeForSearch;
       fetchQuotesBySearch(offset);
     }
   });
@@ -280,28 +288,64 @@ function renderPaginationForSearch() {
   const pageNumbersDiv = document.createElement('div');
   pageNumbersDiv.className = 'page-numbers';
 
-  for (let i = 1; i <= totalPages; i++) {
+  const addPageButton = (page) => {
     const btn = document.createElement('button');
-    btn.innerText = i;
+    btn.innerText = page;
     btn.className = 'page-btn';
-    if (i === currentPage) btn.classList.add('active');
-
+    if (page === currentPageForSearch) btn.classList.add('active');
     btn.addEventListener('click', () => {
-      const offset = (i - 1) * pageSize;
+      const offset = (page - 1) * pageSizeForSearch;
       fetchQuotesBySearch(offset);
     });
-
     pageNumbersDiv.appendChild(btn);
-  }
-  const right_icon = `<svg height="64px" width="64px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 410.258 410.258" xml:space="preserve" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <polygon style="fill:#000000;" points="144.206,0 112.206,24 248.052,205.129 112.206,386.258 144.206,410.258 298.052,205.129 "></polygon> </g></svg>`;
+  };
 
+  const addDots = () => {
+    const dots = document.createElement('span');
+    dots.className = 'dots';
+    dots.innerText = '...';
+    pageNumbersDiv.appendChild(dots);
+  };
+
+  // Always show first two pages
+  addPageButton(1);
+  if (totalPagesForSearch > 1) addPageButton(2);
+
+  // Show ... if needed before middle
+  if (currentPageForSearch > 4) {
+    addDots();
+  }
+
+  // Show middle: currentPage-1, currentPage, currentPage+1
+  const startMid = Math.max(3, currentPageForSearch - 1);
+  const endMid = Math.min(totalPagesForSearch - 2, currentPageForSearch + 1);
+  for (let i = startMid; i <= endMid; i++) {
+    if (i !== 1 && i !== 2 && i !== totalPagesForSearch - 1 && i !== totalPagesForSearch) {
+      addPageButton(i);
+    }
+  }
+
+  // Show ... if needed after middle
+  if (currentPageForSearch < totalPagesForSearch - 3) {
+    addDots();
+  }
+console.log(totalPagesForSearch);
+  // Always show last two pages
+if (totalPagesForSearch > 2) {
+  if (totalPagesForSearch - 1 > 2) addPageButton(totalPagesForSearch - 1);
+  if (totalPagesForSearch > 2) addPageButton(totalPagesForSearch);
+}
+  // Next Button
   const nextBtn = document.createElement('button');
-  nextBtn.innerHTML = `Next ${right_icon}`;
-  nextBtn.disabled = currentPage === totalPages;
+  nextBtn.innerHTML = `<span>Next</span>${right_icon}`;
+  nextBtn.disabled = currentPageForSearch === totalPagesForSearch;
   nextBtn.className = 'page-btn next-btn';
+  nextBtn.style.display = 'flex';
+  nextBtn.style.alignItems = 'center';
+  nextBtn.style.gap = '5px';
   nextBtn.addEventListener('click', () => {
-    if (currentPage < totalPages) {
-      const offset = currentPage * pageSize;
+    if (currentPageForSearch < totalPagesForSearch) {
+      const offset = currentPageForSearch * pageSizeForSearch;
       fetchQuotesBySearch(offset);
     }
   });
@@ -311,7 +355,6 @@ function renderPaginationForSearch() {
   wrapper.appendChild(nextBtn);
   paginationDiv.appendChild(wrapper);
 }
-
 
 function renderPagination() {
   paginationDiv.innerHTML = '';
@@ -319,11 +362,14 @@ function renderPagination() {
   const wrapper = document.createElement('div');
   wrapper.className = 'pagination-wrapper';
 
-  const left_icon = `<svg height="64px" width="64px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 410.258 410.258" xml:space="preserve" fill="#000000" transform="matrix(-1, 0, 0, 1, 0, 0)"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <polygon style="fill:#000000;" points="144.206,0 112.206,24 248.052,205.129 112.206,386.258 144.206,410.258 298.052,205.129 "></polygon> </g></svg>`;
+  // Prev Button
   const prevBtn = document.createElement('button');
-  prevBtn.innerHTML = `${left_icon} Previous`;
+  prevBtn.innerHTML = `${left_icon}<span>Previous</span>`;
   prevBtn.disabled = currentPage === 1;
   prevBtn.className = 'page-btn prev-btn';
+  prevBtn.style.display = 'flex';
+  prevBtn.style.alignItems = 'center';
+  prevBtn.style.gap = '5px';
   prevBtn.addEventListener('click', () => {
     if (currentPage > 1) {
       const offset = (currentPage - 2) * pageSize;
@@ -334,25 +380,61 @@ function renderPagination() {
   const pageNumbersDiv = document.createElement('div');
   pageNumbersDiv.className = 'page-numbers';
 
-  for (let i = 1; i <= totalPages; i++) {
+  const addPageButton = (page) => {
     const btn = document.createElement('button');
-    btn.innerText = i;
+    btn.innerText = page;
     btn.className = 'page-btn';
-    if (i === currentPage) btn.classList.add('active');
-
+    if (page === currentPage) btn.classList.add('active');
     btn.addEventListener('click', () => {
-      const offset = (i - 1) * pageSize;
+      const offset = (page - 1) * pageSize;
       fetchQuotes(offset);
     });
-
     pageNumbersDiv.appendChild(btn);
-  }
-  const right_icon = `<svg height="64px" width="64px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 410.258 410.258" xml:space="preserve" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <polygon style="fill:#000000;" points="144.206,0 112.206,24 248.052,205.129 112.206,386.258 144.206,410.258 298.052,205.129 "></polygon> </g></svg>`;
+  };
 
+  const addDots = () => {
+    const dots = document.createElement('span');
+    dots.className = 'dots';
+    dots.innerText = '...';
+    pageNumbersDiv.appendChild(dots);
+  };
+
+  // Always show first two pages
+  addPageButton(1);
+  if (totalPages > 1) addPageButton(2);
+
+  // Show ... if needed before middle
+  if (currentPage > 4) {
+    addDots();
+  }
+
+  // Show middle: currentPage -1, currentPage, currentPage +1
+  const startMid = Math.max(3, currentPage - 1);
+  const endMid = Math.min(totalPages - 2, currentPage + 1);
+  for (let i = startMid; i <= endMid; i++) {
+    if (i !== 1 && i !== 2 && i !== totalPages - 1 && i !== totalPages) {
+      addPageButton(i);
+    }
+  }
+
+  // Show ... if needed after middle
+  if (currentPage < totalPages - 3) {
+    addDots();
+  }
+
+  // Always show last two pages if > 2
+if (totalPages > 2) {
+  if (totalPages-1 > 2) addPageButton(totalPages - 1);
+  if (totalPages > 2) addPageButton(totalPages);
+}
+  // Next Button
   const nextBtn = document.createElement('button');
-  nextBtn.innerHTML = `Next ${right_icon}`;
+  nextBtn.innerHTML = `<span>Next</span>${right_icon}`;
   nextBtn.disabled = currentPage === totalPages;
   nextBtn.className = 'page-btn next-btn';
+  nextBtn.style.display = 'flex';
+  nextBtn.style.alignItems = 'center';
+  nextBtn.style.gap = '5px';
   nextBtn.addEventListener('click', () => {
     if (currentPage < totalPages) {
       const offset = currentPage * pageSize;
@@ -365,6 +447,7 @@ function renderPagination() {
   wrapper.appendChild(nextBtn);
   paginationDiv.appendChild(wrapper);
 }
+
 
     fetchQuotes(0); // initial call for page 1
 
@@ -461,7 +544,6 @@ function renderPagination() {
         .finally(() => {
           loader.style.display = "none";
           document.getElementsByClassName("mid-lav")[0].style.opacity = "1";
-          // document.getElementsByClassName("mid-lav")[1].style.opacity = "1";
         });
     });
   }
