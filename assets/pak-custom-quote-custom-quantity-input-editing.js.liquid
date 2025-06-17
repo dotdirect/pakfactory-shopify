@@ -1,9 +1,8 @@
   document.addEventListener('DOMContentLoaded', function(){
     const loaderForMinMaxQuantity = document.getElementById("loader-for-min-max-quantity");
     const quantityInputContainer = document.querySelector(".quantity-input-text-container");
-    // const quantityStaticText = document.querySelector(".quantity-input-text-container .quantity-input-heading p");
     
-    const projectInfoTextArea = document.querySelector(".project-detail__description textarea");
+    const projectInfoTextArea = document.querySelector(".textAreaContainer textarea");
     const addQuoteButton = document.querySelector("#add-to-quote");
     const inputQuantityNumber = document.querySelector(".quantity-input-items-container input[type='number']");
     const divForHandle = document.getElementById("div-for-product-type");
@@ -16,14 +15,10 @@
     
 
     const productTypeFromProduct = `${product_type}` || "Default"; // Replace with your product type
-// console.log(productTypeFromProduct);
+
     console.log("hello: ",`${product_type}`);
     async function validateMinMaxQuantity(productTypeFromProduct) {
       const url = `https://www.mlveda.com/ShopifyApps/quotifyTest/productQuantity`;
-
-      // Clear existing options
-      // inputQuantityNumber.innerHTML = "";
-      
 
       try {
         const response = await fetch(url, {
@@ -42,17 +37,6 @@
         console.log(data);
         
         const productTypesForQuantityMinMax = data.productTypes;
-        // console.log(productTypesForQuantityMinMax);
-        // let staticText = '';
-        // productTypesForQuantityMinMax.forEach((type) => {
-        //   if (type.productType === productTypeFromProduct) {
-        //     inputQuantityNumber.min = type.min || 1;
-        //     // inputQuantityNumber.max = type.max || 1;
-        //     // staticText = ` Minimum order starts at ${type.min}.`
-        //     inputQuantityNumber.placeholder += type.min || "";
-        //     // quantityStaticText.textContent += staticText; 
-        //   }
-        // });
 
         const matchedType = productTypesForQuantityMinMax.find((type) => {
           return type.productType === productTypeFromProduct;
