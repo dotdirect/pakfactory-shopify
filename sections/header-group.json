@@ -13,6 +13,7 @@
   "sections": {
     "announcement-bar": {
       "type": "announcement-bar",
+      "disabled": true,
       "settings": {
         "height": 45,
         "height_mobile": 40,
@@ -85,6 +86,7 @@
         "pak_mega_menu_HTa6BW",
         "pak_mega_menu_bY4Tiw"
       ],
+      "disabled": true,
       "settings": {
         "h1_logo": true,
         "header_type": "left-logo",
