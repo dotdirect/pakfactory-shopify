@@ -55,18 +55,48 @@
 {%- endstyle -%}
 <!-- added by mlveda - start -->
 <!-- popup after product add to quote (for product page) -->
-    <div style="display:none; position:fixed;" class="quote-submit-popup-overlay" id="quote-popup-overlay-intermediate">
-      <div class="popup-details-container">
-        <div class="popup-svg-container">
-          <img src="{{ 'popup-quote-icon.png' | asset_url }}" />
+      {% comment %} Pop Up - Delete Item{% endcomment %}
+  <div
+    style="display:none; position:fixed;"
+    class="popup-overlay quote-item-delete-popup-overlay"
+    id="quote-item-delete-overlay-intermediate">
+    <div class="popup-overlay__container popup-item-delete-details-container">
+      <div class="popup-overlay__header popup-item-delete-svg-container">
+        <img
+          src="https://cdn.shopify.com/s/files/1/0924/3099/1671/files/fallback-image.jpg?v=1748536386"
+          alt="{{ "icon" | escape }}"
+          width="50"
+          height="50">
+        <div class="popup-overlay__header-text">
+          <h3>Delete Quote</h3>
+          <p>Are you sure you want to remove this quote? This action cannot be undone</p>
         </div>
-        <div class="popup-text-contaianer">
-          <h3>Item Added to Your Quote Request</h3>
-          <p>Once sugmitted, a packaging specialist will contact you to provide personalized assistance and pricing.</p>
+      </div>
+      {% comment %} <div class="popup-item-delete-text-contaianer"></div> {% endcomment %}
+      <div class="popup-overlay__footer popup-item-delete-buttons-container">
+        <button class="button button--primary button--default popup-item-delete-quote-cancel">Cancel</button>
+        <button class="button button--primary button--error popup-item-delete-quote">Delete</button>
+      </div>
+    </div>
+  </div>
+
+    <div style="display:none; position:fixed;" class="popup-overlay quote-submit-popup-overlay" id="quote-popup-overlay-intermediate">
+      <div class="popup-overlay__container popup-details-container">
+        <div class="popup-overlay__header popup-svg-container">
+          <img
+          src="https://cdn.shopify.com/s/files/1/0924/3099/1671/files/fallback-image.jpg?v=1748536386"
+          alt="{{ "icon" | escape }}"
+          width="50"
+          height="50">
+           <div class="popup-overlay__header-text">
+          <h3>Quote Added</h3>
+          <p>Once submitted, a packaging specialist will contact you to provide personalized assistance and pricing.</p>
         </div>
-        <div class="popup-buttons-container">
-          <a href="{{ request.origin }}/pages/quote-cart" class="popup-quote-submit-button">{{ section.settings.quote_button_text }}</a>
-          <button class="popup-quote-continue">{{ section.settings.continue_button_text }}</button>
+        </div>
+       
+        <div class="popup-overlay__footer popup-overlay__footer--stacked popup-buttons-container">
+          <a href="{{ request.origin }}/pages/quote-cart" class="button button--primary popup-quote-submit-button">{{ section.settings.quote_button_text }}</a>
+          <a href="{{ request.origin }}/collections/all" class="button--simple_secondary button--arrow focus-inset">{{ section.settings.continue_button_text }}</a>
         </div>
       </div>
     </div>

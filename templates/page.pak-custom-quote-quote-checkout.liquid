@@ -1,42 +1,74 @@
 {{ 'pak-custom-quote-quote-checkout.css' | asset_url | stylesheet_tag }}
 
 <!-- Popup for quote request received -->
-    <div style="display:none; position:fixed;" class="quote-request-submit-popup-overlay" id="quote-request-completed-popup">
-      <div class="popup-request-submit-details-container">
-        <div class="popup-svg-container">
-          <img src="{{ 'popup-quote-icon.png' | asset_url }}" />
-        </div>
-        <div class="popup-text-contaianer">
-          <h3>Quote Request Received</h3>
+    <div style="display:none; position:fixed;" class="popup-overlay quote-request-submit-popup-overlay" id="quote-request-completed-popup">
+      <div class="popup-overlay__container popup-request-submit-details-container">
+
+      <div class="popup-overlay__header popup-item-delete-svg-container">
+          <img
+            src="https://cdn.shopify.com/s/files/1/0924/3099/1671/files/fallback-image.jpg?v=1748536386"
+            alt="{{ "icon" | escape }}"
+            width="50"
+            height="50">
+          <div class="popup-overlay__header-text">
+          <h3>Quote Submitted</h3>
           <p>Thanks! You can track your quote in your account. We'll email you once its received.</p>
+          </div>
         </div>
+
+        
         <div class="popup-buttons-container">
-          <a href="{{ request.origin }}/pages/all-request" class="popup-view-quote-button" id="view-all-quotes-button">View My Quotes</a>
-          <a href="{{ request.origin }}/collections/all" class="popup-continue-shopping-button" id="continue-shopping-button">Continue Shopping</a>
-          <!-- <button class="popup-continue-shopping-button" id="continue-shopping-button">Continue Shopping</button> -->
+          <a href="{{ request.origin }}/pages/all-request" class="button button--primary button--full-width popup-view-quote-button" id="view-all-quotes-button">View My Quotes</a>
+          <a href="{{ request.origin }}/collections/all" class="button--simple_secondary button--arrow focus-inset popup-continue-shopping-button" id="continue-shopping-button">Continue Shopping</a>
         </div>
       </div>
     </div>
 
+    <div
+  style="display:none; position:fixed;"
+  class="popup-overlay quote-item-delete-popup-overlay"
+  id="quote-item-delete-overlay-intermediate">
+  <div class="popup-overlay__container popup-item-delete-details-container">
+    <div class="popup-overlay__header popup-item-delete-svg-container">
+      <img
+        src="https://cdn.shopify.com/s/files/1/0924/3099/1671/files/fallback-image.jpg?v=1748536386"
+        alt="{{ "icon" | escape }}"
+        width="50"
+        height="50">
+      <div class="popup-overlay__header-text">
+        <h3>Delete Quote</h3>
+        <p>Are you sure you want to remove this quote? This action cannot be undone</p>
+      </div>
+    </div>
+    <div class="popup-overlay__footer popup-item-delete-buttons-container">
+      <button class="button button--primary button--default popup-item-delete-quote-cancel">Cancel</button>
+      <button class="button button--primary button--error popup-item-delete-quote">Delete</button>
+    </div>
+  </div>
+</div>
+
 <!-- Popup for quote request received -->
 
-<header class="header header--{{ section.settings.header_type }} {% if section.settings.menu != blank %}header--has-menu{% endif %} container {% if section.settings.header_type == 'center-logo' %}{% if section.settings.enable_logo_mobile != true %} header--without-logo-mobile{% endif %}{% if section.settings.enable_logo_desktop != true %} header--without-logo-desktop{% endif %}{% endif %}">
-  {% render 'header-left-logo' %}
+<header class="header  container header__quote-checkout-header">
+  <a href="{{ routes.root_url }}" >
+    {{ shop.brand.logo | image_url: width: 150 | image_tag }}
+  </a>
 </header>
 
 
-<div class="container" style="position:relative;">
-  <div id="quote-checkout-loader" class="loading-overlay__spinner hidden">
-      {%- render 'icon-loading' -%}
-  </div>
-  <div>
-    <div class="quote-checkout-container">
+<div class="quote-checkout-wrapper">
+  <div class="container" style="position:relative;">
+      <div id="quote-checkout-loader" class="loading-overlay__spinner hidden">
+          {%- render 'icon-loading' -%}
+      </div>
+
+   
       <div class="quote-checkout-form-and-product-info-wrapper">
         <div class="contact-form-wrapper">
           <form id="quoteCustomerInfoForm" enctype="multipart/form-data">
             <div class="contact-info-tab">
               <div class="popup-product-information-step-2">
-                <h2>Contact Information</h2>
+                <h5>Contact Information</h5>
                 <p>In order to reach out to you we would like to know a bit more about you.</p>
               </div>
               <div class="contact-form">
@@ -92,7 +124,7 @@
 
             <div class="contact-info-tab">
               <div class="popup-product-information-step-2">
-                <h2>Shipping Information</h2>
+                <h5>Shipping Information</h5>
                 <p>Kindly provide complete shipping information to ensure shipping costs are included in your quotation.</p>
               </div>
               <div class="contact-form">
@@ -390,34 +422,29 @@
                 
               </div>
             </div>
+            <div class="submit-button-wrapper --desktop-only">
+              <button id="quote-submit-button" class="button button--secondary quote-checkout-submit-button button--full-width" form="quoteCustomerInfoForm" type='submit'>Submit Quote</button>
+            </div> 
           </form>
+       
         </div>
         <div class="products-info-wrapper">
+          <h5>Order Summary </h5>
           <div class="quote-checkout-products-grid">
-            <!--
-              <div class="quote-checkout-product-item">
-                <div class="quote-checkout-product-image">
-                  <img src="https://cdn.shopify.com/s/files/1/0924/3099/1671/files/c001_tab_lock_roll_end_corrugated_box_02_64x64.jpg?v=1739644317" width="80" height="80"/>
-                </div>
-                <div class="quote-checkout-product-details">
-                  <h4 class="product-title-h4">Tab Lock Roll End Corrugated Box</h4>
-                  <h4 class="product-sku-h4">SKU: F014</h4>
-                  <h4 class="product-variant-h4">Variant: Gray</h4>
-                  <h4 class="product-quantity-h4">Quantites: 2000, 5000, 3000</h4>
-                </div>
-              </div>
-            -->
+          {% comment %} Inject Products here from JS  {% endcomment %}
           </div>
         </div>
-        <div class="submit-button-wrapper">
-          <button id="quote-submit-button" class="button button--secondary quote-checkout-submit-button" form="quoteCustomerInfoForm" type='submit'>Submit Quote</button>
-        </div>
+         <div class="submit-button-wrapper --mobile-only">
+        
+            <button id="quote-submit-button" class="button button--secondary quote-checkout-submit-button button--full-width" form="quoteCustomerInfoForm" type='submit'>Submit Quote</button>
+          </div> 
       </div>
-    </div>
-  </div>
   
-  <div class="thankyou-overlay-container" style="display:none;">
-    
+  </div>
+</div>
+
+<div class="thankyou-overlay-container" style="display:none;">
+      
   <div id="thank-you-popup" class="popup-thank-you">
     <button class="close-btn">×</button>
     <div class="thank-you-content">
@@ -434,7 +461,7 @@
         </svg>
       </div>
       <div class="thank-you-text">
-        <h2>Thank you</h2>
+        <h5>Thank you</h5>
         <p>We have successfully received your quote and will reach out to you shortly.</p>
       </div>
     </div>
@@ -447,8 +474,6 @@
     </div>
   </div>
   </div>
-    
-</div>
 
 
 <script src="{{ 'pak-custom-quote-quote-checkout.js' | asset_url }}"></script>
