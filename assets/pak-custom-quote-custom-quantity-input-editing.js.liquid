@@ -58,13 +58,13 @@
           return type.productType === productTypeFromProduct;
         });
         console.log('match: ',matchedType);
-        if (matchedType) {
-          inputQuantityNumber.min = matchedType.min || 1;
-          inputQuantityNumber.placeholder += matchedType.min || "";
-        } else {
-          inputQuantityNumber.min = 1;
-          inputQuantityNumber.placeholder += 1;
-        }
+        // if (matchedType) {
+        //   inputQuantityNumber.min = matchedType.min || 1;
+        //   inputQuantityNumber.placeholder += matchedType.min || "";
+        // } else {
+        //   inputQuantityNumber.min = 1;
+        //   inputQuantityNumber.placeholder += 1;
+        // }
 
       } catch (error) {
         console.error("Error fetching product quantities:", error);
