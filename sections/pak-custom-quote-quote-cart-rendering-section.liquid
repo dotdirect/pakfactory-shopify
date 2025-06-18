@@ -44,7 +44,7 @@
                 height="70">
               <div class="quote-cart-item-product-text">
                 <h3>
-                  <a href="https://pakfactory-v-2.myshopify.com/products/tab-lock-roll-end-corrugated-box">Tab Lock Roll End Corrugated Box</a>
+                  <a href="{{ request.origin }}/products/tab-lock-roll-end-corrugated-box">Tab Lock Roll End Corrugated Box</a>
                 </h3>
                 <p>SKU: F013</p>
               </div>
@@ -80,20 +80,17 @@
               </div>
             </div>
             <div class="quote-cart-item-product-project-info">
-              <label class="quote-project-info-label">Project Description</label>
-              <p>
-                sdff
-              </p>
+              {%- comment -%} PROJECT DECRIPTION JS will inject here {%- endcomment -%}
             </div>
 
-            <!-- INSERT CUSTOMIZATION HOOK HERE -->
+
             <div class="quote-cart-item__customization">
-              {%- comment -%} JS will inject a `<ul>` of your name/value pairs here {%- endcomment -%}
+              {%- comment -%} CUSTOMIZATION JS will inject here {%- endcomment -%}
             </div>
 
-            <!-- INSERT CUSTOMIZATION HOOK HERE -->
+
             <div class="quote-cart-item__project-product">
-              {%- comment -%} JS will inject a `<ul>` of your name/value pairs here {%- endcomment -%}
+              {%- comment -%} PROJECT PRODUCT JS will inject here {%- endcomment -%}
             </div>
           </div>
 
@@ -152,18 +149,17 @@
 
 
       <div class="quote-additional-remarks-div">
-        <label>{{ section.settings.additional_remarks }}</label>
+        <label for="quote-additional-remarks">{{ section.settings.additional_remarks }}</label>
         <textarea
           class="quote-adddtional-remarks-textarea"
           id="quote-additional-remarks"
           onchange="changeAdditionalRemarks()"></textarea>
         <div class="quote-footer">
-          <a href="https://pakfactory-v-2.myshopify.com/pages/quote-checkout" class="button button--secondary quote-customer-information">{{ section.settings.quote_checkout_button_text }}</a>
+          <a href="{{ request.origin }}/pages/quote-checkout" class="button button--primary quote-customer-information">{{ section.settings.quote_checkout_button_text }}</a>
         </div>
       </div>
     </div>
   </div>
-<!-- <div class="quote-footer">  <a href="https://pakfactory-v-2.myshopify.com/pages/quote-checkout" class="button button--secondary quote-customer-information">Quote Checkout</a></div> -->
 </div>
 
 

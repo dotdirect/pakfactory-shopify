@@ -31,8 +31,7 @@
 
       {%- else -%}
         <a
-                  {% comment %}  href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}" {% endcomment %}
-        href="{%- if customer -%}{{ routes.account_url }}{%- else -%}/customer_authentication/login?return_to={{ "/pages/all-request" | url_encode }}{%- endif -%}"
+          href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
           class="button button--primary header__account-login link  focus-inset"
         >
           {%- liquid

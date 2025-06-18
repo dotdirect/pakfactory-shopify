@@ -13,8 +13,7 @@
   background: white;
   padding:30px 50px;
   border-radius:2rem;
-  width:100%;
-  max-width:75rem;
+  width:75rem;
 }
   .popup-svg-container{
     margin:0 auto;
@@ -81,26 +80,7 @@
 .popup-continue-shopping-button:hover{
   color:rgb(98 153 46);
 }
-@media screen and (max-width:768px){
-  .popup-text-contaianer h3{
-    font-size: 3rem;
-    max-width: unset;
-    padding: 0 30px;
-  }
-}
-@media screen and (max-width:600px){
-  .popup-request-submit-details-container{
-    padding: 30px;
-  }
-  .popup-text-contaianer h3{
-    padding: 0;
-  }
-}
-@media screen and (max-width:500px){
-  .popup-text-contaianer h3{
-    font-size: 22px;
-  }
-}
+
 /* popup after quote request sent - css - end */
 
 
@@ -201,29 +181,26 @@
     grid-template-columns:1fr;
     gap:20px;
     margin-bottom:20px;
-    margin-top:30px;
   }
     .quote-checkout-form-and-product-info-wrapper{
       display:grid;
       grid-template-columns: repeat(2,50%);
+      /* margin:20px 0; */
+      /* padding:20px 0; */
     }
     /* contact info css */
     .contact-form-wrapper{
       padding:0;
       background-color:rgba(255,255,255,1);
-      border-top-left-radius: 15px;
-      border-top-right-radius: 15px;
-      overflow: hidden;
     }
-
     .contact-info-tab{
             border-radius: 5px;
           /* box-shadow: 0px 0px 6px 1px #ddd; */
             background-color:white;
-          padding: 35px 30px 20px 30px;
+          padding: 35px 30px 20px 0px;
         }
     .contact-info-tab:last-child{
-          padding: 30px 30px 0px 30px;
+          padding: 30px 30px 0px 0px;
         }
           .popup-content-step-2 .contact-info-tab:first-child{
           margin-bottom:30px;
@@ -379,10 +356,7 @@
 }
 
 .submit-button-wrapper{
-  padding:0 30px 35px 30px;
-  background: white;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
+  padding-right:30px;
 }
 
 .submit-button-wrapper button{
@@ -393,11 +367,10 @@
 
     /* product info css */
     .products-info-wrapper{
-      padding:0 0 30px 30px;
+      padding:20px 30px;
+      background-color:rgb(245, 245, 245);
       border-radius: 15px;
       grid-row: span 2;
-      overflow: auto;
-      max-height:767px;
     }
     .quote-checkout-products-grid{
       display:grid;
@@ -411,8 +384,11 @@
       gap:10px;
       border-radius: 15px;
       background:white;
+      /* align-items:center; */
     }
-
+    .quote-checkout-product-item:not(:last-child){
+      /* border-bottom: 0.04rem solid rgba(1,1,1,0.2); */
+    }
     .quote-checkout-product-image{
       width:max-content;
       display:flex;
@@ -423,6 +399,7 @@
       height:85px;
       width:85px;
       border-radius:1rem;
+      /* box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.2); */
     }
     .quote-checkout-product-details h4{
       margin:0;
@@ -469,12 +446,13 @@
       grid-template-columns: 1fr 4fr;
     }
     .contact-form-wrapper{
-      border-radius: 15px;
+      padding:0 0 20px 0;
     }
     .contact-info-tab{
-      padding-right:30px;
+      padding-right:0;
     }
     .contact-info-tab:last-child{
+      padding-right:0;
       padding-top:20px;
     }
     .quote-checkout-container{
@@ -482,14 +460,11 @@
       justify-self:center;
     }
     .products-info-wrapper{
-      padding:30px 0;
+      padding:30px;
       margin-bottom: 20px;
     }
     .submit-button-wrapper{
-      /* padding: 30px; */
-      background: transparent;
       padding-right: unset; 
-      padding-left: 0;
     }
     .quote-checkout-submit-button{
       margin:unset;
@@ -498,13 +473,6 @@
   }
 
   @media screen and (max-width:570px){
-    .contact-info-tab,
-    .contact-info-tab:last-child{
-      padding:2rem;
-    }
-    .contact-info-tab:last-child{
-      padding-bottom: 0;
-    }
     .form-row {
       flex-direction:column;
     }
@@ -514,7 +482,21 @@
     .quote-checkout-products-grid{
       gap:20px;
     }
-
-
+    .quote-checkout-product-item {
+      padding: 10px;
+      gap:10px;
+    }
+    .products-info-wrapper{
+      padding:20px;
+    }
+    .contact-info-tab{
+      /* padding:20px 15px; */
+    }
+    .contact-info-tab:last-child{
+      /* padding:5px 15px; */
+    }
+    .quote-checkout-submit-button{
+      /* margin:0 15px; */
+    }
   }
 /* quote-checkout - css - end */

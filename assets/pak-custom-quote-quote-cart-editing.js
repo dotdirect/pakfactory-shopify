@@ -98,10 +98,10 @@ document.addEventListener('DOMContentLoaded', function () {
           const buttonsContainer = document.createElement('div');
           buttonsContainer.className = 'quote-cart-item-product-buttons-group';
           buttonsContainer.innerHTML = `
-            <button id="quote-product-delete-button" class="delete-btn">Delete</button>
-            <button class="edit-btn">Edit</button>
-            <button class="save-changes-btn" style="display:none;">Save Changes</button>
-            <button class="cancel-changes-btn" style="display:none;">Cancel Changes</button>
+            <button id="quote-product-delete-button" class="button button--small button--error delete-btn">Delete</button>
+            <button class="button button--small edit-btn">Edit</button>
+            <button class="button button--primary button--small save-changes-btn" style="display:none;">Save Changes</button>
+            <button class="button button--small cancel-changes-btn" style="display:none;">Cancel Changes</button>
           `;
           quoteItemProductImageTextButtonsContainer.appendChild(
             buttonsContainer
@@ -119,128 +119,205 @@ document.addEventListener('DOMContentLoaded', function () {
           quoteCartItemProductDetails.className =
             'quote-cart-item-product-details-static';
 
+          // Create new containers for left and right sections
+          const leftDetailsContainer = document.createElement('div');
+          leftDetailsContainer.className =
+            'quote-cart-item-product-details-static__left';
+
+          quoteCartItemProductDetails.appendChild(leftDetailsContainer);
+
+          const rightDetailsContainer = document.createElement('div');
+          rightDetailsContainer.className =
+            'quote-cart-item-product-details-static__right';
+
+          quoteCartItemProductDetails.appendChild(rightDetailsContainer);
+
+          // Wrap everything inside a parent container
           const productDetailsContainer = document.createElement('div');
+          productDetailsContainer.className =
+            ' quote-cart-item-detail quote-cart-item-detail__quantity';
 
           const productQunatityVariantsDiv = document.createElement('div');
           productQunatityVariantsDiv.className =
             'product-quantity-variant-details-container';
 
-          const productQunatityDiv = document.createElement('div');
-          const productQuantityLabelContainer = document.createElement('div');
-          productQuantityLabelContainer.className = 'quantity-label';
-          productQuantityLabelContainer.innerHTML = `<label>Quantities</label>`;
-          productQunatityDiv.appendChild(productQuantityLabelContainer);
+          function createQuantitySection(listOfQuantities) {
+            const container = document.createElement('div');
+            container.className =
+              'quote-cart-item-detail quote-cart-item-detail__customization';
 
-          const eachQuantityContainer = document.createElement('div');
-          eachQuantityContainer.className = 'each-quantity-labels-container';
+            const label = document.createElement('div');
+            label.className = 'quote-cart-item-detail__label';
+            label.textContent = 'Quantities';
 
-          listOfQuantities.forEach((quantity, index) => {
-            const quantityLabel = document.createElement('label');
-            const isLast = index === listOfQuantities.length - 1;
-            quantityLabel.innerHTML = isLast ? `${quantity}` : `${quantity}, `;
-            eachQuantityContainer.appendChild(quantityLabel);
-          });
+            const valueDisplay = document.createElement('div');
+            valueDisplay.textContent = listOfQuantities.join(', ');
 
-          productQunatityDiv.appendChild(eachQuantityContainer);
-          productQunatityVariantsDiv.appendChild(productQunatityDiv);
+            container.appendChild(label);
+            container.appendChild(valueDisplay);
 
-          if (1 === product.variants.length) {
-          } else {
-            const productVariantDiv = document.createElement('div');
-            const productVariantLabelContainer = document.createElement('div');
-            productVariantLabelContainer.className = 'variant-label';
-            productVariantLabelContainer.innerHTML = `<label>Variants</label>`;
-            productVariantDiv.appendChild(productVariantLabelContainer);
+            return container;
+          }
 
-            const eachVariantContainer = document.createElement('div');
-            eachVariantContainer.className = 'each-variant-labels-container';
+          function createProjectDescription(description) {
+            const container = document.createElement('div');
+            container.className =
+              'quote-cart-item-detail quote-cart-item-detail__customization';
 
-            // console.log(rawId);
-            product.variants.forEach((variant) => {
-              if (parseInt(rawId) === parseInt(variant.id)) {
-                const variantLabel = document.createElement('label');
-                variantLabel.innerHTML = `${variant.title}`;
-                eachVariantContainer.appendChild(variantLabel);
-                // console.log(eachVariantContainer);
-              }
+            const label = document.createElement('div');
+            label.className = 'quote-cart-item-detail__label';
+            label.textContent = 'Project Description';
+
+            const value = document.createElement('div');
+            value.textContent = description;
+
+            container.appendChild(label);
+            container.appendChild(value);
+
+            return container;
+          }
+
+          function createCustomizationSection(customization) {
+            const container = document.createElement('div');
+            container.className =
+              'quote-cart-item-detail quote-cart-item-detail__customization';
+
+            const label = document.createElement('div');
+            label.className = 'quote-cart-item-detail__label';
+            label.textContent = 'Product Options';
+
+            const list = document.createElement('ul');
+            list.className = 'quote-cart-item-detail__customization-list';
+
+            customization.forEach(({ name, value }) => {
+              const item = document.createElement('li');
+              item.innerHTML = `<div class="customization-list__label">${name}</div> <div class="customization-list__value">${value}</div>`;
+              list.appendChild(item);
             });
-            productVariantDiv.appendChild(eachVariantContainer);
-            productQunatityVariantsDiv.appendChild(productVariantDiv);
+
+            container.appendChild(label);
+            container.appendChild(list);
+
+            return container;
           }
 
+          function createDimensionsSection(dimensions) {
+            const order = ['L', 'W', 'H', 'D', 'Di'];
+
+            // Filter and order dimension values
+            const orderedDimensions = order
+              .map((code) => dimensions.find((d) => d.code === code))
+              .filter(Boolean);
+
+            const codes = orderedDimensions.map((d) => d.code);
+            const values = orderedDimensions.map((d) => `${d.value}\u201D`);
+
+            const container = document.createElement('div');
+            container.className =
+              'quote-cart-item-detail quote-cart-item-detail__dimensions';
+
+            const label = document.createElement('div');
+            label.className = 'quote-cart-item-detail__label';
+            label.textContent = `Dimensions (${codes.join(' × ')})`;
+
+            const valueText = document.createElement('div');
+            valueText.textContent = values.join(' × ');
+
+            container.appendChild(label);
+            container.appendChild(valueText);
+
+            return container;
+          }
+
+          function createProjectProductSection(projectProduct) {
+            const container = document.createElement('div');
+            container.className =
+              'quote-cart-item-detail quote-cart-item-detail__customization';
+
+            const label = document.createElement('div');
+            label.className = 'quote-cart-item-detail__label';
+            label.textContent = 'Project Product';
+
+            const value = document.createElement('div');
+            value.textContent = projectProduct;
+
+            container.appendChild(label);
+            container.appendChild(value);
+
+            return container;
+          }
+
+          // For variant section, we can create a function to handle the rendering
+          // function createVariantSection(product, rawId) {
+          //   if (product.variants.length === 1) return null; // Skip rendering if only one variant
+
+          //   const wrapper = document.createElement('div');
+
+          //   // Create label container
+          //   const labelContainer = document.createElement('div');
+          //   labelContainer.className = 'variant-label';
+
+          //   const label = document.createElement('label');
+          //   label.textContent = 'Variants';
+          //   labelContainer.appendChild(label);
+
+          //   // Create variant value container
+          //   const variantValueContainer = document.createElement('div');
+          //   variantValueContainer.className = 'each-variant-labels-container';
+
+          //   // Match and append the variant title
+          //   const matchedVariant = product.variants.find(
+          //     (v) => parseInt(v.id) === parseInt(rawId)
+          //   );
+
+          //   if (matchedVariant) {
+          //     const variantLabel = document.createElement('label');
+          //     variantLabel.textContent = matchedVariant.title;
+          //     variantValueContainer.appendChild(variantLabel);
+          //   }
+
+          //   // Assemble and return full section
+          //   wrapper.appendChild(labelContainer);
+          //   wrapper.appendChild(variantValueContainer);
+          //   return wrapper;
+          // }
+
+          // // Variant section rendering
+          // const variantSection = createVariantSection(product, rawId);
+          // if (variantSection) {
+          //   productQunatityVariantsDiv.appendChild(variantSection);
+          // }
+
+          // Quantity section rendering
+          const quantitySection = createQuantitySection(listOfQuantities);
+          productDetailsContainer.appendChild(quantitySection);
+
+          // Project description section rendering
           productDetailsContainer.appendChild(productQunatityVariantsDiv);
-          quoteCartItemProductDetails.appendChild(productDetailsContainer);
+          leftDetailsContainer.appendChild(productDetailsContainer);
 
-          const projectInformationStaticContainer =
-            document.createElement('div');
-          projectInformationStaticContainer.className =
-            'quote-cart-item-product-project-info';
-          projectInformationStaticContainer.innerHTML = `
-            <label class="quote-project-info-label">Project Description</label>
-            <p>${productProjectInformation}</p>
-          `;
-
-          quoteCartItemProductDetails.appendChild(
-            projectInformationStaticContainer
+          // Usage
+          const projectInfoSection = createProjectDescription(
+            productProjectInformation
           );
+          rightDetailsContainer.appendChild(projectInfoSection);
 
-          // ——— Customization Rendering ———
-          if (Array.isArray(customization) && customization.length > 0) {
-            const customizationContainer = document.createElement('div');
-            customizationContainer.className = 'quote-cart-item__customization';
-            customizationContainer.innerHTML = `
-              <label class="quote-customization-label">Your Selections:</label>
-              <ul class="quote-customization-list">
-                ${customization
-                  .map(
-                    (opt) =>
-                      `<li><strong>${opt.name}:</strong> ${opt.value}</li>`
-                  )
-                  .join('')}
-              </ul>
-            `;
-            quoteCartItemProductDetails.appendChild(customizationContainer);
-          }
-
-          // ——— Dimensions Rendering ———
+          // Dimensions rendering
           if (Array.isArray(dimensions) && dimensions.length > 0) {
-            // Define the display order of your shorthand codes
-            const order = ['L', 'W', 'H', 'Dp', 'Di'];
-
-            // Build an array of formatted values in that order
-            const formatted = order
-              .map((code) => dimensions.find((d) => d.code === code))
-              .filter(Boolean) // drop any missing entries
-              .map((d) => `${d.value}\u201D`); // append the double-quote character
-
-            // Build an array of formatted values in that order
-            const dimension = order
-              .map((code) => dimensions.find((d) => d.code === code))
-              .filter(Boolean) // drop any missing entries
-              .map((d) => `${d.code}`); // append the double-quote character
-
-            const labelText = `Dimensions ( ${dimension.join(' × ')} )`;
-
-            // Create and inject the HTML
-            const dimContainer = document.createElement('div');
-            dimContainer.className = 'quote-cart-item__dimensions';
-            dimContainer.innerHTML = `
-             <label class="quote-project-info-label">${labelText}</label>
-            <p>${formatted.join(' × ')}</p>`;
-
-            quoteCartItemProductDetails.appendChild(dimContainer);
+            const dimensionsSection = createDimensionsSection(dimensions);
+            leftDetailsContainer.appendChild(dimensionsSection);
           }
 
-          // ——— Project Product Rendering ———
-          const projectProductContainer = document.createElement('div');
-          projectProductContainer.className =
-            'quote-cart-item-product-project-info';
-          projectProductContainer.innerHTML = `
-            <label class="quote-project-info-label">Project Product</label>
-            <p>${projectProduct}</p>
-          `;
+          // Customization rendering
+          if (Array.isArray(customization) && customization.length > 0) {
+            const customizationSection =
+              createCustomizationSection(customization);
+            leftDetailsContainer.appendChild(customizationSection);
+          }
 
-          quoteCartItemProductDetails.appendChild(projectProductContainer);
+          const projectProductSection =
+            createProjectProductSection(projectProduct);
+          rightDetailsContainer.appendChild(projectProductSection);
 
           quoteCartItem.appendChild(quoteCartItemProductDetails);
 
@@ -356,6 +433,7 @@ document.addEventListener('DOMContentLoaded', function () {
       ).style.display = 'none';
       cartItem.querySelector('.save-changes-btn').style.display = 'block';
       cartItem.querySelector('.cancel-changes-btn').style.display = 'block';
+      cartItem.querySelector('.delete-btn').style.display = 'none';
       editBtn.style.display = 'none';
       openFlag = true;
       return;
@@ -389,7 +467,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const productHandle = cartItem.getAttribute('data-product-handle');
       let quoteCart = JSON.parse(localStorage.getItem('quoteCart') || '[]');
       if (variantId) {
-        const updatedURL = `https://pakfactory-v-2.myshopify.com/products/${productHandle}?variant=${variantId}`;
+        const updatedURL = `{{request.origin}}/products/${productHandle}?variant=${variantId}`;
         quoteCart[index].rawId = variantId;
         quoteCart[index].currentPageUrl = updatedURL;
       }
@@ -412,6 +490,12 @@ document.addEventListener('DOMContentLoaded', function () {
     if (cancelBtn) {
       openFlag = false;
       renderQuoteCart();
+      // const cartItem = cancelBtn.closest('.quote-cart-item');
+      // cartItem.querySelector('.product-details-edit-container').style.display = "none";
+      // cartItem.querySelector('.save-changes-btn').style.display = "none";
+      // cartItem.querySelector('.cancel-changes-btn').style.display = "none";
+      // cartItem.querySelector('.quote-cart-item-product-details-static').style.display = "flex";
+      // cartItem.querySelector('.edit-btn').style.display = "block";
     }
 
     // Variant Option Selection
@@ -519,7 +603,24 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
+  // quoteCartGrid.addEventListener("change", function (e) {
+  //   if (e.target.name === "project-info-textarea") {
+  //     const cartItem = e.target.closest(".quote-cart-item");
+  //     const productIndex = parseInt(
+  //       cartItem.getAttribute("data-product-index")
+  //     );
 
+  //     let quoteCart = JSON.parse(localStorage.getItem("quoteCart") || "[]");
+
+  //     if (quoteCart[productIndex]) {
+  //       quoteCart[productIndex].productProjectInformation =
+  //         e.target.value.trim();
+  //       localStorage.setItem("quoteCart", JSON.stringify(quoteCart));
+  //       // console.log("Updated quoteCart with project info:", quoteCart);
+  //       renderQuoteCart();
+  //     }
+  //   }
+  // });
 
   document.addEventListener('click', function (e) {
     // Cancel button in popup

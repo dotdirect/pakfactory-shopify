@@ -10,7 +10,12 @@
     <main class="main-content">
       <div id="all-request-loader" class="loading-overlay__spinner hidden">
         {%- render 'icon-loading' -%}
-      </div> 
+      </div>      <!--
+        <div class="top-head">
+          <span style=" border-bottom:1px solid black; padding:30px; display:block; "> Quote Admin Dashboard</span>
+          <hr/>
+        </div>
+      -->
 
       <div class="middle">
         <div class="table-and-pagination-elements-container">
@@ -32,6 +37,10 @@
               <thead>
                 <tr>
                   <th>ID</th>
+                  <!-- <th>Prospect ID</th>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Email</th> -->
                   <th>Product(s)</th>
                   <th>Status</th>
                   <th>Created At</th>
@@ -39,7 +48,19 @@
                 </tr>
               </thead>
               <tbody>
-                <!-- All data will be populated here -->
+                <!--
+                  <tr>
+                    <td><a href="#" class="custom-link">REQ-1000</a></td>
+                    <td>PROS-2000</td>
+                    <td>John0</td>
+                    <td>Doe0</td>
+                    <td>john0@example.com</td>
+                    <td><span class="tag">Product 1</span><span class="tag">Product 1</span></td>
+                    <td>6</td>
+                    <td><span class="status won">✔ Closed Won</span></td>
+                    <td>19 days ago</td>
+                  </tr>
+                -->
               </tbody>
             </table>
           </div>
@@ -62,7 +83,7 @@
             {{ customer.first_name }}
             {{ customer.last_name -}}
           </p>
-          <p class="custom-information-small-p"> {{ customer.email }}</p>
+          <p id="info-name" class="custom-information-small-p"> {{ customer.email }}</p>
           <p id="info-mb" class="custom-information-small-p"> {{ customer.phone }}</p>
             {% if customer.default_address %}
           <hr class="dashed-2">
@@ -111,9 +132,43 @@
       </div>
     </main>
   </div>
+  <!--
+    <div class="last">
 
+      <div class="dashboard-header">
+       <span style="
+        border-bottom: 1px solid black;
+        padding: 30px;
+        display: block;
+      ">Quote Admin Dashboard</span>
+      </div>
+
+      <div class="quote-card">
+        <div class="quote-info">
+          <svg id="back" xmlns="http://www.w3.org/2000/svg" width="32px" height="32px" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
+          </svg>
+          <span>Quote Request REQ-1000</span>
+          <p style="    line-height: 0px;">Review and respond to customer request</p>
+        </div>
+        <div class="button-group">
+          <button class="btn btn-primary">Create Proposal</button>
+          <button class="btn btn-secondary">Create Shopify Order</button>
+          <button class="btn btn-secondary">Archive</button>
+          <button class="btn btn-danger">Delete</button>
+        </div>
+      </div>
+
+    </div>
+  -->
   <div class="container last" style="display: none;">
-
+    <!--
+      <div class="dashboard-header">
+            <span style="
+          padding: 30px; font-size:24px;
+      ">Quote Admin Dashboard</span>
+          </div>
+    -->
 
     <div class="quote-card">
       <div class="back-button-div">

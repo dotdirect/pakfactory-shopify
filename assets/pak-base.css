@@ -203,6 +203,12 @@ h3,
   gap: 2.5rem 0;
 }
 
+/* Buttons*/
+.button--error {
+  background-color: rgb(203 46 26 / 64%);
+  color: rgb(255, 229, 229);
+}
+
 /* Larger Screens Conditions */
 @media screen and (min-width: 1200px) {
   .menu-drawer .mega-menu__column {
