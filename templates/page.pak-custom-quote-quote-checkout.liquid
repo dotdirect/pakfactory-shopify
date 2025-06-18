@@ -20,10 +20,9 @@
 
 <!-- Popup for quote request received -->
 
-
-
-
-
+<header class="header header--{{ section.settings.header_type }} {% if section.settings.menu != blank %}header--has-menu{% endif %} container {% if section.settings.header_type == 'center-logo' %}{% if section.settings.enable_logo_mobile != true %} header--without-logo-mobile{% endif %}{% if section.settings.enable_logo_desktop != true %} header--without-logo-desktop{% endif %}{% endif %}">
+  {% render 'header-left-logo' %}
+</header>
 
 
 <div class="container" style="position:relative;">
