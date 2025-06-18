@@ -1,26 +1,48 @@
-{% comment %} popup for the delete item {% endcomment %}
+{% comment %} Pop Up - Delete Item{% endcomment %}
 <div
   style="display:none; position:fixed;"
-  class="quote-item-delete-popup-overlay"
+  class="popup-overlay quote-item-delete-popup-overlay"
   id="quote-item-delete-overlay-intermediate">
-  <div class="popup-item-delete-details-container">
-    <div class="popup-item-delete-svg-container">
-      <img src="{{ 'popup-quote-icon.png' | asset_url }}" />
+  <div class="popup-overlay__container popup-item-delete-details-container">
+    <div class="popup-overlay__header popup-item-delete-svg-container">
+      <img
+        src="https://cdn.shopify.com/s/files/1/0924/3099/1671/files/fallback-image.jpg?v=1748536386"
+        alt="{{ "icon" | escape }}"
+        width="50"
+        height="50">
+      <div class="popup-overlay__header-text">
+        <h3>Delete Quote</h3>
+        <p>Are you sure you want to remove this quote? This action cannot be undone</p>
+      </div>
     </div>
-    <div class="popup-item-delete-text-contaianer">
-      <h3>Are you sure you want to remove this quote request?</h3>
-    </div>
-    <div class="popup-item-delete-buttons-container">
-      <button class="popup-item-delete-quote-cancel">Cancel</button>
-      <button class="popup-item-delete-quote">Delete</button>
+    <div class="popup-overlay__footer popup-item-delete-buttons-container">
+      <button class="button button--primary button--default popup-item-delete-quote-cancel">Cancel</button>
+      <button class="button button--primary button--error popup-item-delete-quote">Delete</button>
     </div>
   </div>
 </div>
 
-{% comment %} popup for the delete item {% endcomment %}
 
+{% comment %} Breadcrumbs {% endcomment %}
+<div class="container">
+  <nav
+    id="breadcrumbs"
+    class="breadcrumb body-small"
+    role="navigation"
+    aria-label="breadcrumbs">
+    <a
+      href="{{ routes.root_url }}"
+      title="{{ 'general.breadcrumbs.home' | t }}"
+      class="focus-inset">
+      {{- 'general.breadcrumbs.home' | t -}}
+    </a>
 
-<!-- quote cart page -->
+    <div class="breadcrumb__delimiter"></div>
+    <span>{{ page.title }}</span>
+  </nav>
+</div>
+
+{% comment %} Cart Page {% endcomment %}
 <div class="container" style="position:relative;">
   <div id="quote-cart-loader" class="loading-overlay__spinner hidden">
     {%- render 'icon-loading' -%}

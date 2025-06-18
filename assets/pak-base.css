@@ -206,7 +206,70 @@ h3,
 /* Buttons*/
 .button--error {
   background-color: rgb(203 46 26 / 64%);
-  color: rgb(255, 229, 229);
+  color: rgb(255, 241, 241);
+}
+
+.button--error:hover {
+  background-color: rgba(143, 24, 8, 0.64);
+  color: rgb(255, 241, 241);
+}
+
+.button--default {
+  background-color: rgba(226, 226, 226, 0.64);
+  color: rgb(70, 70, 70);
+}
+
+.button--default:hover {
+  background-color: rgba(189, 189, 189, 0.64);
+  color: rgb(70, 70, 70);
+}
+
+/* Custom Pop Up model */
+.popup-overlay {
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 99;
+  background: rgba(1, 1, 1, 0.3);
+  padding: 0 40px;
+}
+
+.popup-overlay .popup-overlay__container {
+  margin: auto;
+  background: white;
+  padding: 50px;
+  border-radius: 2rem;
+  max-width: 70rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.popup-overlay .popup-overlay__header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  gap: 1.2rem;
+  max-width: 650px;
+}
+
+.popup-overlay .popup-overlay__header h3 {
+  margin: 0;
+  color: rgb(var(--color-foreground));
+}
+
+.popup-overlay__footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+}
+
+.popup-overlay__footer.popup-overlay__footer--stacked {
+  flex-direction: column;
 }
 
 /* Larger Screens Conditions */

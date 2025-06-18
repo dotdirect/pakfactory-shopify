@@ -12,13 +12,19 @@
     {%- render 'icon-loading' -%}
   </div>
   <div class="quantity-input-text-container">
+    {% assign first_product_line = product.metafields.custom.product_line.value | first %}
+    {% assign product_line_moq = first_product_line.moq %}
+    {% if product_line_moq == blank %}
+      {% assign product_line_moq = 100 %}
+    {% endif %}
 
     <div>
       <div class="quantity-input-items-container">
         <input
           type="number"
           id="product-item-quantity"
-          placeholder="Min {{ text.quantity-placeholder }} ">
+          min="{{ product_line_moq }}"
+          placeholder="Min {{ product_line_moq }} ">
         <button id="add-new-quantity">Add Quantity</button>
       </div>
       <div class="quantity-input-error-div" style="display:none;"></div>
