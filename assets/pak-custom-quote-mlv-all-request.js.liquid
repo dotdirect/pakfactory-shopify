@@ -60,6 +60,8 @@ function renderAccountSpecialist(potentialOwner, email, contact) {
       fetch(apiUrl)
         .then(res => res.json())
         .then(data => {
+
+          console.log(data)
           const quotes = data.quotes;
           const pagination = data.pagination;
 
