@@ -125,16 +125,17 @@ function renderAccountSpecialist(potentialOwner, email, contact) {
               day: 'numeric'
             });
             const tr = document.createElement('tr');
-            tr.innerHTML = `
+               tr.innerHTML = `
               <td><a href="#" class="custom-link">${quoteId}</a></td>
               <td>
-                <div style="display:flex; gap:20px; align-items:center;">
-                  ${productImg}
-                  <div>
-                    ${productNames[0] || '-'}
+                <div class="quote__product">
+
+                 <div class="quote__product-image ${productNames.length > 1 ? `more-products` : ''}">
+                    ${productImg}
+                    ${productNames.length > 1 ? `<div class="cart-count-bubble"> ${productImg}</div>` : ''}
+                    ${productNames.length > 1 ? `<div class="cart-count-bubble">${productNames.length - 1}</div>` : ''}
                   </div>
                 </div>
-                          <div class="more-text">${productNames.length > 1 ? `${productNames.length - 1} more` : ''}</div>
               </td>
               <td><div class="status" data-status="${potentialStatus}">${potentialStatus} <div class="tooltip-svg-wrapper" style="position:relative; display:flex;"><div class="status-tool-tip">${statusText}</div>${toolTipIcon}</div></div></td>
               <td>${formattedDate}</td>
