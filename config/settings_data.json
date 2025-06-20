@@ -206,9 +206,9 @@
       },
       "scheme-91e0507a-4126-40ec-85e0-bd77f83941f7": {
         "settings": {
-          "colors_text": "#4f5e68",
+          "colors_text": "#fbfbfb",
           "colors_secondary_text": "#bed9ed",
-          "colors_text_title": "#011624",
+          "colors_text_title": "#fbfbfb",
           "colors_background_1": "#011624",
           "colors_background_2": "#e7fdff",
           "background_gradient": "",
