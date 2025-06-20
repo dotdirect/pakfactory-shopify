@@ -220,7 +220,7 @@ h3,
 .quote__product .quote__product-image.more-products img:nth-child(2) {
   position: absolute;
   top: 0px;
-  right: -5px;
+  right: 0;
   transform: rotate(5deg);
 }
 
