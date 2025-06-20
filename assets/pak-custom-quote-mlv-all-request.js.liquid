@@ -134,6 +134,9 @@ function renderAccountSpecialist(potentialOwner, email, contact) {
                     ${productNames.length > 1 ? `${productImg}` : ''}
                     ${productNames.length > 1 ? `<div class="cart-count-bubble">${productNames.length - 1}</div>` : ''}
                   </div>
+                        <div>
+                    ${productNames[0] || '-'}
+                  </div>
                 </div>
               </td>
               <td><div class="status" data-status="${potentialStatus}">${potentialStatus} <div class="tooltip-svg-wrapper" style="position:relative; display:flex;"><div class="status-tool-tip">${statusText}</div>${toolTipIcon}</div></div></td>
