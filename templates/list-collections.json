@@ -121,7 +121,7 @@
       "name": "t:sections.animated-image-collage.name",
       "settings": {
         "section_type": "background",
-        "color_scheme": "",
+        "color_scheme": "background-3",
         "header_overlay": false,
         "header_transparent": false,
         "column_to_show": 3,

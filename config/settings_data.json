@@ -124,7 +124,7 @@
           "background_gradient": "",
           "colors_solid_button_labels": "#ffffff",
           "colors_solid_button_labels_hover": "#011624",
-          "colors_solid_button_background": "{{ shop.brand.colors.secondary[0].foreground }}",
+          "colors_solid_button_background": "{{ shop.brand.colors.primary[0].background }}",
           "colors_solid_button_background_hover": "#f2f3f4",
           "colors_secondary_button_labels": "#011624",
           "colors_secondary_button_labels_hover": "#ffffff",
