@@ -58,13 +58,10 @@
   gap: 24px;
 }
 .quote-cart-item {
-  box-shadow: 0 8px 40px rgba(var(--color-shadow), 0.08);
-  border: 1px solid #e8e0e8;
-  border-radius: 10px;
-
   display: grid;
   grid-template-columns: 100%;
 }
+
 .quote-cart-item-product-image-text-buttons {
   grid-column: span 2;
   border-bottom: 1px solid #e8e0e8;
@@ -93,6 +90,7 @@
 }
 .quote-cart-item-product-text h3 a {
   text-decoration: none;
+  font-weight: 600;
 }
 .quote-cart-item-product-text p {
   font-size: 14px;
@@ -100,7 +98,7 @@
 }
 .quote-cart-item-product-buttons-group {
   display: flex;
-  gap: 8px;
+  gap: 2rem;
   justify-content: flex-end;
   flex-wrap: wrap;
 }
@@ -109,7 +107,7 @@
   cursor: pointer;
 }
 
-.quote-cart-item-product-buttons-group .edit-btn {
+.quote-cart-item-product-buttons-group .button--primary.button.edit-btn {
   background: rgba(33, 31, 87, 1);
   border: none;
   color: rgb(210, 210, 255);
@@ -439,6 +437,18 @@ p {
 
 .quote-cart-item-detail ul li:last-child {
   border-bottom: none;
+}
+
+.delete-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  color: rgb(179, 73, 73);
+}
+
+.delete-btn:hover {
+  color: rgb(117, 44, 44);
 }
 
 @media screen and (max-width: 1020px) {

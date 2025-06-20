@@ -120,19 +120,34 @@ function renderAccountSpecialist(potentialOwner, email, contact) {
             tr.innerHTML = `
               <td><a href="#" class="custom-link">${quoteId}</a></td>
               <td>
-                <div style="display:flex; gap:20px; align-items:center;">
-                  ${productImg}
-                  <div>
-                    ${productNames[0] || '-'}
+                <div class="quote__product">
+
+                 <div class="quote__product-image ${productNames.length > 1 ? `more-products` : ''}">
+                    ${productImg}
+                    ${productNames.length > 1 ? `<div class="cart-count-bubble"> ${productImg}</div>` : ''}
+                    ${productNames.length > 1 ? `<div class="cart-count-bubble">${productNames.length - 1}</div>` : ''}
                   </div>
                 </div>
-                          <div class="more-text">${productNames.length > 1 ? `${productNames.length - 1} more` : ''}</div>
               </td>
               <td><div class="status" data-status="${potentialStatus}">${potentialStatus} <div class="tooltip-svg-wrapper" style="position:relative; display:flex;"><div class="status-tool-tip">${statusText}</div>${toolTipIcon}</div></div></td>
               <td>${formattedDate}</td>
             `;
             tbody.appendChild(tr);
           });
+
+
+<div class="quote__product-image more-products">
+                            <img
+                              src="https://cdn.shopify.com/s/files/1/0924/3099/1671/files/test-product-image.jpg?v=1750090102"
+                              height="60"
+                              width="60">
+                            <img
+                              src="https://cdn.shopify.com/s/files/1/0924/3099/1671/files/test-product-image.jpg?v=1750090102"
+                              height="60"
+                              width="60">
+                           
+                          </div>
+
 
           renderPagination();
           NextLevelAPI();
@@ -257,7 +272,7 @@ function fetchQuotesBySearch(offset = 0) {
 }
 
 
-    const seachButton = document.querySelector('.input-container svg');
+    const seachButton = document.querySelector('.content-card_search svg');
     seachButton.addEventListener('click',fetchQuotesBySearch);
 function renderPaginationForSearch() {
   paginationDiv.innerHTML = '';

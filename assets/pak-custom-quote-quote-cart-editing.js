@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
           if (!product) return;
 
           const quoteCartItem = document.createElement('div');
-          quoteCartItem.className = 'quote-cart-item';
+          quoteCartItem.className = 'card quote-cart-item';
 
           quoteCartItem.setAttribute('data-product-index', productIndex);
           quoteCartItem.setAttribute('data-product-handle', product.handle);
@@ -97,11 +97,27 @@ document.addEventListener('DOMContentLoaded', function () {
           // buttons - delete and edit
           const buttonsContainer = document.createElement('div');
           buttonsContainer.className = 'quote-cart-item-product-buttons-group';
+          // buttonsContainer.innerHTML = `
+          //   <button id="quote-product-delete-button" class="button button--simple button--simple_link focus-inset delete-btn">
+          //     <svg class="icon icon-close" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+          //     <path d="M14.0625 3.9375L3.9375 14.0625" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          //     <path d="M14.0625 14.0625L3.9375 3.9375" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          //     </svg>
+          //     Delete
+          //   </button>
+          //   <button class="button button--simple_link focus-inset edit-btn">Edit</button>
+          //   <button class="button button--small cancel-changes-btn" style="display:none;">Cancel Changes</button>
+          //   <button class="button button--primary button--small save-changes-btn" style="display:none;">Save Changes</button>
+          // `;
+
           buttonsContainer.innerHTML = `
-            <button id="quote-product-delete-button" class="button button--small button--error delete-btn">Delete</button>
-            <button class="button button--small edit-btn">Edit</button>
-            <button class="button button--primary button--small save-changes-btn" style="display:none;">Save Changes</button>
-            <button class="button button--small cancel-changes-btn" style="display:none;">Cancel Changes</button>
+            <button id="quote-product-delete-button" class="button button--simple button--simple_link focus-inset delete-btn"> 
+              <svg class="icon icon-close" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <path d="M14.0625 3.9375L3.9375 14.0625" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M14.0625 14.0625L3.9375 3.9375" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Delete
+            </button>
           `;
           quoteItemProductImageTextButtonsContainer.appendChild(
             buttonsContainer

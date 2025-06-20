@@ -3,11 +3,13 @@
     <summary
       class="header__icon header__icon--account link--text focus-inset modal__toggle"
       aria-haspopup="dialog"
-      role="button"
-    >
+      role="button">
       {% render 'icon-account' %}
     </summary>
-    <div class="header__account-modal modal__toggle color-background-1" role="dialog" aria-modal="true">
+    <div
+      class="header__account-modal modal__toggle color-background-1"
+      role="dialog"
+      aria-modal="true">
       {%- if customer -%}
         <div class="header__account-account">
           <div class="header__account-name">{{ customer.name }}</div>
@@ -21,20 +23,18 @@
               <a href="{{ routes.account_addresses_url }}">{{ 'customer.addresses.book' | t }}</a>
             </li>
           </ul>
-          <a
-            class="header__account-logout button button--primary focus-inset"
-            href="{{ routes.account_logout_url }}"
-          >
+          <a class="header__account-logout button button--primary focus-inset" href="{{ routes.account_logout_url }}">
             {{ 'customer.log_out' | t }}
           </a>
         </div>
 
       {%- else -%}
         <a
-        {% comment %}  href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}" {% endcomment %}
-        href="{%- if customer -%}{{ routes.account_url }}{%- else -%}/customer_authentication/login?return_to={{ "/pages/all-request" | url_encode }}{%- endif -%}"
-          class="button button--primary header__account-login link  focus-inset"
-        >
+          {% comment %}
+          href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
+          {% endcomment %}
+          href="{%- if customer -%}{{ routes.account_url }}{%- else -%}/customer_authentication/login?return_to={{ "/pages/all-request" | url_encode }}{%- endif -%}"
+          class="button button--primary header__account-login link  focus-inset">
           {%- liquid
             if customer
               echo 'customer.account_fallback' | t
@@ -44,10 +44,8 @@
           -%}
         </a>
 
-        <a
-          class="header__account-register link button button--arrow button--simple"
-          href="{{ routes.account_register_url }}"
-        >
+
+        <a class="header__account-register link button button--arrow button--simple" href="{{ routes.account_register_url }}">
           <span>{{ 'customer.login_page.create_account' | t }}</span>
           {% render 'icon-button-arrow' %}
         </a>

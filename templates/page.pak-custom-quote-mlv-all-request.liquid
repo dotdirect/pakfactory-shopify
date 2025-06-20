@@ -1,13 +1,19 @@
 <script>
   {% if request.design_mode or customer %}
-
+    // Access allowed in design mode or for logged-in customers
   {% else %}
-    window.location.href = '/customer_authentication/login?return_to={{ "/pages/all-request" | url_encode }}';
+    // Allow access for local development
+    if (window.location.hostname === "127.0.0.1" && window.location.port === "9292") {
+      // Do nothing
+    } else {
+      // Liquid renders the correct return_to URL server-side
+      window.location.href = '/customer_authentication/login?return_to={{ "/pages/all-request" | url_encode }}';
+    }
   {% endif %}
-
 </script>
 
-    <script src="{{ 'pak-custom-quote-mlv-all-request.js' | asset_url }}"></script>
+
+<script src="{{ 'pak-custom-quote-mlv-all-request.js' | asset_url }}"></script>
 
 {{ 'pak-custom-quote-mlv-all-request.css' | asset_url | stylesheet_tag }}
 
