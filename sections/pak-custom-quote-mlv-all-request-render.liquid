@@ -96,28 +96,37 @@
             <a style="background:none; border:none; color: rgb(98 153 46); text-decoration:none;" href="{{ routes.account_addresses_url }}">{{ section.settings.profile_edit_button_text }}</a>
           </div>
           <div class="information-block">
-            <label class="custom-information-label">{{ section.settings.customer_information_heading }}</label>
-            <p id="info-name">
-              {{ customer.first_name }}
-              {{ customer.last_name -}}
-            </p>
-            <p id="info-name" class="custom-information-small-p">
-              {{ customer.email }}</p>
-            <p id="info-mb" class="custom-information-small-p">
-              {{ customer.phone }}</p>
-            {% if customer.default_address %}
-              <hr class="dashed-2">
 
-              <label class="custom-information-label">{{ section.settings.shipping_information_heading }}</label>
+            {% if customer.first_name %}
+              <label class="custom-information-label">{{ section.settings.customer_information_heading }}</label>
               <p id="info-name">
-                {{ customer.default_address.first_name }}
-                {{ customer.default_address.last_name }}
+                {{ customer.first_name }}
+                {{ customer.last_name -}}
               </p>
-              <p class="custom-information-small-p">
-                {{ customer.default_address.street }}, {{ customer.default_address.city }}, {{ customer.default_address.zip }}, {{ customer.default_address.country }}</p>
-              <p class="custom-information-small-p">
-                {{ customer.default_address.phone }}</p>
+              <p id="info-name" class="custom-information-small-p">
+                {{ customer.email }}</p>
+              <p id="info-mb" class="custom-information-small-p">
+                {{ customer.phone }}</p>
+              {% if customer.default_address %}
+                <hr class="dashed-2">
+
+                <label class="custom-information-label">{{ section.settings.shipping_information_heading }}</label>
+                <p id="info-name">
+                  {{ customer.default_address.first_name }}
+                  {{ customer.default_address.last_name }}
+                </p>
+                <p class="custom-information-small-p">
+                  {{ customer.default_address.street }}, {{ customer.default_address.city }}, {{ customer.default_address.zip }}, {{ customer.default_address.country }}</p>
+                <p class="custom-information-small-p">
+                  {{ customer.default_address.phone }}</p>
+              {% endif %}
+            {% else %}
+              <div class="customer-contact-info">
+                <p>Your profile hasn't been set.
+                </p>
+              </div>
             {% endif %}
+
 
           </div>
         </div>
@@ -151,15 +160,14 @@
             </p>
             <p>{{ section.settings.not_yet_assigned_subtext }}</p>
 
-            <div style="display: flex; gap:16px; font-size: 14px; margin-top:16px;">
-              <p>
-                <strong>{{ section.settings.need_help_text }}</strong>
-              </p>
-              <p>
-                Visit our
-                <a href="/pages/contact-us">contact page</a>.
-              </p>
-            </div>
+            <p style="margin-top:24px;">
+              <strong>{{ section.settings.need_help_text }}</strong>
+            </p>
+            <p>
+              Visit our
+              <a href="/pages/contact-us">contact page</a>.
+            </p>
+
 
           </div>
         </div>
