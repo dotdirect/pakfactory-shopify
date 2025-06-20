@@ -203,6 +203,36 @@
           "colors_background_overlay": "#000000",
           "color_border": "#e6e8e9"
         }
+      },
+      "scheme-91e0507a-4126-40ec-85e0-bd77f83941f7": {
+        "settings": {
+          "colors_text": "#4f5e68",
+          "colors_secondary_text": "#bed9ed",
+          "colors_text_title": "#011624",
+          "colors_background_1": "#011624",
+          "colors_background_2": "#e7fdff",
+          "background_gradient": "",
+          "colors_solid_button_labels": "#fbfbfb",
+          "colors_solid_button_labels_hover": "#fbfbfb",
+          "colors_solid_button_background": "#fbfbfb",
+          "colors_solid_button_background_hover": "#fbfbfb",
+          "colors_secondary_button_labels": "#ffffff",
+          "colors_secondary_button_labels_hover": "#ffffff",
+          "colors_outline_button_labels": "#011624",
+          "colors_outline_button_labels_hover": "{{ shop.brand.colors.primary[0].background }}",
+          "colors_tertiary_button_labels": "#011624",
+          "colors_tertiary_button_labels_hover": "#ffffff",
+          "colors_tertiary_button_background": "{{ shop.brand.colors.primary[0].background }}",
+          "colors_tertiary_button_background_hover": "{{ shop.brand.colors.primary[0].background }}",
+          "colors_input_background": "#ffffff",
+          "colors_input_border": "#f2f3f4",
+          "card_new_price_color": "#011624",
+          "card_old_price_color": "#67737c",
+          "color_accent": "{{ shop.brand.colors.primary[0].background }}",
+          "color_accent_gradient": "linear-gradient(135deg, rgba(80, 234, 255, 1), rgba(21, 102, 224, 1) 100%)",
+          "colors_background_overlay": "#000000",
+          "color_border": "#e6e8e9"
+        }
       }
     }
   },
