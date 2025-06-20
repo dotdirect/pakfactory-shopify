@@ -372,7 +372,7 @@
 .header__quote-checkout-header a {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: start;
 }
 
 .quote-checkout-wrapper {

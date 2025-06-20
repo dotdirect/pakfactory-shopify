@@ -151,7 +151,72 @@ const item = {
       NU: "Nunavut", ON: "Ontario", PE: "Prince Edward Island", QC: "Quebec",
       SK: "Saskatchewan", YT: "Yukon"
     };
+ // fill address also if customer is logged in and has default address
 
+    const countryAddressSelect = document.getElementById('country-name');
+    const stateAddressInput = document.getElementById('state-name');
+    const streetAddressInput = document.getElementById('street-name');
+    const cityNameInput = document.getElementById('city-name');
+    const zipCodeInput = document.getElementById('zipcode');
+    const stateContainerForInput = document.getElementById("state-container");
+   if(customerAddress){
+     if(countryAddressSelect && customerAddress.country_code){
+         for (let i = 0; i < countryAddressSelect.options.length; i++) {
+          const opt = countryAddressSelect.options[i];
+          if (
+            opt.text.toLowerCase() === customerAddress.country_name.toLowerCase() ||
+            opt.value.toLowerCase() === customerAddress.country_code.toLowerCase()
+          ) {
+            opt.selected = true;
+          }
+        }
+     }
+     if(stateAddressInput && customerAddress.province){
+       stateAddressInput.disabled = false;
+       if(customerAddress.country_code.toLowerCase() === 'us')  {
+         for (const [key, value] of Object.entries(usaStates) ) {
+          const opt = document.createElement('option');
+            opt.value = key;
+            opt.textContent = value;
+           if(customerAddress.province.toLowerCase() === value.toLowerCase()){
+             opt.selected = true;
+           } 
+           stateAddressInput.appendChild(opt);
+          }
+       } else if(customerAddress.country_code.toLowerCase() === 'ca'){
+          for (const [key, value] of Object.entries(canadaStates) ) {
+          const opt = document.createElement('option');
+            opt.value = key;
+            opt.textContent = value;
+           if(customerAddress.province.toLowerCase() === value.toLowerCase()){
+             opt.selected = true;
+           } 
+           stateAddressInput.appendChild(opt);
+          }
+       } else{
+           const stateTextInput = document.createElement('input');
+            stateTextInput.type = 'text';
+            stateTextInput.name = 'state';
+            stateTextInput.id = 'state-name';
+            stateTextInput.placeholder = 'Enter your state';
+            stateTextInput.value = customerAddress.province || '';
+          
+            const container = document.getElementById('state-container'); // your parent container
+            stateAddressInput.remove(); // remove <select>
+          
+            stateContainerForInput.appendChild(stateTextInput); // add <input>
+       }
+     }
+     if(streetAddressInput && customerAddress.address1 ){
+       streetAddressInput.value = customerAddress.address1;
+     }
+     if(cityNameInput && customerAddress.city ){
+       cityNameInput.value = customerAddress.city;
+     }
+     if(zipCodeInput && customerAddress.zip ){
+       zipCodeInput.value = customerAddress.zip;
+     }
+   }
     document.getElementById("country-name").addEventListener("change", function () {
       const selectedCountry = this.value;
       const stateContainer = document.getElementById("state-container");
@@ -350,140 +415,97 @@ function fillInAddress() {
       }
     }, 100);
   }
+    setTimeout(() => {
+    if (formOneTimeSubmitted) {
+      validateShippingFields(); // only run and show errors if form was submitted before
+    }
+  }, 200);
 
-  // setTimeout(validateShippingFields, 200);
 }
-// const validateShippingFields = () => {
-//   const zip = zipcode.value.trim();
-//   const countryVal = country.options[country.selectedIndex]?.text || '';
 
-//   const stateElement = document.getElementById('state-name');
-//   let stateVal = '';
 
-//   if (stateElement) {
-//     console.log(stateElement,stateElement.value);
-//     if (stateElement.tagName === 'SELECT') {
-//       stateVal = stateElement.options[stateElement.selectedIndex]?.text || '';
-//     } else if (stateElement.tagName === 'INPUT') {
-//       stateVal = stateElement.value.trim();
-//     }
-//   }
-
-// console.log(zip,countryVal,stateVal);
-//   // First check if the required fields are filled
-//   if (!zip || !country.value || !stateVal) {
-//     showZipError('Please enter zip code, country, and state to check shipping availability.');
-//     shippingValid = false;
-//     updateSubmitState();
-//     return false;
-//   }
-//   // Only proceed with API call for US and Canada
-//   if (countryVal !== 'United States' && countryVal !== 'Canada') {
-//     // Skip API call and clear previous errors (if any)
-//     showZipError('');
-//     shippingValid = true; // consider valid for other countries
-//     updateSubmitState();
-//     return true;
-//   }
-
-//   const url = `/cart/shipping_rates.json?shipping_address%5Bcountry%5D=${encodeURIComponent(countryVal)}&shipping_address%5Bprovince%5D=${encodeURIComponent(stateVal)}&shipping_address%5Bzip%5D=${encodeURIComponent(zip)}`;
-
-//   fetch(url, {
-//     method: 'GET',
-//     headers: {
-//       'X-Requested-With': 'XMLHttpRequest'
-//     }
-//   })
-//     .then(response => response.json())
-//     .then(data => {
-//       if (data.shipping_rates && data.shipping_rates.length >= 0) {
-//         showZipError('');
-//         shippingValid = true;
-//       } else {
-//         showZipError(Object.values(data)[0]);
-//         shippingValid = false;
-//       }
-//       updateSubmitState();
-//     })
-//     .catch(err => {
-//       showZipError('Error checking shipping. Please try again.');
-//       shippingValid = false;
-//       updateSubmitState();
-//     });
-
-//   return true;
-// };
 
 const validateShippingFields = async () => {
-  const zip = zipcode.value.trim();
-  const countryVal = country.options[country.selectedIndex]?.text || '';
+  return new Promise(async (resolve) => {
+    const zip = zipcode.value.trim();
+    const countryVal = country.options[country.selectedIndex]?.text || '';
 
-  const stateElement = document.getElementById('state-name');
-  let stateVal = '';
+    const stateElement = document.getElementById('state-name');
+    let stateVal = '';
 
-  if (stateElement) {
-    if (stateElement.tagName === 'SELECT') {
-      stateVal = stateElement.options[stateElement.selectedIndex]?.text || '';
-      console.log('dropdown: ', stateVal);
-    } else if (stateElement.tagName === 'INPUT') {
-      stateVal = stateElement.value.trim();
-      console.log('input: ', stateVal);
-    }
-  }
-
-  console.log(zip, countryVal, stateVal);
-
-  // First check if the required fields are filled
-  if (!zip || !country.value || !stateVal) {
-    showZipError('Please enter zip code, country, and state to check shipping availability.');
-    return false;
-  }
-
-  console.log('after required check:', zip, countryVal, stateVal);
-
-  // Skip API call for other countries
-  if (countryVal !== 'United States' && countryVal !== 'Canada') {
-    console.log('Country is not US or Canada:', countryVal);
-    showZipError('');
-    return true;
-  }
-
-  console.log('calling API for shipping validation');
-
-  const url = `/cart/shipping_rates.json?shipping_address%5Bcountry%5D=${encodeURIComponent(countryVal)}&shipping_address%5Bprovince%5D=${encodeURIComponent(stateVal)}&shipping_address%5Bzip%5D=${encodeURIComponent(zip)}`;
-
-  try {
-    const response = await fetch(url, {
-      method: 'GET',
-      headers: {
-        'X-Requested-With': 'XMLHttpRequest'
+    if (stateElement) {
+      if (stateElement.tagName === 'SELECT') {
+        stateVal = stateElement.options[stateElement.selectedIndex]?.text || '';
+      } else if (stateElement.tagName === 'INPUT') {
+        stateVal = stateElement.value.trim();
       }
-    });
-
-    const data = await response.json();
-
-    if (data.shipping_rates && data.shipping_rates.length >= 0) {
-      showZipError('');
-      return true;
-    } else {
-      showZipError(Object.values(data)[0] || 'Shipping not available for this address.');
-      return false;
     }
 
-  } catch (err) {
-    console.error('API error during shipping validation:', err);
-    showZipError('Error checking shipping. Please try again.');
-    return false;
-  }
+    console.log('state-element: ', stateElement);
+    console.log('state: ', stateVal);
+    console.log('country: ', countryVal);
+    console.log('zip: ', zip);
+
+    if (!zip || !country.value || !stateVal) {
+      showZipError('Please enter zip code, country, and state to check shipping availability.');
+      resolve(false);
+      return;
+    }
+
+    if (countryVal !== 'United States' && countryVal !== 'Canada') {
+      console.log('Country is not US or Canada:', countryVal);
+      showZipError('');
+      resolve(true);
+      return;
+    }
+
+    const url = `/cart/shipping_rates.json?shipping_address%5Bcountry%5D=${encodeURIComponent(
+      countryVal
+    )}&shipping_address%5Bprovince%5D=${encodeURIComponent(stateVal)}&shipping_address%5Bzip%5D=${encodeURIComponent(zip)}`;
+
+    try {
+      const response = await fetch(url, {
+        method: 'GET',
+        headers: {
+          'X-Requested-With': 'XMLHttpRequest'
+        }
+      });
+
+      const data = await response.json();
+
+      if (data.shipping_rates && data.shipping_rates.length >= 0) {
+        showZipError('');
+        resolve(true);
+      } else {
+        // showZipError(Object.values(data)[0] || 'Shipping not available for this address.');
+        console.log(data);
+            const allMessages = [];
+        
+        Object.values(data).forEach((value) => {
+          if (Array.isArray(value)) {
+            allMessages.push(...value);
+          } else {
+            allMessages.push(value);
+          }
+        });
+        
+        const errorString = allMessages.join(', '); // or '\n' if you're not injecting into HTML
+        showZipError(errorString);
+        resolve(false);
+
+
+      }
+    } catch (err) {
+      console.error('API error during shipping validation:', err);
+      showZipError('Error checking shipping. Please try again.');
+      resolve(false);
+    }
+  });
 };
 
 
-  const quoteCheckoutCompletedPopup = document.querySelector('#quote-request-completed-popup');
-  // const thankYouCloseBtn = document.querySelector('#thank-you-popup .close-btn');
-  // const thankYouCloseBtnBig = document.querySelector('.thank-you-close-window-button button');
-  
 
-  
+  const quoteCheckoutCompletedPopup = document.querySelector('#quote-request-completed-popup');
   const form = document.getElementById('quoteCustomerInfoForm');
   const submitBtn = document.getElementById('quote-submit-button');
   const firstName = document.getElementById('first-name');
@@ -753,40 +775,95 @@ const showZipError = (message) => {
 //   country,
 //   state
 // ]);
+const showEmptyCheckoutCartError = (message) => {
+  const emptyCartItems = document.getElementById('error-no-cart-items'); 
 
+  if (emptyCartItems) {
+    emptyCartItems.textContent = message || '';
+    emptyCartItems.style.marginBottom = '5px';
+  }
+};
+  let formOneTimeSubmitted = false;
+
+  // Input & change event listeners
+async function autoValidation() {
+  if (!formOneTimeSubmitted) return;
+
+  firstName.addEventListener('input', () => validateName(firstName, 'first-name'));
+  lastName.addEventListener('input', () => validateName(lastName, 'last-name'));
+  email.addEventListener('input', () => validateEmail());
+  company.addEventListener('input', () => validateRequiredField(company, 'company'));
+  phone.addEventListener('input', () => validatePhone());
+  communication.addEventListener('change', () => validateRequiredField(communication, 'communication'));
+  street.addEventListener('input', () => validateRequiredField(street, 'street-name'));
+  city.addEventListener('input', () => validateRequiredField(city, 'city-name'));
+
+  zipcode.addEventListener('input', () => validateShippingFields());
+  country.addEventListener('change', () => validateShippingFields());
+
+  const state = document.getElementById('state-name'); // re-fetch in case it changes dynamically
+  if (state) {
+    if (state.tagName === 'SELECT') {
+      state.addEventListener('change', () => validateShippingFields());
+    } else if (state.tagName === 'INPUT') {
+      state.addEventListener('input', () => validateShippingFields());
+    }
+  }
+}
+function observeStateElement() {
+  const stateContainer = document.getElementById('state-container'); // Wrap your state element inside a parent with this ID
+
+  if (!stateContainer) return;
+
+  const observer = new MutationObserver(() => {
+    const stateElement = document.getElementById('state-name');
+    if (stateElement) {
+      if (stateElement.tagName === 'SELECT') {
+        stateElement.addEventListener('change', () => validateShippingFields());
+      } else if (stateElement.tagName === 'INPUT') {
+        stateElement.addEventListener('input', () => validateShippingFields());
+      }
+    }
+  });
+
+  observer.observe(stateContainer, {
+    childList: true,
+    subtree: true
+  });
+}
+observeStateElement();
   async function handleSubmit(e) {
+  
   
   e.preventDefault(); // Prevent default form submission
   let isValid = true;
-
+  formOneTimeSubmitted = true;
+   autoValidation();
   // Run all validations
   if (!validateName(firstName, 'first-name')) isValid = false;
-    console.log('outside the !isValid',isValid);
     
   if (!validateName(lastName, 'last-name')) isValid = false;
-    console.log('firstname !isValid',isValid);
   
     if (!validateEmail()) isValid = false;
-    console.log('lastname !isValid',isValid);
   
     if (!validatePhone()) isValid = false;
-    console.log('phone !isValid',isValid);
   
     if (!validateRequiredField(company, 'company')) isValid = false;
-    console.log('company !isValid',isValid);
   
     if (!validateRequiredField(communication, 'communication')) isValid = false;
-    console.log('communication !isValid',isValid);
   
     if (!validateRequiredField(street, 'street-name')) isValid = false;
-    console.log('streetname !isValid',isValid);
   
     if (!validateRequiredField(city, 'city-name')) isValid = false;
-    console.log('cityname !isValid',isValid);
   
-    if (!(await validateShippingFields())) isValid = false;
-    console.log('shipping !isValid',isValid);
+  const isShippingValid = await validateShippingFields();
 
+  if (!isShippingValid) isValid = false;
+  const cartData = JSON.parse(localStorage.getItem('quoteCart'));
+if (!cartData || cartData.length === 0){
+  isValid = false;
+  showEmptyCheckoutCartError('Please add items to your cart before checkout.')
+}
 
   if (!isValid) {
     console.log('inside the !isValid',isValid);
@@ -827,7 +904,7 @@ if (stateNameElement.tagName.toLowerCase() === "select") {
     }
   };
   // console.log(formData);
-  const cartData = JSON.parse(localStorage.getItem('quoteCart'));
+
   const variants = [];
   // console.log(formData);
   console.log("Cart Data: ", cartData);
