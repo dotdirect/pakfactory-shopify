@@ -1,83 +1,172 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
       "type": "main-list-collections",
       "settings": {
         "title": "Collections",
+        "description": "Some description",
         "sort": "alphabetical_reversed",
+        "layout": "simple",
+        "color_scheme": "",
         "image_ratio": "square",
         "image_fit": "cover",
-        "show_desc": true
+        "show_desc": true,
+        "alt_desc": false,
+        "overlay_opacity": 0.3,
+        "collections_to_show": 4,
+        "columns_mobile": "1",
+        "padding_top": "no-indent",
+        "padding_bottom": "l"
       }
     },
-    "hero": {
-      "type": "hero",
+    "animated_image_collage_3tYRyW": {
+      "type": "animated-image-collage",
       "blocks": {
-        "template--15335004602429__d75c40e7-4781-423a-a8c1-a6f08964fe67-subtitle-1": {
-          "type": "subtitle",
+        "column_enwjXm": {
+          "type": "column",
           "settings": {
-            "subheading": "Subheading",
-            "subheading_style": "subtitle subtitle--secondary",
-            "subheading_icon": "star"
+            "image_width": 420
           }
         },
-        "template--15335004602429__d75c40e7-4781-423a-a8c1-a6f08964fe67-title-1": {
-          "type": "title",
+        "column_NqbyJh": {
+          "type": "column",
           "settings": {
-            "heading": "Heading",
-            "heading_size": "h1",
-            "heading_line": "simple",
-            "line_color": "#1566E0",
-            "word_break": false,
-            "heading_animation": "none"
+            "image_width": 420
           }
         },
-        "template--15335004602429__d75c40e7-4781-423a-a8c1-a6f08964fe67-description-1": {
-          "type": "description",
+        "column_6pgqxj": {
+          "type": "column",
           "settings": {
-            "description": "Some description"
+            "image_width": 420
           }
         },
-        "template--15335004602429__d75c40e7-4781-423a-a8c1-a6f08964fe67-buttons-1": {
-          "type": "buttons",
+        "column_VHXfW3": {
+          "type": "column",
           "settings": {
-            "show_button_1": true,
-            "button_label_1": "Label",
-            "button_link_1": "",
-            "button_style_1": "primary",
-            "show_button_2": false,
-            "button_label_2": "Label",
-            "button_link_2": "",
-            "button_style_2": "simple"
+            "image_width": 420
+          }
+        },
+        "column_LbmciG": {
+          "type": "column",
+          "settings": {
+            "image_width": 420
+          }
+        },
+        "column_j99VJ6": {
+          "type": "column",
+          "settings": {
+            "image_width": 420
+          }
+        },
+        "column_y88WHB": {
+          "type": "column",
+          "settings": {
+            "image_width": 420
+          }
+        },
+        "column_zxxdXP": {
+          "type": "column",
+          "settings": {
+            "image_width": 420
+          }
+        },
+        "column_YEzL3K": {
+          "type": "column",
+          "settings": {
+            "image_width": 420
+          }
+        },
+        "column_yCGDNp": {
+          "type": "column",
+          "settings": {
+            "image_width": 420
+          }
+        },
+        "column_93iz8H": {
+          "type": "column",
+          "settings": {
+            "image_width": 420
+          }
+        },
+        "column_wMqFjV": {
+          "type": "column",
+          "settings": {
+            "image_width": 420
           }
         }
       },
       "block_order": [
-        "template--15335004602429__d75c40e7-4781-423a-a8c1-a6f08964fe67-subtitle-1",
-        "template--15335004602429__d75c40e7-4781-423a-a8c1-a6f08964fe67-title-1",
-        "template--15335004602429__d75c40e7-4781-423a-a8c1-a6f08964fe67-description-1",
-        "template--15335004602429__d75c40e7-4781-423a-a8c1-a6f08964fe67-buttons-1"
+        "column_enwjXm",
+        "column_NqbyJh",
+        "column_6pgqxj",
+        "column_VHXfW3",
+        "column_LbmciG",
+        "column_j99VJ6",
+        "column_y88WHB",
+        "column_zxxdXP",
+        "column_YEzL3K",
+        "column_yCGDNp",
+        "column_93iz8H",
+        "column_wMqFjV"
       ],
+      "name": "t:sections.animated-image-collage.name",
       "settings": {
-        "layout": "overlay",
-        "header_overlay": false,
-        "block_type": "subtle",
+        "section_type": "background",
         "color_scheme": "",
-        "full_screen": true,
-        "overlay_opacity": 0.5,
-        "image_ratio": "16\/9",
-        "object_fit": "cover",
-        "desktop_image_position": "after",
-        "mobile_image_position": "after",
-        "horizontal_alignment": "center",
-        "vertical_alignment": "bottom",
-        "padding_top": "no-indent",
-        "padding_bottom": "no-indent"
+        "header_overlay": false,
+        "header_transparent": false,
+        "column_to_show": 3,
+        "opacity_overlay": 0.3,
+        "full_width": true,
+        "icon": "none",
+        "icon_color_scheme": "",
+        "icon_style": "contrast",
+        "icon_fill_type": "gradient",
+        "icon_size": "recommended",
+        "box_shadow": true,
+        "subheading": "Subheading",
+        "subheading_style": "subtitle subtitle--secondary",
+        "subheading_icon": "none",
+        "heading": "Heading",
+        "heading_size": "h1",
+        "heading_level": "h2",
+        "heading_line": "simple",
+        "line_color": "#1566E0",
+        "word_break": false,
+        "heading_animation": "none",
+        "word_break_an": false,
+        "text": "Some description",
+        "enable_subscribe": false,
+        "button_label_subscribe": "Label",
+        "color_scheme_subscribe": "",
+        "enable_box_shadow": true,
+        "button_style_subscribe": "primary",
+        "show_button": true,
+        "button_label": "Label",
+        "button_link": "",
+        "button_style": "primary",
+        "show_button_2": true,
+        "button_label_2": "Label",
+        "button_link_2": "",
+        "button_style_2": "simple",
+        "padding_top": "m",
+        "padding_bottom": "m",
+        "margin_top": "no-indent",
+        "margin_bottom": "no-indent"
       }
     }
   },
   "order": [
     "main",
-    "hero"
+    "animated_image_collage_3tYRyW"
   ]
 }
