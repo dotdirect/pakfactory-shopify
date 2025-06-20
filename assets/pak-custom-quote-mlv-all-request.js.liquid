@@ -98,9 +98,8 @@ function renderAccountSpecialist(potentialOwner, email, contact) {
               `
             );
 
-            // const productImg = `<img src="${variants[0]?.imageUrl || ''}" height="70" width="70"/>`;
          const productImg = variants[0]?.imageUrl 
-          ? `<div style="display:flex;"><img src="${variants[0].imageUrl}" height="60" width="60"/></div>
+          ? `<img src="${variants[0].imageUrl}" height="60" width="60"/>
           
           ` 
           : '';
