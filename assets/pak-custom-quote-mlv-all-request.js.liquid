@@ -45,7 +45,7 @@ function renderAccountSpecialist(potentialOwner, email, contact) {
 
     function fetchQuotes(offset = 0) {
 
-      console.log("hello")
+     
       allRequestTableLoader.classList.remove('hidden');
       // const apiUrl = `https://www.mlveda.com/ShopifyApps/quotifyTest/quotes?customerEmail=${customerEmail}&offset=${offset}`;
       const accountSpecialistEmail = document.getElementById("account-specialist-email");
@@ -62,6 +62,7 @@ function renderAccountSpecialist(potentialOwner, email, contact) {
       console.log(pageSize);
       const apiUrl = `https://www.mlveda.com/ShopifyApps/quotifyTest/quotes?customerEmail=${customerEmail}&offset=${offset}&limit=${pageSize}`;
 
+      console.log(apiUrl)
 
       fetch(apiUrl)
         .then(res => res.json())
