@@ -282,7 +282,7 @@
         "products_limit": 6,
         "enable_custom_settings": true,
         "related_collection": "",
-        "image_ratio": "5/4",
+        "image_ratio": "1/1",
         "image_fit": "cover",
         "add_border_radius_when_contain": false,
         "show_secondary_image": false,
