@@ -71,10 +71,6 @@ select {
   letter-spacing: normal;
 }
 
-input::placeholder {
-  color: rgb(182, 182, 182);
-}
-
 /* Typography */
 h1,
 h2,
@@ -112,6 +108,11 @@ h3,
   border-radius: 10px;
   width: 100%;
   padding: 24px;
+}
+
+.card.card--product {
+  border: none;
+  padding: 0;
 }
 
 .content-card .content-card-header {
@@ -231,7 +232,6 @@ h3,
   font-size: 12px;
 }
 
-cart-count-bubble
 /* Breadcrumb */
 .breadcrumb__delimiter {
   /* Remove dot style */
@@ -257,6 +257,22 @@ cart-count-bubble
 /* Form */
 .field__label {
   font-size: 14px;
+}
+
+input::placeholder {
+  color: rgb(182, 182, 182);
+}
+
+.custom__field input {
+  padding: 10px;
+  display: flex;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  /* margin-bottom: 10px; */
+  border: 1px solid rgba(221, 223, 227, 1);
+  gap: 1%;
 }
 
 /* Header Mega Menu */

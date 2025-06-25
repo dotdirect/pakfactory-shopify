@@ -18,15 +18,14 @@
 
 
 {% comment %} Variables {% endcomment %}
-{% assign format_type = product.metafields.custom["product_format_type"].value | downcase %}
-
+{% assign product_shape = product.metafields.custom["product_shape"].value[0] | downcase %}
 
 <div class="quote-customization__dimension" id="{{ id | default: 'dimensions-section' }}">
 
   {% comment %} Set mesusument max to base product line - post launch {% endcomment %}
   {% comment %} Tin - turnkey solution - post launch  {% endcomment %}
 
-  {% if format_type == 'box-style' %}
+   {% if product_shape == 'rectangle' or product_shape == 'square / cube' or product_shape == 'stand-up' %}
     {% comment %} Box Format  {% endcomment %}
       {% render 'pak-custom-dimension-input'
         , dimension: 'Length'
@@ -44,7 +43,7 @@
       , metric: 'in'
       , section_id: section.id %}
   {% comment %} Circle Format  {% endcomment %}
-  {% elsif format_type == 'cylindrical' %}
+  {% elsif product_shape == 'round / cylinder' %}
         {% render 'pak-custom-dimension-input'
         , dimension: 'Diameter'
         , metric: 'in',
@@ -56,7 +55,7 @@
       , metric: 'in'
       , section_id: section.id %}
   {% comment %} Mailer Format  {% endcomment %}
-  {% elsif format_type == 'flat mailer' %}
+  {% elsif product_shape == 'lay-flat' %}
     {% render 'pak-custom-dimension-input'
       , dimension: 'Length'
       , metric: 'in',
@@ -69,7 +68,7 @@
     , section_id: section.id %}
 
   {% comment %} Expandable Format  {% endcomment %}
-  {% elsif format_type == 'expandable' %}
+  {% elsif product_shape == 'gusseted' %}
     {% render 'pak-custom-dimension-input'
       , dimension: 'Length'
       , metric: 'in',

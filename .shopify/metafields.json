@@ -161,26 +161,6 @@
       }
     },
     {
-      "key": "product_option_materials",
-      "namespace": "custom",
-      "name": "Product Option - Materials",
-      "description": "",
-      "type": {
-        "name": "list.metaobject_reference",
-        "category": "REFERENCE"
-      }
-    },
-    {
-      "key": "product_format_type",
-      "namespace": "custom",
-      "name": "Product Format Type",
-      "description": "",
-      "type": {
-        "name": "single_line_text_field",
-        "category": "TEXT"
-      }
-    },
-    {
       "key": "product_grouping",
       "namespace": "custom",
       "name": "Product Grouping",
@@ -248,6 +228,66 @@
       "type": {
         "name": "boolean",
         "category": "TRUE_FALSE"
+      }
+    },
+    {
+      "key": "product_shape",
+      "namespace": "custom",
+      "name": "Product Shape",
+      "description": "",
+      "type": {
+        "name": "list.single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "product_structure_type",
+      "namespace": "custom",
+      "name": "Product Structure Type",
+      "description": "",
+      "type": {
+        "name": "list.single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "product_closure_type",
+      "namespace": "custom",
+      "name": "Product Closure Type",
+      "description": "",
+      "type": {
+        "name": "list.single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "product_feature",
+      "namespace": "custom",
+      "name": "Product Feature",
+      "description": "",
+      "type": {
+        "name": "list.single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "product_finishing_type",
+      "namespace": "custom",
+      "name": "Product Finishing Type",
+      "description": "",
+      "type": {
+        "name": "list.single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "product_accessory_type",
+      "namespace": "custom",
+      "name": "Product Accessory Type",
+      "description": "",
+      "type": {
+        "name": "list.single_line_text_field",
+        "category": "TEXT"
       }
     }
   ],
