@@ -284,9 +284,9 @@
         "related_collection": "",
         "image_ratio": "1/1",
         "image_fit": "cover",
-        "add_border_radius_when_contain": false,
-        "show_secondary_image": false,
-        "show_vendor": true,
+        "add_border_radius_when_contain": true,
+        "show_secondary_image": true,
+        "show_vendor": false,
         "show_desc": false,
         "padding_top": "m",
         "padding_bottom": "m"
