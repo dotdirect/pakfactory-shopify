@@ -12,7 +12,9 @@
     {%- render 'icon-loading' -%}
   </div>
   <div class="quantity-input-text-container">
-    {% assign first_product_line = product.metafields.custom.product_line.value | first %}
+    {% assign first_product_line = product.metafields.custom.product_line.value %}
+
+
     {% assign product_line_moq = first_product_line.moq %}
     {% if product_line_moq == blank %}
       {% assign product_line_moq = 100 %}
