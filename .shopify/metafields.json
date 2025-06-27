@@ -71,6 +71,46 @@
   "page": [],
   "product": [
     {
+      "key": "queries",
+      "namespace": "shopify--discovery--product_search_boost",
+      "name": "Search product boosts",
+      "description": "List of search queries for which a product gets higher rank in search results",
+      "type": {
+        "name": "list.single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "related_products",
+      "namespace": "shopify--discovery--product_recommendation",
+      "name": "Related products",
+      "description": "List of related products",
+      "type": {
+        "name": "list.product_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "related_products_display",
+      "namespace": "shopify--discovery--product_recommendation",
+      "name": "Related products settings",
+      "description": "Determines how related products are displayed along with algorithmic product recommendations",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "complementary_products",
+      "namespace": "shopify--discovery--product_recommendation",
+      "name": "Complementary products",
+      "description": "List of complementary products",
+      "type": {
+        "name": "list.product_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
       "key": "breadcrumbs",
       "namespace": "custom",
       "name": "Breadcrumbs",
@@ -161,59 +201,9 @@
       }
     },
     {
-      "key": "product_grouping",
-      "namespace": "custom",
-      "name": "Product Grouping",
-      "description": "",
-      "type": {
-        "name": "metaobject_reference",
-        "category": "REFERENCE"
-      }
-    },
-    {
-      "key": "product_industry",
-      "namespace": "custom",
-      "name": "Product Industry",
-      "description": "",
-      "type": {
-        "name": "list.metaobject_reference",
-        "category": "REFERENCE"
-      }
-    },
-    {
-      "key": "product_structure",
-      "namespace": "custom",
-      "name": "Product Structure",
-      "description": "",
-      "type": {
-        "name": "list.metaobject_reference",
-        "category": "REFERENCE"
-      }
-    },
-    {
-      "key": "software-features",
-      "namespace": "shopify",
-      "name": "Software features",
-      "description": "Identifies the key functionalities of a software product, such as privacy protection or auto backup",
-      "type": {
-        "name": "list.metaobject_reference",
-        "category": "REFERENCE"
-      }
-    },
-    {
       "key": "faq",
       "namespace": "custom",
       "name": "FAQ",
-      "description": "",
-      "type": {
-        "name": "list.metaobject_reference",
-        "category": "REFERENCE"
-      }
-    },
-    {
-      "key": "product_line",
-      "namespace": "custom",
-      "name": "Product Line",
       "description": "",
       "type": {
         "name": "list.metaobject_reference",
@@ -231,6 +221,46 @@
       }
     },
     {
+      "key": "product_grouping",
+      "namespace": "custom",
+      "name": "Product Grouping",
+      "description": "",
+      "type": {
+        "name": "metaobject_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "product_finishing_type",
+      "namespace": "custom",
+      "name": "Product Finishing Type",
+      "description": "",
+      "type": {
+        "name": "list.single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "product_material_type",
+      "namespace": "custom",
+      "name": "Product Material Type",
+      "description": "",
+      "type": {
+        "name": "list.single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "product_accessory_type",
+      "namespace": "custom",
+      "name": "Product Accessory Type",
+      "description": "",
+      "type": {
+        "name": "list.single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
       "key": "product_shape",
       "namespace": "custom",
       "name": "Product Shape",
@@ -241,9 +271,9 @@
       }
     },
     {
-      "key": "product_structure_type",
+      "key": "product_feature_type",
       "namespace": "custom",
-      "name": "Product Structure Type",
+      "name": "Product Feature Type",
       "description": "",
       "type": {
         "name": "list.single_line_text_field",
@@ -261,9 +291,9 @@
       }
     },
     {
-      "key": "product_feature",
+      "key": "product_structure_type",
       "namespace": "custom",
-      "name": "Product Feature",
+      "name": "Product Structure Type",
       "description": "",
       "type": {
         "name": "list.single_line_text_field",
@@ -271,23 +301,23 @@
       }
     },
     {
-      "key": "product_finishing_type",
+      "key": "product_industry",
       "namespace": "custom",
-      "name": "Product Finishing Type",
+      "name": "Product Industry",
       "description": "",
       "type": {
-        "name": "list.single_line_text_field",
-        "category": "TEXT"
+        "name": "list.metaobject_reference",
+        "category": "REFERENCE"
       }
     },
     {
-      "key": "product_accessory_type",
+      "key": "product_line",
       "namespace": "custom",
-      "name": "Product Accessory Type",
+      "name": "Product Line",
       "description": "",
       "type": {
-        "name": "list.single_line_text_field",
-        "category": "TEXT"
+        "name": "metaobject_reference",
+        "category": "REFERENCE"
       }
     }
   ],
