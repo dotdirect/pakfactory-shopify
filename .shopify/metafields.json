@@ -443,5 +443,16 @@
       }
     }
   ],
-  "shop": []
+  "shop": [
+    {
+      "key": "google_tag_manger_id",
+      "namespace": "custom",
+      "name": "Google Tag Manger - ID",
+      "description": "",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    }
+  ]
 }

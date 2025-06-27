@@ -1,5 +1,28 @@
+<!-- added by mlveda -->
+
+
+<!--
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@25.3.1/build/css/intlTelInput.css">
+-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/css/intlTelInput.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/intlTelInput.min.js"></script>
+
+<!--
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjidof2M209hlq2oMdM_Lz1fpBrAx2534&libraries=places&v=beta&loading=async"></script>
+-->
+<script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjidof2M209hlq2oMdM_Lz1fpBrAx2534&loading=async&libraries=places"></script>
+<script>
+        let customerEmail;
+        {% if customer %}
+            customerEmail = '{{ customer.email }}';
+        {% endif %}
+        let customerAddress = {{ customer.default_address | json }};
+
+</script>
+<!-- added by mlveda -->
+
+
 {{ 'pak-custom-quote-quote-checkout.css' | asset_url | stylesheet_tag }}
 
 {% section 'pak-custom-quote-quote-checkout-rendering' %}
 <script src="{{ 'pak-custom-quote-quote-checkout.js' | asset_url }}"></script>
-
