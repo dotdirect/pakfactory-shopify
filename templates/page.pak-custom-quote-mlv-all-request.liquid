@@ -12,6 +12,15 @@
   {% endif %}
 </script>
 
+<script>
+        let customerEmail;
+        {% if customer %}
+            customerEmail = '{{ customer.email }}';
+        {% endif %}
+        let customerAddress = {{ customer.default_address | json }};
+
+</script>
+
 
 <script src="{{ 'pak-custom-quote-mlv-all-request.js' | asset_url }}"></script>
 
