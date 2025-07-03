@@ -417,7 +417,7 @@
         "button_style_subscribe": "primary",
         "show_button": true,
         "button_label": "Request a Quote",
-        "button_link": "shopify://pages/all-request",
+        "button_link": "shopify://pages/account",
         "button_style": "primary",
         "show_button_2": false,
         "button_label_2": "",
