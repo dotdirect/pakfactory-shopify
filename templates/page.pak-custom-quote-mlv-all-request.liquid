@@ -1,29 +1,43 @@
+<!-- Redirect logic for non-logged-in customers -->
 <script>
-  {% if request.design_mode or customer %}
-    // Access allowed in design mode or for logged-in customers
-  {% else %}
-    // Allow access for local development
-    if (window.location.hostname === "127.0.0.1" && window.location.port === "9292") {
-      // Do nothing
-    } else {
-      // Liquid renders the correct return_to URL server-side
-      window.location.href = '/customer_authentication/login?return_to={{ "/pages/all-request" | url_encode }}';
-    }
+  (function() {
+    {% if request.design_mode or customer %}
+      // Access granted in design mode or for logged-in customers
+      console.log("Access granted: design mode or logged-in customer.");
+    {% else %}
+      // Allow access for local development
+      if (window.location.hostname === "127.0.0.1" && window.location.port === "9292") {
+        console.log("Access granted: local development mode.");
+      } else {
+        // Redirect to login with return_to URL
+        window.location.href = '{{ routes.account_login_url }}?return_to={{ shop.metafields.custom.customer_account_url_path | url_encode }}';
+      }
+    {% endif %}
+  })();
+</script>
+
+<!-- Optional: Echo account/login URL -->
+<div style="display: none;">
+  {%- if customer -%}
+    {{ routes.account_url }}
+  {%- else -%}
+    {{ routes.account_login_url }}
+  {%- endif -%}
+</div>
+
+<!-- Set customer email and address for JavaScript -->
+<script>
+  let customerEmail = null;
+  let customerAddress = null;
+
+  {% if customer %}
+    customerEmail = '{{ customer.email }}';
+    customerAddress = {{ customer.default_address | json }};
   {% endif %}
 </script>
 
-<script>
-        let customerEmail;
-        {% if customer %}
-            customerEmail = '{{ customer.email }}';
-        {% endif %}
-        let customerAddress = {{ customer.default_address | json }};
+<!-- Load JS & CSS assets -->
+<script defer src="{{ 'pak-custom-quote-mlv-all-request.js' | asset_url }}"></script>{{ 'pak-custom-quote-mlv-all-request.css' | asset_url | stylesheet_tag }}
 
-</script>
-
-
-<script src="{{ 'pak-custom-quote-mlv-all-request.js' | asset_url }}"></script>
-
-{{ 'pak-custom-quote-mlv-all-request.css' | asset_url | stylesheet_tag }}
-
+<!-- Render main section -->
 {% section 'pak-custom-quote-mlv-all-request-render' %}

@@ -453,6 +453,16 @@
         "name": "single_line_text_field",
         "category": "TEXT"
       }
+    },
+    {
+      "key": "customer_account_url_path",
+      "namespace": "custom",
+      "name": "Customer Account - Url Path",
+      "description": "Pakfactory custom customer account",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
     }
   ]
 }
