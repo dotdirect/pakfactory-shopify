@@ -37,7 +37,10 @@
 </script>
 
 <!-- Load JS & CSS assets -->
-<script defer src="{{ 'pak-custom-quote-mlv-all-request.js' | asset_url }}"></script>{{ 'pak-custom-quote-mlv-all-request.css' | asset_url | stylesheet_tag }}
+<script defer src="{{ 'pak-custom-quote-mlv-all-request.js' | asset_url }}"></script>
+{{ 'pak-custom-quote-mlv-all-request.css' | asset_url | stylesheet_tag }}
 
 <!-- Render main section -->
-{% section 'pak-custom-quote-mlv-all-request-render' %}
+{% if customer %}
+  {% section 'pak-custom-quote-mlv-all-request-render' %}
+{% endif %}
