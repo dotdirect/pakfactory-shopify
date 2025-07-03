@@ -10,12 +10,19 @@
       class="header__account-modal modal__toggle color-background-1"
       role="dialog"
       aria-modal="true">
+
+
       {%- if customer -%}
         <div class="header__account-account">
           <div class="header__account-name">{{ customer.name }}</div>
           <ul class="header__account-body">
+            {% comment %} <li class="header__account-link">
+                              <a href="{{ routes.account_url }}">
+                                  {{ 'customer.account_fallback' | t }}
+                              </a>
+                        </li> {% endcomment %}
             <li class="header__account-link">
-              <a href="{{ routes.account_url }}">
+              <a href="{{ shop.metafields.custom.customer_account_url_path }}">
                 {{ 'customer.account_fallback' | t }}
               </a>
             </li>
@@ -29,7 +36,12 @@
         </div>
 
       {%- else -%}
-        <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}" class="button button--primary header__account-login link  focus-inset">
+        <a
+          {% comment %}
+          href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
+          {% endcomment %}
+          href="{%- if customer -%}{{ routes.account_url }}{%- else -%}/customer_authentication/login?return_to={{ shop.metafields.custom.customer_account_url_path | url_encode }}{%- endif -%}"
+          class="button button--primary header__account-login link  focus-inset">
           {%- liquid
             if customer
               echo 'customer.account_fallback' | t
@@ -38,6 +50,7 @@
             endif
           -%}
         </a>
+
 
         <a class="header__account-register link button button--arrow button--simple" href="{{ routes.account_register_url }}">
           <span>{{ 'customer.login_page.create_account' | t }}</span>
