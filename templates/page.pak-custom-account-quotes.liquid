@@ -28,13 +28,13 @@
 </script>
 
 <!-- Load JS & CSS assets -->
-<script defer src="{{ 'pak-custom-quote-mlv-all-request.js' | asset_url }}"></script>
-{{ 'pak-custom-quote-mlv-all-request.css' | asset_url | stylesheet_tag }}
+<script defer src="{{ 'pak-custom-account-quotes.js' | asset_url }}"></script>
+{{ 'pak-custom-account-quotes.css' | asset_url | stylesheet_tag }}
 
 <!-- Render main section -->
 {% if customer %}
   <!-- Render main section for logged-in customers -->
-  {% section 'pak-custom-quote-mlv-all-request-render' %}
+  {% section 'pak-custom-account-quotes' %}
 {% else %}
   <script>
     // Redirect non-logged-in users to login page with return_to

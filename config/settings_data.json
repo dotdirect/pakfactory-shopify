@@ -61,8 +61,8 @@
     "type_subtitle_secondary_font": "inter_n7",
     "sale_badge_color_scheme": "background-1",
     "sections": {
-      "pak-custom-quote-mlv-all-request-render": {
-        "type": "pak-custom-quote-mlv-all-request-render",
+      "pak-custom-account-quotes": {
+        "type": "pak-custom-account-quotes",
         "settings": {
           "welcome_back_text": "Welcome back",
           "profile_heading": "Profile",
