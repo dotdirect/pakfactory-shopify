@@ -16,15 +16,6 @@
   })();
 </script>
 
-<!-- Optional: Echo account/login URL -->
-<div style="display: none;">
-  {%- if customer -%}
-    {{ routes.account_url }}
-  {%- else -%}
-    {{ routes.account_login_url }}
-  {%- endif -%}
-</div>
-
 <!-- Set customer email and address for JavaScript -->
 <script>
   let customerEmail = null;
@@ -42,5 +33,11 @@
 
 <!-- Render main section -->
 {% if customer %}
+  <!-- Render main section for logged-in customers -->
   {% section 'pak-custom-quote-mlv-all-request-render' %}
+{% else %}
+  <script>
+    // Redirect non-logged-in users to login page with return_to
+    window.location.href = '{{ routes.account_login_url }}?return_to=' + encodeURIComponent(window.location.pathname)';
+  </script>
 {% endif %}

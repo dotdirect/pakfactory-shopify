@@ -17,13 +17,13 @@
           <div class="header__account-name">{{ customer.name }}</div>
           <ul class="header__account-body">
             {% comment %} <li class="header__account-link">
-                              <a href="{{ routes.account_url }}">
-                                  {{ 'customer.account_fallback' | t }}
-                              </a>
-                        </li> {% endcomment %}
+                                            <a href="{{ routes.account_url }}">
+                                                {{ 'customer.account_fallback' | t }}
+                                            </a>
+                                    </li> {% endcomment %}
             <li class="header__account-link">
               <a href="{{ shop.metafields.custom.customer_account_url_path }}">
-                {{ 'customer.account_fallback' | t }}
+                My Quotes
               </a>
             </li>
             <li class="header__account-address">
