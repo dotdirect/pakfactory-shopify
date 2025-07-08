@@ -1,0 +1,43 @@
+{% comment %} Capability Collection – Simple UI Layout (No Filtering) {% endcomment %}
+
+{% assign materials = shop.metaobjects.capability_materials.values | default:[] %}
+{% assign finishes = shop.metaobjects.capability_finishes.values | default:[] %}
+{% assign printing_methods = shop.metaobjects.capability_printing_methods.values | default:[] %}
+{% assign inks = shop.metaobjects.capability_inks.values | default:[] %}
+{% assign add_ons = shop.metaobjects.capability_add_ons_structural_upgrades.values | default:[] %}
+{% assign certifications = shop.metaobjects.capability_certifications.values | default:[] %}
+
+
+{% assign all_capabilities = materials | concat: finishes | concat: printing_methods | concat: inks | concat: add_ons | concat: certifications %}
+
+<div>
+  <h2>All Capabilities</h2>
+  {{ all_capabilities | json }}
+  <ul>
+    {% for entry in all_capabilities %}
+      <li>
+        <strong>{{ entry.title }}</strong><br>
+        {% if entry.seo_description %}
+          <small>{{ entry.seo_description }}</small><br>
+        {% endif %}
+        {% if entry.cta_url %}
+          <a href="{{ entry.cta_url }}">View</a>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+
+{% schema %}
+  {
+    "name": "Capability Collection",
+    "tag": "section",
+    "class": "capability-collection",
+    "settings": [],
+    "presets": [
+      {
+        "name": "Capability Collection Simple"
+      }
+    ]
+  }
+{% endschema %}

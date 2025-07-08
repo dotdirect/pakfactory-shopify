@@ -13,16 +13,6 @@
       }
     },
     {
-      "key": "description",
-      "namespace": "custom",
-      "name": "description",
-      "description": "",
-      "type": {
-        "name": "single_line_text_field",
-        "category": "TEXT"
-      }
-    },
-    {
       "key": "want_to_enable_request_a_quote_",
       "namespace": "custom",
       "name": "Want to enable Request a Quote ?",
@@ -58,7 +48,7 @@
       "name": "Display Description",
       "description": "",
       "type": {
-        "name": "single_line_text_field",
+        "name": "rich_text_field",
         "category": "TEXT"
       }
     }
