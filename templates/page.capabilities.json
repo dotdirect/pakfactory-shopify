@@ -46,12 +46,18 @@
         "button_style": "primary",
         "button_link": "",
         "margin_top": "m",
-        "margin_bottom": "no-indent"
+        "margin_bottom": "m"
       }
+    },
+    "pak_capability_collection_THA8bT": {
+      "type": "pak-capability-collection",
+      "name": "Pak - Capability Collection ",
+      "settings": {}
     }
   },
   "order": [
     "main",
-    "image_banner_R8Rmkd"
+    "image_banner_R8Rmkd",
+    "pak_capability_collection_THA8bT"
   ]
 }
