@@ -1,29 +1,51 @@
-{% comment %} Capability Collection – Simple UI Layout (No Filtering) {% endcomment %}
+{% comment %} Building a shopify component , see if this is optimized {% endcomment %}
 
-{% assign materials = shop.metaobjects.capability_materials.values | default:[] %}
-{% assign finishes = shop.metaobjects.capability_finishes.values | default:[] %}
-{% assign printing_methods = shop.metaobjects.capability_printing_methods.values | default:[] %}
-{% assign inks = shop.metaobjects.capability_inks.values | default:[] %}
-{% assign add_ons = shop.metaobjects.capability_add_ons_structural_upgrades.values | default:[] %}
-{% assign certifications = shop.metaobjects.capability_certifications.values | default:[] %}
+{% assign materials = shop.metaobjects.capability_materials.values %}{% assign finishes = shop.metaobjects.capability_finishes.values %}
 
 
-{% assign all_capabilities = materials | concat: finishes | concat: printing_methods | concat: inks | concat: add_ons | concat: certifications %}
+{% comment %}
+  Step 1: Combine all titles
+{% endcomment %}
+{% assign all_titles = '' | split: ',' %}
 
+{% for item in materials %}
+  {% assign all_titles = all_titles | append: item.title | append: '|||' %}
+{% endfor %}
+
+{% for item in finishes %}
+  {% assign all_titles = all_titles | append: item.title | append: '|||' %}
+{% endfor %}{% assign all_titles = all_titles | split: '|||' | sort %}
+
+{% comment %}
+  Step 2: Display sorted list with source tag
+{% endcomment %}
+
+
+{{ all_titles | json }}
 <div>
-  <h2>All Capabilities</h2>
-  {{ all_capabilities | json }}
+  <h2>All Capabilities (Alphabetically Sorted)</h2>
   <ul>
-    {% for entry in all_capabilities %}
-      <li>
-        <strong>{{ entry.title }}</strong><br>
-        {% if entry.seo_description %}
-          <small>{{ entry.seo_description }}</small><br>
-        {% endif %}
-        {% if entry.cta_url %}
-          <a href="{{ entry.cta_url }}">View</a>
-        {% endif %}
-      </li>
+    {% for title in all_titles %}
+      {% assign entry = materials | where: "title", title | first %}
+      {% if entry %}
+        {% assign source = "Material" %}
+      {% else %}
+        {% assign entry = finishes | where: "title", title | first %}
+        {% assign source = "Finish" %}
+      {% endif %}
+
+      {% if entry %}
+        <li>
+          <strong>{{ entry.title }}</strong>
+          <span style="font-size: 0.85em; color: #888;">({{ source }})</span><br>
+          {% if entry.seo_description %}
+            <small>{{ entry.seo_description }}</small><br>
+          {% endif %}
+          {% if entry.cta_url %}
+            <a href="{{ entry.cta_url }}">View</a>
+          {% endif %}
+        </li>
+      {% endif %}
     {% endfor %}
   </ul>
 </div>
@@ -36,7 +58,7 @@
     "settings": [],
     "presets": [
       {
-        "name": "Capability Collection Simple"
+        "name": "Pak - Capability Collection "
       }
     ]
   }
