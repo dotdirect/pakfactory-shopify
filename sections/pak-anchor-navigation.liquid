@@ -1,0 +1,84 @@
+<script src="{{ 'pak-anchor-navigation.js' | asset_url }}" defer="defer"></script>
+{{ 'pak-anchor-navigation.css' | asset_url | stylesheet_tag }}
+
+{% comment %} Additional CSS Styling could be in the Shadow DOM in the JS File {% endcomment %}
+
+<anchor-navigation
+  data-base-style-url="{{ 'base.css' | asset_url }}"
+  data-style-url="{{ 'pak-anchor-navigation.css' | asset_url }}"
+  data-color-scheme="{{ section.settings.color_scheme }}"
+  class="anchor-navigation container">
+
+  {% for block in section.blocks %}
+    {% assign label = block.settings.label %}
+    {% assign anchor_id = block.settings.anchor_id %}
+
+    {% if label != blank and anchor_id != blank %}
+      <a href="#{{ anchor_id | escape }}" class="button button--primary anchor-navigation__link-item">
+        {{ label | escape }}
+      </a>
+    {% endif %}
+  {% endfor %}
+
+</anchor-navigation>
+
+{% schema %}
+  {
+    "name": "Anchor Navigation",
+    "class": "anchor-navigation-wrapper",
+    "settings": [
+      {
+        "type": "color_scheme",
+        "id": "color_scheme",
+        "default": "background-1",
+        "label": "t:sections.all.color_scheme.label"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "anchor_link",
+        "name": "Anchor Link",
+        "settings": [
+          {
+            "type": "text",
+            "id": "label",
+            "label": "Link Label",
+            "default": "Features"
+          }, {
+            "type": "text",
+            "id": "anchor_id",
+            "label": "Anchor ID (no #)",
+            "default": "features-anchor"
+          }
+        ]
+      }
+    ],
+    "max_blocks": 10,
+    "presets": [
+      {
+        "name": "Pak - Anchor Navigation",
+        "blocks": [
+          {
+            "type": "anchor_link",
+            "settings": {
+              "label": "Features",
+              "anchor_id": "features-anchor"
+            }
+          }, {
+            "type": "anchor_link",
+            "settings": {
+              "label": "Capabilities",
+              "anchor_id": "capabilities-anchor"
+            }
+          }, {
+            "type": "anchor_link",
+            "settings": {
+              "label": "FAQ",
+              "anchor_id": "faq-anchor"
+            }
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

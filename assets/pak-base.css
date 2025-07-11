@@ -426,4 +426,14 @@ input::placeholder {
   .menu-drawer .mega-menu__column {
     gap: 2.5rem 0;
   }
+
+  .shopify-section-header-sticky .header-wrapper.container .header {
+    padding-block: 1rem;
+  }
+
+  .shopify-section-header-sticky
+    .header__heading-link
+    .header__heading-logo:only-child {
+    width: 140px;
+  }
 }

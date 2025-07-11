@@ -1,0 +1,30 @@
+{% comment %} <span id="{{ section.settings.target_label }}">{{ section.settings.target_label }}</span> {% endcomment %}
+
+{% if content_for_header contains 'Shopify.designMode' and section.settings.debug_mode %}
+  <span id="{{ section.settings.target_label }}" style="display: block; background-color: black; text-align: center; color: white">Anchor Point : {{ section.settings.target_label }} (Edit Mode Only)</span>
+{% else %}
+  <span id="{{ section.settings.target_label }}"></span>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Anchor Point",
+    "settings": [
+      {
+        "type": "text",
+        "id": "target_label",
+        "label": "Target Label"
+      }, {
+        "type": "checkbox",
+        "id": "debug_mode",
+        "default": true,
+        "label": "Debug Mode"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Pak - Anchor Point"
+      }
+    ]
+  }
+{% endschema %}
