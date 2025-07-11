@@ -105,14 +105,14 @@
         "anchor_link_h7RhEV",
         "anchor_link_3yhqwL"
       ],
-      "name": "Pak - Anchor Navigation",
+      "name": "Sub Navigation",
       "settings": {
         "color_scheme": ""
       }
     },
     "pak_anchor_point_Q8dnhz": {
       "type": "pak-anchor-point",
-      "name": "Pak - Anchor Point",
+      "name": "Anchor Point - Features",
       "settings": {
         "target_label": "features-anchor",
         "debug_mode": true
@@ -269,6 +269,14 @@
       "name": "Divider",
       "settings": {
         "color_scheme": "background-1"
+      }
+    },
+    "pak_anchor_point_KWErEz": {
+      "type": "pak-anchor-point",
+      "name": "Pak - Anchor Point",
+      "settings": {
+        "target_label": "faq-anchor",
+        "debug_mode": true
       }
     },
     "collapsible_content_k63CqE": {
@@ -491,6 +499,7 @@
     "pak_anchor_point_kPzHV9",
     "pak_product_capability_libary_8Jt8bM",
     "pak_divider_ixVMQG",
+    "pak_anchor_point_KWErEz",
     "collapsible_content_k63CqE",
     "pak_divider_GxrxTN",
     "pak_product_recommendations_GAynaa",
